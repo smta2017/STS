@@ -1,0 +1,5 @@
+const Model=require('../../db/models')
+class {
+
+}
+module.exports=

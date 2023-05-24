@@ -1,0 +1,10 @@
+const =require('../app/controllers')
+const router=require('express').Router()
+
+module.exports=router
+
+
+
+in src
+const Routes=require('../routes')
+app.use('/adala/',Routes)
