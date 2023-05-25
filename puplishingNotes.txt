@@ -1,0 +1,2 @@
+we need to add academy role manualy to data base and user model
+we need to add super admin role and 
