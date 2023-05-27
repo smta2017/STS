@@ -7,5 +7,8 @@ const app=express()
 app.use(express.json({limit:'200mb'}))
 app.use(express.urlencoded({extended:true,limit:'200mb'}))
 app.use(express.static(path.join(__dirname,'../statics')))
-
+ 
+//routes
+const userRoutes=require('../routes/user.routes')
+app.use('/sts/user',userRoutes)
 module.exports=app

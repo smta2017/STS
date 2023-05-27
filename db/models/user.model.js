@@ -1,6 +1,7 @@
 const mongoose=require('mongoose')
 const validator=require('validator')
-const jsonWebToken=require('jsonwebtoken')
+// const jsonWebToken=require('jsonwebtoken')
+const countryCodeslist=require('country-codes-list').customList('countryCallingCode', '{officialLanguageCode}-{countryCode}')
 const bcrypt=require('bcrypt')
 const UserSchema=mongoose.Schema({
     // role:{//foreginKey to know what you can see or do
@@ -49,7 +50,8 @@ const UserSchema=mongoose.Schema({
     password: {
         type: String,
         trim: true,
-        required: [true, 'the password is required field']
+        default:'12345'
+        // required: [true, 'the password is required field']
     },
     academyDetails:{//foregin key to know his academy if your role is academy
         type:mongoose.SchemaTypes.ObjectId,
@@ -57,6 +59,10 @@ const UserSchema=mongoose.Schema({
         // required:[function type() {
         //     return this.role == //you need to put the objectId of academy role
         // },'you are academy we need your academy details for registration']
+    },
+    suspended:{
+        type:Boolean,
+        default:false
     }
 })
 UserSchema.pre('save', function () {
@@ -68,24 +74,45 @@ UserSchema.methods.toJSON = function () {
     delete userObject.password
     return userObject
 }
-UserSchema.statics.logIn = async (email, enterdPassword) => {
-    const userData = await user.findOne({ email })
-    if (!userData) {
-        throw new Error('invalid email')
-    }
-    if (enterdPassword) {
-        if (!bcrybt.compareSync(enterdPassword, userData.password)) {
-            throw new Error('invalid password')
+UserSchema.statics.logIn = async (loginData) => {
+    let isUserExist
+        if( loginData.countryCallingCode&&loginData.mobileNumber){
+            isUserExist=await userModel.findOne({mobileNumber:countryCodeslist[loginData.countryCallingCode.substring(1)] + ":" + loginData.countryCallingCode +loginData.mobileNumber})
+        }else if(loginData.email&&!isUserExist){
+            isUserExist=await userModel.findOne({email:loginData.email})
+        }else{
+            const e=new Error('you did not send user email or phone number with the country code ')
+            e.name='CastError'
+            throw e
+        }
+        if(!isUserExist){
+            const e=new Error('there is no user with such email or mobile number ')
+            e.name='CastError'
+            throw e
+        }
+        if(isUserExist.suspended){
+            const e=new Error('your account has been blocked from  the website organizers please contact with us from our mail or contact us form ')
+            e.name='Error'
+            throw e
+        }
+    if (loginData.password) {
+        console.log(loginData.password,isUserExist)
+        if (!bcrypt.compareSync(loginData.password, isUserExist.password)) {
+            const e=new Error('invalid password')
+            e.name='CastError'
+            throw e
         }
     } else {
-        throw new Error('invalid password')
+        const e=new Error('there is no password to log you in,please enter your password')
+        e.name='CastError'
+        throw e
     }
-    return userData
+    return isUserExist
 }
 UserSchema.virtual('joinedCompetions',{
     ref:'subscription',
     localField:'_id',
     foreignField:'subscriper'
 })
-const empolyeeModel=mongoose.model('empolyee',EmpolyeeSchema)
-module.exports=empolyeeModel
+const userModel=mongoose.model('users',UserSchema)
+module.exports=userModel

@@ -16,7 +16,7 @@ const tokenSchema = mongoose.Schema({
         expires: 18000
     }
 })
-tokenSchema.statics.creatToken = async function (data, lifeTime) {
+tokenSchema.statics.createToken = async function (data, lifeTime) {
     let token
     if (lifeTime) {
         console.log('creating token');
