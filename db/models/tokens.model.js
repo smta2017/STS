@@ -20,9 +20,6 @@ tokenSchema.statics.creatToken = async function (data, lifeTime) {
     let token
     if (lifeTime) {
         console.log('creating token');
-
-
-        // ةثفشصثش
         token =  jsonWebToken.sign(data, process.env.tokenPass)
         await tokenModel({owner:data.id,token}).save()
     } else {

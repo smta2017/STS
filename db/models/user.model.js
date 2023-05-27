@@ -68,6 +68,20 @@ UserSchema.methods.toJSON = function () {
     delete userObject.password
     return userObject
 }
+UserSchema.statics.logIn = async (email, enterdPassword) => {
+    const userData = await user.findOne({ email })
+    if (!userData) {
+        throw new Error('invalid email')
+    }
+    if (enterdPassword) {
+        if (!bcrybt.compareSync(enterdPassword, userData.password)) {
+            throw new Error('invalid password')
+        }
+    } else {
+        throw new Error('invalid password')
+    }
+    return userData
+}
 UserSchema.virtual('joinedCompetions',{
     ref:'subscription',
     localField:'_id',

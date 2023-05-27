@@ -6,13 +6,17 @@ const multer = require('multer')
 const Helper = require('./helper')
 const auth = async (req, res, next) => {
     try {
-        // let token
-        // if (req.params.confimation) {
-        //     token = req.params.confimation
-        // } else {
-        // const token = req.header("x-auth-token")
+        let token
+        
+        //confirmation>
+        if (req.params.confimation) {
+            token = req.params.confimation
+        } else {
+        //confirmation^
         const token = req.header('Authorization')
-        // }
+        //confirmation>
+        }
+        //confirmation^
         const tokenExist = await tokenModel.findOne({ token })
         if (!tokenExist) {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token ')
@@ -22,14 +26,15 @@ const auth = async (req, res, next) => {
         if (!user) {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token owner')
         } else {
-            // if (req.params.confimation) {
-            //     user.date = ""
-            //     user.status = true
-            //     await user.save()
-            // }
-            req.userType = 'user'
+            //confirmation>
+            if (req.params.confimation) {
+                user.date = ""
+                user.status = true
+                await user.save()
+            }
+            //confimation^
             req.user = user
-            req.token = token
+            // req.token = token
         }
         next()
     }
