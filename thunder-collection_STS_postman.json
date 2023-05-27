@@ -1,0 +1,72 @@
+{
+    "info": {
+        "name": "STS",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "users",
+            "item": [
+                {
+                    "name": "academy registration",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/user",
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1202865148\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"asds@gmail.com\",\n    \"password\":\"as123sfsa\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
+                        }
+                    }
+                },
+                {
+                    "name": "login",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/user/login",
+                            "path": [
+                                "login"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "email",
+                                    "value": "asds@gmail.com",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "mobileNumber",
+                                    "value": "1202865148"
+                                },
+                                {
+                                    "key": "countryCallingCode",
+                                    "value": "+20"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "as123sfsa"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
