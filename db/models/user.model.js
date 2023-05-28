@@ -50,8 +50,8 @@ const UserSchema=mongoose.Schema({
     password: {
         type: String,
         trim: true,
-        default:'12345'
-        // required: [true, 'the password is required field']
+        // default:'12345'
+        required: [true, 'the password is required field']
     },
     academyDetails:{//foregin key to know his academy if your role is academy
         type:mongoose.SchemaTypes.ObjectId,
@@ -66,6 +66,7 @@ const UserSchema=mongoose.Schema({
     }
 })
 UserSchema.pre('save', function () {
+    console.log(this.isModified('password'))
     if (this.isModified('password')) this.password = bcrypt.hashSync(this.password,12)
 })
 UserSchema.methods.toJSON = function () {

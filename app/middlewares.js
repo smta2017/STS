@@ -6,33 +6,33 @@ const multer = require('multer')
 const Helper = require('./helper')
 const auth = async (req, res, next) => {
     try {
-        let token
+        // let token
         
-        //confirmation>
-        if (req.params.confimation) {
-            token = req.params.confimation
-        } else {
-        //confirmation^
+        // //confirmation>
+        // if (req.params.confimation) {
+        //     token = req.params.confimation
+        // } else {
+        // //confirmation^
         const token = req.header('Authorization')
-        //confirmation>
-        }
-        //confirmation^
+        // //confirmation>
+        // }
+        // //confirmation^
         const tokenExist = await tokenModel.findOne({ token })
         if (!tokenExist) {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token ')
         }
 
-        const user = await userModel.findById(tokenExist.owner).populate('userData')
+        const user = await userModel.findById(tokenExist.owner)//.populate('userData')
         if (!user) {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token owner')
         } else {
-            //confirmation>
-            if (req.params.confimation) {
-                user.date = ""
-                user.status = true
-                await user.save()
-            }
-            //confimation^
+            // //confirmation>
+            // if (req.params.confimation) {
+            //     user.date = ""
+            //     user.status = true
+            //     await user.save()
+            // }
+            // //confimation^
             req.user = user
             // req.token = token
         }

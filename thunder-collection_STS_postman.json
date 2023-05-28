@@ -47,23 +47,159 @@
                             "urlencoded": [
                                 {
                                     "key": "email",
-                                    "value": "asds@gmail.com",
-                                    "disabled": true
+                                    "value": "asdsa@gmail.com"
                                 },
                                 {
                                     "key": "mobileNumber",
-                                    "value": "1202865148"
+                                    "value": "1202865140",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "countryCallingCode",
+                                    "value": "+20",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "Asd?1234"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "employee registration",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/user/employee",
+                            "path": [
+                                "employee"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "george"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "Abadier"
+                                },
+                                {
+                                    "key": "mobileNumber",
+                                    "value": "1202865140"
                                 },
                                 {
                                     "key": "countryCallingCode",
                                     "value": "+20"
                                 },
                                 {
-                                    "key": "password",
-                                    "value": "as123sfsa"
+                                    "key": "email",
+                                    "value": "asdsa@gmail.com"
                                 }
                             ]
                         }
+                    }
+                },
+                {
+                    "name": "update profile",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/user",
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzIzY2UzNzk0MTVhZjc0Yzk2MDRhMyIsImlhdCI6MTY4NTIyNjAxMSwiZXhwIjoxNjg1MjQ0MDExfQ.CAiZcnDOWp_H6uMLMET32RQ_ty1bt7A6KD6fvOrX0bI"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "george"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "Abadier"
+                                },
+                                {
+                                    "key": "mobileNumber",
+                                    "value": "1202865143"
+                                },
+                                {
+                                    "key": "countryCallingCode",
+                                    "value": "+20",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "asds@gmail.com"
+                                },
+                                {
+                                    "key": "oldPassword",
+                                    "value": "12345"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "12345",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "logout",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/user/logout",
+                            "path": [
+                                "logout"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzIzY2UzNzk0MTVhZjc0Yzk2MDRhMyIsImlhdCI6MTY4NTIxMDM4OCwiZXhwIjoxNjg1MjI4Mzg4fQ.PW-WDOV4FSPwrLuqYc0Ed9jN9mIPoN8ofcDsWW6kTvo"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "logout from all devices",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/user/logoutall",
+                            "path": [
+                                "logoutall"
+                            ],
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzIzY2UzNzk0MTVhZjc0Yzk2MDRhMyIsImlhdCI6MTY4NTIxOTAzNywiZXhwIjoxNjg1MjM3MDM3fQ.3lhB77KhGUR141qVmIGLwLi0pfnRuM69ddQmuiV1rp4"
+                            }
+                        ]
                     }
                 }
             ]
