@@ -203,6 +203,500 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "countries",
+            "item": [
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/country",
+                            "host": [
+                                "country"
+                            ]
+                        },
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "countryName",
+                                    "value": "germany"
+                                },
+                                {
+                                    "key": "adminstrationFees",
+                                    "value": "199"
+                                },
+                                {
+                                    "key": "membershipFees",
+                                    "value": "299"
+                                },
+                                {
+                                    "key": "soloDancerFees",
+                                    "value": "550"
+                                },
+                                {
+                                    "key": "duoOrTrioDanceFees",
+                                    "value": "450"
+                                },
+                                {
+                                    "key": "groupDanceFees",
+                                    "value": "350"
+                                },
+                                {
+                                    "key": "soloSingerFees",
+                                    "value": "450"
+                                },
+                                {
+                                    "key": "duoOrTrioSingingFees",
+                                    "value": "400"
+                                },
+                                {
+                                    "key": "groupSingingFees",
+                                    "value": "600"
+                                },
+                                {
+                                    "key": "soloMusicianFees",
+                                    "value": "6554"
+                                },
+                                {
+                                    "key": "duoOrTrioMusicFees",
+                                    "value": "7986"
+                                },
+                                {
+                                    "key": "groupMusicFees",
+                                    "value": "658"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/country/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "country"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/country/6473eca2abee8e2c6e87f05b",
+                            "path": [
+                                "6473eca2abee8e2c6e87f05b"
+                            ],
+                            "host": [
+                                "country"
+                            ]
+                        },
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "countryName",
+                                    "value": "egypt"
+                                },
+                                {
+                                    "key": "adminstrationFees",
+                                    "value": "199"
+                                },
+                                {
+                                    "key": "membershipFees",
+                                    "value": "299"
+                                },
+                                {
+                                    "key": "soloDancerFees",
+                                    "value": "550"
+                                },
+                                {
+                                    "key": "duoOrTrioDanceFees",
+                                    "value": "450"
+                                },
+                                {
+                                    "key": "groupDanceFees",
+                                    "value": "350"
+                                },
+                                {
+                                    "key": "soloSingerFees",
+                                    "value": "500"
+                                },
+                                {
+                                    "key": "duoOrTrioSingingFees",
+                                    "value": "400"
+                                },
+                                {
+                                    "key": "groupSingingFees",
+                                    "value": "350"
+                                },
+                                {
+                                    "key": "soloMusicianFees",
+                                    "value": "500"
+                                },
+                                {
+                                    "key": "duoOrTrioMusicFees",
+                                    "value": "400"
+                                },
+                                {
+                                    "key": "groupMusicFees",
+                                    "value": "350"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/country/6473edc43155fbea54a65ed8",
+                            "path": [
+                                "6473edc43155fbea54a65ed8"
+                            ],
+                            "host": [
+                                "country"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "news",
+            "item": [
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/news",
+                            "host": [
+                                "news"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "aaaaa",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "sssssss",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "ddddddd",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update ",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/news/6476031eb8c49a21807f1f9b",
+                            "path": [
+                                "6476031eb8c49a21807f1f9b"
+                            ],
+                            "host": [
+                                "news"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "ggggg",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "fffffff",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "kkkkkkkkkkkkk",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/news/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "news"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/news/6476031eb8c49a21807f1f9b",
+                            "path": [
+                                "6476031eb8c49a21807f1f9b"
+                            ],
+                            "host": [
+                                "news"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "advertising",
+            "item": [
+                {
+                    "name": "update ",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/advertising/647604efd0d6e0cbb08c5255",
+                            "path": [
+                                "647604efd0d6e0cbb08c5255"
+                            ],
+                            "host": [
+                                "advertising"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "asdsasASa",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "asasassds",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "asddasfsa",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/advertising",
+                            "host": [
+                                "advertising"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "aaaaaaaaasss",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "sssssssssss",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "dddddddddd",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/advertising/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "advertising"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/advertising/647604efd0d6e0cbb08c5255",
+                            "path": [
+                                "647604efd0d6e0cbb08c5255"
+                            ],
+                            "host": [
+                                "advertising"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "sponsor",
+            "item": [
+                {
+                    "name": "update  ",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/sponsor/6475e42616821349edae71e3",
+                            "path": [
+                                "6475e42616821349edae71e3"
+                            ],
+                            "host": [
+                                "sponsor"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "cccccccc",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "yyyyyyyy",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add  ",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/sponsor",
+                            "host": [
+                                "sponsor"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "danon",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaaaaaaaaa                                                 sdsdlkjlkjlkdjasjlkjlkjlk",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/sponsor/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "sponsor"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/sponsor/6475e42616821349edae71e3",
+                            "path": [
+                                "6475e42616821349edae71e3"
+                            ],
+                            "host": [
+                                "sponsor"
+                            ]
+                        }
+                    }
+                }
+            ]
         }
     ]
 }
