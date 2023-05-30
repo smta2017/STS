@@ -1,4 +1,4 @@
-const User=require('../app/controller/user.controller')
+const User=require('../app/controllers/user.controller')
 const { auth } = require('../app/middlewares')
 const router=require('express').Router()
 //auth api

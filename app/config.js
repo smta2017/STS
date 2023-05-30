@@ -10,5 +10,13 @@ app.use(express.static(path.join(__dirname,'../statics')))
  
 //routes
 const userRoutes=require('../routes/user.routes')
+const countryRoutes=require('../routes/country.routes')
+const sponsorRoutes=require('../routes/sponsor.routes')
+const newsRoutes=require('../routes/news.routes')
+const advertisingRoutes=require('../routes/advertising.routes')
+app.use('/sts/advertising',advertisingRoutes)
+app.use('/sts/news',newsRoutes)
+app.use('/sts/sponsor',sponsorRoutes)
+app.use('/sts/country',countryRoutes)
 app.use('/sts/user',userRoutes)
 module.exports=app

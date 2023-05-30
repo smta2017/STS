@@ -84,20 +84,20 @@ const auth = async (req, res, next) => {
 // }
 
 
-// const authToThisRoute = async (req, res, next) => {
-//     if (!req.user.role) {
-//         return Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
-//     }
-//     const role = await roleModel.findById(req.user.role._id).populate('routes')
-//     const allowed = role.routes.find((route, i) => {
-//         return (route.route == req.baseUrl + (req.route.path == '/' ? '' : req.route.path) && route.method == req.method)
-//     })
-//     if (allowed) {
-//         next()
-//     } else {
-//         Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
-//     }
-//
+const authToThisRoute = async (req, res, next) => {
+    if (!req.user.role) {
+        return Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
+    }
+    const role = await roleModel.findById(req.user.role._id).populate('routes')
+    const allowed = role.routes.find((route, i) => {
+        return (route.route == req.baseUrl + (req.route.path == '/' ? '' : req.route.path) && route.method == req.method)
+    })
+    if (allowed) {
+        next()
+    } else {
+        Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
+    }
+}
 const uploadfile=(foldername)=>{
     const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -122,7 +122,7 @@ const upload = multer(
     })
     return upload
 }
-module.exports = {auth, uploadfile }
+module.exports = {auth,authToThisRoute, uploadfile }
 
 // const uploadfile=(foldername)=>{
 //     const storage = multer.diskStorage({
