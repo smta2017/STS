@@ -29,11 +29,13 @@ endSubscription:{
 date:{
     type:Date,
     required:[true,'please enter when will the competition take place']
-},stage:{
+},
+stage:{
     type:String,
     trim:true,
     required:[true,'please enter the stage of the competition']
-},poster:{
+},
+poster:{
     type:String,
     trim:true,
     required:[true,'please enter the official poster of the competition']
@@ -42,14 +44,23 @@ stopSubscription:{
     type:Boolean,
     default:false
 },
-showSchedule:{
-    type:Boolean,
-    default:false
-},
+// showSchedule:{
+//     type:Boolean,
+//     default:false,
+//     validate:(value)=>{
+//         if(value&&){
+
+//         }
+//     }
+// },
 showResults:{
     type:Boolean,
     default:false
 },
+enableRefree:{
+    type:Boolean,
+    default:false 
+}
 })
 const competitionModel=mongoose.model('competitions',CompetitionSchema)
 module.exports=competitionModel

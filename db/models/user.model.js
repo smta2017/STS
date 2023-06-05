@@ -4,11 +4,11 @@ const validator=require('validator')
 const countryCodeslist=require('country-codes-list').customList('countryCallingCode', '{officialLanguageCode}-{countryCode}')
 const bcrypt=require('bcrypt')
 const UserSchema=mongoose.Schema({
-    // role:{//foreginKey to know what you can see or do
-    //     type:mongoose.SchemaTypes.ObjectId,
-    //     ref:'roles',
-    //     required:[true,'please enter this employee position']
-    // },
+    role:{//foreginKey to know what you can see or do
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'roles',
+        required:[true,'please enter this employee position']
+    },
     firstName: {
         type: String,
         required: [true, 'please enter academy owner first name'],
