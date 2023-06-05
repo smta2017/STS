@@ -597,6 +597,346 @@
             ]
         },
         {
+            "name": "roles ",
+            "item": [
+                {
+                    "name": "addRole",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/role",
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"role\": \"developer\",\n  \"routes\": [\n    \"647b5debcba6718bc3dbdc01\",\n    \"647b5dd1cba6718bc3dbdbff\",\n    \"647b5d82cba6718bc3dbdbfd\",\n    \"647b616998b20906390415b0\",\n    \"647b61a998b20906390415b2\",\n    \"647b615f98b20906390415ae\",\n    \"647b621d98b20906390415b4\",\n    \"647b628f98b20906390415b6\",\n    \"647b62f398b20906390415b8\",\n    \"647b634598b20906390415ba\",\n    \"647b637898b20906390415bc\",\n    \"647b6516faad424a3741ef94\"\n  ],\n  \"tabs\":[\n    \"647b976f9839d1b3bad89339\",\n    \"647b6b77db79e959c6af8aad\"\n    ]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "addRouteToRole",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/role/routetorole/63e2356755257516346ae7cd",
+                            "path": [
+                                "routetorole",
+                                "63e2356755257516346ae7cd"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU4NzMyNTZ9.hi_JB9PZCJRP8-4PKU7WE7M6x9ej8y3SNl4LliNtoIE"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "route",
+                                    "value": "63e3f0d96741d6bfb5be6d2f"
+                                },
+                                {
+                                    "key": "saller",
+                                    "value": "63e2356755257516346ae7cd",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "admin",
+                                    "value": "63e2346155257516346ae7cb",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "deleteRouteFromRole",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/role/routetorole/63e278f4e4256cb7b39e83ea",
+                            "path": [
+                                "routetorole",
+                                "63e278f4e4256cb7b39e83ea"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "route",
+                                    "value": "63e280bcf462a38c6207f3b8"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "getRole",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/role/647df332c4e042084c015a4a",
+                            "path": [
+                                "647df332c4e042084c015a4a"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "deleteRole",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/role/647df0a8d50a7521a0ee9917",
+                            "path": [
+                                "647df0a8d50a7521a0ee9917"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "getAllRoles",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/role/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "add tab",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/role/tab",
+                            "path": [
+                                "tab"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"tabId\":\"sponsor\",\n  \"tabName\":\"sponsor\",\n  \"routes\":[\n    \"647b96819839d1b3bad89331\",\n    \"647b97189839d1b3bad89335\",\n    \"647b97189839d1b3bad89333\",\n    \"647b975c9839d1b3bad89337\"\n    ]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "get tabs",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/role/tabs",
+                            "path": [
+                                "tabs"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "addRoute",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/role/route",
+                            "path": [
+                                "route"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"route\":\"/sts/sponsor\",\n  \"method\":\"post\",\n  \"routeAction\": \"add sponsor\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "deleteRoute",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/role/route/647b6503faad424a3741ef8f",
+                            "path": [
+                                "route",
+                                "647b6503faad424a3741ef8f"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "changeRouteAction",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/role/route/647b6516faad424a3741ef94/''",
+                            "path": [
+                                "route",
+                                "647b6516faad424a3741ef94",
+                                "''"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "getAllAccessableRoutes",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/role/routes",
+                            "path": [
+                                "routes"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "add tab to role",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/role//tabtorole/647df332c4e042084c015a4a",
+                            "path": [
+                                "tabtorole",
+                                "647df332c4e042084c015a4a"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "tab",
+                                    "value": "647b976f9839d1b3bad89339"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "remove tab from role ",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/role/tabtorole/647df332c4e042084c015a4a",
+                            "path": [
+                                "tabtorole",
+                                "647df332c4e042084c015a4a"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "tab",
+                                    "value": "647b976f9839d1b3bad89339"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "name": "sponsor",
             "item": [
                 {
@@ -697,6 +1037,36 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "editRole",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "/role/63e278f4e4256cb7b39e83ea",
+                    "path": [
+                        "63e278f4e4256cb7b39e83ea"
+                    ],
+                    "host": [
+                        "role"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"role\": \"project inserter\",\n  \"routes\": [\n    \"63aecb0f609cd49cad76d4e5\",\n    \"63aeccf75fef29fc31df7ce2\",\n    \"63e280bcf462a38c6207f3b8\"\n  ]\n}"
+                }
+            }
         }
     ]
 }
