@@ -1,5 +1,6 @@
 {
     "info": {
+        "_postman_id": "84e10a51-32eb-4d3a-a1ff-b39b7221552a",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -25,7 +26,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1202865148\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"asds@gmail.com\",\n    \"password\":\"as123sfsa\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
+                            "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"role\":\"6480d5701c02f26cd6668987\",\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1202865148\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"asds@gmail.com\",\n    \"password\":\"as123sfsa\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
                         }
                     }
                 },
@@ -47,7 +48,7 @@
                             "urlencoded": [
                                 {
                                     "key": "email",
-                                    "value": "asdsa@gmail.com"
+                                    "value": "asds@gmail.com"
                                 },
                                 {
                                     "key": "mobileNumber",
@@ -61,7 +62,7 @@
                                 },
                                 {
                                     "key": "password",
-                                    "value": "Asd?1234"
+                                    "value": "as123sfsa"
                                 }
                             ]
                         }
@@ -446,6 +447,7 @@
                                 {
                                     "key": "photo",
                                     "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "disabled": true,
                                     "type": "file"
                                 }
                             ]
@@ -622,7 +624,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"role\": \"developer\",\n  \"routes\": [\n    \"647b5debcba6718bc3dbdc01\",\n    \"647b5dd1cba6718bc3dbdbff\",\n    \"647b5d82cba6718bc3dbdbfd\",\n    \"647b616998b20906390415b0\",\n    \"647b61a998b20906390415b2\",\n    \"647b615f98b20906390415ae\",\n    \"647b621d98b20906390415b4\",\n    \"647b628f98b20906390415b6\",\n    \"647b62f398b20906390415b8\",\n    \"647b634598b20906390415ba\",\n    \"647b637898b20906390415bc\",\n    \"647b6516faad424a3741ef94\"\n  ],\n  \"tabs\":[\n    \"647b976f9839d1b3bad89339\",\n    \"647b6b77db79e959c6af8aad\"\n    ]\n}"
+                            "raw": "{\n  \"role\": \"acaedemy\"\n}"
                         }
                     }
                 },
@@ -1034,6 +1036,185 @@
                                 "sponsor"
                             ]
                         }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "competition",
+            "item": [
+                {
+                    "name": "add  ",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/competition",
+                            "host": [
+                                "competition"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "year",
+                                    "value": "2032",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "qualifier",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "country",
+                                    "value": "64748c907f9e9854168fe025",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "startSubscription",
+                                    "value": "2024-05-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "endSubscription",
+                                    "value": "2024-06-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "2024-07-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "stage",
+                                    "value": "kajskjhfksaj",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "poster",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/competition/6480d2d176037faf2af62d71",
+                            "path": [
+                                "6480d2d176037faf2af62d71"
+                            ],
+                            "host": [
+                                "competition"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "year",
+                                    "value": "2032",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "qualifier",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "country",
+                                    "value": "64748c907f9e9854168fe025",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "startSubscription",
+                                    "value": "2024-05-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "endSubscription",
+                                    "value": "2024-06-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "2024-08-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "stage",
+                                    "value": "kajskjhfksaj",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "poster",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/competition/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "competition"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/competition/6480d17c3412df0e211adfab",
+                            "path": [
+                                "6480d17c3412df0e211adfab"
+                            ],
+                            "host": [
+                                "competition"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get comp for refree",
+                    "request": {
+                        "method": "GET"
+                    }
+                },
+                {
+                    "name": "get comp to register",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/competition//opentoregisteration",
+                            "path": [
+                                "opentoregisteration"
+                            ],
+                            "host": [
+                                "competition"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODBkNTk4MWMwMmYyNmNkNjY2ODk4YyIsImlhdCI6MTY4NjE3MTQ1MywiZXhwIjoxNjg2MTg5NDUzfQ.c_q5Ri6u7mP7nI-xxnx58HCWzVWY2f-ex3OClSeYC_c"
+                            }
+                        ]
                     }
                 }
             ]

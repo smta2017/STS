@@ -55,7 +55,7 @@ class Sponsor {
                 else {
                     try {
                         let oldImage
-                        const sponsor = await sponsorModel.findById(req.params.id)
+                        const sponsor = await Helper.isThisIdExistInThisModel(req.params.id,sponsorModel,'sponsor')
                         if (req.file) {
                             image = req.file.path.replace('statics\\', '')
                             image = image.replace(/\\/g, '/')
