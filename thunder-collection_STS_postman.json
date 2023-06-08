@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "84e10a51-32eb-4d3a-a1ff-b39b7221552a",
+        "_postman_id": "975e3b49-86d6-4c19-adf7-d35ba7c45605",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -1193,7 +1193,16 @@
                 {
                     "name": "get comp for refree",
                     "request": {
-                        "method": "GET"
+                        "method": "GET",
+                        "url": {
+                            "raw": "/competition/forrefree",
+                            "path": [
+                                "forrefree"
+                            ],
+                            "host": [
+                                "competition"
+                            ]
+                        }
                     }
                 },
                 {
@@ -1201,7 +1210,7 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/competition//opentoregisteration",
+                            "raw": "/competition/opentoregisteration",
                             "path": [
                                 "opentoregisteration"
                             ],

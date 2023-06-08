@@ -8,7 +8,7 @@ const CompetitionSchema = mongoose.Schema({
     type: {
         type: String,
         enum: ['final', 'qualifier'],
-        lawercase:true,
+        lawercase: true,
         required: [true, 'please enter what is the type of this new competition'],
         trim: true
     },
@@ -26,7 +26,7 @@ const CompetitionSchema = mongoose.Schema({
     endSubscription: {
         type: Date,
         required: [true, 'please enter when will the competition stop to have Subscriptions'],
-        validate: function(value) {
+        validate: function (value) {
             console.log(this.startSubscription)
             console.log(new Date(value))
             console.log(new Date(value) - new Date(this.startSubscription))
@@ -40,7 +40,7 @@ const CompetitionSchema = mongoose.Schema({
     date: {
         type: Date,
         required: [true, 'please enter when will the competition take place'],
-        validate: function(value)  {
+        validate: function (value) {
             console.log(new Date(this.endSubscription))
             console.log(new Date(value))
             console.log(new Date(value) - new Date(this.endSubscription))
@@ -64,17 +64,31 @@ const CompetitionSchema = mongoose.Schema({
     },
     stopSubscription: {
         type: Boolean,
-        default: true
+        default: true,
+        validate: function (value) {
+            console.log(new Date(this.date))
+            console.log(Date.now())
+            console.log(Date.now() - new Date(this.date))
+            if (!value) {
+                if((Date.now() - new Date(this.date)) > 0){
+                    const e = new Error(' the compition already took place ,how do you want to open joining again?')
+                    e.name = 'CastError'
+                    throw e
+                }
+                this.showResults = false
+                this.showSchedule = false
+            }
+        }
     },
     showSchedule: {
         type: Boolean,
         default: false,
-        validate: function(value) {
+        validate: function (value) {
             console.log(new Date(this.date))
             console.log(Date.now())
             console.log(Date.now() - new Date(this.date))
-            if (value && (Date.now() - new Date(this.date)) < 0) {
-                const e = new Error('you can not show sechedule before the compition take place')
+            if (value && !this.stopSubscription /*(Date.now() - new Date(this.date)) < 0*/) {
+                const e = new Error('you can not show sechedule before stop the competition registration')
                 e.name = 'CastError'
                 throw e
             }
@@ -82,7 +96,17 @@ const CompetitionSchema = mongoose.Schema({
     },
     showResults: {
         type: Boolean,
-        default: false
+        default: false,
+        validate: function (value) {
+            console.log(new Date(this.date))
+            console.log(Date.now())
+            console.log(Date.now() - new Date(this.date))
+            if (value && (Date.now() - new Date(this.date)) < 0) {
+                const e = new Error('what s the result that you will show before the compition take place')
+                e.name = 'CastError'
+                throw e
+            }
+        }
     },
     enableRefree: {
         type: Boolean,
@@ -94,10 +118,10 @@ const CompetitionSchema = mongoose.Schema({
     }
 
 })
-CompetitionSchema.virtual('joinedAcademy',{
-    ref:'subscription',
-    localField:'_id',
-    foreignField:'competition'
+CompetitionSchema.virtual('joinedAcademy', {
+    ref: 'subscription',
+    localField: '_id',
+    foreignField: 'competition'
 })
 const competitionModel = mongoose.model('competitions', CompetitionSchema)
 module.exports = competitionModel
