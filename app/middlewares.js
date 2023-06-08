@@ -22,7 +22,7 @@ const auth = async (req, res, next) => {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token ')
         }
 
-        const user = await userModel.findById(tokenExist.owner)//.populate('userData')
+        const user = await Helper.isThisIdExistInThisModel(tokenExist.owner,userModel,'user') //.populate('userData')
         if (!user) {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token owner')
         } else {
@@ -88,7 +88,7 @@ const authToThisRoute = async (req, res, next) => {
     if (!req.user.role) {
         return Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
     }
-    const role = await roleModel.findById(req.user.role._id).populate('routes')
+    const role = await Helper.isThisIdExistInThisModel(req.user.role,roleModel,'role','routes') 
     const allowed = role.routes.find((route, i) => {
         return (route.route == req.baseUrl + (req.route.path == '/' ? '' : req.route.path) && route.method == req.method)
     })

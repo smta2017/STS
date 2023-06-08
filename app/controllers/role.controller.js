@@ -37,8 +37,12 @@ class Role {
         }, 'here is all roles')
     }
     static editRole = (req, res) => {
-        Helper.handlingMyFunction(req, res, (req) => {
-            return roleModel.findByIdAndUpdate(req.params.id, req.body, { returnDocument: 'after' })
+        Helper.handlingMyFunction(req, res, async(req) => {
+            const role= await Helper.isThisIdExistInThisModel(req.params.id)
+            for (let field in req.body) {
+                role[field] = req.body[field]
+            }
+            if(true){return role.save()}
         }, 'here is your role')
     }
     static addRouteToRole = (req, res) => {

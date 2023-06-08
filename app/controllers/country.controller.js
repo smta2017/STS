@@ -8,14 +8,12 @@ class Country{
     }
     static update=(req,res)=>{
         Helper.handlingMyFunction(req,res,async(req)=>{
-            const result=await countryModel.findByIdAndUpdate(req.params.id,req.body,{ returnDocument: 'after' })
-            if(!result){
-                const e=new Error('there is no such a country')
-                   e.name='CastError'
-                   throw e
+            const country=await Helper.isThisIdExistInThisModel(req.params.id,countryModel,'country')
+            for (let field in req.body) {
+                country[field] = req.body[field]
             }
             if(true){
-                return result
+                return country.save()
             }
         },'you update this country successfully ')
     }
