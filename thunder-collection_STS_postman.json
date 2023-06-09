@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "be8bfcc1-4d9b-4850-8ee8-b6ce863c91ef",
+        "_postman_id": "f6b6262c-43b8-4e2e-b1c3-ac1817e51ac5",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -1253,43 +1253,39 @@
                     }
                 },
                 {
-                    "name": "add competitor",
+                    "name": "get joined competions",
                     "request": {
-                        "method": "POST",
+                        "method": "GET",
                         "url": {
-                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562",
-                            "path": [
-                                "competitor",
-                                "6482fe2a4ad95b5c4f28c562"
-                            ],
+                            "raw": "/subscription",
                             "host": [
                                 "subscription"
                             ]
                         },
-                        "body": {
-                            "mode": "raw",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            },
-                            "raw": "{\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
-                        }
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMwMDc3NCwiZXhwIjoxNjg2MzE4Nzc0fQ.pUljsZ4lTz8iH9lAlYIQKe71UJ4JzoZFjejIC8_wiTA"
+                            }
+                        ]
                     }
-                },
+                }
+            ]
+        },
+        {
+            "name": "competitor",
+            "item": [
                 {
                     "name": "edit competitor",
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562/648305c9a0744e18a30695c2",
+                            "raw": "/competitor/64834f2c65a3209110231df3",
                             "path": [
-                                "competitor",
-                                "6482fe2a4ad95b5c4f28c562",
-                                "648305c9a0744e18a30695c2"
+                                "64834f2c65a3209110231df3"
                             ],
                             "host": [
-                                "subscription"
+                                "competitor"
                             ]
                         },
                         "body": {
@@ -1308,14 +1304,34 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562",
+                            "raw": "/competitor/6482fe2a4ad95b5c4f28c562",
                             "path": [
-                                "competitor",
                                 "6482fe2a4ad95b5c4f28c562"
                             ],
                             "host": [
-                                "subscription"
+                                "competitor"
                             ]
+                        }
+                    }
+                },
+                {
+                    "name": "add competitor",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/competitor",
+                            "host": [
+                                "competitor"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"subscription\":\"6482fe2a4ad95b5c4f28c562\",\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
                         }
                     }
                 },
@@ -1324,34 +1340,14 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562/64830dd39cc8cd2ce8d71754",
+                            "raw": "/competitor/64834f0c65a3209110231def",
                             "path": [
-                                "competitor",
-                                "6482fe2a4ad95b5c4f28c562",
-                                "64830dd39cc8cd2ce8d71754"
+                                "64834f0c65a3209110231def"
                             ],
                             "host": [
-                                "subscription"
+                                "competitor"
                             ]
                         }
-                    }
-                },
-                {
-                    "name": "get joined competions",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/subscription",
-                            "host": [
-                                "subscription"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMwMDc3NCwiZXhwIjoxNjg2MzE4Nzc0fQ.pUljsZ4lTz8iH9lAlYIQKe71UJ4JzoZFjejIC8_wiTA"
-                            }
-                        ]
                     }
                 }
             ]

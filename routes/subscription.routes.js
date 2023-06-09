@@ -3,8 +3,4 @@ const {auth,authToThisRoute}=require('../app/middlewares')
 const router=require('express').Router()
 router.post('/:compId',auth/*,authToThisRoute*/,Subscription.addSubscription)
 router.get('/',auth/*,authToThisRoute*/,Subscription.getAllMySubscriptions)
-router.post('/competitor/:subscriptionId'/*,auth,authToThisRoute*/,Subscription.addCompetitor)
-router.get('/competitor/:subscriptionId'/*,auth,authToThisRoute*/,Subscription.getThisSubscriptionCompetitors)
-router.delete('/competitor/:subscriptionId/:competitorId'/*,auth,authToThisRoute*/,Subscription.removeCompetitor)
-router.put('/competitor/:subscriptionId/:competitorId'/*,auth,authToThisRoute*/,Subscription.editCompetitor)
 module.exports=router
