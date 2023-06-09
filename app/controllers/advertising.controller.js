@@ -55,7 +55,7 @@ class Advertising {
                 else {
                     try {
                         let oldImage
-                        const advertising = await Helper.isThisIdExistInThisModel(req.params.id,advertisingModel,'advertising')
+                        const advertising = await Helper.isThisIdExistInThisModel(req.params.id,null,advertisingModel,'advertising')
                         if (req.file) {
                             image = req.file.path.replace('statics\\', '')
                             image = image.replace(/\\/g, '/')

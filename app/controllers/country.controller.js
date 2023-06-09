@@ -8,7 +8,7 @@ class Country{
     }
     static update=(req,res)=>{
         Helper.handlingMyFunction(req,res,async(req)=>{
-            const country=await Helper.isThisIdExistInThisModel(req.params.id,countryModel,'country')
+            const country=await Helper.isThisIdExistInThisModel(req.params.id,null,countryModel,'country')
             for (let field in req.body) {
                 country[field] = req.body[field]
             }

@@ -55,7 +55,7 @@ class News {
                 else {
                     try {
                         let oldImage
-                        const news = await Helper.isThisIdExistInThisModel(req.params.id, newsModel, 'news')
+                        const news = await Helper.isThisIdExistInThisModel(req.params.id,null, newsModel, 'news')
                         if (req.file) {
                             image = req.file.path.replace('statics\\', '')
                             image = image.replace(/\\/g, '/')

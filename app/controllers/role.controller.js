@@ -9,7 +9,7 @@ class Role {
             if (req.body.tabs && req.body.tabs.length > 0) {
                 await Promise.all(
                     req.body.tabs.map(async (tab_id) => {
-                        const tab = await Helper.isThisIdExistInThisModel(tab_id, tabModel, 'tab')
+                        const tab = await Helper.isThisIdExistInThisModel(tab_id,null, tabModel, 'tab')
                         tab.routes.forEach(tabRoute => {
                             if (!req.body.routes.includes(tabRoute)) {
                                 req.body.routes.push(tabRoute)
@@ -28,7 +28,7 @@ class Role {
     }
     static getRole = (req, res) => {
         Helper.handlingMyFunction(req, res, (req) => {
-            return Helper.isThisIdExistInThisModel(req.params.id, roleModel, 'role')
+            return Helper.isThisIdExistInThisModel(req.params.id,null, roleModel, 'role')
         }, 'here is your role')
     }
     static getRoles = (req, res) => {
@@ -38,7 +38,7 @@ class Role {
     }
     static editRole = (req, res) => {
         Helper.handlingMyFunction(req, res, async(req) => {
-            const role= await Helper.isThisIdExistInThisModel(req.params.id)
+            const role= await Helper.isThisIdExistInThisModel(req.params.id,null,roleModel,'role')
             for (let field in req.body) {
                 role[field] = req.body[field]
             }
@@ -47,8 +47,8 @@ class Role {
     }
     static addRouteToRole = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const role = await Helper.isThisIdExistInThisModel(req.params.id, roleModel, 'role')
-            await Helper.isThisIdExistInThisModel(req.body.route, routeModel, 'route')
+            const role = await Helper.isThisIdExistInThisModel(req.params.id,null, roleModel, 'role')
+            await Helper.isThisIdExistInThisModel(req.body.route,null, routeModel, 'route')
             const route = role.routes.find(R => { return R == req.body.route })
             if (route) {
                 throw new Error('this role already have this route')
@@ -60,8 +60,8 @@ class Role {
     }
     static deleteRouteFromRole = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const role = await Helper.isThisIdExistInThisModel(req.params.id, roleModel, 'role')
-            await Helper.isThisIdExistInThisModel(req.body.route, routeModel, 'route')
+            const role = await Helper.isThisIdExistInThisModel(req.params.id,null, roleModel, 'role')
+            await Helper.isThisIdExistInThisModel(req.body.route,null, routeModel, 'route')
             const i = role.routes.findIndex(R => { return R == req.body.route })
             if (i == -1) {
                 throw new Error('this role didn`t have this route')
@@ -73,8 +73,8 @@ class Role {
     }
     static addTabToRole = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const role = await Helper.isThisIdExistInThisModel(req.params.id, roleModel, 'role')
-            const tab = await Helper.isThisIdExistInThisModel(req.body.tab, tabModel, 'tabs')
+            const role = await Helper.isThisIdExistInThisModel(req.params.id,null, roleModel, 'role')
+            const tab = await Helper.isThisIdExistInThisModel(req.body.tab,null, tabModel, 'tabs')
             const route = role.tabs.find(R => { return R == req.body.tab })
             if (route) {
                 throw new Error('this role already have this route')
@@ -91,8 +91,8 @@ class Role {
     }
     static deleteTabFromRole = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const role = await Helper.isThisIdExistInThisModel(req.params.id, roleModel, 'role')
-            const tab = await Helper.isThisIdExistInThisModel(req.body.tab, tabModel, 'tab')
+            const role = await Helper.isThisIdExistInThisModel(req.params.id,null, roleModel, 'role')
+            const tab = await Helper.isThisIdExistInThisModel(req.body.tab,null, tabModel, 'tab')
             const i = role.tabs.findIndex(tab => { return tab == req.body.tab })
             if (i == -1) {
                 throw new Error('this role can not see this tab')
@@ -117,7 +117,7 @@ const getRoutes = (req, res) => {
 }
 const editRouteAction = (req, res) => {
     handlingMyFunction(req, res, async (req) => {
-        const route = await Helper.isThisIdExistInThisModel(req.params.id, routeModel, 'route')
+        const route = await Helper.isThisIdExistInThisModel(req.params.id,null, routeModel, 'route')
         if (route) {
             return routeModel.findByIdAndUpdate(req.params.id, { routeAction: req.params.newName }, { returnDocument: 'after' })
         }
@@ -136,7 +136,7 @@ const deleteRoute = (req, res) => {
             role.routes = role.routes.filter(route => { return route != req.params.id })
             await role.save()
         })
-        await Helper.isThisIdExistInThisModel(req.params.id, routeModel, 'route')
+        await Helper.isThisIdExistInThisModel(req.params.id,null, routeModel, 'route')
         await routeModel.findByIdAndDelete(req.params.id)
     }, 'you delete your route successfully')
 }

@@ -70,7 +70,7 @@ class Competition {
                 else {
                     try {
                         let oldImage
-                        const competition = await Helper.isThisIdExistInThisModel(req.params.id, competitionModel, 'competition')
+                        const competition = await Helper.isThisIdExistInThisModel(req.params.id,null,competitionModel, 'competition')
                         if (req.file) {
                             image = req.file.path.replace('statics\\', '')
                             image = image.replace(/\\/g, '/')
