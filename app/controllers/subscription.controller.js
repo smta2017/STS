@@ -40,5 +40,10 @@ class Supscription {
             }
         }, 'competitor was removed successfully')
     }
+    static getAllMySubscriptions=(req,res)=>{
+        Helper.handlingMyFunction(req,res,(req)=>{
+            return subscriptionModel.find({academy:req.user._id},['_id',"competition",]).populate("competition")
+        },'there is all your subscription')
+    }
 }
 module.exports = Supscription

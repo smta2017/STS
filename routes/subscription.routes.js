@@ -4,4 +4,5 @@ const router=require('express').Router()
 router.post('/:compId',auth/*,authToThisRoute*/,Subscription.addSubscription)
 router.post('/competitor/:subscriptionId'/*,auth,authToThisRoute*/,Subscription.addCompetitor)
 router.delete('/competitor/:subscriptionId/:competitorId'/*,auth,authToThisRoute*/,Subscription.removeCompetitor)
+router.get('/',auth/*,authToThisRoute*/,Subscription.getAllMySubscriptions)
 module.exports=router

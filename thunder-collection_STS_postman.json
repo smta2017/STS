@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "ec0153fb-4499-4080-b04e-3d0b66db7daf",
+        "_postman_id": "67108246-9101-46eb-a323-7184afc1e4d3",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -1292,6 +1292,24 @@
                                 "subscription"
                             ]
                         }
+                    }
+                },
+                {
+                    "name": "get my subscriptions",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/subscription",
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMwMDc3NCwiZXhwIjoxNjg2MzE4Nzc0fQ.pUljsZ4lTz8iH9lAlYIQKe71UJ4JzoZFjejIC8_wiTA"
+                            }
+                        ]
                     }
                 }
             ]
