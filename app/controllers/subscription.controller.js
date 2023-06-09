@@ -49,5 +49,24 @@ class Supscription {
             return Helper.isThisIdExistInThisModel(req.params.subscriptionId,['competitors'],subscriptionModel,'subscription')
         },'there are all your subscription')
     }
+    static editCompetitor=(req,res)=>{
+       Helper.handlingMyFunction(req,res,async (req)=>{
+        const subscription=await Helper.isThisIdExistInThisModel(req.params.subscriptionId,['competitors'],subscriptionModel,'subscription')
+        const i=subscription.competitors.findIndex(competitor=>competitor._id.toString()==req.params.competitorId)
+         for (let field in req.body) {
+            if(field=='mobileNumber'){
+                if(req.body.countryCallingCode){
+                    subscription.competitors[i][field]=countryCodeslist[req.body.countryCallingCode.substring(1)] + ":" + req.body.countryCallingCode + req.body.mobileNumber
+                }else{
+                    const e = new Error('we need the competitor country calling code to change his mobile number')
+                e.name = 'CastError'
+                throw e
+                }
+            }
+            if(!['gender','category','mobileNumber'].includes(field)){subscription.competitors[i][field] = req.body[field]}
+        }
+        if(true){return subscription.save()}
+       },'competitor was edited successfully')
+    }
 }
 module.exports = Supscription

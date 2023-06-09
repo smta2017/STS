@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "a9d60958-854e-4a41-87e4-683065beaf2b",
+        "_postman_id": "be8bfcc1-4d9b-4850-8ee8-b6ce863c91ef",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -418,9 +418,9 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/news/6476031eb8c49a21807f1f9b",
+                            "raw": "/news/6476a0657036764ac4374466",
                             "path": [
-                                "6476031eb8c49a21807f1f9b"
+                                "6476a0657036764ac4374466"
                             ],
                             "host": [
                                 "news"
@@ -431,17 +431,17 @@
                             "formdata": [
                                 {
                                     "key": "title",
-                                    "value": "ggggg",
+                                    "value": "mmmmmmmm",
                                     "type": "default"
                                 },
                                 {
                                     "key": "paragraph",
-                                    "value": "fffffff",
+                                    "value": "ttttttt",
                                     "type": "default"
                                 },
                                 {
                                     "key": "description",
-                                    "value": "kkkkkkkkkkkkk",
+                                    "value": "kkkkkkuuuuuuuuuuu",
                                     "type": "default"
                                 },
                                 {
@@ -1274,6 +1274,48 @@
                                 }
                             },
                             "raw": "{\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "edit competitor",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562/648305c9a0744e18a30695c2",
+                            "path": [
+                                "competitor",
+                                "6482fe2a4ad95b5c4f28c562",
+                                "648305c9a0744e18a30695c2"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"firstName\": \"george\",\n  \"lastName\": \"Ayman\",\n  \"category\":\"singer\",\n  \"mobileNumber\": \"1202865777\",\n  \"dateOfBirth\":\"1996-01-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"hhhhh@gmail.com\",\n  \"gender\":\"female\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "get all competitor",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562",
+                            "path": [
+                                "competitor",
+                                "6482fe2a4ad95b5c4f28c562"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
                         }
                     }
                 },
