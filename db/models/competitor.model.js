@@ -2,10 +2,16 @@ const mongoose=require('mongoose')
 const moment=require('moment')
 const validator=require('validator')
 const CompetitorSchema=mongoose.Schema({
-    subscription:{
+    qualifierSubscription:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:'subscriptions',
         required:[true,'this competitor belong to which academy to competition subscription'],
+        trim:true,
+        immutable:true,
+    },
+    finalSubscription:{
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'subscriptions',
         trim:true,
         immutable:true,
     },
@@ -75,6 +81,10 @@ const CompetitorSchema=mongoose.Schema({
         trim: true,
         lowercase: true
     },
+    passQualifier:{
+        type: Boolean,
+        default: false
+    }
 })
 CompetitorSchema.pre('save', function () {
     if (this.isDirectModified('dateOfBirth')) this.rank= ""

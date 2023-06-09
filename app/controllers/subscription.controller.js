@@ -1,4 +1,5 @@
 const subscriptionModel = require('../../db/models/subscription.model')
+const competitionModel = require('../../db/models/competition.model')
 const Helper = require('../helper')
 class Supscription {
     static addSubscription = (req, res) => {
@@ -9,9 +10,27 @@ class Supscription {
                 e.name = 'Error'
                 throw e
             }
-            delete req.body.subscriptionDate
-            if (true) { return subscriptionModel.create({ competition: req.params.compId, academy: req.user._id }) }
-        }, 'congrats you have joined the competion successfully')
+            const competition=await Helper.isThisIdExistInThisModel(req.params.compId,null,competitionModel,'competition')
+            if(competition.type=='final'){
+                const qualifierOfTheSameYear=await competitionModel.findOne({country:req.user.country,type:'qualifier',year:competition.year}).populate('joins')
+                const hisQualifierSubscription=qualifierOfTheSameYear.joins.find(join=>join.academy=req.user._id)
+                const finalSubscription=await subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
+                const competitors=await competitionModel.find({qualifierSubscription:hisQualifierSubscription})
+                await Promise.all(competitors.map(competitor=>{
+                    competitor.finalSubscription=finalSubscription
+                    competitor.save()
+                }))
+                const entries=await competitionModel.find({qualifierSubscription:hisQualifierSubscription})
+                await Promise.all(entries.map(entry=>{
+                    entry.finalSubscription=finalSubscription
+                    entry.save()
+                }))
+                return finalSubscription
+            }else{
+                delete req.body.subscriptionDate
+                return subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
+            }
+        }, 'congrats you have joined the competition successfully')
     }
     static getAllMySubscriptions=(req,res)=>{
         Helper.handlingMyFunction(req,res,(req)=>{

@@ -22,7 +22,7 @@ const auth = async (req, res, next) => {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token ')
         }
 
-        const user = await Helper.isThisIdExistInThisModel(tokenExist.owner,userModel,'user') //.populate('userData')
+        const user = await Helper.isThisIdExistInThisModel(tokenExist.owner,null,userModel,'user') //.populate('userData')
         if (!user) {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token owner')
         } else {
@@ -88,7 +88,7 @@ const authToThisRoute = async (req, res, next) => {
     if (!req.user.role) {
         return Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
     }
-    const role = await Helper.isThisIdExistInThisModel(req.user.role,roleModel,'role','routes') 
+    const role = await Helper.isThisIdExistInThisModel(req.user.role,null,roleModel,'role','routes') 
     const allowed = role.routes.find((route, i) => {
         return (route.route == req.baseUrl + (req.route.path == '/' ? '' : req.route.path) && route.method == req.method)
     })
@@ -112,7 +112,7 @@ const upload = multer(
     {
         storage,
         fileFilter: (req, file, cb) => {
-            if (file.mimetype != 'image/png' && file.mimetype != 'image/jpg' && file.mimetype != 'image/jpeg' && file.mimetype != "image/svg+xml" && file.mimetype != "image/vnd") {
+            if (file.mimetype != 'image/png' && file.mimetype != 'image/webp' && file.mimetype != 'image/jpeg'&& file.mimetype != 'image/apng'&& file.mimetype != 'image/gif'&& file.mimetype != 'audio/mpeg'&& file.mimetype != 'audio/webm'/*&& file.mimetype != "image/svg+xml" && file.mimetype != "image/vnd"*/) {
                 cb(null, false)
                 cb(new Error('wrong file extention'))
             }

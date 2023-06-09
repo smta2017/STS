@@ -19,6 +19,10 @@ subscriptionDate:{
     type:Date,
     default:Date.now()
 },
+haveASuccessededEntry:{
+    type: Boolean,
+    default: false
+}
 })
 const subscriptionModel = mongoose.model('subscriptions', SubscriptionSchema)
 module.exports = subscriptionModel

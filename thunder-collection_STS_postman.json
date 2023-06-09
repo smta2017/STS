@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "f6b6262c-43b8-4e2e-b1c3-ac1817e51ac5",
+        "_postman_id": "08d50702-aaec-4338-bc6d-add33a773dd1",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -1247,13 +1247,13 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMwMDc3NCwiZXhwIjoxNjg2MzE4Nzc0fQ.pUljsZ4lTz8iH9lAlYIQKe71UJ4JzoZFjejIC8_wiTA"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMzMDcwNiwiZXhwIjoxNjg2MzQ4NzA2fQ._-TmSJ31jFGQYGHtIz9P-XGPNcpUge6sKn8K3bmPkd0"
                             }
                         ]
                     }
                 },
                 {
-                    "name": "get joined competions",
+                    "name": "get joined competitions",
                     "request": {
                         "method": "GET",
                         "url": {

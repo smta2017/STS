@@ -4,6 +4,7 @@ const Helper = require('../helper')
 const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
+const subscriptionModel = require('../../db/models/subscription.model')
 class Competition {
     static add = (req, res) => {
             try {
@@ -125,8 +126,19 @@ class Competition {
         Helper.handlingMyFunction(req,res,async(req)=>{
             await req.user.populate('academyDetails')
             console.log(req.user.academyDetails.country)
+            const openToSubScription=await competitionModel.find({country:req.user.academyDetails.country,stopSubscription:false})
+            const availableCompetitions=openToSubScription.filter(comp=>comp.type=='qualifier')
+            const finalcompetitions=openToSubScription.filter(comp=>comp.type=='final')
+           Promise.all( 
+            finalcompetitions.map(async(comp)=>{
+                const subscription=await subscriptionModel({academy:req.user._id,competition:comp._id})
+                if(subscription.haveASuccessededEntry){
+                    availableCompetitions.push(comp)
+                }
+            })
+           )
             if(true){
-            return competitionModel.find({country:req.user.academyDetails.country,stopSubscription:false})
+            return availableCompetitions
             }
         },'there are the competition that you can join')
     }

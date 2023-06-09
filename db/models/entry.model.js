@@ -1,6 +1,93 @@
 const mongoose=require('mongoose')
 const EntrySchema=mongoose.Schema({
-
+    qualifierSubscription:{
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'subscriptions',
+        required:[true,'this competitor belong to which academy to competition subscription'],
+        trim:true,
+        immutable:true,
+    },
+    finalSubscription:{
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'subscriptions',
+        trim:true,
+        immutable:true,
+    },
+    competitors:{
+        type:[mongoose.SchemaTypes.ObjectId],
+        ref:'competitors',
+        trim:true,
+    },
+    name:{
+        type:String,
+        required:[true,'please enter the entry name'],
+        trim:true,
+        minlength: 3,
+    },
+    music:{
+        type:String,
+        trim:true
+    },
+    qualifierRefree1:{
+        type:Number,
+        max:30,
+        min:0
+    },
+    qualifierRefree2:{
+        type:Number,
+        max:30,
+        min:0
+    },
+    qualifierRefree3:{
+        type:Number,
+        max:30,
+        min:0
+    },
+    qualifierLast10Present:{
+        type:Number,
+        max:10,
+        min:0
+    },
+    qualifierTotalDegree:{
+        type:Number,
+        max:100,
+        min:0
+    },
+    qualifierShowDate:{
+        type:Date,
+    },
+    passedQualifiers:{
+        type: Boolean,
+        default: false
+    },
+    finalRefree1:{
+        type:Number,
+        max:30,
+        min:0
+    },
+    finalRefree2:{
+        type:Number,
+        max:30,
+        min:0
+    },
+    finalRefree3:{
+        type:Number,
+        max:30,
+        min:0
+    },
+    finalLast10Present:{
+        type:Number,
+        max:10,
+        min:0
+    },
+    finalTotalDegree:{
+        type:Number,
+        max:100,
+        min:0
+    },
+    finalShowDate:{
+        type:Date,
+    },
 })
 const entryModel=mongoose.model('entries',EntrySchema)
 module.exports=entryModel

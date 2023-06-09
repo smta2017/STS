@@ -118,7 +118,7 @@ const CompetitionSchema = mongoose.Schema({
     }
 
 })
-CompetitionSchema.virtual('joinedAcademy', {
+CompetitionSchema.virtual('joins', {
     ref: 'subscription',
     localField: '_id',
     foreignField: 'competition'
