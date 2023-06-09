@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "67108246-9101-46eb-a323-7184afc1e4d3",
+        "_postman_id": "a9d60958-854e-4a41-87e4-683065beaf2b",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -1295,7 +1295,7 @@
                     }
                 },
                 {
-                    "name": "get my subscriptions",
+                    "name": "get joined competions",
                     "request": {
                         "method": "GET",
                         "url": {
