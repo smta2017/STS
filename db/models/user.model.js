@@ -110,10 +110,10 @@ UserSchema.statics.logIn = async (loginData) => {
     }
     return isUserExist
 }
-UserSchema.virtual('joinedCompetions',{
-    ref:'subscription',
+UserSchema.virtual('joinedCompetitions',{
+    ref:'subscriptions',
     localField:'_id',
-    foreignField:'subscriper'
+    foreignField:'academy'
 })
 const userModel=mongoose.model('users',UserSchema)
 module.exports=userModel

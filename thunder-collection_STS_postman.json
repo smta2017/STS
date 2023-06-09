@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "975e3b49-86d6-4c19-adf7-d35ba7c45605",
+        "_postman_id": "ec0153fb-4499-4080-b04e-3d0b66db7daf",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -293,9 +293,9 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/country/6473eca2abee8e2c6e87f05b",
+                            "raw": "/country/64748c907f9e9854168fe025",
                             "path": [
-                                "6473eca2abee8e2c6e87f05b"
+                                "64748c907f9e9854168fe025"
                             ],
                             "host": [
                                 "country"
@@ -1224,6 +1224,74 @@
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODBkNTk4MWMwMmYyNmNkNjY2ODk4YyIsImlhdCI6MTY4NjE3MTQ1MywiZXhwIjoxNjg2MTg5NDUzfQ.c_q5Ri6u7mP7nI-xxnx58HCWzVWY2f-ex3OClSeYC_c"
                             }
                         ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "subscription",
+            "item": [
+                {
+                    "name": "join competetion",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/subscription/64827b0345f58745cc5795a3",
+                            "path": [
+                                "64827b0345f58745cc5795a3"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMwMDc3NCwiZXhwIjoxNjg2MzE4Nzc0fQ.pUljsZ4lTz8iH9lAlYIQKe71UJ4JzoZFjejIC8_wiTA"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "add competitor",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562",
+                            "path": [
+                                "competitor",
+                                "6482fe2a4ad95b5c4f28c562"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "delete competitor",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/subscription/competitor/6482fe2a4ad95b5c4f28c562/64830dd39cc8cd2ce8d71754",
+                            "path": [
+                                "competitor",
+                                "6482fe2a4ad95b5c4f28c562",
+                                "64830dd39cc8cd2ce8d71754"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        }
                     }
                 }
             ]

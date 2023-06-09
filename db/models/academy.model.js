@@ -5,23 +5,27 @@ const OwnerSchema = mongoose.Schema({
 const LocationSchema=mongoose.Schema({
     blockNum:{
         type:String,
-        trim:[true,'please enter all your loction details,you forget to enter your block number']
+        trim:true,
+        required:[true,'please enter all your loction details,you forget to enter your block number']
     },
     street:{
         type:String,
-        trim:[true,'please enter all your loction details,you forget to enter yourstreet ']
+        trim:true,
+        required:[true,'please enter all your loction details,you forget to enter yourstreet ']
     },
     cityOrTown:{
         type:String,
-        trim:[true,'please enter all your loction details,you forget to enter your city or town ']
+        trim:true,
+        required:[true,'please enter all your loction details,you forget to enter your city or town ']
     },
     provinceOrState:{
         type:String,
-        trim:[true,'please enter all your loction details,you forget to enter your province Or state ']
+        trim:true,
+        required:[true,'please enter all your loction details,you forget to enter your province Or state ']
     },
     postalCode:{
         type:String,
-        trim:[true,'we need to know your postal code,please'],
+        trim:true,required:[true,'we need to know your postal code,please'],
         match:/^\d{5}(-\d{4})?$/
     }
 })
