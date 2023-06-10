@@ -1,6 +1,7 @@
 const subscriptionModel = require('../../db/models/subscription.model')
 const competitionModel = require('../../db/models/competition.model')
 const Helper = require('../helper')
+const competitorModel = require('../../db/models/competitor.model')
 class Supscription {
     static addSubscription = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
@@ -12,20 +13,25 @@ class Supscription {
             }
             const competition=await Helper.isThisIdExistInThisModel(req.params.compId,null,competitionModel,'competition')
             if(competition.type=='final'){
-                const qualifierOfTheSameYear=await competitionModel.findOne({country:req.user.country,type:'qualifier',year:competition.year}).populate('joins')
+               await  req.user.populate('academyDetails')
+                const qualifierOfTheSameYear=await competitionModel.findOne({country:req.user.academyDetails.country,type:'qualifier',year:competition.year}).populate('joins')
+                console.log(qualifierOfTheSameYear)
                 const hisQualifierSubscription=qualifierOfTheSameYear.joins.find(join=>join.academy=req.user._id)
+                console.log(hisQualifierSubscription)
                 const finalSubscription=await subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
-                const competitors=await competitionModel.find({qualifierSubscription:hisQualifierSubscription})
-                await Promise.all(competitors.map(competitor=>{
+                console.log(finalSubscription)
+                const competitors=await competitorModel.find({qualifierSubscription:hisQualifierSubscription})
+                console.log(competitors)
+                await Promise.all(competitors.map(async(competitor)=>{
                     competitor.finalSubscription=finalSubscription
-                    competitor.save()
+                   const result=await competitor.save()
                 }))
                 const entries=await competitionModel.find({qualifierSubscription:hisQualifierSubscription})
-                await Promise.all(entries.map(entry=>{
+                await Promise.all(entries.map(async(entry)=>{
                     entry.finalSubscription=finalSubscription
-                    entry.save()
+                    await entry.save()
                 }))
-                return finalSubscription
+                if(true){return finalSubscription}
             }else{
                 delete req.body.subscriptionDate
                 return subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })

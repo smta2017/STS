@@ -1,4 +1,5 @@
 const competitorModel=require('../../db/models/competitor.model')
+const subscriptionModel = require('../../db/models/subscription.model')
 const countryCodeslist = require('country-codes-list').customList('countryCallingCode', '{officialLanguageCode}-{countryCode}')
 const Helper = require('../helper')
 class Competitor{
@@ -17,8 +18,13 @@ class Competitor{
         }, 'competitor was removed successfully')
     }
     static getThisSubscriptionCompetitors=(req,res)=>{
-        Helper.handlingMyFunction(req,res,(req)=>{
-            return competitorModel.find({subscription:req.params.subscriptionId})
+        Helper.handlingMyFunction(req,res,async (req)=>{
+            const subscription=await Helper.isThisIdExistInThisModel(req.params.subscriptionId,['competition'],subscriptionModel,'subscription','competition')
+            // const field=
+            console.log(subscription)
+            const filter={}
+            filter[subscription.competition.type+'Subscription']=req.params.subscriptionId
+           if(true){ return competitorModel.find(filter)}
         },'there are all your subscription')
     }
     static editCompetitor=(req,res)=>{

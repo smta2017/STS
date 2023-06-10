@@ -13,7 +13,6 @@ const CompetitorSchema=mongoose.Schema({
         type:mongoose.SchemaTypes.ObjectId,
         ref:'subscriptions',
         trim:true,
-        immutable:true,
     },
     firstName:{
         type:String,

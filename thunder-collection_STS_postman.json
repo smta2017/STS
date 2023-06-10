@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "08d50702-aaec-4338-bc6d-add33a773dd1",
+        "_postman_id": "69a87ba2-a2d4-40fa-8c17-94d9d723589a",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -177,7 +177,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzIzY2UzNzk0MTVhZjc0Yzk2MDRhMyIsImlhdCI6MTY4NTIxMDM4OCwiZXhwIjoxNjg1MjI4Mzg4fQ.PW-WDOV4FSPwrLuqYc0Ed9jN9mIPoN8ofcDsWW6kTvo"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMzMDcwNiwiZXhwIjoxNjg2MzQ4NzA2fQ._-TmSJ31jFGQYGHtIz9P-XGPNcpUge6sKn8K3bmPkd0"
                             }
                         ]
                     }
@@ -1058,7 +1058,7 @@
                             "formdata": [
                                 {
                                     "key": "year",
-                                    "value": "2032",
+                                    "value": "2027",
                                     "type": "default"
                                 },
                                 {
@@ -1068,7 +1068,7 @@
                                 },
                                 {
                                     "key": "country",
-                                    "value": "64748c907f9e9854168fe025",
+                                    "value": "63e2346155257516346ae7cb",
                                     "type": "default"
                                 },
                                 {
@@ -1105,58 +1105,22 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/competition/6480d2d176037faf2af62d71",
+                            "raw": "/competition/6484752f72c1d7219894c73b",
                             "path": [
-                                "6480d2d176037faf2af62d71"
+                                "6484752f72c1d7219894c73b"
                             ],
                             "host": [
                                 "competition"
                             ]
                         },
                         "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "year",
-                                    "value": "2032",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "type",
-                                    "value": "qualifier",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "country",
-                                    "value": "64748c907f9e9854168fe025",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "startSubscription",
-                                    "value": "2024-05-12",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "endSubscription",
-                                    "value": "2024-06-12",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "date",
-                                    "value": "2024-08-12",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "stage",
-                                    "value": "kajskjhfksaj",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "poster",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
                                 }
-                            ]
+                            },
+                            "raw": "{\n  \"stopSubscription\":true\n}"
                         }
                     }
                 },
@@ -1180,9 +1144,9 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/competition/6480d17c3412df0e211adfab",
+                            "raw": "/competition/64845896e68889ff9a00cb3d",
                             "path": [
-                                "6480d17c3412df0e211adfab"
+                                "64845896e68889ff9a00cb3d"
                             ],
                             "host": [
                                 "competition"
@@ -1221,7 +1185,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODBkNTk4MWMwMmYyNmNkNjY2ODk4YyIsImlhdCI6MTY4NjE3MTQ1MywiZXhwIjoxNjg2MTg5NDUzfQ.c_q5Ri6u7mP7nI-xxnx58HCWzVWY2f-ex3OClSeYC_c"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjM5NTQyNiwiZXhwIjoxNjg2NDEzNDI2fQ.n7HDE5qWSB9WO4XIAbtUMPNlQ2CzRQ-8toyIBdDav8s"
                             }
                         ]
                     }
@@ -1236,9 +1200,9 @@
                     "request": {
                         "method": "POST",
                         "url": {
-                            "raw": "/subscription/64827b0345f58745cc5795a3",
+                            "raw": "/subscription/6484750d72c1d7219894c736",
                             "path": [
-                                "64827b0345f58745cc5795a3"
+                                "6484750d72c1d7219894c736"
                             ],
                             "host": [
                                 "subscription"
@@ -1247,7 +1211,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMzMDcwNiwiZXhwIjoxNjg2MzQ4NzA2fQ._-TmSJ31jFGQYGHtIz9P-XGPNcpUge6sKn8K3bmPkd0"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjM5NTQyNiwiZXhwIjoxNjg2NDEzNDI2fQ.n7HDE5qWSB9WO4XIAbtUMPNlQ2CzRQ-8toyIBdDav8s"
                             }
                         ]
                     }
@@ -1265,7 +1229,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjMwMDc3NCwiZXhwIjoxNjg2MzE4Nzc0fQ.pUljsZ4lTz8iH9lAlYIQKe71UJ4JzoZFjejIC8_wiTA"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjM5NTQyNiwiZXhwIjoxNjg2NDEzNDI2fQ.n7HDE5qWSB9WO4XIAbtUMPNlQ2CzRQ-8toyIBdDav8s"
                             }
                         ]
                     }
@@ -1304,9 +1268,9 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/competitor/6482fe2a4ad95b5c4f28c562",
+                            "raw": "/competitor/648492423f76f40cfbafbd07",
                             "path": [
-                                "6482fe2a4ad95b5c4f28c562"
+                                "648492423f76f40cfbafbd07"
                             ],
                             "host": [
                                 "competitor"
@@ -1331,7 +1295,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"subscription\":\"6482fe2a4ad95b5c4f28c562\",\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
+                            "raw": "{\n  \"qualifierSubscription\":\"648473a672c1d7219894c71f\",\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
                         }
                     }
                 },

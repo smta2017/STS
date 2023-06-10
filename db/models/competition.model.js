@@ -119,7 +119,7 @@ const CompetitionSchema = mongoose.Schema({
 
 })
 CompetitionSchema.virtual('joins', {
-    ref: 'subscription',
+    ref: 'subscriptions',
     localField: '_id',
     foreignField: 'competition'
 })
