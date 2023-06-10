@@ -1105,22 +1105,58 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/competition/6484752f72c1d7219894c73b",
+                            "raw": "/competition/6480d2d176037faf2af62d71",
                             "path": [
-                                "6484752f72c1d7219894c73b"
+                                "6480d2d176037faf2af62d71"
                             ],
                             "host": [
                                 "competition"
                             ]
                         },
                         "body": {
-                            "mode": "raw",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "year",
+                                    "value": "2032",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "qualifier",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "country",
+                                    "value": "64748c907f9e9854168fe025",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "startSubscription",
+                                    "value": "2024-05-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "endSubscription",
+                                    "value": "2024-06-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "2024-08-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "stage",
+                                    "value": "kajskjhfksaj",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "poster",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
                                 }
-                            },
-                            "raw": "{\n  \"stopSubscription\":true\n}"
+                            ]
                         }
                     }
                 },
