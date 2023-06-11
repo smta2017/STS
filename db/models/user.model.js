@@ -1,13 +1,16 @@
-const mongoose=require('mongoose')
-const validator=require('validator')
+const mongoose = require('mongoose')
+const validator = require('validator')
 // const jsonWebToken=require('jsonwebtoken')
-const countryCodeslist=require('country-codes-list').customList('countryCallingCode', '{officialLanguageCode}-{countryCode}')
-const bcrypt=require('bcrypt')
-const UserSchema=mongoose.Schema({
-    role:{//foreginKey to know what you can see or do
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'roles',
-        required:[true,'please enter this employee position']
+const countryCodeslist = require('country-codes-list').customList('countryCallingCode', '{officialLanguageCode}-{countryCode}')
+const bcrypt = require('bcrypt')
+const subscriptionModel = require('./subscription.model')
+const { isThisIdExistInThisModel } = require('../../app/helper')
+const Helper = require('../../app/helper')
+const UserSchema = mongoose.Schema({
+    role: {//foreginKey to know what you can see or do
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'roles',
+        required: [true, 'please enter this employee position']
     },
     firstName: {
         type: String,
@@ -53,21 +56,21 @@ const UserSchema=mongoose.Schema({
         // default:'12345'
         required: [true, 'the password is required field']
     },
-    academyDetails:{//foregin key to know his academy if your role is academy
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'academies',
+    academyDetails: {//foregin key to know his academy if your role is academy
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'academies',
         // required:[function type() {
         //     return this.role == //you need to put the objectId of academy role
         // },'you are academy we need your academy details for registration']
     },
-    suspended:{
-        type:Boolean,
-        default:false
+    suspended: {
+        type: Boolean,
+        default: false
     }
 })
 UserSchema.pre('save', function () {
     console.log(this.isModified('password'))
-    if (this.isModified('password')) this.password = bcrypt.hashSync(this.password,12)
+    if (this.isModified('password')) this.password = bcrypt.hashSync(this.password, 12)
 })
 UserSchema.methods.toJSON = function () {
     const userObject = this.toObject()
@@ -75,45 +78,55 @@ UserSchema.methods.toJSON = function () {
     delete userObject.password
     return userObject
 }
+UserSchema.methods.isThisSubscriptionBelongToMe = async function (subscriptionId) {
+    if (this.role == '6480d5701c02f26cd6668987'/*academy role id */) {
+        const subscription = await Helper.isThisIdExistInThisModel(subscriptionId, ['academy'], subscriptionModel, 'subscription')
+        if (subscription.academy.toString() != this._id.toString()) {
+            const e = new Error('this is not your subscription to make changes in')
+            e.name = 'CastError'
+            throw e
+        }
+    }
+}
 UserSchema.statics.logIn = async (loginData) => {
     let isUserExist
-        if( loginData.countryCallingCode&&loginData.mobileNumber){
-            isUserExist=await userModel.findOne({mobileNumber:countryCodeslist[loginData.countryCallingCode.substring(1)] + ":" + loginData.countryCallingCode +loginData.mobileNumber})
-        }else if(loginData.email&&!isUserExist){
-            isUserExist=await userModel.findOne({email:loginData.email})
-        }else{
-            const e=new Error('you did not send user email or phone number with the country code ')
-            e.name='CastError'
-            throw e
-        }
-        if(!isUserExist){
-            const e=new Error('there is no user with such email or mobile number ')
-            e.name='CastError'
-            throw e
-        }
-        if(isUserExist.suspended){
-            const e=new Error('your account has been blocked from  the website organizers please contact with us from our mail or contact us form ')
-            e.name='Error'
-            throw e
-        }
+    if (loginData.countryCallingCode && loginData.mobileNumber) {
+        isUserExist = await userModel.findOne({ mobileNumber: countryCodeslist[loginData.countryCallingCode.substring(1)] + ":" + loginData.countryCallingCode + loginData.mobileNumber })
+    } else if (loginData.email && !isUserExist) {
+        isUserExist = await userModel.findOne({ email: loginData.email })
+    } else {
+        const e = new Error('you did not send user email or phone number with the country code ')
+        e.name = 'CastError'
+        throw e
+    }
+    if (!isUserExist) {
+        const e = new Error('there is no user with such email or mobile number ')
+        e.name = 'CastError'
+        throw e
+    }
+    if (isUserExist.suspended) {
+        const e = new Error('your account has been blocked from  the website organizers please contact with us from our mail or contact us form ')
+        e.name = 'Error'
+        throw e
+    }
     if (loginData.password) {
-        console.log(loginData.password,isUserExist)
+        console.log(loginData.password, isUserExist)
         if (!bcrypt.compareSync(loginData.password, isUserExist.password)) {
-            const e=new Error('invalid password')
-            e.name='CastError'
+            const e = new Error('invalid password')
+            e.name = 'CastError'
             throw e
         }
     } else {
-        const e=new Error('there is no password to log you in,please enter your password')
-        e.name='CastError'
+        const e = new Error('there is no password to log you in,please enter your password')
+        e.name = 'CastError'
         throw e
     }
     return isUserExist
 }
-UserSchema.virtual('joinedCompetitions',{
-    ref:'subscriptions',
-    localField:'_id',
-    foreignField:'academy'
+UserSchema.virtual('joinedCompetitions', {
+    ref: 'subscriptions',
+    localField: '_id',
+    foreignField: 'academy'
 })
-const userModel=mongoose.model('users',UserSchema)
-module.exports=userModel
+const userModel = mongoose.model('users', UserSchema)
+module.exports = userModel

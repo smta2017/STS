@@ -31,7 +31,8 @@ const CompetitorSchema=mongoose.Schema({
     category:{
         type:String,
         enum:['dancer','musician','singer'],
-        required:[true,'what is the category of this competitor']
+        required:[true,'what is the category of this competitor'],
+        lowercase: true
     },
     dateOfBirth:{
         type:Date,

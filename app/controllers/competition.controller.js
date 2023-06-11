@@ -9,7 +9,7 @@ class Competition {
     static add = (req, res) => {
         try {
             let image
-            const upload = uploadfile('competition_posters')
+            const upload = uploadfile('competition_posters',['image/png','image/webp','image/apng','image/gif'])
             const uploadImage = upload.single('poster')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)
@@ -60,7 +60,7 @@ class Competition {
     static update = (req, res) => {
         try {
             let image
-            const upload = uploadfile('competition_posters')
+            const upload = uploadfile('competition_posters',['image/png','image/webp','image/apng','image/gif'])
             const uploadImage = upload.single('poster')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)
@@ -125,30 +125,24 @@ class Competition {
     static getOpenToRegister = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
             await req.user.populate('academyDetails')
-            console.log(req.user.academyDetails.country)
             const openToSubScription = await competitionModel.find({ stopSubscription: false }).or([{ country: req.user.academyDetails.country, type: 'qualifier' }, { type: 'final' }]).populate('joins')
             if (!openToSubScription) {
                 const e = new Error('there is no competitions open to register in')
                 e.name = 'Error'
                 throw e
             }
-            console.log(openToSubScription.length)
             const openToSubScriptionButIHaveNotSubscripedYet = openToSubScription.filter(comp => {
                 const alreadyJoined = comp.joins.find(join => join.academy == req.user.id)
                 return !alreadyJoined
             })
-            console.log(openToSubScriptionButIHaveNotSubscripedYet.length)
             // if(true){return openToSubScriptionButIHaveNotSubscripedYet}
             const availableCompetitions = openToSubScriptionButIHaveNotSubscripedYet.filter(comp => comp.type == 'qualifier')
             const finalcompetitions = openToSubScriptionButIHaveNotSubscripedYet.filter(comp => comp.type == 'final')
             await Promise.all(
                 finalcompetitions.map(async (comp) => {
                     const userQualifier = await competitionModel.findOne({ year: comp.year, country: req.user.academyDetails.country })
-                    console.log(userQualifier)
                     if(userQualifier){
                         const subscription = await subscriptionModel.findOne({ academy: req.user._id, competition: userQualifier._id })
-                        console.log(subscription)
-                        subscription? console.log(subscription.haveASuccessededEntry):'a'
                         if (subscription&&subscription.haveASuccessededEntry) {
                             availableCompetitions.push(comp)
                         }

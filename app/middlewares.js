@@ -7,7 +7,7 @@ const Helper = require('./helper')
 const auth = async (req, res, next) => {
     try {
         // let token
-        
+
         // //confirmation>
         // if (req.params.confimation) {
         //     token = req.params.confimation
@@ -22,7 +22,7 @@ const auth = async (req, res, next) => {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token ')
         }
 
-        const user = await Helper.isThisIdExistInThisModel(tokenExist.owner,null,userModel,'user') //.populate('userData')
+        const user = await Helper.isThisIdExistInThisModel(tokenExist.owner, null, userModel, 'user') //.populate('userData')
         if (!user) {
             return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token owner')
         } else {
@@ -88,7 +88,7 @@ const authToThisRoute = async (req, res, next) => {
     if (!req.user.role) {
         return Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
     }
-    const role = await Helper.isThisIdExistInThisModel(req.user.role,null,roleModel,'role','routes') 
+    const role = await Helper.isThisIdExistInThisModel(req.user.role, null, roleModel, 'role', 'routes')
     const allowed = role.routes.find((route, i) => {
         return (route.route == req.baseUrl + (req.route.path == '/' ? '' : req.route.path) && route.method == req.method)
     })
@@ -98,31 +98,31 @@ const authToThisRoute = async (req, res, next) => {
         Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
     }
 }
-const uploadfile=(foldername)=>{
+const uploadfile = (foldername,allowedMimetypes) => {
     const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, `statics/${foldername}/`)
-    },
-    filename: (req, file, cb) => {
-        const myFileName = Date.now() + file.fieldname + file.originalname
-        cb(null, myFileName)
-    }
-})
-const upload = multer(
-    {
-        storage,
-        fileFilter: (req, file, cb) => {
-            if (file.mimetype != 'image/png' && file.mimetype != 'image/webp' && file.mimetype != 'image/jpeg'&& file.mimetype != 'image/apng'&& file.mimetype != 'image/gif'&& file.mimetype != 'audio/mpeg'&& file.mimetype != 'audio/webm'/*&& file.mimetype != "image/svg+xml" && file.mimetype != "image/vnd"*/) {
-                cb(null, false)
-                cb(new Error('wrong file extention'))
-            }
-            cb(null, true)
+        destination: (req, file, cb) => {
+            cb(null, `statics/${foldername}/`)
         },
-        limits: { fileSize: 5000000 }
+        filename: (req, file, cb) => {
+            const myFileName = Date.now() + file.fieldname + file.originalname
+            cb(null, myFileName)
+        }
     })
+    const upload = multer(
+        {
+            storage,
+            fileFilter: (req, file, cb) => {
+                if (!allowedMimetypes.includes(file.mimetype)/*&& file.mimetype != "image/svg+xml" && file.mimetype != "image/vnd"*/) {
+                    cb(null, false)
+                    cb(new Error('wrong file extention'))
+                }
+                cb(null, true)
+            },
+            limits: { fileSize: 5000000 }
+        })
     return upload
 }
-module.exports = {auth,authToThisRoute, uploadfile }
+module.exports = { auth, authToThisRoute, uploadfile }
 
 // const uploadfile=(foldername)=>{
 //     const storage = multer.diskStorage({
