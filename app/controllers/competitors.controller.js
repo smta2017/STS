@@ -1,4 +1,5 @@
 const competitorModel=require('../../db/models/competitor.model')
+const entryModel = require('../../db/models/entry.model')
 const subscriptionModel = require('../../db/models/subscription.model')
 const countryCodeslist = require('country-codes-list').customList('countryCallingCode', '{officialLanguageCode}-{countryCode}')
 const Helper = require('../helper')
@@ -12,8 +13,16 @@ class Competitor{
     static removeCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
            await  Helper.isThisIdExistInThisModel(req.params.competitorId,null, competitorModel, 'competitor')
+           const result=await competitorModel.findByIdAndDelete(req.params.competitorId)
+        // const result= await Helper.isThisIdExistInThisModel(req.params.competitorId,null,competitorModel,'competitor')
+           const entries= await entryModel.find({qualifierSubscription:result.qualifierSubscription,competitors:req.params.competitorId })
+            await Promise.all(entries.map(entry=>{
+                const i=entry.competitors.findIndex(competitor=>competitor==req.params.competitorId)
+                entry.competitors.splice(i,1)
+                entry.save()
+            }))
             if(true){
-               return competitorModel.findByIdAndDelete(req.params.competitorId)
+               return result
             }
         }, 'competitor was removed successfully')
     }

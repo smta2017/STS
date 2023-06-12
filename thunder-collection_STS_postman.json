@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "69a87ba2-a2d4-40fa-8c17-94d9d723589a",
+        "_postman_id": "e5f26f8b-0c9f-45bf-a14b-29e24535e97a",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -63,6 +63,10 @@
                                 {
                                     "key": "password",
                                     "value": "as123sfsa"
+                                },
+                                {
+                                    "key": "lifeTime",
+                                    "value": "1"
                                 }
                             ]
                         }
@@ -223,7 +227,7 @@
                             "urlencoded": [
                                 {
                                     "key": "countryName",
-                                    "value": "germany"
+                                    "value": "USA"
                                 },
                                 {
                                     "key": "adminstrationFees",
@@ -268,6 +272,10 @@
                                 {
                                     "key": "groupMusicFees",
                                     "value": "658"
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "63e2346155257516346ae7cb"
                                 }
                             ]
                         }
@@ -418,9 +426,9 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/news/6476a0657036764ac4374466",
+                            "raw": "/news/648584d7d9001f84d20342e7",
                             "path": [
-                                "6476a0657036764ac4374466"
+                                "648584d7d9001f84d20342e7"
                             ],
                             "host": [
                                 "news"
@@ -447,7 +455,6 @@
                                 {
                                     "key": "photo",
                                     "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "disabled": true,
                                     "type": "file"
                                 }
                             ]
@@ -494,9 +501,9 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/advertising/647604efd0d6e0cbb08c5255",
+                            "raw": "/advertising/6485853ed9001f84d20342ed",
                             "path": [
-                                "647604efd0d6e0cbb08c5255"
+                                "6485853ed9001f84d20342ed"
                             ],
                             "host": [
                                 "advertising"
@@ -946,9 +953,9 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/sponsor/6475e42616821349edae71e3",
+                            "raw": "/sponsor/64858576d9001f84d20342f1",
                             "path": [
-                                "6475e42616821349edae71e3"
+                                "64858576d9001f84d20342f1"
                             ],
                             "host": [
                                 "sponsor"
@@ -996,7 +1003,7 @@
                                 },
                                 {
                                     "key": "paragraph",
-                                    "value": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaaaaaaaaa                                                 sdsdlkjlkjlkdjasjlkjlkjlk",
+                                    "value": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaaaaaaaaa sdsdlkjlkjlkdjasjlkjlkjlk",
                                     "type": "default"
                                 },
                                 {
@@ -1063,12 +1070,13 @@
                                 },
                                 {
                                     "key": "type",
-                                    "value": "qualifier",
+                                    "value": "final",
                                     "type": "default"
                                 },
                                 {
                                     "key": "country",
                                     "value": "63e2346155257516346ae7cb",
+                                    "disabled": true,
                                     "type": "default"
                                 },
                                 {
@@ -1084,66 +1092,6 @@
                                 {
                                     "key": "date",
                                     "value": "2024-07-12",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "stage",
-                                    "value": "kajskjhfksaj",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "poster",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "update",
-                    "request": {
-                        "method": "PUT",
-                        "url": {
-                            "raw": "/competition/6480d2d176037faf2af62d71",
-                            "path": [
-                                "6480d2d176037faf2af62d71"
-                            ],
-                            "host": [
-                                "competition"
-                            ]
-                        },
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "year",
-                                    "value": "2032",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "type",
-                                    "value": "qualifier",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "country",
-                                    "value": "64748c907f9e9854168fe025",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "startSubscription",
-                                    "value": "2024-05-12",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "endSubscription",
-                                    "value": "2024-06-12",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "date",
-                                    "value": "2024-08-12",
                                     "type": "default"
                                 },
                                 {
@@ -1221,9 +1169,69 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjM5NTQyNiwiZXhwIjoxNjg2NDEzNDI2fQ.n7HDE5qWSB9WO4XIAbtUMPNlQ2CzRQ-8toyIBdDav8s"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
                             }
                         ]
+                    }
+                },
+                {
+                    "name": "update",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/competition/6480d2d176037faf2af62d71",
+                            "path": [
+                                "6480d2d176037faf2af62d71"
+                            ],
+                            "host": [
+                                "competition"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "year",
+                                    "value": "2032",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "qualifier",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "country",
+                                    "value": "64748c907f9e9854168fe025",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "startSubscription",
+                                    "value": "2024-05-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "endSubscription",
+                                    "value": "2024-06-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "2024-08-12",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "stage",
+                                    "value": "kajskjhfksaj",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "poster",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
                     }
                 }
             ]
@@ -1236,9 +1244,9 @@
                     "request": {
                         "method": "POST",
                         "url": {
-                            "raw": "/subscription/6484750d72c1d7219894c736",
+                            "raw": "/subscription/64867569c6dab1e71dbd6fbc",
                             "path": [
-                                "6484750d72c1d7219894c736"
+                                "64867569c6dab1e71dbd6fbc"
                             ],
                             "host": [
                                 "subscription"
@@ -1247,7 +1255,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjM5NTQyNiwiZXhwIjoxNjg2NDEzNDI2fQ.n7HDE5qWSB9WO4XIAbtUMPNlQ2CzRQ-8toyIBdDav8s"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
                             }
                         ]
                     }
@@ -1265,7 +1273,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjM5NTQyNiwiZXhwIjoxNjg2NDEzNDI2fQ.n7HDE5qWSB9WO4XIAbtUMPNlQ2CzRQ-8toyIBdDav8s"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
                             }
                         ]
                     }
@@ -1280,9 +1288,9 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/competitor/64834f2c65a3209110231df3",
+                            "raw": "/competitor/6484cc802176b3a2fc16a1ed",
                             "path": [
-                                "64834f2c65a3209110231df3"
+                                "6484cc802176b3a2fc16a1ed"
                             ],
                             "host": [
                                 "competitor"
@@ -1304,9 +1312,9 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/competitor/648492423f76f40cfbafbd07",
+                            "raw": "/competitor/6485ea464aad1387dfa80056",
                             "path": [
-                                "648492423f76f40cfbafbd07"
+                                "6485ea464aad1387dfa80056"
                             ],
                             "host": [
                                 "competitor"
@@ -1331,7 +1339,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"qualifierSubscription\":\"648473a672c1d7219894c71f\",\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
+                            "raw": "{\n  \"qualifierSubscription\":\"64867ab2c6dab1e71dbd7003\",\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
                         }
                     }
                 },
@@ -1340,14 +1348,103 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/competitor/64834f0c65a3209110231def",
+                            "raw": "/competitor/64867d2dc6dab1e71dbd702f",
                             "path": [
-                                "64834f0c65a3209110231def"
+                                "64867d2dc6dab1e71dbd702f"
                             ],
                             "host": [
                                 "competitor"
                             ]
                         }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "entry",
+            "item": [
+                {
+                    "name": "add entry",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/entry",
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "qualifierSubscription",
+                                    "value": "64867ab2c6dab1e71dbd7003",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "ra2sa",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "music",
+                                    "src": "c:\\Users\\Office\\Downloads\\Music\\y2mate.com - Short Meditation Music  3 Minute Relaxation Calming.mp3",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add competitor to  entry",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/entry/64867bf8c6dab1e71dbd7016/64867e44c6dab1e71dbd707a",
+                            "path": [
+                                "64867bf8c6dab1e71dbd7016",
+                                "64867e44c6dab1e71dbd707a"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "delete competitor from  entry",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/entry/6485ea464aad1387dfa80056/64860b605b1aa0c22a365193",
+                            "path": [
+                                "6485ea464aad1387dfa80056",
+                                "64860b605b1aa0c22a365193"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
                     }
                 }
             ]
