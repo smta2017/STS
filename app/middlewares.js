@@ -98,7 +98,7 @@ const authToThisRoute = async (req, res, next) => {
         Helper.formatMyAPIRes(res, 401, false, null, 'you aren`t allowed to this route')
     }
 }
-const uploadfile = (foldername,allowedMimetypes) => {
+const uploadfile = (foldername, allowedMimetypes) => {
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
             cb(null, `statics/${foldername}/`)
@@ -114,7 +114,10 @@ const uploadfile = (foldername,allowedMimetypes) => {
             fileFilter: (req, file, cb) => {
                 if (!allowedMimetypes.includes(file.mimetype)/*&& file.mimetype != "image/svg+xml" && file.mimetype != "image/vnd"*/) {
                     cb(null, false)
-                    cb(new Error('wrong file extention'))
+                    const e = new Error('wrong file extention')
+                    e.name = 'ValidationError'
+                    e
+                    cb(e)
                 }
                 cb(null, true)
             },
