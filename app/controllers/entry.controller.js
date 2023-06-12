@@ -65,5 +65,8 @@ class Entry {
             }
         },'you added competitor successfully')
     }
+    static allentries=(req,res)=>{
+        Helper.handlingMyFunction()
+    }
 }
 module.exports = Entry
