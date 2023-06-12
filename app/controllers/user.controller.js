@@ -24,13 +24,13 @@ class User{
  static logIn=(req,res)=>{
     Helper.handlingMyFunction(req,res,async(req)=>{
        const user=await userModel.logIn(req.body)
-        // if(user.role==""/*we need to put academy role object id here*/ ){
-           await user.populate('academyDetails')//.populate('joinedCompetions')
-        // }else{}
+           await user.populate('academyDetails')
+           const isRuler=['6486bca99dd036cbf366140a','6486bcef9dd036cbf366140e','6486bd269dd036cbf3661410'].includes(user.role.toString())
+           const isAdmin=(!user.role.toString()=='6480d5701c02f26cd6668987')&&!isRuler
         console.log(req.body.lifeTime)
         const token =await createToken({id:user._id},req.body.lifeTime)
         if(true){
-            return {user,token/*,joinCompetions:user.joinedCompetions*/}
+            return {user,token,isRuler,isAdmin/*,joinCompetions:user.joinedCompetions*/}
         }
     },"you logged in successfully")
  }

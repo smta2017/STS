@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "42586672-77c0-47fa-9ee6-3824ebd2008d",
+        "_postman_id": "10925427-0e17-4329-89fd-ee9a6f6b37f4",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -631,7 +631,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"role\": \"acaedemy\"\n}"
+                            "raw": "{\n  \"role\": \"refree3\"\n}"
                         }
                     }
                 },
@@ -1404,6 +1404,50 @@
                     }
                 },
                 {
+                    "name": "edit entry",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/entry/64867bf8c6dab1e71dbd7016",
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [],
+                            "path": [
+                                "64867bf8c6dab1e71dbd7016"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "hhhhhhhhhhh",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "music",
+                                    "src": "c:\\Users\\Office\\Downloads\\Music\\y2mate.com - Short Meditation Music  3 Minute Relaxation Calming.mp3",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "add competitor to  entry",
                     "request": {
                         "method": "PUT",
@@ -1455,6 +1499,27 @@
                             "raw": "/entry/64867ab2c6dab1e71dbd7003",
                             "path": [
                                 "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "delete entry",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/entry/64867bf8c6dab1e71dbd7016",
+                            "path": [
+                                "64867bf8c6dab1e71dbd7016"
                             ],
                             "host": [
                                 "entry"
