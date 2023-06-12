@@ -4,6 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const entryModel = require('../../db/models/entry.model')
 const Helper = require('../helper')
+const subscriptionModel = require('../../db/models/subscription.model')
 class Entry {
     static addEntry = (req, res) => {
         try {
@@ -66,7 +67,12 @@ class Entry {
         },'you added competitor successfully')
     }
     static allentries=(req,res)=>{
-        Helper.handlingMyFunction()
+        Helper.handlingMyFunction(req,res,async (req)=>{
+            const subscription=await Helper.isThisIdExistInThisModel(req.params.subscriptionId,['competition'],subscriptionModel,'subscription','competition')
+            const filter={}
+            filter[subscription.competition.type+'Subscription']=req.params.subscriptionId
+            if(true){ return entryModel.find(filter)}
+        },'there is all your recorded entries for this competition')
     }
 }
 module.exports = Entry

@@ -60,7 +60,7 @@ class Competition {
     static update = (req, res) => {
         try {
             let image
-            const upload = uploadfile('competition_posters',['image/png','image/webp','image/apng','image/gif'])
+            const upload = uploadfile('competition_posters',['image/png','image/webp','image/apng','image/gif','image/jpeg'])
             const uploadImage = upload.single('poster')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)

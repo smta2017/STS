@@ -29,8 +29,6 @@ class Competitor{
     static getThisSubscriptionCompetitors=(req,res)=>{
         Helper.handlingMyFunction(req,res,async (req)=>{
             const subscription=await Helper.isThisIdExistInThisModel(req.params.subscriptionId,['competition'],subscriptionModel,'subscription','competition')
-            // const field=
-            console.log(subscription)
             const filter={}
             filter[subscription.competition.type+'Subscription']=req.params.subscriptionId
            if(true){ return competitorModel.find(filter)}

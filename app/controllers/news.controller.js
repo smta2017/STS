@@ -8,7 +8,7 @@ class News {
     static add = (req, res) => {
         try {
             let image
-            const upload = uploadfile('news_posters',['image/png','image/webp','image/apng','image/gif'])
+            const upload = uploadfile('news_posters',['image/png','image/webp','image/apng','image/gif','image/jpeg'])
             const uploadImage = upload.single('photo')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)
@@ -44,7 +44,7 @@ class News {
     static update = (req, res) => {
         try {
             let image
-            const upload = uploadfile('news_posters',['image/png','image/webp','image/apng','image/gif'])
+            const upload = uploadfile('news_posters',['image/png','image/webp','image/apng','image/gif','image/jpeg'])
             const uploadImage = upload.single('photo')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)

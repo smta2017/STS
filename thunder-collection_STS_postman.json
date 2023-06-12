@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "e5f26f8b-0c9f-45bf-a14b-29e24535e97a",
+        "_postman_id": "42586672-77c0-47fa-9ee6-3824ebd2008d",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -1312,9 +1312,9 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/competitor/6485ea464aad1387dfa80056",
+                            "raw": "/competitor/64867ab2c6dab1e71dbd7003",
                             "path": [
-                                "6485ea464aad1387dfa80056"
+                                "64867ab2c6dab1e71dbd7003"
                             ],
                             "host": [
                                 "competitor"
@@ -1434,6 +1434,27 @@
                             "path": [
                                 "6485ea464aad1387dfa80056",
                                 "64860b605b1aa0c22a365193"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get all entries",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/64867ab2c6dab1e71dbd7003",
+                            "path": [
+                                "64867ab2c6dab1e71dbd7003"
                             ],
                             "host": [
                                 "entry"
