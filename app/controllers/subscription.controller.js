@@ -45,7 +45,7 @@ class Supscription {
     }
     static getAllSubscriptionsForCompetition=(req,res)=>{
         Helper.handlingMyFunction(req,res,(req)=>{
-            return subscriptionModel.find({competition:req.params.compId}).populate('academy')
+            return subscriptionModel.find({competition:req.params.compId}).populate({path:'academy',populate:'academyDetails'})
         },'there are all the academies that joined this competition')
     }
 }
