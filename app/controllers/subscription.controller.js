@@ -43,6 +43,10 @@ class Supscription {
             return subscriptionModel.find({academy:req.user._id},['_id',"competition",]).populate("competition")
         },'there is all your subscription')
     }
-   
+    static getAllSubscriptionsForCompetition=(req,res)=>{
+        Helper.handlingMyFunction(req,res,(req)=>{
+            return subscriptionModel.find({competition:req.params.compId}).populate('academy')
+        },'there are all the academies that joined this competition')
+    }
 }
 module.exports = Supscription

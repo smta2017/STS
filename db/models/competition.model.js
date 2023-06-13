@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const subscriptionModel = require('./subscription.model')
 const CompetitionSchema = mongoose.Schema({
     year: {
         type: Number,
@@ -103,6 +104,16 @@ const CompetitionSchema = mongoose.Schema({
     }
 
 })
+CompetitionSchema.statics.deleteCompetition=async function(id){
+    const deletedComp=await competitionModel.findByIdAndDelete(id)
+    const mustBeDeletedSubscriptions=await subscriptionModel.find({competition:id})
+    await Promise.all(
+        mustBeDeletedSubscriptions.map(subscription=>{
+            subscription.deleteMe(deletedComp.type)
+        })
+        )
+      if(true){  return deletedComp}
+}
 CompetitionSchema.virtual('joins', {
     ref: 'subscriptions',
     localField: '_id',

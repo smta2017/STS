@@ -81,7 +81,7 @@ class Competition {
                             oldImage = competition.photo
                         }
                         for (let field in req.body) {
-                            competition[field] = req.body[field]
+                            if(!['country','type','year','_id'].includes(field)){competition[field] = req.body[field]}
                         }
                         const result = await competition.save()
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + oldImage)) && req.file) {
@@ -105,7 +105,7 @@ class Competition {
     }
     static delete = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const result = await competitionModel.findByIdAndDelete(req.params.id)
+            const result = await competitionModel.deleteCompetition(req.params.id)
             if (!result) {
                 const e = new Error('there is no such a competition')
                 e.name = 'CastError'

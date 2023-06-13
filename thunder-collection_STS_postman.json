@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "93ceff7a-5c0e-4210-acbd-e1ba0124cc66",
+        "_postman_id": "19beae74-0bd1-447e-89fb-687633c5bc4d",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -26,7 +26,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"role\":\"6480d5701c02f26cd6668987\",\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1202865148\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"asds@gmail.com\",\n    \"password\":\"as123sfsa\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
+                            "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"role\":\"6480d5701c02f26cd6668987\",\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1281508229\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"bella@gmail.com\",\n    \"password\":\"bella123\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
                         }
                     }
                 },
@@ -48,7 +48,7 @@
                             "urlencoded": [
                                 {
                                     "key": "email",
-                                    "value": "asds@gmail.com"
+                                    "value": "merna@gmail.com"
                                 },
                                 {
                                     "key": "mobileNumber",
@@ -62,11 +62,12 @@
                                 },
                                 {
                                     "key": "password",
-                                    "value": "as123sfsa"
+                                    "value": "Asd?1234"
                                 },
                                 {
                                     "key": "lifeTime",
-                                    "value": "1"
+                                    "value": "1",
+                                    "disabled": true
                                 }
                             ]
                         }
@@ -1173,7 +1174,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg2MDBjMThmZWI5YzA4N2E1MWYxOCIsImlhdCI6MTY4NjY1OTExOX0.sflMfeaodaOptEvurkgPi0hPIPpLlMVsPe-wvcfZz1U"
                             }
                         ]
                     }
@@ -1259,7 +1260,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg2MDBjMThmZWI5YzA4N2E1MWYxOCIsImlhdCI6MTY4NjY1OTExOX0.sflMfeaodaOptEvurkgPi0hPIPpLlMVsPe-wvcfZz1U"
                             }
                         ]
                     }
@@ -1278,6 +1279,27 @@
                             {
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get joining academies",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/subscription/64867569c6dab1e71dbd6fbc",
+                            "path": [
+                                "64867569c6dab1e71dbd6fbc"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
                             }
                         ]
                     }
@@ -1316,9 +1338,9 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/competitor/64867ab2c6dab1e71dbd7003",
+                            "raw": "/competitor/6488609918feb9c087a51f31",
                             "path": [
-                                "64867ab2c6dab1e71dbd7003"
+                                "6488609918feb9c087a51f31"
                             ],
                             "host": [
                                 "competitor"
@@ -1364,6 +1386,28 @@
                     }
                 },
                 {
+                    "name": "get all comp competitors",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/competitor/allcompetition/64867569c6dab1e71dbd6fbc",
+                            "path": [
+                                "allcompetition",
+                                "64867569c6dab1e71dbd6fbc"
+                            ],
+                            "host": [
+                                "competitor"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
+                            }
+                        ]
+                    }
+                },
+                {
                     "name": "delete competitor",
                     "request": {
                         "method": "DELETE",
@@ -1406,7 +1450,7 @@
                             "formdata": [
                                 {
                                     "key": "qualifierSubscription",
-                                    "value": "64867ab2c6dab1e71dbd7003",
+                                    "value": "6488609918feb9c087a51f31",
                                     "type": "default"
                                 },
                                 {
@@ -1571,6 +1615,28 @@
                             {
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get all comp entries",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/allcompetition/64867569c6dab1e71dbd6fbc",
+                            "path": [
+                                "allcompetition",
+                                "64867569c6dab1e71dbd6fbc"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
                             }
                         ]
                     }

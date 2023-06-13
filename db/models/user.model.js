@@ -69,7 +69,6 @@ const UserSchema = mongoose.Schema({
     }
 })
 UserSchema.pre('save', function () {
-    console.log(this.isModified('password'))
     if (this.isModified('password')) this.password = bcrypt.hashSync(this.password, 12)
 })
 UserSchema.methods.toJSON = function () {
@@ -110,7 +109,6 @@ UserSchema.statics.logIn = async (loginData) => {
         throw e
     }
     if (loginData.password) {
-        console.log(loginData.password, isUserExist)
         if (!bcrypt.compareSync(loginData.password, isUserExist.password)) {
             const e = new Error('invalid password')
             e.name = 'CastError'
