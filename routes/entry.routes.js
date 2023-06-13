@@ -7,6 +7,7 @@ router.delete('/:entryId/:competitorId',auth,/*authToThisRoute,*/Entry.removeCom
 router.put('/:entryId',auth,/*authToThisRoute,*/Entry.edit)
 router.delete('/:entryId',auth,/*authToThisRoute,*/Entry.delete)
 router.get('/:subscriptionId',auth,/*authToThisRoute,*/Entry.allentries)
+router.get('/allcompetition/:compId',auth,/*authToThisRoute,*/Entry.getAllCompetitionEntries)
 router.get('/:subscriptionId/:category',auth,/*authToThisRoute,*/Entry.allentriesByCategory)
 
 module.exports=router

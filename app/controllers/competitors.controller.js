@@ -1,3 +1,4 @@
+const competitionModel = require('../../db/models/competition.model')
 const competitorModel=require('../../db/models/competitor.model')
 const entryModel = require('../../db/models/entry.model')
 const subscriptionModel = require('../../db/models/subscription.model')
@@ -60,6 +61,20 @@ class Competitor{
         }
         if(true){return competitor.save()}
        },'competitor was edited successfully')
+    }
+    static getAllCompetitionCompetitors=(req,res)=>{
+        Helper.handlingMyFunction(req,res,async(req)=>{
+            const allCompetitonSubscripetition=await subscriptionModel.find({competition:req.params.compId},['_id','competiton']).populate('competition')
+            if(allCompetitonSubscripetition.length<=0){
+                const e = new Error('there is no acaedmy joins this competition')
+                e.name = 'Error'
+                throw e
+            }
+            const subscriptionArray=allCompetitonSubscripetition.map(sub=>sub._id)
+            const filter={}
+            filter[allCompetitonSubscripetition[0].competition.type+'Subscription']={$in:subscriptionArray}
+            if(true){return competitorModel.find(filter)}
+        },'there are all this competition entries')
     }
 }
 module.exports=Competitor

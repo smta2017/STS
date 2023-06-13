@@ -5,6 +5,7 @@ const fs = require('fs')
 const entryModel = require('../../db/models/entry.model')
 const Helper = require('../helper')
 const subscriptionModel = require('../../db/models/subscription.model')
+const competitionModel = require('../../db/models/competition.model')
 class Entry {
     static addEntry = (req, res) => {
         try {
@@ -144,6 +145,24 @@ class Entry {
             console.log(e)
             Helper.formatMyAPIRes(res, 500, false, e, e.message)
         }
+    }
+    static getAllCompetitionEntries=(req,res)=>{
+        Helper.handlingMyFunction(req,res,async(req)=>{
+            const allCompetitonSubscripetition=await subscriptionModel.find({competition:req.params.compId},['_id','competiton']).populate('competition')
+            if(allCompetitonSubscripetition.length<=0){
+                const e = new Error('there is no acaedmy joins this competition')
+                e.name = 'Error'
+                throw e
+            }
+            const subscriptionArray=allCompetitonSubscripetition.map(sub=>sub._id)
+            const filter={}
+            filter[allCompetitonSubscripetition[0].competition.type+'Subscription']={$in:subscriptionArray}
+            let data
+            if(req.baseUrl + (req.route.path == '/' ? '' : req.route.path)=='/sts/entry/allcompetition/:compId'){
+                data=entryModel.find(filter)
+            }
+            if(true){return data}
+        },'there are all this competition entries')
     }
 }
 module.exports = Entry
