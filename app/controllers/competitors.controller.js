@@ -34,6 +34,15 @@ class Competitor{
            if(true){ return competitorModel.find(filter)}
         },'there are all your subscription')
     }
+    static getThisSubscriptionCompetitorsByCategory=(req,res)=>{
+        Helper.handlingMyFunction(req,res,async (req)=>{
+            const subscription=await Helper.isThisIdExistInThisModel(req.params.subscriptionId,['competition'],subscriptionModel,'subscription','competition')
+            const filter={}
+            filter[subscription.competition.type+'Subscription']=req.params.subscriptionId
+            filter.category=req.params.category
+           if(true){ return competitorModel.find(filter)}
+        },'there are all your subscription')
+    }
     static editCompetitor=(req,res)=>{
        Helper.handlingMyFunction(req,res,async (req)=>{
         const competitor=await Helper.isThisIdExistInThisModel(req.params.competitorId,null,competitorModel,'competitor')

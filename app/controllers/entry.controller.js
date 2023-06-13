@@ -73,6 +73,15 @@ class Entry {
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
             if (true) { return entryModel.find(filter) }
         }, 'there is all your recorded entries for this competition')
+    } 
+    static allentriesByCategory = (req, res) => {
+        Helper.handlingMyFunction(req, res, async (req) => {
+            const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
+            const filter = {}
+            filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
+            filter.competitorsCategories=req.params.category
+            if (true) { return entryModel.find(filter) }
+        }, 'there is all your recorded entries for this competition')
     }
     static delete = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {

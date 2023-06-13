@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "10925427-0e17-4329-89fd-ee9a6f6b37f4",
+        "_postman_id": "93ceff7a-5c0e-4210-acbd-e1ba0124cc66",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -90,15 +90,15 @@
                             "urlencoded": [
                                 {
                                     "key": "firstName",
-                                    "value": "george"
+                                    "value": "merna"
                                 },
                                 {
                                     "key": "lastName",
-                                    "value": "Abadier"
+                                    "value": "mamdouh"
                                 },
                                 {
                                     "key": "mobileNumber",
-                                    "value": "1202865140"
+                                    "value": "1281507948"
                                 },
                                 {
                                     "key": "countryCallingCode",
@@ -106,7 +106,11 @@
                                 },
                                 {
                                     "key": "email",
-                                    "value": "asdsa@gmail.com"
+                                    "value": "merna@gmail.com"
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "647e14b55367d4a8bc5f1270"
                                 }
                             ]
                         }
@@ -1323,6 +1327,22 @@
                     }
                 },
                 {
+                    "name": "get all competitor by category",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/competitor/64867ab2c6dab1e71dbd7003/dancer",
+                            "path": [
+                                "64867ab2c6dab1e71dbd7003",
+                                "dancer"
+                            ],
+                            "host": [
+                                "competitor"
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "add competitor",
                     "request": {
                         "method": "POST",
@@ -1452,10 +1472,10 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/entry/64867bf8c6dab1e71dbd7016/64867e44c6dab1e71dbd707a",
+                            "raw": "/entry/6486990ab17e6dd91d5ec4e5/64867da0c6dab1e71dbd703d",
                             "path": [
-                                "64867bf8c6dab1e71dbd7016",
-                                "64867e44c6dab1e71dbd707a"
+                                "6486990ab17e6dd91d5ec4e5",
+                                "64867da0c6dab1e71dbd703d"
                             ],
                             "host": [
                                 "entry"
@@ -1499,6 +1519,28 @@
                             "raw": "/entry/64867ab2c6dab1e71dbd7003",
                             "path": [
                                 "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get all entries by category",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/64867ab2c6dab1e71dbd7003/dancer",
+                            "path": [
+                                "64867ab2c6dab1e71dbd7003",
+                                "dancer"
                             ],
                             "host": [
                                 "entry"
