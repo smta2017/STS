@@ -8,7 +8,7 @@ class Sponsor {
     static add = (req, res) => {
         try {
             let image
-            const upload = uploadfile('sponsor_posters',['image/png','image/webp','image/apng','image/gif','image/jpeg'])
+            const upload = uploadfile('sponsor_posters', ['image/png', 'image/webp', 'image/apng', 'image/gif', 'image/jpeg'])
             const uploadImage = upload.single('photo')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)
@@ -18,14 +18,16 @@ class Sponsor {
                 }
                 else {
                     try {
-                        image = req.file.path.replace('statics\\', '')
-                        image = image.replace(/\\/g, '/')
-                        req.body.photo = image
+                        if(req.file){
+                            image = req.file.path.replace('statics\\', '')
+                            image = image.replace(/\\/g, '/')
+                            req.body.photo = image
+                        }
                         const sponsor = await sponsorModel.create(req.body)
                         // if (req.user.image != 'defaultuserimage.png') {
                         //     fs.unlinkSync(path.join(__dirname, '../../statics/' + req.user.image))
                         // }
-                        Helper.formatMyAPIRes(res, 200, true, { file: req.file, sponsor }, 'you added new sponsor successfully')
+                        Helper.formatMyAPIRes(res, 200, true, { file: req.file ? req.file : 'there is file uploaded', sponsor }, 'you added new sponsor successfully')
                     }
                     catch (e) {
                         console.log(e)
@@ -44,7 +46,7 @@ class Sponsor {
     static update = (req, res) => {
         try {
             let image
-            const upload = uploadfile('sponsor_posters',['image/png','image/webp','image/apng','image/gif','image/jpeg'])
+            const upload = uploadfile('sponsor_posters', ['image/png', 'image/webp', 'image/apng', 'image/gif', 'image/jpeg'])
             const uploadImage = upload.single('photo')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)
@@ -55,7 +57,7 @@ class Sponsor {
                 else {
                     try {
                         let oldImage
-                        const sponsor = await Helper.isThisIdExistInThisModel(req.params.id,null,sponsorModel,'sponsor')
+                        const sponsor = await Helper.isThisIdExistInThisModel(req.params.id, null, sponsorModel, 'sponsor')
                         if (req.file) {
                             image = req.file.path.replace('statics\\', '')
                             image = image.replace(/\\/g, '/')

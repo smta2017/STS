@@ -19,12 +19,14 @@ class Entry {
                 }
                 else {
                     try {
-                        music = req.file.path.replace('statics\\', '')
-                        music = music.replace(/\\/g, '/')
-                        // req.body.competitors=['6484cc422176b3a2fc16a1eb','6485a4c3c081a4fa0250eba7']
-                        req.body.music = music
+                        if (req.file) {
+                            music = req.file.path.replace('statics\\', '')
+                            music = music.replace(/\\/g, '/')
+                            // req.body.competitors=['6484cc422176b3a2fc16a1eb','6485a4c3c081a4fa0250eba7']
+                            req.body.music = music
+                        }
                         const entry = await entryModel.create(req.body)
-                        Helper.formatMyAPIRes(res, 200, true, { file: req.file, entry }, `well done you addd new entry perpare for it and don't forget to pay it's fees`)
+                        Helper.formatMyAPIRes(res, 200, true, { file: req.file?req.file:'no file uploaded', entry }, `well done you addd new entry perpare for it and don't forget to pay it's fees`)
                     }
                     catch (e) {
                         console.log(e)
@@ -73,13 +75,13 @@ class Entry {
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
             if (true) { return entryModel.find(filter) }
         }, 'there is all your recorded entries for this competition')
-    } 
+    }
     static allentriesByCategory = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
-            filter.competitorsCategories=req.params.category
+            filter.competitorsCategories = req.params.category
             if (true) { return entryModel.find(filter) }
         }, 'there is all your recorded entries for this competition')
     }
@@ -99,7 +101,7 @@ class Entry {
             }
         }, "you edit your entry name and music successfully")
     }
-    static edit=(req,res)=>{
+    static edit = (req, res) => {
         try {
             let music
             const upload = uploadfile('entries_music', ['audio/mpeg', 'audio/webm'])
@@ -113,7 +115,7 @@ class Entry {
                 else {
                     try {
                         let oldMusic
-                        const entry = await Helper.isThisIdExistInThisModel(req.params.entryId,null, entryModel, 'entry')
+                        const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry')
                         if (req.file) {
                             music = req.file.path.replace('statics\\', '')
                             music = music.replace(/\\/g, '/')

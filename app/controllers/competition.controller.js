@@ -9,7 +9,7 @@ class Competition {
     static add = (req, res) => {
         try {
             let image
-            const upload = uploadfile('competition_posters',['image/png','image/webp','image/apng','image/gif','image/jpeg'])
+            const upload = uploadfile('competition_posters', ['image/png', 'image/webp', 'image/apng', 'image/gif', 'image/jpeg'])
             const uploadImage = upload.single('poster')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)
@@ -34,14 +34,16 @@ class Competition {
                                 throw e
                             }
                         }
-                        image = req.file.path.replace('statics\\', '')
-                        image = image.replace(/\\/g, '/')
-                        req.body.poster = image
+                       if(req.file) {
+                            image = req.file.path.replace('statics\\', '')
+                            image = image.replace(/\\/g, '/')
+                            req.body.poster = image
+                        }
                         const competition = await competitionModel.create(req.body)
                         // if (req.user.image != 'defaultuserimage.png') {
                         //     fs.unlinkSync(path.join(__dirname, '../../statics/' + req.user.image))
                         // }
-                        Helper.formatMyAPIRes(res, 200, true, { file: req.file, competition }, `greate, you add a new competition ,don't forget to enable registration`)
+                        Helper.formatMyAPIRes(res, 200, true, { file: req.file?req.file:'there is file uploaded', competition }, `greate, you add a new competition ,don't forget to enable registration`)
                     }
                     catch (e) {
                         console.log(e)
@@ -60,7 +62,7 @@ class Competition {
     static update = (req, res) => {
         try {
             let image
-            const upload = uploadfile('competition_posters',['image/png','image/webp','image/apng','image/gif','image/jpeg'])
+            const upload = uploadfile('competition_posters', ['image/png', 'image/webp', 'image/apng', 'image/gif', 'image/jpeg'])
             const uploadImage = upload.single('poster')
             uploadImage(req, res, async function (e) {
                 if (e instanceof multer.MulterError)
@@ -141,9 +143,9 @@ class Competition {
             await Promise.all(
                 finalcompetitions.map(async (comp) => {
                     const userQualifier = await competitionModel.findOne({ year: comp.year, country: req.user.academyDetails.country })
-                    if(userQualifier){
+                    if (userQualifier) {
                         const subscription = await subscriptionModel.findOne({ academy: req.user._id, competition: userQualifier._id })
-                        if (subscription&&subscription.haveASuccessededEntry) {
+                        if (subscription && subscription.haveASuccessededEntry) {
                             availableCompetitions.push(comp)
                         }
                     }
