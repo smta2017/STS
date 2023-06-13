@@ -164,5 +164,8 @@ class Entry {
             if(true){return data}
         },'there are all this competition entries')
     }
+    static addShowDate=()=>{
+        Helper.handlingMyFunction(req,res,(req)=>{},message)
+    }
 }
 module.exports = Entry
