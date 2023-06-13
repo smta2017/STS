@@ -1,6 +1,7 @@
 const subscriptionModel = require('../../db/models/subscription.model')
 const competitionModel = require('../../db/models/competition.model')
 const Helper = require('../helper')
+const entryModel = require('../../db/models/entry.model')
 const competitorModel = require('../../db/models/competitor.model')
 class Supscription {
     static addSubscription = (req, res) => {
@@ -26,7 +27,8 @@ class Supscription {
                     competitor.finalSubscription=finalSubscription
                    const result=await competitor.save()
                 }))
-                const entries=await competitionModel.find({qualifierSubscription:hisQualifierSubscription})
+                const entries=await entryModel.find({qualifierSubscription:hisQualifierSubscription})
+                console.log(entries)
                 await Promise.all(entries.map(async(entry)=>{
                     entry.finalSubscription=finalSubscription
                     await entry.save()

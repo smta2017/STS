@@ -32,7 +32,7 @@ SubscriptionSchema.methods.deleteMe=async function(type){
        const subscriptionEntries= await entryModel.find({qualifierSubscription:this._id})
        await Promise.all(
         subscriptionEntries.map(entry=>{
-            entryModel.findById(entry._id)
+            entryModel.findByIdAndDelete(entry._id)
             if (fs.existsSync(path.join(__dirname, '../../statics/' + entry.music))) {
                 fs.unlinkSync(path.join(__dirname, '../../statics/' + entry.music))
             }
@@ -41,8 +41,20 @@ SubscriptionSchema.methods.deleteMe=async function(type){
 
         await competitorModel.deleteMany({qualifierSubscription:this._id})
     }else{
-        await entryModel.updateMany({finalSubscription:this._id}, {finalSubscription: undefined})
-        await competitorModel.updateMany({finalSubscription:this._id}, {finalSubscription:undefined})
+        const needToBeFreedEntries=await entryModel.find({finalSubscription:this._id})
+        await Promise.all(
+            needToBeFreedEntries.map(entry=>{
+                entry.finalSubscription=undefined
+                entry.save()
+            })
+        )
+        const needToBeFreedCompetitors=await competitorModel.find({finalSubscription:this._id})
+        await Promise.all(
+            needToBeFreedCompetitors.map(competitor=>{
+                competitor.finalSubscription=undefined
+                competitor.save()
+            })
+        )
     }
 
 }
