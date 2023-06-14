@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const subscriptionModel = require('./subscription.model')
 const competitorModel = require('./competitor.model')
 const Helper = require('../../app/helper')
 const EntrySchema = mongoose.Schema({
@@ -112,11 +111,13 @@ EntrySchema.pre('save', async function () {
         this.qualifierTotalDegree = this.qualifierRefree1 + this.qualifierRefree2 + this.qualifierRefree3 + this.qualifierLast10Present
         if (this.qualifierTotalDegree > 70) {
             await Promise.all(
-                this.competitors.map((competitor) => {
-                    competitorModel.findByIdAndUpdate(competitor, { passQualifier: true })
+                this.competitors.map(async(competitor) => {
+                  const comp= await competitorModel.findByIdAndUpdate(competitor,{$set: { passQualifier: true }},{returnDocument:"after"})
+                    console.log(comp)
                 })
             )
-            await subscriptionModel.findByIdAndUpdate(this.qualifierSubscription, { haveASuccessededEntry: true })
+           const sub= await subscriptionModel.findByIdAndUpdate(this.qualifierSubscription,{$set: { haveASuccessededEntry: true }},{returnDocument:"after"})
+                console.log(sub)
         }
     }
     if (this.isDirectModified('finalRefree1') || this.isDirectModified('finalRefree2') || this.isDirectModified('finalRefree3') || this.isDirectModified('finalLast10Present')) {
@@ -180,3 +181,4 @@ EntrySchema.pre('save', async function () {
 })
 const entryModel = mongoose.model('entries', EntrySchema)
 module.exports = entryModel
+var subscriptionModel = require('./subscription.model')
