@@ -27,7 +27,7 @@ class Entry {
                             req.body.music = music
                         }
                         const entry = await entryModel.create(req.body)
-                        Helper.formatMyAPIRes(res, 200, true, { file: req.file?req.file:'no file uploaded', entry }, `well done you addd new entry perpare for it and don't forget to pay it's fees`)
+                        Helper.formatMyAPIRes(res, 200, true, { file: req.file ? req.file : 'no file uploaded', entry }, `well done you addd new entry perpare for it and don't forget to pay it's fees`)
                     }
                     catch (e) {
                         console.log(e)
@@ -146,26 +146,51 @@ class Entry {
             Helper.formatMyAPIRes(res, 500, false, e, e.message)
         }
     }
-    static getAllCompetitionEntries=(req,res)=>{
-        Helper.handlingMyFunction(req,res,async(req)=>{
-            const allCompetitonSubscripetition=await subscriptionModel.find({competition:req.params.compId},['_id','competiton']).populate('competition')
-            if(allCompetitonSubscripetition.length<=0){
+    static getAllCompetitionEntries = (req, res) => {
+        Helper.handlingMyFunction(req, res, async (req) => {
+            const allCompetitonSubscripetition = await subscriptionModel.find({ competition: req.params.compId }, ['_id', 'competiton']).populate('competition')
+            if (allCompetitonSubscripetition.length <= 0) {
                 const e = new Error('there is no acaedmy joins this competition')
                 e.name = 'Error'
                 throw e
             }
-            const subscriptionArray=allCompetitonSubscripetition.map(sub=>sub._id)
-            const filter={}
-            filter[allCompetitonSubscripetition[0].competition.type+'Subscription']={$in:subscriptionArray}
+            const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
+            const filter = {}
+            filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
             let data
-            if(req.baseUrl + (req.route.path == '/' ? '' : req.route.path)=='/sts/entry/allcompetition/:compId'){
-                data=entryModel.find(filter)
+            if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/allcompetition/:compId') {
+                data = entryModel.find(filter)
             }
-            if(true){return data}
-        },'there are all this competition entries')
+            if (true) { return data }
+        }, 'there are all this competition entries')
     }
-    static addShowDate=()=>{
-        Helper.handlingMyFunction(req,res,(req)=>{},message)
+    // static addShowDate=()=>{
+    //     Helper.handlingMyFunction(req,res,(req)=>{},message)
+    // }
+    static addAdminData = (req, res) => {
+        Helper.handlingMyFunction(req, res, async (req) => {
+            await req.user.populate('role')
+            const type = (await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', { path: 'competition' })).competition.type
+            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry')
+            console.log(['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role._id.toString()))
+
+            if (['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role._id.toString())) {
+                if (!req.body.degree) {
+                    const e = new Error('we did not recieve any degree to record')
+                    e.name = 'CastError'
+                    throw e
+                }
+                entry[type + req.user.role.name] = req.body.degree
+            } else {
+                console.log(req.body)
+                for (let field in req.body) {
+                    console.log(type + field)
+                    entry[type + field] = req.body[field]
+                }
+            }
+
+            if (true) { return entry.save() }
+        }, 'you data added successfully')
     }
 }
 module.exports = Entry
