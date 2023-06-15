@@ -73,8 +73,13 @@ class Entry {
         Helper.handlingMyFunction(req, res, async (req) => {
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
+            let projection=null
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
-            if (true) { return entryModel.find(filter) }
+            if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/schedual/:subscriptionId') {
+                projection=[subscription.competition.type+'ShowDate','name',subscription.competition.type+'Subscription']
+                filter[subscription.competition.type+'ShowDate']={$nin:[null,'']}
+            }
+            if (true) { return entryModel.find(filter,projection).populate({path:subscription.competition.type+'Subscription',populate:{path:'academy',populate:'academyDetails'}}) }
         }, 'there is all your recorded entries for this competition')
     }
     static allentriesByCategory = (req, res) => {
@@ -157,11 +162,21 @@ class Entry {
             const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
             const filter = {}
             filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
-            let data
-            if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/allcompetition/:compId') {
-                data = entryModel.find(filter)
+            let projection=null
+            if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeschedule/:compId') {
+                projection = [allCompetitonSubscripetition[0].competition.type+'ShowDate',allCompetitonSubscripetition[0].competition.type+'Subscription','name']
+                if(req.user.role.toString()=='6480d5701c02f26cd6668987'/*academy role id */){filter[allCompetitonSubscripetition[0].competition.type + 'ShowDate']= { $nin: [ null, "" ] }}
+            }else if(req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeresult/:compId'){
+              if(['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role.toString())) { /*refree roles ids */
+                await req.user.populate('role')
+                console.log(allCompetitonSubscripetition[0].competition.type+req.user.role.role)
+                projection=[allCompetitonSubscripetition[0].competition.type+req.user.role.role,allCompetitonSubscripetition[0].competition.type+'Subscription','name']
+                filter[allCompetitonSubscripetition[0].competition.type+req.user.role.role]={ $exists:false }
+               }else{
+                projection=[allCompetitonSubscripetition[0].competition.type+'Refree1',allCompetitonSubscripetition[0].competition.type+'Refree2',allCompetitonSubscripetition[0].competition.type+'Refree3',allCompetitonSubscripetition[0].competition.type+'Subscription','name']
+               }
             }
-            if (true) { return data }
+            if (true) { return entryModel.find(filter,projection).populate({path:allCompetitonSubscripetition[0].competition.type+'Subscription',projection:['academy'],populate:{path:'academy'}}) }
         }, 'there are all this competition entries')
     }
     // static addShowDate=()=>{
@@ -172,15 +187,13 @@ class Entry {
             await req.user.populate('role')
             const type = (await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', { path: 'competition' })).competition.type
             const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry')
-            console.log(['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role._id.toString()))
-
-            if (['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role._id.toString())) {
+            if (['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role._id.toString())) {/*refree roles ids */
                 if (!req.body.degree) {
                     const e = new Error('we did not recieve any degree to record')
                     e.name = 'CastError'
                     throw e
                 }
-                entry[type + req.user.role.name] = req.body.degree
+                entry[type + req.user.role.role] = req.body.degree
             } else {
                 console.log(req.body)
                 for (let field in req.body) {

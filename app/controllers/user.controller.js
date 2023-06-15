@@ -8,7 +8,7 @@ class User{
  static academyRegistration=(req,res)=>{
     Helper.handlingMyFunction(req,res,async(req)=>{
         const academy=await academyModel.create(req.body)
-        req.body.owner.role='6480d5701c02f26cd6668987'
+        req.body.owner.role='6480d5701c02f26cd6668987'/*academy role id */
         req.body.owner.academyDetails=academy._id
         req.body.owner.mobileNumber=countryCodeslist[req.body.owner.countryCallingCode.substring(1)] + ":" + req.body.owner.countryCallingCode +req.body.owner.mobileNumber
         if(true){return userModel.create(req.body.owner)}
@@ -25,8 +25,8 @@ class User{
     Helper.handlingMyFunction(req,res,async(req)=>{
        const user=await userModel.logIn(req.body)
            await user.populate('academyDetails')
-           const isRuler=['6486bca99dd036cbf366140a','6486bcef9dd036cbf366140e','6486bd269dd036cbf3661410'].includes(user.role.toString())
-           const isAdmin=(user.role.toString()!='6480d5701c02f26cd6668987')&&!isRuler
+           const isRuler=['6486bca99dd036cbf366140a','6486bcef9dd036cbf366140e','6486bd269dd036cbf3661410'].includes(user.role.toString())/*refree roles ids */
+           const isAdmin=(user.role.toString()!='6480d5701c02f26cd6668987'/*academy role id */)&&!isRuler
         const token =await createToken({id:user._id},req.body.lifeTime)
         if(true){
             return {user,token,isRuler,isAdmin/*,joinCompetions:user.joinedCompetions*/}

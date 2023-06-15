@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "573975c6-549c-46b2-a0a5-cf7eeb4114e4",
+        "_postman_id": "39dda8f4-b700-4100-a29b-7f3f90d2fc34",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -48,7 +48,7 @@
                             "urlencoded": [
                                 {
                                     "key": "email",
-                                    "value": "merna@gmail.com"
+                                    "value": "aboellok@gmail.com"
                                 },
                                 {
                                     "key": "mobileNumber",
@@ -91,15 +91,15 @@
                             "urlencoded": [
                                 {
                                     "key": "firstName",
-                                    "value": "merna"
+                                    "value": "malak"
                                 },
                                 {
                                     "key": "lastName",
-                                    "value": "mamdouh"
+                                    "value": "romany"
                                 },
                                 {
                                     "key": "mobileNumber",
-                                    "value": "1281507948"
+                                    "value": "1281507955"
                                 },
                                 {
                                     "key": "countryCallingCode",
@@ -107,11 +107,11 @@
                                 },
                                 {
                                     "key": "email",
-                                    "value": "merna@gmail.com"
+                                    "value": "aboellok@gmail.com"
                                 },
                                 {
                                     "key": "role",
-                                    "value": "647e14b55367d4a8bc5f1270"
+                                    "value": "6486bca99dd036cbf366140a"
                                 }
                             ]
                         }
@@ -1598,21 +1598,6 @@
                     }
                 },
                 {
-                    "name": "add entry time and gradefrom admin board",
-                    "request": {
-                        "method": "PUT",
-                        "url": {
-                            "raw": "/entry/",
-                            "path": [
-                                ""
-                            ],
-                            "host": [
-                                "entry"
-                            ]
-                        }
-                    }
-                },
-                {
                     "name": "edit entry",
                     "request": {
                         "method": "PUT",
@@ -1673,19 +1658,19 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGEyNWE3MjEyM2Q3NzlkMDU4YWRjMiIsImlhdCI6MTY4Njc3NTI0NCwiZXhwIjoxNjg2NzkzMjQ0fQ.tOWU6pTbEzxAIdrM02fJggUcmsE44NqTB8c1jO_w3Q4"
                             }
                         ],
                         "body": {
                             "mode": "urlencoded",
                             "urlencoded": [
                                 {
-                                    "key": "showDate",
+                                    "key": "ShowDate",
                                     "value": "2023-06-15T04:48"
                                 },
                                 {
                                     "key": "Refree1",
-                                    "value": "25"
+                                    "value": "20"
                                 },
                                 {
                                     "key": "Refree2",
@@ -1698,9 +1683,79 @@
                                 {
                                     "key": "Last10Present",
                                     "value": "5"
+                                },
+                                {
+                                    "key": "degree",
+                                    "value": "4"
                                 }
                             ]
                         }
+                    }
+                },
+                {
+                    "name": "get full schedule",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/completeschedule/64867569c6dab1e71dbd6fbc",
+                            "path": [
+                                "completeschedule",
+                                "64867569c6dab1e71dbd6fbc"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4Njc3MzE5NSwiZXhwIjoxNjg2NzkxMTk1fQ.oNc_2xSatkabm_DS7anDh5n8D5h_eztgXLNtRWQoXFI"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "show entries to refree",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/completeresult/64867569c6dab1e71dbd6fbc",
+                            "path": [
+                                "completeresult",
+                                "64867569c6dab1e71dbd6fbc"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGEyNWE3MjEyM2Q3NzlkMDU4YWRjMiIsImlhdCI6MTY4Njc3NTI0NCwiZXhwIjoxNjg2NzkzMjQ0fQ.tOWU6pTbEzxAIdrM02fJggUcmsE44NqTB8c1jO_w3Q4"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get school schedual",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/schedual/64867ab2c6dab1e71dbd7003",
+                            "path": [
+                                "schedual",
+                                "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                            }
+                        ]
                     }
                 }
             ]
