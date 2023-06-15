@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "39dda8f4-b700-4100-a29b-7f3f90d2fc34",
+        "_postman_id": "b5ff1924-fc19-485b-8a03-6a581817318b",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -27,6 +27,33 @@
                                 }
                             },
                             "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"role\":\"6480d5701c02f26cd6668987\",\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1281508229\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"bella@gmail.com\",\n    \"password\":\"bella123\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
+                        }
+                    }
+                },
+                {
+                    "name": "edit profile",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/user",
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"academy\": {\n    \"schoolLocation\": {\n      \"blockNum\": \"hhhhh\",\n      \"street\": \"hhhh\",\n      \"cityOrTown\": \"hhhh\",\n      \"provinceOrState\": \"hhhhhh\",\n      \"postalCode\": \"11652\"\n    },\n    \"schoolName\": \"hhhhhhhhhhhh\",\n    \"country\": \"63e2346155257516346ae7cb\"\n  },\n  \"user\": {\n    \"role\": \"6480d5701c02f26cd6668987\",\n    \"firstName\": \"gogo\",\n    \"lastName\": \"Abad\",\n    \"mobileNumber\": \"1281533229\",\n    \"countryCallingCode\": \"+20\",\n    \"email\": \"joooll@gmail.com\",\n    \"password\": \"12345\"\n  },\n  \"oldPassword\":\"12345\"\n}"
                         }
                     }
                 },
@@ -112,59 +139,6 @@
                                 {
                                     "key": "role",
                                     "value": "6486bca99dd036cbf366140a"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "update profile",
-                    "request": {
-                        "method": "PUT",
-                        "url": {
-                            "raw": "/user",
-                            "host": [
-                                "user"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzIzY2UzNzk0MTVhZjc0Yzk2MDRhMyIsImlhdCI6MTY4NTIyNjAxMSwiZXhwIjoxNjg1MjQ0MDExfQ.CAiZcnDOWp_H6uMLMET32RQ_ty1bt7A6KD6fvOrX0bI"
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": [
-                                {
-                                    "key": "firstName",
-                                    "value": "george"
-                                },
-                                {
-                                    "key": "lastName",
-                                    "value": "Abadier"
-                                },
-                                {
-                                    "key": "mobileNumber",
-                                    "value": "1202865143"
-                                },
-                                {
-                                    "key": "countryCallingCode",
-                                    "value": "+20",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "email",
-                                    "value": "asds@gmail.com"
-                                },
-                                {
-                                    "key": "oldPassword",
-                                    "value": "12345"
-                                },
-                                {
-                                    "key": "password",
-                                    "value": "12345",
-                                    "disabled": true
                                 }
                             ]
                         }
