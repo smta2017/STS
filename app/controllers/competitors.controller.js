@@ -48,7 +48,7 @@ class Competitor{
        Helper.handlingMyFunction(req,res,async (req)=>{
         const competitor=await Helper.isThisIdExistInThisModel(req.params.competitorId,null,competitorModel,'competitor')
          for (let field in req.body) {
-            if(field=='mobileNumber'){
+            if(field=='mobileNumber'&&req.body[field]){
                 if(req.body.countryCallingCode){
                     competitor[field]=countryCodeslist[req.body.countryCallingCode.substring(1)] + ":" + req.body.countryCallingCode + req.body.mobileNumber
                 }else{
@@ -57,7 +57,7 @@ class Competitor{
                 throw e
                 }
             }
-            if(!['gender','category','mobileNumber'].includes(field)){competitor[field] = req.body[field]}
+            if(!['gender','category','mobileNumber'].includes(field)&&req.body[field]){competitor[field] = req.body[field]}
         }
         if(true){return competitor.save()}
        },'competitor was edited successfully')

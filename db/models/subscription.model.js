@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const competitorModel = require('./competitor.model')
 
 const SubscriptionSchema = mongoose.Schema({
 competition:{
@@ -60,3 +59,4 @@ SubscriptionSchema.methods.deleteMe=async function(type){
 const subscriptionModel = mongoose.model('subscriptions', SubscriptionSchema)
 module.exports = subscriptionModel
 var entryModel = require('./entry.model')
+var competitorModel = require('./competitor.model')

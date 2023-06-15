@@ -73,13 +73,18 @@ class Entry {
         Helper.handlingMyFunction(req, res, async (req) => {
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
-            let projection=null
+            let projection = null
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/schedual/:subscriptionId') {
-                projection=[subscription.competition.type+'ShowDate','name',subscription.competition.type+'Subscription']
-                filter[subscription.competition.type+'ShowDate']={$nin:[null,'']}
+                projection = [subscription.competition.type + 'ShowDate', 'name', subscription.competition.type + 'Subscription']
+                filter[subscription.competition.type + 'ShowDate'] = { $nin: [null, ''] }
             }
-            if (true) { return entryModel.find(filter,projection).populate({path:subscription.competition.type+'Subscription',populate:{path:'academy',populate:'academyDetails'}}) }
+            if(!projection||projection.includes('competitors')){
+                return  entryModel.find(filter, projection).populate({ path: subscription.competition.type + 'Subscription', populate: { path: 'academy', populate: 'academyDetails' } }).populate('competitors')
+            }else{
+                return  entryModel.find(filter, projection).populate({ path: subscription.competition.type + 'Subscription', populate: { path: 'academy', populate: 'academyDetails' } })
+            }
+           
         }, 'there is all your recorded entries for this competition')
     }
     static allentriesByCategory = (req, res) => {
@@ -88,7 +93,7 @@ class Entry {
             const filter = {}
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
             filter.competitorsCategories = req.params.category
-            if (true) { return entryModel.find(filter) }
+            if (true) { return entryModel.find(filter).populate('competitors') }
         }, 'there is all your recorded entries for this competition')
     }
     static delete = (req, res) => {
@@ -129,7 +134,7 @@ class Entry {
                             oldMusic = entry.music
                         }
                         for (let field in req.body) {
-                            entry[field] = req.body[field]
+                            if (!['_id', 'qualifierSubscription', 'totalFees', 'finalSubscription', 'category', 'passedQualifiers', 'competitorsCategories'].includes(field) && req.body[field]) { entry[field] = req.body[field] }
                         }
                         const result = await entry.save()
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + oldMusic)) && req.file) {
@@ -162,26 +167,27 @@ class Entry {
             const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
             const filter = {}
             filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
-            let projection=null
+            let projection = null
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeschedule/:compId') {
-                projection = [allCompetitonSubscripetition[0].competition.type+'ShowDate',allCompetitonSubscripetition[0].competition.type+'Subscription','name']
-                if(req.user.role.toString()=='6480d5701c02f26cd6668987'/*academy role id */){filter[allCompetitonSubscripetition[0].competition.type + 'ShowDate']= { $nin: [ null, "" ] }}
-            }else if(req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeresult/:compId'){
-              if(['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role.toString())) { /*refree roles ids */
-                await req.user.populate('role')
-                console.log(allCompetitonSubscripetition[0].competition.type+req.user.role.role)
-                projection=[allCompetitonSubscripetition[0].competition.type+req.user.role.role,allCompetitonSubscripetition[0].competition.type+'Subscription','name']
-                filter[allCompetitonSubscripetition[0].competition.type+req.user.role.role]={ $exists:false }
-               }else{
-                projection=[allCompetitonSubscripetition[0].competition.type+'Refree1',allCompetitonSubscripetition[0].competition.type+'Refree2',allCompetitonSubscripetition[0].competition.type+'Refree3',allCompetitonSubscripetition[0].competition.type+'Subscription','name']
-               }
+                projection = [allCompetitonSubscripetition[0].competition.type + 'ShowDate', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
+                if (req.user.role.toString() == '6480d5701c02f26cd6668987'/*academy role id */) { filter[allCompetitonSubscripetition[0].competition.type + 'ShowDate'] = { $nin: [null, ""] } }
+            } else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeresult/:compId') {
+                if (['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role.toString())) { /*refree roles ids */
+                    await req.user.populate('role')
+                    console.log(allCompetitonSubscripetition[0].competition.type + req.user.role.role)
+                    projection = [allCompetitonSubscripetition[0].competition.type + req.user.role.role, allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
+                    filter[allCompetitonSubscripetition[0].competition.type + req.user.role.role] = { $exists: false }
+                } else {
+                    projection = [allCompetitonSubscripetition[0].competition.type + 'Refree1', allCompetitonSubscripetition[0].competition.type + 'Refree2', allCompetitonSubscripetition[0].competition.type + 'Refree3', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
+                }
             }
-            if (true) { return entryModel.find(filter,projection).populate({path:allCompetitonSubscripetition[0].competition.type+'Subscription',projection:['academy'],populate:{path:'academy'}}) }
+            if (!projection||projection.includes('competitors')) { 
+                return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', projection: ['academy'], populate: { path: 'academy' } }).populate('competitors') 
+            }else{
+                return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', projection: ['academy'], populate: { path: 'academy' } }) 
+            }
         }, 'there are all this competition entries')
     }
-    // static addShowDate=()=>{
-    //     Helper.handlingMyFunction(req,res,(req)=>{},message)
-    // }
     static addAdminData = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
             await req.user.populate('role')
@@ -198,7 +204,7 @@ class Entry {
                 console.log(req.body)
                 for (let field in req.body) {
                     console.log(type + field)
-                    entry[type + field] = req.body[field]
+                    if (!['_id', 'qualifierSubscription', 'totalFees', 'finalSubscription', 'category', 'passedQualifiers', 'competitorsCategories'].includes(field) && req.body[field]) { entry[type + field] = req.body[field] }
                 }
             }
 
