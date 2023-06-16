@@ -1,4 +1,5 @@
 const domainName = "http://localhost:5000";
+
 const homeBeforeLoginTemplate = document.getElementById(
   "homeBeforeLogin-template"
 ).innerHTML;
@@ -162,14 +163,14 @@ function renderContent(content, tagId) {
 
 function load_js(path) {
   var script = document.createElement("script");
-  script.src = 'http://localhost:5000/STS-Frontend-Website/'+path;
+  script.src = `${domainName}/STS-Frontend-Website/${path}`;
   document.body.appendChild(script);
 }
 
 function load_css(path) {
   var style = document.createElement("link");
   style.rel = "stylesheet";
-  style.href = 'http://localhost:5000/STS-Frontend-Website/'+path;
+  style.href = `${domainName}/STS-Frontend-Website/${path}`;
   document.head.appendChild(style);
 }
 
@@ -194,6 +195,7 @@ const ruler = getCookie("ruler");
 
   if (token) {
     if (admin) {
+      
       // debugger
       renderContent(renderNavbar(), "body");
       load_css("admin/css/navbar.css");
@@ -509,16 +511,18 @@ function handleNavigationAdmin1() {
       // handleNavigationAdmin2();
       break;
     case "#news":
-      renderContent(renderNewsA(), "content");
-      load_js("admin/js/navbar/news.js");
-      load_css("css/insideContent.css");
-      // changeTheme(themeObj);
+      if(document.querySelector('#content').innerHTML==''){
+        renderContent(renderNewsA(), "content");
+        load_js("admin/js/navbar/news.js");
+        load_css("css/insideContent.css");
+      }
       break;
     case "#sponser":
-      renderContent(renderSponsersA(), "content");
-      load_js("admin/js/navbar/sponsers.js");
-      load_css("css/insideContent.css");
-      // changeTheme(themeObj);
+      if(document.querySelector('#content').innerHTML==''){
+        renderContent(renderSponsersA(), "content");
+        load_js("admin/js/navbar/sponsers.js");
+        load_css("css/insideContent.css");
+      }
       break;
     case "#country":
       renderContent(renderCountriesA(), "content");
@@ -536,10 +540,11 @@ function handleNavigationAdmin1() {
       // changeTheme(themeObj);
       break;
     case "#adventiser":
-      renderContent(renderAdventisersA(), "content");
-      load_js("admin/js/navbar/adventisers.js");
-      load_css("css/insideContent.css");
-      // changeTheme(themeObj);
+      if(document.querySelector('#content').innerHTML==''){
+        renderContent(renderAdventisersA(), "content");
+        load_js("admin/js/navbar/adventisers.js");
+        load_css("css/insideContent.css");
+      }
       break;
     case "#addAdmin":
       // renderContent(renderFullStatement(),"content");

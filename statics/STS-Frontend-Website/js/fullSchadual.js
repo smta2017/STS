@@ -1,14 +1,19 @@
-var headers = new Headers();
-var token = localStorage.getItem("token");
-headers.append("Authorization", token);
-headers.append("Content-Type", "application/json");
-
+function getCookie(name) {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : null;
+  }
+  
+var headers = new Headers(); 
+var token = getCookie("token");
+headers.append('Authorization', token); 
+headers.append('Content-Type', "application/json");
+  
 changeTheme(themesCharctaristic[localStorage.getItem("theme")]);
 var fullSchadualData;
 
 function getfullSchadualData() {
     var fullSchadualContainer = document.getElementById("fullSchadual-table");
-    var id = localStorage.getItem("competition");
+    var id = getCookie('subscriptionId');
     // var theme = `${domainName}/sts/entry/completeschedule/${id}`;
 
     fetch(`${domainName}/sts/entry/completeschedule/${id}`, {

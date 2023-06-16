@@ -92,13 +92,13 @@ function getCompetitorsData() {
   var theme = `${domainName}/sts/competitor/${id}`
 
   if(colorCode == "theme821919"){
-      color = "dancer"
+    color = "dancer";
   }else if (colorCode == "theme104b28"){
-    color = "musician"
+    color = "musician";
   }else if (colorCode == "theme17547f"){
-    color = "singer"
+    color = "singer";
   }else if (colorCode == "themeNaN0f16"){
-    color = ""
+    color = "";
   }
   fetch(`${theme}/${color}`, {
     method: 'GET',
@@ -154,7 +154,7 @@ function changeCompetitor(e) {
 
   var compatatorsId = document.getElementById('compatatorsId').value;
   // Get the form values
-  var qualifierSubscription = localStorage.getItem('competition');
+  var qualifierSubscription = getCookie('subscriptionId');
   var firstName = document.getElementById('firstname').value;
   var lastName = document.getElementById('lastname').value;
   var category = document.getElementById('category').value;
@@ -176,7 +176,6 @@ function changeCompetitor(e) {
     email: email,
     gender: gender,
   };
-
 
   if (compatatorsId) {
     // Existing competitor, send PUT request
