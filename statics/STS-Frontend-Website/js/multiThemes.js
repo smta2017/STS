@@ -122,7 +122,7 @@ var themesCharctaristic = {
     socialMediaColor: '#821919',
     titleText: "DANCE IS THE HIDDEN LANGUAGE OF THE SOUL.",
     subtitleText: "Let's dance!",
-    headImgSrc: `${domainName}/STS-Frontend-Website/images/WhatsApp Image 2023-05-21 at 21.28.01.jpeg`,
+    headImgSrc: `${domainName}/images/WhatsApp Image 2023-05-21 at 21.28.01.jpeg`,
     compatatorsNameText: "Dancers List",
     fullStatementNameText: "Full Statement for Dancers",
     summaryStatementNameText: "Summary Statement for Dancers"
@@ -133,7 +133,7 @@ var themesCharctaristic = {
     socialMediaColor: '#104B28',
     titleText: "ART ISN'T WHAT YOU SEE, BUT WHAT YOU MAKE OTHERS SEE.",
     subtitleText: "Let's Music!",
-    headImgSrc: `${domainName}/STS-Frontend-Website/images/WhatsApp Image 2023-05-21 at 21.27.53.jpeg`,
+    headImgSrc: `${domainName}/images/WhatsApp Image 2023-05-21 at 21.27.53.jpeg`,
     compatatorsNameText: "Musicans List",
     fullStatementNameText: "Full Statement for Musicans",
     summaryStatementNameText: "Summary Statement for Musicans"
@@ -144,7 +144,7 @@ var themesCharctaristic = {
     socialMediaColor: '#17547F',
     titleText: "MUSIC IN THE SOUL CAN BE HEARD BY THE UNIVERSE.",
     subtitleText: "Let's Sing!",
-    headImgSrc: `${domainName}/STS-Frontend-Website/images/WhatsApp Image 2023-05-21 at 21.28.08.jpeg`,
+    headImgSrc: `${domainName}/images/WhatsApp Image 2023-05-21 at 21.28.08.jpeg`,
     compatatorsNameText: "Singers List",
     fullStatementNameText: "Full Statement for Singers",
     summaryStatementNameText: "Summary Statement for Singers"
@@ -155,7 +155,7 @@ var themesCharctaristic = {
     socialMediaColor: '#110f16fa',
     titleText: "SPECIAL TALENT STARS. DANCERS, SINGERS AND MUSICIANS",
     subtitleText: "Let's share with us!",
-    headImgSrc: `${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png`,
+    headImgSrc: `${domainName}/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png`,
     compatatorsNameText: "List of all Compatators",
     fullStatementNameText: "Full Statement",
     summaryStatementNameText: "Summary Statement"

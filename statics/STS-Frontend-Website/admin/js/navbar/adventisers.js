@@ -200,7 +200,7 @@ function showAdventisersDetails(id) {
             const element = document.createElement('div');
             element.innerHTML = `
                             <div class="profile-page mb-3" id="news_${adventisersD._id}">
-                                <div class="page-header" data-parallax="true" style="background-image:url('${domainName}/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
+                                <div class="page-header" data-parallax="true" style="background-image:url('${domainName}/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
                                     <div class="main main-raised">
                                         <div class="profile-content">
                                             <div class="container">
@@ -208,7 +208,7 @@ function showAdventisersDetails(id) {
                                                     <div class="col-12 ml-auto mr-auto">
                                                         <div class="profile">
                                                             <div class="avatar">
-                                                                <img src='${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                                                <img src='${domainName}/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                                             </div>
                                                             <div class="name">
                                                                 <h3 class="title text-dark" id="title">${adventisersD.title}</h3>
