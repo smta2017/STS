@@ -52,7 +52,7 @@ function getCookie(name) {
             const element = document.createElement('tr');
             element.innerHTML = `
                 <td>
-                    <a id="${competitor._id}" onclick="compatatorsAS(event)" class="text-light " >
+                    <a id="${competitor._id}" onclick="compatatorsAS(event)" class="text-light " style="cursor:pointer">
                         <i class="fas fa-home"></i>
                     </a>
                 </td>
