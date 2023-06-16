@@ -4,11 +4,9 @@ var fromApiBody;
 
 // create a cookie with expiration time of 1 hour
 function setCookie(name, value, hours) {
-    debugger
     const d = new Date();
     d.setTime(d.getTime() + (hours * 60 * 60 * 1000)); // expires after specified number of hours
     const expires = "expires="+ d.toUTCString();
-    console.log( name + "=" + value + ";" + expires)
     document.cookie = name + "=" + value + ";" + expires ;
 }
 
@@ -67,8 +65,6 @@ document.getElementById("formToLogin").addEventListener("submit", function (e) {
         .then(response => response.json())
         .then(data => {
             responseAlert(data)
-            debugger
-                console.log(setCookie)
             if(data.data.isAdmin){
                 setCookie('token', data.data.token, 1); // expires after 1 hour
                 setCookie('admin', "true", 1); // expires after 1 hour
