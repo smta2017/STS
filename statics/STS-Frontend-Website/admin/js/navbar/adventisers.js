@@ -68,7 +68,7 @@ function getAdventisersData() {
                                 <button class="btn btn-success" id="add-row" onclick="editAdventisers('${adventisers._id}')">
                                     <i class="edit-btn fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <a onclick="getAdventisersDetails('${adventisers._id}')" class="btn btn-warning btn-lg action-button login" type="button" >
+                                <a onclick="showAdventisersDetails('${adventisers._id}')" class="btn btn-warning btn-lg action-button login" type="button" >
                                     Know More<i class="fa fa-long-arrow-right ml-2"></i>
                                 </a>
                                 <button class="btn btn-danger" id="remove-row" onclick="deleteAdventisers('${adventisers._id}')">
@@ -191,9 +191,9 @@ function deleteAdventisers(id) {
 }
 
 
-function getAdventisersDetails(id) {
+function showAdventisersDetails(id) {
     if (id) {
-        window.location.hash = "#knowMore";
+        // window.location.hash = "#knowMore";
         const adventisersD = adventisersData.find(adventiserss => { return adventiserss._id == id });
         if (adventisersD) {
             const adventisersContainer = document.getElementById("content");
@@ -201,7 +201,7 @@ function getAdventisersDetails(id) {
             const element = document.createElement('div');
             element.innerHTML = `
                             <div class="profile-page mb-3" id="news_${adventisersD._id}">
-                                <div class="page-header" data-parallax="true" style="background-image:url('http://localhost:5000/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
+                                <div class="page-header" data-parallax="true" style="background-image:url('${domainName}/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
                                     <div class="main main-raised">
                                         <div class="profile-content">
                                             <div class="container">
@@ -209,7 +209,7 @@ function getAdventisersDetails(id) {
                                                     <div class="col-12 ml-auto mr-auto">
                                                         <div class="profile">
                                                             <div class="avatar">
-                                                                <img src="http://localhost:5000/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                                                <img src='${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                                             </div>
                                                             <div class="name">
                                                                 <h3 class="title text-dark" id="title">${adventisersD.title}</h3>

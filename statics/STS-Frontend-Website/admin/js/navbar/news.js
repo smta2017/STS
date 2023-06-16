@@ -113,7 +113,7 @@ function changeNews(e) {
     formData.append('title', document.getElementById("TitleForNews").value);
     formData.append('description', document.getElementById("descrebtionForNews").value);
     formData.append('paragraph', document.getElementById("paragraphForNews").value);
-    formData.append('photo', document.getElementById("uploadImgForNews").files[0]);
+    formData.append('photo', document.getElementById("uploadImgForNews").files[0]? document.getElementById("uploadImgForNews").value : undefined);
     if (id) {
         try {
             fetch(`${domainName}/sts/news/${id}`, {
@@ -188,17 +188,17 @@ function deleteNews(id) {
 }
 
 
-function getNewsDetails(id) {
+function showNewsDetails(id) {
     if (id) {
         const newsD = newsData.find(newss => { return newss._id == id });
         if (newsD) {
-            window.location.hash = "#knowMore";
+            // window.location.hash = "#knowMore";
             const newsContainer = document.getElementById("content");
             newsContainer.innerHTML = "";
             const element = document.createElement('div');
             element.innerHTML = `
                             <div class="profile-page mb-3" id="news_${newsD._id}">
-                                <div class="page-header" data-parallax="true" style="background-image:url('http://localhost:5000/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
+                                <div class="page-header" data-parallax="true" style="background-image:url('${domainName}/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
                                     <div class="main main-raised">
                                         <div class="profile-content">
                                             <div class="container">
@@ -206,7 +206,7 @@ function getNewsDetails(id) {
                                                     <div class="col-12 ml-auto mr-auto">
                                                         <div class="profile">
                                                             <div class="avatar">
-                                                                <img src="http://localhost:5000/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                                                <img src='${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                                             </div>
                                                             <div class="name">
                                                                 <h3 class="title text-dark" id="title">${newsD.title}</h3>

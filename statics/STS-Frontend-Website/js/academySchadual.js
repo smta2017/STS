@@ -1,14 +1,19 @@
+function getCookie(name) {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : null;
+  }
+  
 var headers = new Headers(); 
-var token = localStorage.getItem('token'); 
+var token = getCookie("token");
 headers.append('Authorization', token); 
 headers.append('Content-Type', "application/json");
-
+  
 changeTheme(themesCharctaristic[localStorage.getItem("theme")]);
 var academySchadualData;
 
 function getacademySchadualData() {
     var academySchadualContainer = document.getElementById("academySchadual-table");
-    var id = localStorage.getItem("competition");
+    var id = getCookie('subscriptionId');
     // var theme = `${domainName}/sts/entry/schedual/${id}`;
 
     fetch(`${domainName}/sts/entry/schedual/${id}`, {
