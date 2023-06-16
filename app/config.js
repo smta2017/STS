@@ -8,7 +8,7 @@ app.use(express.json({limit:'200mb'}))
 app.use(express.urlencoded({extended:true,limit:'200mb'}))
 app.use(express.static(path.join(__dirname,'../statics')))
 //routes
-app.get('/sts',(req,res)=>{
+app.get('/',(req,res)=>{
     res.status(200).sendFile(path.join(__dirname,'../statics/STS-Frontend-Website/STS Website.html'))
 })
 const userRoutes=require('../routes/user.routes')

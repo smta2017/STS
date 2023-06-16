@@ -4,12 +4,12 @@ function getCookie(name) {
   return cookieValue ? cookieValue.pop() : null;
 }
 
-var headers = new Headers(); 
-var token = getCookie('token'); 
-headers.append('Authorization', token); 
+var headers = new Headers();
+var token = getCookie('token');
+headers.append('Authorization', token);
 // headers.append('Content-Type', "application/json");
 
-document.getElementById('generate-pdf').addEventListener('click', function() {
+document.getElementById('generate-pdf').addEventListener('click', function () {
   // Get the HTML table element
   var table = document.getElementById('entry-table');
   // Create a new jsPDF object
@@ -17,22 +17,22 @@ document.getElementById('generate-pdf').addEventListener('click', function() {
 
   // Set the desired styles for the PDF
   var pdfStyles = {
-      headerColor: [41, 128, 185], // Header color (RGB format)
-      fontColor: [255, 255, 255], // Font color (RGB format)
-      lineColor: [230, 230, 230], // Line separator color (RGB format)
-      fontSize: 12, // Font size
-      fontStyle: 'bold', // Font style ('normal', 'bold', 'italic', 'bolditalic')
-      padding: 8 // Padding between cells
+    headerColor: [41, 128, 185], // Header color (RGB format)
+    fontColor: [255, 255, 255], // Font color (RGB format)
+    lineColor: [230, 230, 230], // Line separator color (RGB format)
+    fontSize: 12, // Font size
+    fontStyle: 'bold', // Font style ('normal', 'bold', 'italic', 'bolditalic')
+    padding: 8 // Padding between cells
   };
 
   // Generate the PDF with the table content
   pdf.autoTable({
-      html: table,
-      startY: 20, // Y position of the table
-      styles: pdfStyles,
-      headStyles: { fillColor: pdfStyles.headerColor, textColor: pdfStyles.fontColor },
-      bodyStyles: { textColor: pdfStyles.fontColor },
-      alternateRowStyles: { fillColor: pdfStyles.lineColor }
+    html: table,
+    startY: 20, // Y position of the table
+    styles: pdfStyles,
+    headStyles: { fillColor: pdfStyles.headerColor, textColor: pdfStyles.fontColor },
+    bodyStyles: { textColor: pdfStyles.fontColor },
+    alternateRowStyles: { fillColor: pdfStyles.lineColor }
   });
 
   // Download the PDF file
@@ -52,15 +52,15 @@ function getEntriesData() {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       entriesData = data.data;
       entriesContainer.innerHTML = "";
-      data.data.forEach(entry=> {
-        console.log(entry.competitors);
+      data.data.forEach(entry => {
+        const competitorList=entry.competitors.map(competitor=>competitor._id)
+        console.log(competitorList)
         const element = document.createElement('section');
-        element.id= "entersU";
-        element.className= "pb-5";
-        element.innerHTML = `
+        element.id = "entersU";
+        element.className = "pb-5";
+        let competitorsTable = `
             <div class="container">
               <div class="row">
                 <div class="panel my-4">
@@ -70,13 +70,13 @@ function getEntriesData() {
                         <h4 class="title col-3" id="nameEntry">${entry.name}</h4>
                         <div class="col-5 text-center">
                           <div class="btn_group">
-                            <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#AddCompatatorToEntry" onclick="getCompetitorsName('${entry._id}','${entry.competitors}')">Add Compatators</button>
+                            <button class="btn btn-light"  data-bs-toggle="modal" data-bs-target="#AddCompatatorToEntry" onclick='getCompetitorsName("${entry._id}","${competitorList}")'>Add Compatators</button>
                           </div>
                         </div>
                         <div class="title col-4 text-end">
                           <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddCompatator" onclick="editEntry('${entry._id}')"></i>
                           <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteEntry('${entry._id}')"></i>
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" ><i class="fa fa-file-pdf"></i></button>
                         </div>
                       </div>
                       <div class="row mt-2">
@@ -100,9 +100,11 @@ function getEntriesData() {
                         </tr>
                       </thead>
 
-                      <tbody id="table-body-entriesU">
-                        
-                      </tbody>
+                      <tbody id="table-body-entriesU">`
+        entry.competitors.forEach(competitor=>{
+          competitorsTable+=`<tr><td>${competitor.firstName}${competitor.lastName}</td><td>${competitor.category}</td><td><i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick=></i></td></tr>`
+        })
+        competitorsTable+= ` </tbody>
                     </table>
                   </div>
                 </div>
@@ -120,7 +122,7 @@ function getEntriesData() {
                   <div class="modal-body">
                     <form id="add-CompatatorsToEntry-form" class="row g-3" return false;">
                       <div class="col-12"> 
-                        <label for="CompatatorsNames">Add Compatators Names to Entry:</label> 
+                        <label >Add Compatators Names to Entry:</label> 
                         <div id="name_list">
                           <!-- Names will be added here --> 
                           
@@ -135,8 +137,9 @@ function getEntriesData() {
               </div>
             </div>
         `;
+        element.innerHTML+= competitorsTable
         element.setAttribute('id', `entry-${entry._id}`);
-        entriesContainer.appendChild(element);        
+        entriesContainer.appendChild(element);
       });
     })
     .catch(error => console.log(error));
@@ -147,8 +150,7 @@ getEntriesData();
 document.getElementById("uMusic").addEventListener("change", handleFiles, false);
 
 function handleFiles(event) {
-  console.log(event.target.files[0]);
-  
+
   var files = event.target.files;
   document.getElementById("audio").src = URL.createObjectURL(files[0]);
   document.getElementById("audioPlayer").load();
@@ -156,10 +158,7 @@ function handleFiles(event) {
 }
 
 function editEntry(id) {
-  console.log(id);
-  console.log("edit");
   var entry = entriesData.find(entry => entry._id == id);
-  console.log(entry);
   // console.log(entry._id);
   document.getElementById("entriesId").value = id;
   document.getElementById('entryname').value = entry.name;
@@ -170,7 +169,6 @@ function changeEntry(e) {
   e.preventDefault(); // Prevent the default form submission
 
   var entriesId = document.getElementById('entriesId').value;
-  console.log(entriesId);
 
   // Get the form values
   const formData = new FormData();
@@ -186,12 +184,8 @@ function changeEntry(e) {
       body: formData
     })
       .then(response => response.json())
-      .then(response => {  
-        console.log(response);
-        console.log(response.data.result._id);
-        if (response.apiStatus == true ) {
-          console.log('Entry updated successfully');
-
+      .then(response => {
+        if (response.apiStatus == true) {
           document.getElementById('entriesId').value = '';
           document.getElementById('entryname').value = '';
           document.getElementById('uMusic').value = '';
@@ -211,11 +205,8 @@ function changeEntry(e) {
       headers: headers,
       body: formData
     })
-      .then(response => {  
-        console.log(response);
+      .then(response => {
         if (response.ok) {
-          console.log(response);
-          console.log('Entry added successfully');
 
           document.getElementById('entriesId').value = '';
           document.getElementById('entryname').value = '';
@@ -248,7 +239,7 @@ function changeEntry(e) {
             // };
 
             const playButton = audioPlayer.parentElement.querySelector('.play-btn');
-            playButton.addEventListener('click', function() {
+            playButton.addEventListener('click', function () {
               audioPlayer.play();
             });
           });
@@ -263,41 +254,41 @@ function changeEntry(e) {
 }
 
 function deleteEntry(id) {
-    if (id) {
-        try {
-            fetch(`${domainName}/sts/entry/${id}`, {
-                method: 'DELETE',
-                headers: headers
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log("Entry data deleted successfully");
-                        getEntriesData();
-                    } else {
-                        throw new Error('Request failed.');
-                    }
-                })
-                .catch(error => console.error(error));
-        } catch (error) {
-            console.log(error);
-        }
-    } else {
-        console.log("No Competitors ID provided");
+  if (id) {
+    try {
+      fetch(`${domainName}/sts/entry/${id}`, {
+        method: 'DELETE',
+        headers: headers
+      })
+        .then(response => {
+          if (response.ok) {
+            getEntriesData();
+          } else {
+            throw new Error('Request failed.');
+          }
+        })
+        .catch(error => console.error(error));
+    } catch (error) {
+      console.log(error);
     }
+  } else {
+  }
 }
 
 
-function getCompetitorsName(entriesID,competitors) {
+function getCompetitorsName(entriesID, competitors) {
   // e.preventDefault(); // Prevent the default form submission
 
   // var entriesID = document.getElementById('entriesId').value;
-  console.log(competitors);  console.log(entriesID); 
-
+console.log(typeof competitors)
+competitors=competitors.split(',')
+console.log(competitors)
+    // competitors=competitors.map(competitor=>competitor._id)
   var id = getCookie("subscriptionId");
   // console.log(id); 
 
   var competitorsContainer = document.getElementById("name_list");
- 
+
   headers.append('Content-Type', "application/json");
 
   // Existing competitor, send PUT request
@@ -308,10 +299,12 @@ function getCompetitorsName(entriesID,competitors) {
     .then(response => response.json())
     .then(data => {
       let competitorsData = data.data;
-      competitorsData=competitorsData.filter(comp=>!competitors.includes(comp._id))
+      console.log(competitorsData)
+      console.log(competitors)
+      competitorsData = competitorsData.filter(comp => !competitors.includes(comp._id))
+      console.log(competitorsData)
       competitorsContainer.innerHTML = "";
-      competitorsData.forEach(competitor=> {
-        console.log(competitor._id); 
+      competitorsData.forEach(competitor => {
         const element = document.createElement('table');
         element.innerHTML = `
           <tr class="text-dark">
@@ -330,9 +323,7 @@ function getCompetitorsName(entriesID,competitors) {
 
 
 function add_editCompatatorsToEntry(compatatorID, entriesID) {
-  console.log(compatatorID);
-  console.log(entriesID);
-  var competitors_Category = document.getElementById("table-body-entriesU");
+  // var competitors_Category = document.getElementById("table-body-entriesU");
 
   fetch(`${domainName}/sts/entry/${entriesID}/${compatatorID}`, {
     method: 'PUT',
@@ -340,11 +331,7 @@ function add_editCompatatorsToEntry(compatatorID, entriesID) {
   })
     .then(response => response.json())
     .then(response => {
-      console.log(response);
       if (response.apiStatus === true) {
-        console.log('Entry updated successfully');
-        console.log(response.data.competitors);
-        console.log(response.data.competitorsCategories);
 
         const existingRow = document.getElementById(response.data._id);
         if (existingRow) {
@@ -379,7 +366,7 @@ function add_editCompatatorsToEntry(compatatorID, entriesID) {
             </td>
           `;
 
-          competitors_Category.appendChild(element);
+          // competitors_Category.appendChild(element);
         }
 
         getEntriesData();
