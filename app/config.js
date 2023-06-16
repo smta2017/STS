@@ -8,9 +8,9 @@ app.use(express.json({limit:'200mb'}))
 app.use(express.urlencoded({extended:true,limit:'200mb'}))
 app.use(express.static(path.join(__dirname,'../statics')))
 //routes
-app.use(express.static(path.join(__dirname,'../statics/STS-Frontend-Website',)))
+// app.use(express.static(path.join(__dirname,'../statics/STS-Frontend-Website',)))
 app.get('/',(req,res)=>{
-    // res.status(200).sendFile(path.join(__dirname,'../statics/STS-Frontend-Website/STS Website.html'))
+    res.status(200).sendFile(path.join(__dirname,'../statics/STS-Frontend-Website/index.html'))
 })
 const userRoutes=require('../routes/user.routes')
 const countryRoutes=require('../routes/country.routes')

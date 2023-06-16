@@ -163,14 +163,14 @@ function renderContent(content, tagId) {
 
 function load_js(path) {
   var script = document.createElement("script");
-  script.src = `${domainName}/${path}`;
+  script.src = `${domainName}/STS-Frontend-Website/${path}`;
   document.body.appendChild(script);
 }
 
 function load_css(path) {
   var style = document.createElement("link");
   style.rel = "stylesheet";
-  style.href = `${domainName}/${path}`;
+  style.href = `${domainName}/STS-Frontend-Website/${path}`;
   document.head.appendChild(style);
 }
 

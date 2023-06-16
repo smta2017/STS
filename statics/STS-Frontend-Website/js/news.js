@@ -68,7 +68,7 @@ function showNewsDetails(id) {
       const element = document.createElement("div");
       element.innerHTML = `
                             <div class="profile-page" id="news_${showNewsD._id}">
-                                <div class="page-header" data-parallax="true" style="background-image:url('${domainName}/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
+                                <div class="page-header" data-parallax="true" style="background-image:url('${domainName}/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
                                     <div class="main main-raised">
                                         <div class="profile-content">
                                             <div class="container">
@@ -77,7 +77,7 @@ function showNewsDetails(id) {
                                                     
                                                         <div class="profile p-0">
                                                             <div class="avatar pb-1">
-                                                                <img src='${domainName}/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                                                <img src='${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                                             </div>
                                                         </div>
 
