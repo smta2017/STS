@@ -1,4 +1,4 @@
-const domainName = "http://localhost:5000";
+const domainName = "https://sts-5s7p.onrender.com";
 
 const homeBeforeLoginTemplate = document.getElementById(
   "homeBeforeLogin-template"
