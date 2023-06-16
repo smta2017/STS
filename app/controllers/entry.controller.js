@@ -73,18 +73,20 @@ class Entry {
         Helper.handlingMyFunction(req, res, async (req) => {
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
-            let projection = null
+            let projection = ['name', 'music', 'competitors', 'category']
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/schedual/:subscriptionId') {
-                projection = [subscription.competition.type + 'ShowDate', 'name', subscription.competition.type + 'Subscription']
+                projection = [subscription.competition.type + 'ShowDate', 'name']
                 filter[subscription.competition.type + 'ShowDate'] = { $nin: [null, ''] }
+            } else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/statment/:subscriptionId') {
+                projection = ['totalFees', 'name']
             }
-            if(!projection||projection.includes('competitors')){
-                return  entryModel.find(filter, projection).populate({ path: subscription.competition.type + 'Subscription', populate: { path: 'academy', populate: 'academyDetails' } }).populate('competitors')
-            }else{
-                return  entryModel.find(filter, projection).populate({ path: subscription.competition.type + 'Subscription', populate: { path: 'academy', populate: 'academyDetails' } })
+            if (!projection || projection.includes('competitors')) {
+                return entryModel.find(filter, projection)/*.populate({ path: subscription.competition.type + 'Subscription',select:['academy'], populate: { path: 'academy',select:['academyDetails'], populate: 'academyDetails' } })*/.populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] })
+            } else {
+                return entryModel.find(filter, projection)/*.populate({ path: subscription.competition.type + 'Subscription',select:['academy'], populate: { path: 'academy',select:['academyDetails'], populate: 'academyDetails' } })*/
             }
-           
+
         }, 'there is all your recorded entries for this competition')
     }
     static allentriesByCategory = (req, res) => {
@@ -93,7 +95,7 @@ class Entry {
             const filter = {}
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
             filter.competitorsCategories = req.params.category
-            if (true) { return entryModel.find(filter).populate('competitors') }
+            if (true) { return entryModel.find(filter, ['name', 'music', 'competitors', 'category']).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] }) }
         }, 'there is all your recorded entries for this competition')
     }
     static delete = (req, res) => {
@@ -167,7 +169,7 @@ class Entry {
             const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
             const filter = {}
             filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
-            let projection = null
+            // let projection = [allCompetitonSubscripetition[0].competition.type + 'Subscription','competitors','name','music','passedQualifiers','category']
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeschedule/:compId') {
                 projection = [allCompetitonSubscripetition[0].competition.type + 'ShowDate', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
                 if (req.user.role.toString() == '6480d5701c02f26cd6668987'/*academy role id */) { filter[allCompetitonSubscripetition[0].competition.type + 'ShowDate'] = { $nin: [null, ""] } }
@@ -181,10 +183,10 @@ class Entry {
                     projection = [allCompetitonSubscripetition[0].competition.type + 'Refree1', allCompetitonSubscripetition[0].competition.type + 'Refree2', allCompetitonSubscripetition[0].competition.type + 'Refree3', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
                 }
             }
-            if (!projection||projection.includes('competitors')) { 
-                return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', projection: ['academy'], populate: { path: 'academy' } }).populate('competitors') 
-            }else{
-                return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', projection: ['academy'], populate: { path: 'academy' } }) 
+            if (!projection || projection.includes('competitors')) {
+                return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } }).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] })
+            } else {
+                return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } })
             }
         }, 'there are all this competition entries')
     }
@@ -210,6 +212,28 @@ class Entry {
 
             if (true) { return entry.save() }
         }, 'you data added successfully')
+    }
+    static getFullStatments = (req, res) => {
+        Helper.handlingMyFunction(req, res, async (req) => {
+            const type = (await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
+            const filter = {}
+            filter[type + 'Subscription'] = req.params.subscriptionId
+            const entries = await entryModel.find(filter, ['name', type + 'Subscription','category']).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] }).populate({ path: type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } })
+            const fullStatment = []
+            await req.user.populate({ path: 'academyDetails', populate: { path: 'country' } })
+
+            entries.forEach(entry => {
+                entry.competitors.forEach(competitorDoc=>{
+                    const competitor=competitorDoc.toObject()
+                    competitor.entryName=entry.name
+                    const calCat=entry.category=='solo'?'solo':['due','trio'].includes(entry.category)?'duoOrTrio':'group'
+                    competitor.entryFees=req.user.academyDetails.country[calCat+competitor.category+'Fees']
+                    console.log(calCat,competitor.category)
+                    fullStatment.push(competitor)
+                })
+            })
+            if(true){return fullStatment}
+        }, 'there is all your recorded entries for this competition')
     }
 }
 module.exports = Entry
