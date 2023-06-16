@@ -10,7 +10,7 @@ class Country{
         Helper.handlingMyFunction(req,res,async(req)=>{
             const country=await Helper.isThisIdExistInThisModel(req.params.id,null,countryModel,'country')
             for (let field in req.body) {
-                country[field] = req.body[field]
+                if(!['_id','countryName'].includes(field)&&req.body[field]){country[field] = req.body[field]}
             }
             if(true){
                 return country.save()

@@ -13,39 +13,39 @@ const CountrySchema = mongoose.Schema({
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  soloDancerFees: {
+  solodancerFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  duoOrTrioDanceFees: {
+  duoOrTriodancerFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  groupDanceFees: {
+  groupdancerFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  soloSingerFees: {
+  solosingerFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  duoOrTrioSingingFees: {
+  duoOrTriosingerFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  groupSingingFees: {
+  groupsingerFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  soloMusicianFees: {
+  solomusicianFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  duoOrTrioMusicFees: {
+  duoOrTriomusicianFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   },
-  groupMusicFees: {
+  groupmusicianFees: {
     type: Number,
     required: [true, 'this fees is required to manage the Subscriber academy fees']
   }

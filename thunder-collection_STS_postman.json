@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "b5ff1924-fc19-485b-8a03-6a581817318b",
+        "_postman_id": "f5ce843c-1002-4ea6-9216-58567defab49",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -53,7 +53,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"academy\": {\n    \"schoolLocation\": {\n      \"blockNum\": \"hhhhh\",\n      \"street\": \"hhhh\",\n      \"cityOrTown\": \"hhhh\",\n      \"provinceOrState\": \"hhhhhh\",\n      \"postalCode\": \"11652\"\n    },\n    \"schoolName\": \"hhhhhhhhhhhh\",\n    \"country\": \"63e2346155257516346ae7cb\"\n  },\n  \"user\": {\n    \"role\": \"6480d5701c02f26cd6668987\",\n    \"firstName\": \"gogo\",\n    \"lastName\": \"Abad\",\n    \"mobileNumber\": \"1281533229\",\n    \"countryCallingCode\": \"+20\",\n    \"email\": \"joooll@gmail.com\",\n    \"password\": \"12345\"\n  },\n  \"oldPassword\":\"12345\"\n}"
+                            "raw": "{\n  \"academy\": {\n    \"schoolLocation\": {\n      \"blockNum\": \"hhhhh\",\n      \"street\": \"hhhh\",\n      \"cityOrTown\": \"hhhh\",\n      \"provinceOrState\": \"hhhhhh\",\n      \"postalCode\": \"11652\"\n    },\n    \"schoolName\": \"hhhhhhhhhhhh\",\n    \"country\": \"63e2346155257516346ae7cb\"\n  },\n  \"user\": {\n    \"role\": \"6480d5701c02f26cd6668987\",\n    \"firstName\": \"gogo\",\n    \"lastName\": \"Abad\",\n    \"mobileNumber\": \"1281533229\",\n    \"countryCallingCode\": \"+20\",\n    \"email\": null,\n    \"password\": \"12345\"\n  },\n  \"oldPassword\":\"12345\"\n}"
                         }
                     }
                 },
@@ -217,66 +217,47 @@
                                     "value": "299"
                                 },
                                 {
-                                    "key": "soloDancerFees",
+                                    "key": "solodancerFees",
                                     "value": "550"
                                 },
                                 {
-                                    "key": "duoOrTrioDanceFees",
+                                    "key": "duoOrTriodancerFees",
                                     "value": "450"
                                 },
                                 {
-                                    "key": "groupDanceFees",
+                                    "key": "groupdancerFees",
                                     "value": "350"
                                 },
                                 {
-                                    "key": "soloSingerFees",
+                                    "key": "solosingerFees",
                                     "value": "450"
                                 },
                                 {
-                                    "key": "duoOrTrioSingingFees",
+                                    "key": "duoOrTriosingerFees",
                                     "value": "400"
                                 },
                                 {
-                                    "key": "groupSingingFees",
+                                    "key": "groupsingerFees",
                                     "value": "600"
                                 },
                                 {
-                                    "key": "soloMusicianFees",
+                                    "key": "solomusicianFee",
                                     "value": "6554"
                                 },
                                 {
-                                    "key": "duoOrTrioMusicFees",
+                                    "key": "duoOrTriomusicianFees",
                                     "value": "7986"
                                 },
                                 {
-                                    "key": "groupMusicFees",
+                                    "key": "groupmusicianFees",
                                     "value": "658"
-                                },
-                                {
-                                    "key": "_id",
-                                    "value": "63e2346155257516346ae7cb"
                                 }
                             ]
                         }
                     }
                 },
                 {
-                    "name": "get all",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/country/all",
-                            "path": [
-                                "all"
-                            ],
-                            "host": [
-                                "country"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "update",
+                    "name": "edit",
                     "request": {
                         "method": "PUT",
                         "url": {
@@ -293,7 +274,7 @@
                             "urlencoded": [
                                 {
                                     "key": "countryName",
-                                    "value": "egypt"
+                                    "value": "USA"
                                 },
                                 {
                                     "key": "adminstrationFees",
@@ -304,41 +285,56 @@
                                     "value": "299"
                                 },
                                 {
-                                    "key": "soloDancerFees",
+                                    "key": "solodancerFees",
                                     "value": "550"
                                 },
                                 {
-                                    "key": "duoOrTrioDanceFees",
+                                    "key": "duoOrTriodancerFees",
                                     "value": "450"
                                 },
                                 {
-                                    "key": "groupDanceFees",
+                                    "key": "groupdancerFees",
                                     "value": "350"
                                 },
                                 {
-                                    "key": "soloSingerFees",
-                                    "value": "500"
+                                    "key": "solosingerFees",
+                                    "value": "450"
                                 },
                                 {
-                                    "key": "duoOrTrioSingingFees",
+                                    "key": "duoOrTriosingerFees",
                                     "value": "400"
                                 },
                                 {
-                                    "key": "groupSingingFees",
-                                    "value": "350"
+                                    "key": "groupsingerFees",
+                                    "value": "600"
                                 },
                                 {
-                                    "key": "soloMusicianFees",
-                                    "value": "500"
+                                    "key": "solomusicianFee",
+                                    "value": "6554"
                                 },
                                 {
-                                    "key": "duoOrTrioMusicFees",
-                                    "value": "400"
+                                    "key": "duoOrTriomusicianFees",
+                                    "value": "7986"
                                 },
                                 {
-                                    "key": "groupMusicFees",
-                                    "value": "350"
+                                    "key": "groupmusicianFees",
+                                    "value": "658"
                                 }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/country/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "country"
                             ]
                         }
                     }
@@ -1355,7 +1351,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"qualifierSubscription\":\"6488b5c2d89883c8aaccbe75\",\n  \"firstName\": \"george\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
+                            "raw": "{\n  \"qualifierSubscription\":\"64867a4fc6dab1e71dbd6fee\",\n  \"firstName\": \"ghhh\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"2018-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
                         }
                     }
                 },
@@ -1502,7 +1498,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
                             }
                         ]
                     }
@@ -1566,7 +1562,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
                             }
                         ]
                     }
@@ -1683,7 +1679,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4Njc3MzE5NSwiZXhwIjoxNjg2NzkxMTk1fQ.oNc_2xSatkabm_DS7anDh5n8D5h_eztgXLNtRWQoXFI"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
                             }
                         ]
                     }
@@ -1727,7 +1723,51 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get summary statement",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/mystatment/64867ab2c6dab1e71dbd7003",
+                            "path": [
+                                "mystatment",
+                                "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get full statment",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/fullstatment/64867ab2c6dab1e71dbd7003",
+                            "path": [
+                                "fullstatment",
+                                "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
                             }
                         ]
                     }

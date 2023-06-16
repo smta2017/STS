@@ -1,55 +1,75 @@
-const mongoose=require('mongoose')
-const moment=require('moment')
-const validator=require('validator')
-const CompetitorSchema=mongoose.Schema({
-    qualifierSubscription:{
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'subscriptions',
-        required:[true,'this competitor belong to which academy to competition subscription'],
-        trim:true,
-        immutable:true,
+const mongoose = require('mongoose')
+const moment = require('moment')
+const validator = require('validator')
+const CompetitorSchema = mongoose.Schema({
+    qualifierSubscription: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'subscriptions',
+        required: [true, 'this competitor belong to which academy to competition subscription'],
+        trim: true,
+        immutable: true,
     },
-    finalSubscription:{
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'subscriptions',
-        trim:true,
+    finalSubscription: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'subscriptions',
+        trim: true,
     },
-    firstName:{
-        type:String,
-        required:[true,'please enter the competitor name'],
-        trim:true,
+    firstName: {
+        type: String,
+        required: [true, 'please enter the competitor name'],
+        trim: true,
         minlength: 3,
         match: /^[a-zA-z]{3,}$/
     },
-    lastName:{
-        type:String,
-        required:[true,'please enter the competitor last name'],
-        trim:true,
+    lastName: {
+        type: String,
+        required: [true, 'please enter the competitor last name'],
+        trim: true,
         minlength: 3,
         match: /^[a-zA-z]{3,}$/
     },
-    category:{
-        type:String,
-        enum:['dancer','musician','singer'],
-        required:[true,'what is the category of this competitor'],
+    category: {
+        type: String,
+        enum: ['dancer', 'musician', 'singer'],
+        required: [true, 'what is the category of this competitor'],
         lowercase: true
     },
-    dateOfBirth:{
-        type:Date,
-        required:[true,'we need to know the competitor ']
-    },
-    rank:{
-        type:String,
-        // enum:[],
-        set:function(v){
-            if(this.dateOfBirth){
-                return 'notsetted'
+    dateOfBirth: {
+        type: Date,
+        required: [true, 'we need to know the competitor '],
+        validate:async function(){
+            const year = (await Helper.isThisIdExistInThisModel(this.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.year
+            const age = moment(year + '-06-01').diff(moment(this.dateOfBirth), 'years', true)
+            console.log(age)
+            if (age < 4) {
+                const e = new Error('this comprtitor is too young to take apart in this competition')
+                e.name = 'ValidationError'
+                throw e
+            } else if((this.category=='dancer'&&age>28)||age>45){
+                console.log('hhh')
+                    const e = new Error('this competition is for younger persons')
+                    e.name = 'ValidationError'
+                    throw e
             }
-            // if(){
-            //     return
-            // }else if(){
-            //     return
-            // }else{}
+        }
+    },
+    rank: {
+        type: String,
+        // enum:[],
+        set: function (year) {
+                
+                const age = moment(year + '-06-01').diff(moment(this.dateOfBirth), 'years', true)
+                if (age > 4 && age < 10) {
+                    return 'mini'
+                } else if (age >= 10 && age < 14) {
+                    return 'k'
+                } else if (age >= 14 && age < 18) {
+                    return 'j'
+                } else if ((age >= 18 && age < 28) || (age >= 28 && age < 45 && this.category != 'dancer')) {
+                    return 'sn'
+                } else {
+                    return'unknown'
+                }
         }
     },
     mobileNumber: {
@@ -81,13 +101,16 @@ const CompetitorSchema=mongoose.Schema({
         trim: true,
         lowercase: true
     },
-    passQualifier:{
+    passQualifier: {
         type: Boolean,
         default: false
     }
 })
-CompetitorSchema.pre('save', function () {
-    if (this.isDirectModified('dateOfBirth')) this.rank= ""
+CompetitorSchema.pre('save', async function () {
+    const year = (await Helper.isThisIdExistInThisModel(this.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.year
+    if (this.isDirectModified('dateOfBirth')) this.rank = year
 })
-const competitorModel=mongoose.model('competitors',CompetitorSchema)
-module.exports=competitorModel
+const competitorModel = mongoose.model('competitors', CompetitorSchema)
+module.exports = competitorModel
+var subscriptionModel = require('./subscription.model')
+const Helper = require('../../app/helper')
