@@ -78,7 +78,7 @@ class Entry {
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/schedual/:subscriptionId') {
                 projection = [subscription.competition.type + 'ShowDate', 'name']
                 filter[subscription.competition.type + 'ShowDate'] = { $nin: [null, ''] }
-            } else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/statment/:subscriptionId') {
+            } else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/mystatment/:subscriptionId') {
                 projection = ['totalFees', 'name']
             }
             if (!projection || projection.includes('competitors')) {
