@@ -113,7 +113,7 @@ function changeNews(e) {
     formData.append('title', document.getElementById("TitleForNews").value);
     formData.append('description', document.getElementById("descrebtionForNews").value);
     formData.append('paragraph', document.getElementById("paragraphForNews").value);
-    formData.append('photo', document.getElementById("uploadImgForNews").files[0]? document.getElementById("uploadImgForNews").value : undefined);
+    formData.append('photo', document.getElementById("uploadImgForNews").files[0]);
     if (id) {
         try {
             fetch(`${domainName}/sts/news/${id}`, {
@@ -192,7 +192,6 @@ function showNewsDetails(id) {
     if (id) {
         const newsD = newsData.find(newss => { return newss._id == id });
         if (newsD) {
-            // window.location.hash = "#knowMore";
             const newsContainer = document.getElementById("content");
             newsContainer.innerHTML = "";
             const element = document.createElement('div');

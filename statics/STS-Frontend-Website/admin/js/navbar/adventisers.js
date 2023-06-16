@@ -193,7 +193,6 @@ function deleteAdventisers(id) {
 
 function showAdventisersDetails(id) {
     if (id) {
-        // window.location.hash = "#knowMore";
         const adventisersD = adventisersData.find(adventiserss => { return adventiserss._id == id });
         if (adventisersD) {
             const adventisersContainer = document.getElementById("content");
