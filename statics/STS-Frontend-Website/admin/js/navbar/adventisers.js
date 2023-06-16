@@ -201,7 +201,7 @@ function getAdventisersDetails(id) {
             const element = document.createElement('div');
             element.innerHTML = `
                             <div class="profile-page mb-3" id="news_${adventisersD._id}">
-                                <div class="page-header" data-parallax="true" style="background-image:url('images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
+                                <div class="page-header" data-parallax="true" style="background-image:url('http://localhost:5000/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
                                     <div class="main main-raised">
                                         <div class="profile-content">
                                             <div class="container">
