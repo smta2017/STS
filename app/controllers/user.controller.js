@@ -7,6 +7,11 @@ const countryCodeslist = require('country-codes-list').customList('countryCallin
 class User {
    static academyRegistration = (req, res) => {
       Helper.handlingMyFunction(req, res, async (req) => {
+         if (!req.body.owner.countryCallingCode) {
+            const e = new Error('we need you country calling code with your phone number to complete this registeration')
+            e.name = 'ValidationError'
+            throw e
+         }
          const academy = await academyModel.create(req.body)
          req.body.owner.role = '6480d5701c02f26cd6668987'/*academy role id */
          req.body.owner.academyDetails = academy._id
@@ -45,9 +50,9 @@ class User {
    }
    static updateMyProfile = (req, res) => {
       Helper.handlingMyFunction(req, res, async (req) => {
-         const result={}
+         const result = {}
          await userModel.logIn({ email: req.user.email, password: req.body.oldPassword })
-        if(req.body.user&&Object.keys(req.body.user).length>0) {
+         if (req.body.user && Object.keys(req.body.user).length > 0) {
             if (req.body.user.mobileNumber) {
                if (req.body.user.countryCallingCode) {
                   req.body.user.mobileNumber = countryCodeslist[req.body.user.countryCallingCode.substring(1)] + ":" + req.body.user.countryCallingCode + req.body.user.mobileNumber
@@ -60,14 +65,14 @@ class User {
             for (let field in req.body.user) {
                if (!['suspended', 'role', 'academyDetails', '_id'].includes(field)) { req.user[field] = req.body.user[field] }
             }
-            result.userData=await req.user.save()
+            result.userData = await req.user.save()
          }
-         if(req.user.role=='6480d5701c02f26cd6668987'/*academy role id */&&req.body.academy&&Object.keys(req.body.academy).length>0) {
-            const academy=await Helper.isThisIdExistInThisModel(req.user.academyDetails,null,academyModel,'academy')
+         if (req.user.role == '6480d5701c02f26cd6668987'/*academy role id */ && req.body.academy && Object.keys(req.body.academy).length > 0) {
+            const academy = await Helper.isThisIdExistInThisModel(req.user.academyDetails, null, academyModel, 'academy')
             for (let field in req.body.academy) {
                if (!['country', '_id'].includes(field)) { academy[field] = req.body.academy[field] }
             }
-            result.newAcademyData=await academy.save()
+            result.newAcademyData = await academy.save()
          }
          if (true) {
             return result

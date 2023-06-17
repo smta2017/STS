@@ -169,7 +169,7 @@ class Entry {
             const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
             const filter = {}
             filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
-            // let projection = [allCompetitonSubscripetition[0].competition.type + 'Subscription','competitors','name','music','passedQualifiers','category']
+            let projection //= [allCompetitonSubscripetition[0].competition.type + 'Subscription','competitors','name','music','passedQualifiers','category']
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeschedule/:compId') {
                 projection = [allCompetitonSubscripetition[0].competition.type + 'ShowDate', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
                 if (req.user.role.toString() == '6480d5701c02f26cd6668987'/*academy role id */) { filter[allCompetitonSubscripetition[0].competition.type + 'ShowDate'] = { $nin: [null, ""] } }
@@ -183,6 +183,7 @@ class Entry {
                     projection = [allCompetitonSubscripetition[0].competition.type + 'Refree1', allCompetitonSubscripetition[0].competition.type + 'Refree2', allCompetitonSubscripetition[0].competition.type + 'Refree3', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
                 }
             }
+            console.log(!projection)
             if (!projection || projection.includes('competitors')) {
                 return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } }).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] })
             } else {
@@ -218,21 +219,21 @@ class Entry {
             const type = (await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
             const filter = {}
             filter[type + 'Subscription'] = req.params.subscriptionId
-            const entries = await entryModel.find(filter, ['name', type + 'Subscription','category']).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] }).populate({ path: type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } })
+            const entries = await entryModel.find(filter, ['name', type + 'Subscription', 'category']).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] }).populate({ path: type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } })
             const fullStatment = []
             await req.user.populate({ path: 'academyDetails', populate: { path: 'country' } })
 
             entries.forEach(entry => {
-                entry.competitors.forEach(competitorDoc=>{
-                    const competitor=competitorDoc.toObject()
-                    competitor.entryName=entry.name
-                    const calCat=entry.category=='solo'?'solo':['due','trio'].includes(entry.category)?'duoOrTrio':'group'
-                    competitor.entryFees=req.user.academyDetails.country[calCat+competitor.category+'Fees']
-                    console.log(calCat,competitor.category)
+                entry.competitors.forEach(competitorDoc => {
+                    const competitor = competitorDoc.toObject()
+                    competitor.entryName = entry.name
+                    const calCat = entry.category == 'solo' ? 'solo' : ['due', 'trio'].includes(entry.category) ? 'duoOrTrio' : 'group'
+                    competitor.entryFees = req.user.academyDetails.country[calCat + competitor.category + 'Fees']
+                    console.log(calCat, competitor.category)
                     fullStatment.push(competitor)
                 })
             })
-            if(true){return fullStatment}
+            if (true) { return fullStatment }
         }, 'there is all your recorded entries for this competition')
     }
 }

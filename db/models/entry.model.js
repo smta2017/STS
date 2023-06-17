@@ -40,9 +40,9 @@ const EntrySchema = mongoose.Schema({
         type: String,
         trim: true
     },
-    totalFees:{
-        type:Number,
-        min:0
+    totalFees: {
+        type: Number,
+        min: 0
     },
     qualifierRefree1: {
         type: Number,
@@ -111,13 +111,13 @@ EntrySchema.pre('save', async function () {
         this.qualifierTotalDegree = this.qualifierRefree1 + this.qualifierRefree2 + this.qualifierRefree3 + this.qualifierLast10Present
         if (this.qualifierTotalDegree > 70) {
             await Promise.all(
-                this.competitors.map(async(competitor) => {
-                  const comp= await competitorModel.findByIdAndUpdate(competitor,{$set: { passQualifier: true }},{returnDocument:"after"})
+                this.competitors.map(async (competitor) => {
+                    const comp = await competitorModel.findByIdAndUpdate(competitor, { $set: { passQualifier: true } }, { returnDocument: "after" })
                     console.log(comp)
                 })
             )
-           const sub= await subscriptionModel.findByIdAndUpdate(this.qualifierSubscription,{$set: { haveASuccessededEntry: true }},{returnDocument:"after"})
-                console.log(sub)
+            const sub = await subscriptionModel.findByIdAndUpdate(this.qualifierSubscription, { $set: { haveASuccessededEntry: true } }, { returnDocument: "after" })
+            console.log(sub)
         }
     }
     if (this.isDirectModified('finalRefree1') || this.isDirectModified('finalRefree2') || this.isDirectModified('finalRefree3') || this.isDirectModified('finalLast10Present')) {
@@ -130,45 +130,45 @@ EntrySchema.pre('save', async function () {
         if (this.competitors.length > 0) {
             if (category[this.competitors.length]) {
                 this.category = category[this.competitors.length]
-                if(category[this.competitors.length]!='solo'){
-                    calCategory='duoOrTrio'
-                }else{
-                    calCategory=category[this.competitors.length]
+                if (category[this.competitors.length] != 'solo') {
+                    calCategory = 'duoOrTrio'
+                } else {
+                    calCategory = category[this.competitors.length]
                 }
             } else if (this.competitors.length < 7) {
                 this.category = 'small group'
-                calCategory='group'
+                calCategory = 'group'
             } else {
                 this.category = 'large group'
-                calCategory='group'
+                calCategory = 'group'
             }
         }
         console.log('competitors category changes')
-        const enteredCompetitors=[]
-        const subscription =await Helper.isThisIdExistInThisModel(this.qualifierSubscription,['academy'],subscriptionModel,'subscription',{path:'academy',populate:{path:'academyDetails',populate:{path:'country'}}})
+        const enteredCompetitors = []
+        const subscription = await Helper.isThisIdExistInThisModel(this.qualifierSubscription, ['academy'], subscriptionModel, 'subscription', { path: 'academy', populate: { path: 'academyDetails', populate: { path: 'country' } } })
         console.log(subscription.academy.academyDetails.country)
-        let totalFees=0
-        this.competitorsCategories=[]
+        let totalFees = 0
+        this.competitorsCategories = []
         await Promise.all(
             this.competitors.map(async (competitor) => {
-                const compor = await Helper.isThisIdExistInThisModel(competitor, ['qualifierSubscription','category'], competitorModel, 'competitor')
+                const compor = await Helper.isThisIdExistInThisModel(competitor, ['qualifierSubscription', 'category'], competitorModel, 'competitor')
                 if (compor.qualifierSubscription.toString() != this.qualifierSubscription.toString()) {
                     const e = new Error('this competitor is not our to add him in our entry')
                     e.name = 'CastError'
                     throw e
                 }
-                
+
                 if (!this.competitorsCategories.includes(compor.category)) {
                     this.competitorsCategories.push(compor.category)
                 }
-                if(enteredCompetitors.includes(competitor.toString())){
+                if (enteredCompetitors.includes(competitor.toString())) {
                     const e = new Error('there is a duplication in the competitor list')
                     e.name = 'CastError'
                     throw e
-                }else{
+                } else {
                     enteredCompetitors.push(competitor.toString())
                 }
-                totalFees+=subscription.academy.academyDetails.country.toObject()[calCategory+compor.category+'Fees']
+                totalFees += subscription.academy.academyDetails.country.toObject()[calCategory + compor.category + 'Fees']
             })
         )
         // if (this.competitorsCategories.includes('singer') && this.competitorsCategories.length > 1) {
@@ -176,7 +176,7 @@ EntrySchema.pre('save', async function () {
         //     e.name = 'ValidationError'
         //     throw e
         // }
-        this.totalFees=totalFees
+        this.totalFees = totalFees
     }
 })
 const entryModel = mongoose.model('entries', EntrySchema)

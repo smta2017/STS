@@ -12,43 +12,43 @@ class Supscription {
                 e.name = 'Error'
                 throw e
             }
-            const competition=await Helper.isThisIdExistInThisModel(req.params.compId,null,competitionModel,'competition')
-            if(competition.type=='final'){
-               await  req.user.populate('academyDetails')
-                const qualifierOfTheSameYear=await competitionModel.findOne({country:req.user.academyDetails.country,type:'qualifier',year:competition.year}).populate('joins')
+            const competition = await Helper.isThisIdExistInThisModel(req.params.compId, null, competitionModel, 'competition')
+            if (competition.type == 'final') {
+                await req.user.populate('academyDetails')
+                const qualifierOfTheSameYear = await competitionModel.findOne({ country: req.user.academyDetails.country, type: 'qualifier', year: competition.year }).populate('joins')
                 console.log(qualifierOfTheSameYear)
-                const hisQualifierSubscription=qualifierOfTheSameYear.joins.find(join=>join.academy=req.user._id)
+                const hisQualifierSubscription = qualifierOfTheSameYear.joins.find(join => join.academy = req.user._id)
                 console.log(hisQualifierSubscription)
-                const finalSubscription=await subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
+                const finalSubscription = await subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
                 console.log(finalSubscription)
-                const competitors=await competitorModel.find({qualifierSubscription:hisQualifierSubscription})
+                const competitors = await competitorModel.find({ qualifierSubscription: hisQualifierSubscription })
                 console.log(competitors)
-                await Promise.all(competitors.map(async(competitor)=>{
-                    competitor.finalSubscription=finalSubscription
-                   const result=await competitor.save()
+                await Promise.all(competitors.map(async (competitor) => {
+                    competitor.finalSubscription = finalSubscription
+                    const result = await competitor.save()
                 }))
-                const entries=await entryModel.find({qualifierSubscription:hisQualifierSubscription})
+                const entries = await entryModel.find({ qualifierSubscription: hisQualifierSubscription })
                 console.log(entries)
-                await Promise.all(entries.map(async(entry)=>{
-                    entry.finalSubscription=finalSubscription
+                await Promise.all(entries.map(async (entry) => {
+                    entry.finalSubscription = finalSubscription
                     await entry.save()
                 }))
-                if(true){return finalSubscription}
-            }else{
+                if (true) { return finalSubscription }
+            } else {
                 delete req.body.subscriptionDate
                 return subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
             }
         }, 'congrats you have joined the competition successfully')
     }
-    static getAllMySubscriptions=(req,res)=>{
-        Helper.handlingMyFunction(req,res,(req)=>{
-            return subscriptionModel.find({academy:req.user._id},['_id',"competition",]).populate("competition")
-        },'there is all your subscription')
+    static getAllMySubscriptions = (req, res) => {
+        Helper.handlingMyFunction(req, res, (req) => {
+            return subscriptionModel.find({ academy: req.user._id }, ['_id', "competition",]).populate("competition")
+        }, 'there is all your subscription')
     }
-    static getAllSubscriptionsForCompetition=(req,res)=>{
-        Helper.handlingMyFunction(req,res,(req)=>{
-            return subscriptionModel.find({competition:req.params.compId}).populate({path:'academy',populate:'academyDetails'})
-        },'there are all the academies that joined this competition')
+    static getAllSubscriptionsForCompetition = (req, res) => {
+        Helper.handlingMyFunction(req, res, (req) => {
+            return subscriptionModel.find({ competition: req.params.compId }).populate({ path: 'academy', populate: 'academyDetails' })
+        }, 'there are all the academies that joined this competition')
     }
 }
 module.exports = Supscription

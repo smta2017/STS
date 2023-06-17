@@ -15,8 +15,8 @@ const roleSchema = mongoose.Schema({
         default: [],
         ref: 'routes'
     },
-    tabs:{
-        type:[mongoose.SchemaTypes.ObjectId],
+    tabs: {
+        type: [mongoose.SchemaTypes.ObjectId],
         trim: true,
         default: [],
         ref: 'tabs'

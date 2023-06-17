@@ -17,14 +17,14 @@ class Helper {
             }
         }
     }
-    static isThisIdExistInThisModel = async (id, projection, model,modelName,populate,anotherpopulate) => {
+    static isThisIdExistInThisModel = async (id, projection, model, modelName, populate, anotherpopulate) => {
         let exist
-        if(populate&&anotherpopulate){
-            exist = await model.findById(id,projection).populate(populate).populate(anotherpopulate)
-        }else if(populate&&!anotherpopulate){
-            exist = await model.findById(id,projection).populate(populate)
-        }else{
-            exist = await model.findById(id,projection)
+        if (populate && anotherpopulate) {
+            exist = await model.findById(id, projection).populate(populate).populate(anotherpopulate)
+        } else if (populate && !anotherpopulate) {
+            exist = await model.findById(id, projection).populate(populate)
+        } else {
+            exist = await model.findById(id, projection)
         }
         if (exist) {
             return exist

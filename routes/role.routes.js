@@ -1,5 +1,5 @@
 const { auth, authToThisRoute } = require('../app/middlewares')
-const { editRouteAction, getRoutes, getTabs,Role,addTab , addRoute, deleteRoute} = require('../app/controllers/role.controller')
+const { editRouteAction, getRoutes, getTabs, Role, addTab, addRoute, deleteRoute } = require('../app/controllers/role.controller')
 const router = require('express').Router()
 // routes to be removed>
 //route

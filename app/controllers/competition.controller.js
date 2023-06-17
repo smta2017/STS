@@ -34,7 +34,7 @@ class Competition {
                                 throw e
                             }
                         }
-                       if(req.file) {
+                        if (req.file) {
                             image = req.file.path.replace('statics\\', '')
                             image = image.replace(/\\/g, '/')
                             req.body.poster = image
@@ -43,7 +43,7 @@ class Competition {
                         // if (req.user.image != 'defaultuserimage.png') {
                         //     fs.unlinkSync(path.join(__dirname, '../../statics/' + req.user.image))
                         // }
-                        Helper.formatMyAPIRes(res, 200, true, { file: req.file?req.file:'there is file uploaded', competition }, `greate, you add a new competition ,don't forget to enable registration`)
+                        Helper.formatMyAPIRes(res, 200, true, { file: req.file ? req.file : 'there is file uploaded', competition }, `greate, you add a new competition ,don't forget to enable registration`)
                     }
                     catch (e) {
                         console.log(e)
@@ -81,7 +81,7 @@ class Competition {
                             oldImage = competition.photo
                         }
                         for (let field in req.body) {
-                            if(!['country','type','year','_id'].includes(field)&&req.body[field]){competition[field] = req.body[field]}
+                            if (!['country', 'type', 'year', '_id'].includes(field) && req.body[field]) { competition[field] = req.body[field] }
                         }
                         const result = await competition.save()
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + oldImage)) && req.file) {

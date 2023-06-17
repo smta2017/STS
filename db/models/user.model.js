@@ -59,9 +59,9 @@ const UserSchema = mongoose.Schema({
     academyDetails: {//foregin key to know his academy if your role is academy
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'academies',
-        required:[function type() {
-            return this.role =='6480d5701c02f26cd6668987'//you need to put the objectId of academy role
-        },'you are academy we need your academy details for registration']
+        required: [function type() {
+            return this.role == '6480d5701c02f26cd6668987'//you need to put the objectId of academy role
+        }, 'you are academy we need your academy details for registration']
     },
     suspended: {
         type: Boolean,

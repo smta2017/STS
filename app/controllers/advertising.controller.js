@@ -65,7 +65,7 @@ class Advertising {
                             oldImage = advertising.photo
                         }
                         for (let field in req.body) {
-                            if(field!='_id'&&req.body[field]){advertising[field] = req.body[field]}
+                            if (field != '_id' && req.body[field]) { advertising[field] = req.body[field] }
                         }
                         const result = await advertising.save()
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + oldImage)) && req.file) {

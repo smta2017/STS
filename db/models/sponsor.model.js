@@ -1,19 +1,19 @@
-const mongoose=require('mongoose')
-const SponsorSchema=mongoose.Schema({
-    title:{
-        type:String,
-        required:[true,'please enter the sponsor name'],
-        trim:true
+const mongoose = require('mongoose')
+const SponsorSchema = mongoose.Schema({
+    title: {
+        type: String,
+        required: [true, 'please enter the sponsor name'],
+        trim: true
     },
-    paragraph:{
-        type:String,
-        required:[true,'please enter what you want to say about this sponsor']
+    paragraph: {
+        type: String,
+        required: [true, 'please enter what you want to say about this sponsor']
     },
-    photo:{
-        type:String,
-        required:[true,'please enter the sponsor poster'],
-        trim:true
+    photo: {
+        type: String,
+        required: [true, 'please enter the sponsor poster'],
+        trim: true
     }
 })
-const sponsorModel=mongoose.model('sponsors',SponsorSchema)
-module.exports=sponsorModel
+const sponsorModel = mongoose.model('sponsors', SponsorSchema)
+module.exports = sponsorModel

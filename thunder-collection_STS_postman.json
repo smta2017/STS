@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "f5ce843c-1002-4ea6-9216-58567defab49",
+        "_postman_id": "1d382bb1-487c-445a-8ba5-8f510489b854",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -75,7 +75,7 @@
                             "urlencoded": [
                                 {
                                     "key": "email",
-                                    "value": "aboellok@gmail.com"
+                                    "value": "merna@gmail.com"
                                 },
                                 {
                                     "key": "mobileNumber",
@@ -89,7 +89,7 @@
                                 },
                                 {
                                     "key": "password",
-                                    "value": "Asd?1234"
+                                    "value": "Asd?123"
                                 },
                                 {
                                     "key": "lifeTime",
@@ -350,6 +350,170 @@
                             ],
                             "host": [
                                 "country"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "teachers",
+            "item": [
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/teacher",
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjU4OTc4NX0.YQWmhMWYnKqLFCkaRXp80piB3ha15gGBn0KUkMxHuwA"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get all for admin",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/teacher/648742e77676e7779f1de6a7",
+                            "path": [
+                                "648742e77676e7779f1de6a7"
+                            ],
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/teacher/6473edc43155fbea54a65ed8",
+                            "path": [
+                                "6473edc43155fbea54a65ed8"
+                            ],
+                            "host": [
+                                "teacher"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/teacher",
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjYwNDgzNH0.r9aeyROIzqPEEoX0rsSmcdb8-Zjy84wzI0ttmiD24GM"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "aaaaaaaa"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "sssssssssss"
+                                },
+                                {
+                                    "key": "mobileNumber",
+                                    "value": "1234567891"
+                                },
+                                {
+                                    "key": "countryCallingCode",
+                                    "value": "+20"
+                                },
+                                {
+                                    "key": "dateOfBirth",
+                                    "value": "1996-11-20"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "qwer@gmail.com"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "edit",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/teacher/648d0ad3c48ed9d7b4485b62",
+                            "path": [
+                                "648d0ad3c48ed9d7b4485b62"
+                            ],
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjYwNDgzNH0.r9aeyROIzqPEEoX0rsSmcdb8-Zjy84wzI0ttmiD24GM"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "mmmmm"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "nnnnnnnn"
+                                },
+                                {
+                                    "key": "mobileNumber",
+                                    "value": "1234567898"
+                                },
+                                {
+                                    "key": "countryCallingCode",
+                                    "value": "+20"
+                                },
+                                {
+                                    "key": "dateOfBirth",
+                                    "value": "1996-11-20"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "qweeeer@gmail.com"
+                                },
+                                {
+                                    "key": "academy",
+                                    "value": "648d0ad3c48ed9d7b4485b62"
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "648d0ad3c48ed9d7b4484444"
+                                }
                             ]
                         }
                     }

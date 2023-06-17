@@ -18,7 +18,7 @@ class Sponsor {
                 }
                 else {
                     try {
-                        if(req.file){
+                        if (req.file) {
                             image = req.file.path.replace('statics\\', '')
                             image = image.replace(/\\/g, '/')
                             req.body.photo = image

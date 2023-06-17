@@ -36,8 +36,8 @@ const CompetitorSchema = mongoose.Schema({
     },
     dateOfBirth: {
         type: Date,
-        required: [true, 'we need to know the competitor '],
-        validate:async function(){
+        required: [true, 'we need to know the competitor date of birth'],
+        validate: async function () {
             const year = (await Helper.isThisIdExistInThisModel(this.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.year
             const age = moment(year + '-06-01').diff(moment(this.dateOfBirth), 'years', true)
             console.log(age)
@@ -45,11 +45,11 @@ const CompetitorSchema = mongoose.Schema({
                 const e = new Error('this comprtitor is too young to take apart in this competition')
                 e.name = 'ValidationError'
                 throw e
-            } else if((this.category=='dancer'&&age>28)||age>45){
+            } else if ((this.category == 'dancer' && age > 28) || age > 45) {
                 console.log('hhh')
-                    const e = new Error('this competition is for younger persons')
-                    e.name = 'ValidationError'
-                    throw e
+                const e = new Error('this competition is for younger persons')
+                e.name = 'ValidationError'
+                throw e
             }
         }
     },
@@ -57,19 +57,19 @@ const CompetitorSchema = mongoose.Schema({
         type: String,
         // enum:[],
         set: function (year) {
-                
-                const age = moment(year + '-06-01').diff(moment(this.dateOfBirth), 'years', true)
-                if (age > 4 && age < 10) {
-                    return 'mini'
-                } else if (age >= 10 && age < 14) {
-                    return 'k'
-                } else if (age >= 14 && age < 18) {
-                    return 'j'
-                } else if ((age >= 18 && age < 28) || (age >= 28 && age < 45 && this.category != 'dancer')) {
-                    return 'sn'
-                } else {
-                    return'unknown'
-                }
+
+            const age = moment(year + '-06-01').diff(moment(this.dateOfBirth), 'years', true)
+            if (age > 4 && age < 10) {
+                return 'mini'
+            } else if (age >= 10 && age < 14) {
+                return 'k'
+            } else if (age >= 14 && age < 18) {
+                return 'j'
+            } else if ((age >= 18 && age < 28) || (age >= 28 && age < 45 && this.category != 'dancer')) {
+                return 'sn'
+            } else {
+                return 'unknown'
+            }
         }
     },
     mobileNumber: {

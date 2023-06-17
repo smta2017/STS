@@ -62,7 +62,7 @@ const CompetitionSchema = mongoose.Schema({
         default: true,
         validate: function (value) {
             if (!value) {
-                if((Date.now() - new Date(this.date)) > 0){
+                if ((Date.now() - new Date(this.date)) > 0) {
                     const e = new Error(' the compition already took place ,how do you want to open joining again?')
                     e.name = 'CastError'
                     throw e
@@ -104,15 +104,15 @@ const CompetitionSchema = mongoose.Schema({
     }
 
 })
-CompetitionSchema.statics.deleteCompetition=async function(id){
-    const deletedComp=await competitionModel.findByIdAndDelete(id)
-    const mustBeDeletedSubscriptions=await subscriptionModel.find({competition:id})
+CompetitionSchema.statics.deleteCompetition = async function (id) {
+    const deletedComp = await competitionModel.findByIdAndDelete(id)
+    const mustBeDeletedSubscriptions = await subscriptionModel.find({ competition: id })
     await Promise.all(
-        mustBeDeletedSubscriptions.map(subscription=>{
+        mustBeDeletedSubscriptions.map(subscription => {
             subscription.deleteMe(deletedComp.type)
         })
-        )
-      if(true){  return deletedComp}
+    )
+    if (true) { return deletedComp }
 }
 CompetitionSchema.virtual('joins', {
     ref: 'subscriptions',
