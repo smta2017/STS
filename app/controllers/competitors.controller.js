@@ -8,7 +8,18 @@ const Helper = require('../helper')
 class Competitor {
     static addCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            if (!req.body.owner.countryCallingCode) {
+            const competitionType = (await Helper.isThisIdExistInThisModel(req.body.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
+            if (competitionType == 'final') {
+                if (req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                    const e = new Error('you can not add new entry that did not take apart in the qualifier')
+                    e.name = 'Error'
+                    throw e
+                } else {
+                    req.body.finalSubscripyion = req.body.qualifierSubscription
+                }
+            }
+            await req.user.isThisSubscriptionBelongToMe(req.body.qualifierSubscription)
+            if (!req.body.countryCallingCode) {
                 const e = new Error('we need you country calling code with your phone number to complete this registeration')
                 e.name = 'ValidationError'
                 throw e
@@ -19,7 +30,13 @@ class Competitor {
     }
     static removeCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor')
+            const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' })
+            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                const e = new Error('you can not delete this competitor right now ,please contact us for any questions')
+                e.name = 'Error'
+                throw e
+            }
+            await req.user.isThisSubscriptionBelongToMe(competitor.qualifierSubscription._id)
             const result = await competitorModel.findByIdAndDelete(req.params.competitorId)
             // const result= await Helper.isThisIdExistInThisModel(req.params.competitorId,null,competitorModel,'competitor')
             const entries = await entryModel.find({ qualifierSubscription: result.qualifierSubscription, competitors: req.params.competitorId })
@@ -35,6 +52,7 @@ class Competitor {
     }
     static getThisSubscriptionCompetitors = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
+            await req.user.isThisSubscriptionBelongToMe(req.params.subscriptionId)
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
@@ -43,6 +61,7 @@ class Competitor {
     }
     static getThisSubscriptionCompetitorsByCategory = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
+            await req.user.isThisSubscriptionBelongToMe(req.params.subscriptionId)
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
@@ -52,7 +71,13 @@ class Competitor {
     }
     static editCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor')
+            const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' })
+            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                const e = new Error('you can not delete this competitor right now ,please contact us for any questions')
+                e.name = 'Error'
+                throw e
+            }
+            await req.user.isThisSubscriptionBelongToMe(competitor.qualifierSubscription._id)
             for (let field in req.body) {
                 if (field == 'mobileNumber' && req.body[field]) {
                     if (req.body.countryCallingCode) {

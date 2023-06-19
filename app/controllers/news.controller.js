@@ -65,7 +65,7 @@ class News {
                             oldImage = news.photo
                         }
                         for (let field in req.body) {
-                            news[field] = req.body[field]
+                            if(field!='_id'){news[field] = req.body[field]}
                         }
                         const result = await news.save()
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + oldImage)) && req.file) {

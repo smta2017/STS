@@ -81,7 +81,7 @@ UserSchema.methods.isThisSubscriptionBelongToMe = async function (subscriptionId
     if (this.role == '6480d5701c02f26cd6668987'/*academy role id */) {
         const subscription = await Helper.isThisIdExistInThisModel(subscriptionId, ['academy'], subscriptionModel, 'subscription')
         if (subscription.academy.toString() != this._id.toString()) {
-            const e = new Error('this is not your subscription to make changes in')
+            const e = new Error('this is not your subscription to make changes in or to ask any data about it')
             e.name = 'CastError'
             throw e
         }

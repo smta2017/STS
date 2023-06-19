@@ -7,28 +7,32 @@ class Supscription {
     static addSubscription = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
             await req.user.populate('joinedCompetitions')
+            console.log(req.user)
             if ((req.user.joinedCompetitions.findIndex(join => join.competition.toString() == req.params.compId)) >= 0) {
                 const e = new Error('you already joined to this competition')
                 e.name = 'Error'
                 throw e
             }
             const competition = await Helper.isThisIdExistInThisModel(req.params.compId, null, competitionModel, 'competition')
+            if(competition.stopSubscription){
+                const e = new Error('this competition is not available to join now contact with us to ask for any thing you need')
+                e.name = 'Error'
+                throw e 
+            }
             if (competition.type == 'final') {
                 await req.user.populate('academyDetails')
                 const qualifierOfTheSameYear = await competitionModel.findOne({ country: req.user.academyDetails.country, type: 'qualifier', year: competition.year }).populate('joins')
-                console.log(qualifierOfTheSameYear)
-                const hisQualifierSubscription = qualifierOfTheSameYear.joins.find(join => join.academy = req.user._id)
-                console.log(hisQualifierSubscription)
+                console.log(qualifierOfTheSameYear.joins)
+                const hisQualifierSubscription = qualifierOfTheSameYear.joins.find(join => join.academy.toString() == req.user._id.toString())
                 const finalSubscription = await subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
-                console.log(finalSubscription)
                 const competitors = await competitorModel.find({ qualifierSubscription: hisQualifierSubscription })
-                console.log(competitors)
+                console.log(hisQualifierSubscription)
                 await Promise.all(competitors.map(async (competitor) => {
                     competitor.finalSubscription = finalSubscription
                     const result = await competitor.save()
+                    console.log(result)
                 }))
                 const entries = await entryModel.find({ qualifierSubscription: hisQualifierSubscription })
-                console.log(entries)
                 await Promise.all(entries.map(async (entry) => {
                     entry.finalSubscription = finalSubscription
                     await entry.save()

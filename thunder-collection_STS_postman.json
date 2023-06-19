@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "1d382bb1-487c-445a-8ba5-8f510489b854",
+        "_postman_id": "3458fe1f-97de-4f1b-a7da-48947fc3237e",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -26,7 +26,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"role\":\"6480d5701c02f26cd6668987\",\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1281508229\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"bella@gmail.com\",\n    \"password\":\"bella123\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
+                            "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"role\":\"6480d5701c02f26cd6668987\",\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1281777777\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"jojo@gmail.com\",\n    \"password\":\"12345\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
                         }
                     }
                 },
@@ -75,7 +75,7 @@
                             "urlencoded": [
                                 {
                                     "key": "email",
-                                    "value": "merna@gmail.com"
+                                    "value": "jooo@gmail.com"
                                 },
                                 {
                                     "key": "mobileNumber",
@@ -89,12 +89,11 @@
                                 },
                                 {
                                     "key": "password",
-                                    "value": "Asd?123"
+                                    "value": "12345"
                                 },
                                 {
                                     "key": "lifeTime",
-                                    "value": "1",
-                                    "disabled": true
+                                    "value": "1"
                                 }
                             ]
                         }
@@ -350,6 +349,135 @@
                             ],
                             "host": [
                                 "country"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "messages",
+            "item": [
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/message",
+                            "host": [
+                                "message"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "authrization",
+                                "value": "",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "aaaaaaaaaaaasss"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "ssssssssss"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "aaaa@gmail.com"
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "asdafdfdfdsdfa  dfadfdsfdfs                                                              fdfdfdaf"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add from user",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/message/inside",
+                            "path": [
+                                "inside"
+                            ],
+                            "host": [
+                                "message"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "saddddddddddddddd dsada sadkslmdmv"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/message/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "message"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"onlyUsers\":true\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/message/6473edc43155fbea54a65ed8",
+                            "path": [
+                                "6473edc43155fbea54a65ed8"
+                            ],
+                            "host": [
+                                "message"
                             ]
                         }
                     }
@@ -1187,6 +1315,108 @@
             ]
         },
         {
+            "name": "product",
+            "item": [
+                {
+                    "name": "add  ",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/product",
+                            "host": [
+                                "product"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "danon",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "prices",
+                                    "value": "[{\"country\":\"64748c907f9e9854168fe025\",\"price\":50}]",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/product/648eee078e4d6ecfd2c129f2",
+                            "path": [
+                                "648eee078e4d6ecfd2c129f2"
+                            ],
+                            "host": [
+                                "product"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "conan",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "prices",
+                                    "value": "[{\"country\":\"63e2346155257516346ae7cb\",\"price\":50},{\"country\":\"64748ca07f9e9854168fe027\",\"price\":20}]",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/product/63e2346155257516346ae7cb",
+                            "path": [
+                                "63e2346155257516346ae7cb"
+                            ],
+                            "host": [
+                                "product"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/product/648eec21891abedcb18399e4",
+                            "path": [
+                                "648eec21891abedcb18399e4"
+                            ],
+                            "host": [
+                                "product"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "name": "competition",
             "item": [
                 {
@@ -1308,7 +1538,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic"
                             }
                         ]
                     }
@@ -1379,27 +1609,6 @@
             "name": "subscription",
             "item": [
                 {
-                    "name": "join competetion",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/subscription/6488d4ea32dee4c04cbd1e88",
-                            "path": [
-                                "6488d4ea32dee4c04cbd1e88"
-                            ],
-                            "host": [
-                                "subscription"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
-                            }
-                        ]
-                    }
-                },
-                {
                     "name": "get joined competitions",
                     "request": {
                         "method": "GET",
@@ -1413,6 +1622,35 @@
                             {
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "join competetion",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/subscription/6490794c7533cd857b5589aa",
+                            "path": [
+                                "6490794c7533cd857b5589aa"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            },
+                            {
+                                "key": "64904fe6ce37b10487f575d3",
+                                "value": ""
+                            },
+                            {
+                                "key": "64905036ce37b10487f575d9",
+                                "value": ""
                             }
                         ]
                     }
@@ -1444,18 +1682,21 @@
             "name": "competitor",
             "item": [
                 {
-                    "name": "edit competitor",
+                    "name": "add competitor",
                     "request": {
-                        "method": "PUT",
+                        "method": "POST",
                         "url": {
-                            "raw": "/competitor/6484cc802176b3a2fc16a1ed",
-                            "path": [
-                                "6484cc802176b3a2fc16a1ed"
-                            ],
+                            "raw": "/competitor",
                             "host": [
                                 "competitor"
                             ]
                         },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            }
+                        ],
                         "body": {
                             "mode": "raw",
                             "options": {
@@ -1463,7 +1704,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"firstName\": \"george\",\n  \"lastName\": \"Ayman\",\n  \"category\":\"singer\",\n  \"mobileNumber\": \"1202865777\",\n  \"dateOfBirth\":\"1996-01-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"hhhhh@gmail.com\",\n  \"gender\":\"female\"\n}"
+                            "raw": "{\n  \"qualifierSubscription\":\"64909a78195bcb1d8917ceda\",\n  \"firstName\": \"ghhh\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"2018-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
                         }
                     }
                 },
@@ -1472,14 +1713,20 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/competitor/64867ab2c6dab1e71dbd7003",
+                            "raw": "/competitor/64904fe6ce37b10487f575d3",
                             "path": [
-                                "64867ab2c6dab1e71dbd7003"
+                                "64904fe6ce37b10487f575d3"
                             ],
                             "host": [
                                 "competitor"
                             ]
-                        }
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic"
+                            }
+                        ]
                     }
                 },
                 {
@@ -1495,19 +1742,39 @@
                             "host": [
                                 "competitor"
                             ]
-                        }
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            }
+                        ]
                     }
                 },
                 {
-                    "name": "add competitor",
+                    "name": "edit competitor",
                     "request": {
-                        "method": "POST",
+                        "method": "PUT",
                         "url": {
-                            "raw": "/competitor",
+                            "raw": "/competitor/649054a9f2867599eaa8d855",
+                            "path": [
+                                "649054a9f2867599eaa8d855"
+                            ],
                             "host": [
                                 "competitor"
                             ]
                         },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE",
+                                "disabled": true
+                            }
+                        ],
                         "body": {
                             "mode": "raw",
                             "options": {
@@ -1515,7 +1782,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"qualifierSubscription\":\"64867a4fc6dab1e71dbd6fee\",\n  \"firstName\": \"ghhh\",\n  \"lastName\": \"Abadier\",\n  \"category\":\"dancer\",\n  \"mobileNumber\": \"1202865148\",\n  \"dateOfBirth\":\"2018-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"asds@gmail.com\",\n  \"gender\":\"male\"\n}"
+                            "raw": "{\n  \"firstName\": \"george\",\n  \"lastName\": \"Ayman\",\n  \"category\":\"singer\",\n  \"mobileNumber\": \"1202865777\",\n  \"dateOfBirth\":\"1996-11-20\",\n  \"countryCallingCode\": \"+20\",\n  \"email\": \"hhhhh@gmail.com\",\n  \"gender\":\"female\"\n}"
                         }
                     }
                 },
@@ -1546,14 +1813,20 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/competitor/64867d2dc6dab1e71dbd702f",
+                            "raw": "/competitor/649054a9f2867599eaa8d855",
                             "path": [
-                                "64867d2dc6dab1e71dbd702f"
+                                "649054a9f2867599eaa8d855"
                             ],
                             "host": [
                                 "competitor"
                             ]
-                        }
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            }
+                        ]
                     }
                 }
             ]
@@ -1579,12 +1852,18 @@
                                 "entry"
                             ]
                         },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            }
+                        ],
                         "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
                                     "key": "qualifierSubscription",
-                                    "value": "6488b5c2d89883c8aaccbe75",
+                                    "value": "64909a78195bcb1d8917ceda",
                                     "type": "default"
                                 },
                                 {
@@ -1606,10 +1885,10 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/entry/6486990ab17e6dd91d5ec4e5/64867da0c6dab1e71dbd703d",
+                            "raw": "/entry/64905a5ec9ca573f60e38fac/64905498f2867599eaa8d83f",
                             "path": [
-                                "6486990ab17e6dd91d5ec4e5",
-                                "64867da0c6dab1e71dbd703d"
+                                "64905a5ec9ca573f60e38fac",
+                                "64905498f2867599eaa8d83f"
                             ],
                             "host": [
                                 "entry"
@@ -1618,7 +1897,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
                             }
                         ]
                     }
@@ -1628,10 +1907,10 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/entry/6485ea464aad1387dfa80056/64860b605b1aa0c22a365193",
+                            "raw": "/entry/64905a5ec9ca573f60e38fac/64905498f2867599eaa8d83f",
                             "path": [
-                                "6485ea464aad1387dfa80056",
-                                "64860b605b1aa0c22a365193"
+                                "64905a5ec9ca573f60e38fac",
+                                "64905498f2867599eaa8d83f"
                             ],
                             "host": [
                                 "entry"
@@ -1640,7 +1919,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
                             }
                         ]
                     }
@@ -1662,7 +1941,12 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic",
+                                "disabled": true
                             }
                         ]
                     }
@@ -1672,9 +1956,9 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/entry/64867bf8c6dab1e71dbd7016",
+                            "raw": "/entry/64905a5ec9ca573f60e38fac",
                             "path": [
-                                "64867bf8c6dab1e71dbd7016"
+                                "64905a5ec9ca573f60e38fac"
                             ],
                             "host": [
                                 "entry"
@@ -1683,7 +1967,12 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA",
+                                "disabled": true
                             }
                         ]
                     }
@@ -1715,9 +2004,9 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/entry/64867ab2c6dab1e71dbd7003",
+                            "raw": "/entry/64904fe6ce37b10487f575d3",
                             "path": [
-                                "64867ab2c6dab1e71dbd7003"
+                                "64904fe6ce37b10487f575d3"
                             ],
                             "host": [
                                 "entry"
@@ -1726,7 +2015,12 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA",
+                                "disabled": true
                             }
                         ]
                     }
@@ -1736,7 +2030,7 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/entry/64867bf8c6dab1e71dbd7016",
+                            "raw": "/entry/64905a5ec9ca573f60e38fac",
                             "query": [
                                 {
                                     "key": "name",
@@ -1746,7 +2040,7 @@
                             ],
                             "variable": [],
                             "path": [
-                                "64867bf8c6dab1e71dbd7016"
+                                "64905a5ec9ca573f60e38fac"
                             ],
                             "host": [
                                 "entry"
@@ -1755,7 +2049,12 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjQ3OTI2Nn0.VsW3smQV7PE9QP66B9l7mBZRyRwgtAaX9MpKI_FUlzk"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA",
+                                "disabled": true
                             }
                         ],
                         "body": {
@@ -1780,10 +2079,10 @@
                     "request": {
                         "method": "PATCH",
                         "url": {
-                            "raw": "/entry/64867ab2c6dab1e71dbd7003/6486990ab17e6dd91d5ec4e5",
+                            "raw": "/entry/64904fe6ce37b10487f575d3/64905a5ec9ca573f60e38fac",
                             "path": [
-                                "64867ab2c6dab1e71dbd7003",
-                                "6486990ab17e6dd91d5ec4e5"
+                                "64904fe6ce37b10487f575d3",
+                                "64905a5ec9ca573f60e38fac"
                             ],
                             "host": [
                                 "entry"
@@ -1792,7 +2091,12 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGEyNWE3MjEyM2Q3NzlkMDU4YWRjMiIsImlhdCI6MTY4Njc3NTI0NCwiZXhwIjoxNjg2NzkzMjQ0fQ.tOWU6pTbEzxAIdrM02fJggUcmsE44NqTB8c1jO_w3Q4"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGEyNWE3MjEyM2Q3NzlkMDU4YWRjMiIsImlhdCI6MTY4NzE4NzE5M30.RdEe58nvUJVis-hyh3m4EEKr_yuarjp6yvy6OZzE1UQ",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
                             }
                         ],
                         "body": {
@@ -1820,7 +2124,8 @@
                                 },
                                 {
                                     "key": "degree",
-                                    "value": "4"
+                                    "value": "4",
+                                    "disabled": true
                                 }
                             ]
                         }
@@ -1865,7 +2170,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGEyNWE3MjEyM2Q3NzlkMDU4YWRjMiIsImlhdCI6MTY4Njc3NTI0NCwiZXhwIjoxNjg2NzkzMjQ0fQ.tOWU6pTbEzxAIdrM02fJggUcmsE44NqTB8c1jO_w3Q4"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGEyNWE3MjEyM2Q3NzlkMDU4YWRjMiIsImlhdCI6MTY4Njg1MDk2N30.FVMYONZ6gGP3KV7C70Kiq2WccfTBcM4fXfawtujJ7V8"
                             }
                         ]
                     }
@@ -1875,10 +2180,10 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/entry/schedual/64867ab2c6dab1e71dbd7003",
+                            "raw": "/entry/schedual/64904fe6ce37b10487f575d3",
                             "path": [
                                 "schedual",
-                                "64867ab2c6dab1e71dbd7003"
+                                "64904fe6ce37b10487f575d3"
                             ],
                             "host": [
                                 "entry"
@@ -1887,7 +2192,12 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
                             }
                         ]
                     }
@@ -1897,10 +2207,10 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/entry/mystatment/64867ab2c6dab1e71dbd7003",
+                            "raw": "/entry/mystatment/64904fe6ce37b10487f575d3",
                             "path": [
                                 "mystatment",
-                                "64867ab2c6dab1e71dbd7003"
+                                "64904fe6ce37b10487f575d3"
                             ],
                             "host": [
                                 "entry"
@@ -1909,7 +2219,12 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
                             }
                         ]
                     }

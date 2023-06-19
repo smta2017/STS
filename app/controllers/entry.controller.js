@@ -20,6 +20,17 @@ class Entry {
                 }
                 else {
                     try {
+                        const competitionType = (await Helper.isThisIdExistInThisModel(req.body.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
+                        if (competitionType == 'final' ) {
+                            if( req.user.role.toString() == '6480d5701c02f26cd6668987'){
+                            const e = new Error('you can not add new entry that did not take apart in the qualifier')
+                            e.name = 'Error'
+                            throw e
+                            }else{
+                                req.body.finalSubscripyion=req.body.qualifierSubscription
+                            }
+                        }
+                        await req.user.isThisSubscriptionBelongToMe(req.body.qualifierSubscription)
                         if (req.file) {
                             music = req.file.path.replace('statics\\', '')
                             music = music.replace(/\\/g, '/')
@@ -34,19 +45,36 @@ class Entry {
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + music))) {
                             fs.unlinkSync(path.join(__dirname, '../../statics/' + music))
                         }
-                        Helper.formatMyAPIRes(res, 500, false, e, e.message)
+                        if (e.name == 'Error') {
+                            Helper.formatMyAPIRes(res, 200, false, e, e.message)
+                        } else if (e.name == 'MongoServerError' || e.name == 'ValidationError' || e.name == 'CastError') {
+                            Helper.formatMyAPIRes(res, 400, false, e, e.message)
+                        } else {
+                            Helper.formatMyAPIRes(res, 500, false, e, e.message)
+                        }
                     }
                 }
             })
         } catch (e) {
-            console.log(e)
-            Helper.formatMyAPIRes(res, 500, false, e, e.message)
+            console.log(e.name) 
+            if (e.name == 'Error') {
+                Helper.formatMyAPIRes(res, 200, false, e, e.message)
+            } else if (e.name == 'MongoServerError' || e.name == 'ValidationError' || e.name == 'CastError') {
+                Helper.formatMyAPIRes(res, 400, false, e, e.message)
+            } else {
+                Helper.formatMyAPIRes(res, 500, false, e, e.message)
+            }
         }
     }
     static addCompetitorToEntry = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories'], entryModel, 'entry')
-            await req.user.isThisSubscriptionBelongToMe(entry.qualifierSubscription)
+            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories','finalSubscription'], entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' })
+            if (entry.finalSubscription&&entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                const e = new Error('you can not edit in the competitor list of this entry ,please contect us for any questions')
+                e.name = 'Error'
+                throw e
+            }
+            await req.user.isThisSubscriptionBelongToMe(entry.qualifierSubscription._id)
             entry.competitors.push(req.params.competitorId)
             if (true) {
                 return entry.save()
@@ -55,7 +83,12 @@ class Entry {
     }
     static removeCompetitorFromEntry = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories'], entryModel, 'entry')
+            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories','finalSubscription'], entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' })
+            if (entry.finalSubscription&&entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                const e = new Error('you can not delete any competitior from this show now ,please contact us for any questions')
+                e.name = 'Error'
+                throw e
+            }
             await req.user.isThisSubscriptionBelongToMe(entry.qualifierSubscription)
             const i = entry.competitors.findIndex(competitor => competitor._id.toString() == req.params.competitorId)
             if (i == -1) {
@@ -71,6 +104,7 @@ class Entry {
     }
     static allentries = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
+            await req.user.isThisSubscriptionBelongToMe(req.params.subscriptionId)
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
             let projection = ['name', 'music', 'competitors', 'category']
@@ -91,6 +125,7 @@ class Entry {
     }
     static allentriesByCategory = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
+            await req.user.isThisSubscriptionBelongToMe(req.params.subscriptionId)
             const subscription = await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')
             const filter = {}
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
@@ -100,6 +135,13 @@ class Entry {
     }
     static delete = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
+            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' })
+            if (entry.finalSubscription && entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                const e = new Error('you can not delete this entry right now ,please contact us for any questions')
+                e.name = 'Error'
+                throw e
+            }
+            await req.user.isThisSubscriptionBelongToMe(entry.qualifierSubscription._id)
             const result = await entryModel.findByIdAndDelete(req.params.entryId)
             if (!result) {
                 const e = new Error('there is no such a news')
@@ -128,7 +170,13 @@ class Entry {
                 else {
                     try {
                         let oldMusic
-                        const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry')
+                        const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry',{ path: 'finalSubscription', populate: 'competition' })
+                        if (entry.finalSubscription&&entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                            const e = new Error('you can not edit in the entry data now ,please contact us for any questions')
+                            e.name = 'Error'
+                            throw e
+                        }
+                        await req.user.isThisSubscriptionBelongToMe(entry.qualifierSubscription._id)
                         if (req.file) {
                             music = req.file.path.replace('statics\\', '')
                             music = music.replace(/\\/g, '/')
