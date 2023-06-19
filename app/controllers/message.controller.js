@@ -40,9 +40,9 @@ class Country {
             const filter={}
            const onlyUsers=req.header('onlyUsers')
             if(onlyUsers){
-                filter.owner={ $exists: true }.populate({path:'owner',select:['firstName','lastName','email']})
+                filter.owner={ $exists: true }
             }
-            return messageModel.find(filter)
+            return messageModel.find(filter).populate({path:'owner',select:['firstName','lastName','email']})
         }, 'here are all your messages')
     }
 }
