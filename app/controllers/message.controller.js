@@ -38,7 +38,8 @@ class Country {
     static getAll = (req, res) => {
         Helper.handlingMyFunction(req, res, (req) => {
             const filter={}
-            if(req.body.onlyUsers){
+           const onlyUsers=req.header('onlyUsers')
+            if(onlyUsers){
                 filter.owner={ $exists: true }.populate({path:'owner',select:['firstName','lastName','email']})
             }
             return messageModel.find(filter)
