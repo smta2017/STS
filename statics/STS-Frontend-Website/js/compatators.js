@@ -1,13 +1,8 @@
-
 function getCookie(name) {
   const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return cookieValue ? cookieValue.pop() : null;
 }
 
-var headers = new Headers(); 
-var token = getCookie("token");
-headers.append('Authorization', token); 
-headers.append('Content-Type', "application/json");
 
 // document.getElementById('generate-pdf').addEventListener('click', function() {
 //   // Get the HTML table element
@@ -65,7 +60,7 @@ function generatePDF() {
   // Wait for the document to fully load before printing
   win.onload = function() {
     // Print the document
-    // win.print();
+    win.print();
     // Close the print preview window after printing
     // win.close();
   };
@@ -83,26 +78,27 @@ function calculateAge(dateString) {
 
 
 var competitorsData;
-  var color ;
-  var colorCode = localStorage.getItem("theme");
 
-function getCompetitorsData() {
+var colorCode = localStorage.getItem("theme");
+
+function getCompetitorsData(colorCode) {
+  var color ;
   var competitorsContainer = document.getElementById("table-body-competitors");
   var id = getCookie("subscriptionId");
   var theme = `${domainName}/sts/competitor/${id}`
-
   if(colorCode == "theme821919"){
-    color = "dancer";
+    color = "/dancer";
   }else if (colorCode == "theme104b28"){
-    color = "musician";
+    color = "/musician";
   }else if (colorCode == "theme17547f"){
-    color = "singer";
-  }else if (colorCode == "themeNaN0f16"){
+    color = "/singer";
+  }else if (colorCode == "theme110f16"){
     color = "";
   }
-  fetch(`${theme}/${color}`, {
+  document.getElementById("gif").style.display ="block"
+  fetch(`${theme}${color}`, {
     method: 'GET',
-    headers: headers
+    headers: {'Authorization': token},
   })
     .then(response => response.json())
     .then(data => {
@@ -131,21 +127,22 @@ function getCompetitorsData() {
       });
     })
     .catch(error => console.log(error));
+  document.getElementById("gif").style.display ="none"
 }
 
-getCompetitorsData();
+getCompetitorsData(colorCode);
 
 function editCompetitor(id) {
   var competitor = competitorsData.find(competitor => competitor._id == id);
 
   document.getElementById("compatatorsId").value = competitor._id;
-  document.getElementById('firstname').value = competitor.firstName;
-  document.getElementById('lastname').value = competitor.lastName;
-  document.getElementById('dateOfBirth').value = competitor.dateOfBirth.split("T")[0];
-  document.getElementById('gender').value = competitor.gender;
-  document.getElementById('email').value = competitor.email;
-  document.getElementById('callingCode').value = competitor.countryCallingCode;
-  document.getElementById('mobileNumber').value = competitor.mobileNumber.split('ar-EG:+20')[1];
+  document.getElementById('firstnameCompatators').value = competitor.firstName;
+  document.getElementById('lastnameCompatators').value = competitor.lastName;
+  document.getElementById('dateOfBirthCompatators').value = competitor.dateOfBirth.split("T")[0];
+  document.getElementById('genderCompatators').value = competitor.gender;
+  document.getElementById('emailCompatators').value = competitor.email;
+  document.getElementById('callingCodeCompatators').value = competitor.countryCallingCode;
+  document.getElementById('mobileNumberCompatators').value = competitor.mobileNumber.split('ar-EG:+20')[1];
   document.getElementById('category').value = competitor.category;
 }
 
@@ -153,35 +150,26 @@ function changeCompetitor(e) {
   e.preventDefault(); // Prevent the default form submission
 
   var compatatorsId = document.getElementById('compatatorsId').value;
-  // Get the form values
-  var qualifierSubscription = getCookie('subscriptionId');
-  var firstName = document.getElementById('firstname').value;
-  var lastName = document.getElementById('lastname').value;
-  var category = document.getElementById('category').value;
-  var mobileNumber = document.getElementById('mobileNumber').value;
-  var dateOfBirth = document.getElementById('dateOfBirth').value;
-  var callingCode = document.getElementById('callingCode').value;
-  var email = document.getElementById('email').value;
-  var gender = document.getElementById('gender').value;
 
   // Create an object with the form data
   var formData = {
-    qualifierSubscription: qualifierSubscription,
-    firstName: firstName,
-    lastName: lastName,
-    category: category,
-    mobileNumber: mobileNumber,
-    dateOfBirth: dateOfBirth,
-    countryCallingCode: callingCode,
-    email: email,
-    gender: gender,
+    qualifierSubscription: getCookie('subscriptionId'),
+    firstName: document.getElementById('firstnameCompatators').value,
+    lastName: document.getElementById('lastnameCompatators').value,
+    category: document.getElementById('category').value,
+    mobileNumber: document.getElementById('mobileNumberCompatators').value,
+    dateOfBirth: document.getElementById('dateOfBirthCompatators').value,
+    countryCallingCode: document.getElementById('callingCodeCompatators').value,
+    email: document.getElementById('emailCompatators').value,
+    gender: document.getElementById('genderCompatators').value,
   };
 
   if (compatatorsId) {
     // Existing competitor, send PUT request
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/competitor/${compatatorsId}`, {
       method: 'PUT',
-      headers: headers,
+      headers: { "Content-Type": "application/json" , 'Authorization': token},
       body: JSON.stringify(formData),
     })
     .then(response => {  
@@ -189,16 +177,16 @@ function changeCompetitor(e) {
           console.log('Competitor updated successfully');
 
           document.getElementById('compatatorsId').value = '';
-          document.getElementById('firstname').value = '';
-          document.getElementById('lastname').value = '';
-          document.getElementById('dateOfBirth').value = '';
-          document.getElementById('gender').value = '';
-          document.getElementById('email').value = '';
-          document.getElementById('callingCode').value = '';
-          document.getElementById('mobileNumber').value = '';
+          document.getElementById('firstnameCompatators').value = '';
+          document.getElementById('lastnameCompatators').value = '';
+          document.getElementById('dateOfBirthCompatators').value = '';
+          document.getElementById('genderCompatators').value = '';
+          document.getElementById('emailCompatators').value = '';
+          document.getElementById('callingCodeCompatators').value = '';
+          document.getElementById('mobileNumberCompatators').value = '';
           document.getElementById('category').value = '';
 
-          getCompetitorsData();
+          getCompetitorsData(colorCode);
         } else {
           console.log('Error:', response.status);
         }
@@ -206,11 +194,13 @@ function changeCompetitor(e) {
       .catch(function (error) {
         console.log('Error:', error);
       });
+      document.getElementById("gif").style.display ="none"
   } else {
-    // New competitor, send POST request
+    // New competitor, send POST request]
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/competitor`, {
       method: 'POST',
-      headers: headers,
+      headers: { "Content-Type": "application/json" , 'Authorization': token},
       body: JSON.stringify(formData)
      
     })
@@ -221,16 +211,16 @@ function changeCompetitor(e) {
           console.log('Competitor added successfully');
 
           document.getElementById('compatatorsId').value = '';
-          document.getElementById('firstname').value = '';
-          document.getElementById('lastname').value = '';
-          document.getElementById('dateOfBirth').value = '';
-          document.getElementById('gender').value = '';
-          document.getElementById('email').value = '';
-          document.getElementById('callingCode').value = '';
-          document.getElementById('mobileNumber').value = '';
+          document.getElementById('firstnameCompatators').value = '';
+          document.getElementById('lastnameCompatators').value = '';
+          document.getElementById('dateOfBirthCompatators').value = '';
+          document.getElementById('genderCompatators').value = '';
+          document.getElementById('emailCompatators').value = '';
+          document.getElementById('callingCodeCompatators').value = '';
+          document.getElementById('mobileNumberCompatators').value = '';
           document.getElementById('category').value = '';
 
-          getCompetitorsData();
+          getCompetitorsData(colorCode);
         } else {
           console.log('Error:', response.status);
         }
@@ -238,6 +228,7 @@ function changeCompetitor(e) {
       .catch(function (error) {
         console.log('Error:', error);
       });
+      document.getElementById("gif").style.display ="none"
   }
 }
 
@@ -245,18 +236,21 @@ function changeCompetitor(e) {
 function deleteCompetitor(id) {
     if (id) {
         try {
+          document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/competitor/${id}`, {
                 method: 'DELETE',
+                headers: {'Authorization': token},
             })
                 .then(response => {
                     if (response.ok) {
                         console.log("Competitor data deleted successfully");
-                        getCompetitorsData();
+                        getCompetitorsData(colorCode);
                     } else {
                         throw new Error('Request failed.');
                     }
                 })
                 .catch(error => console.error(error));
+          document.getElementById("gif").style.display ="none"
         } catch (error) {
             console.log(error);
         }

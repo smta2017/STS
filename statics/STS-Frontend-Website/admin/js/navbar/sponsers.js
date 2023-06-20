@@ -1,31 +1,3 @@
-// document.getElementById("formSponsers").onsubmit = function (e) {
-//     e.preventDefault();
-
-//     const formData = new FormData();
-//     formData.append('title', document.getElementById("titleSponser").value);
-//     formData.append('paragraph', document.getElementById("paragraphSponser").value);
-//     formData.append('photo', document.getElementById("uploadImgSponser").files[0]);
-
-//     try {
-//         fetch('http://localhost:5000/sts/sponsor', {
-//             method: 'POST',
-//             body: formData,
-//         })
-//             .then(response => {
-//                 if (response.ok) {
-//                     console.log("Data saved successfully");
-//                     document.getElementById("titleSponser").value = "";
-//                     document.getElementById("paragraphSponser").value = "";
-//                     document.getElementById("uploadImgSponser").files[0] ="";
-//                 } else {
-//                     throw new Error('Request failed.');
-//                 }
-//             })
-//             .catch(error => console.error(error));
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 function previewImage(event) {
     const input = event.target;
     const imgPreview = document.getElementById("imgPreview");
@@ -42,12 +14,13 @@ function previewImage(event) {
     }
 }
 
+
 var sponsersData;
 function getSponsersData() {
     var sponsorContainer = document.getElementById("Addsponsers");
     fetch(`${domainName}/sts/sponsor/all`, {
         method: 'GET',
-        headers: { "Content-Type": "application/json" }
+        headers: {'Authorization': token},
     })
         .then(response => response.json())
         .then(data => {
@@ -122,6 +95,7 @@ function changeSponsers(e) {
         try {
             fetch(`${domainName}/sts/sponsor/${id}`, {
                 method: 'PUT',
+                headers: {'Authorization': token},
                 body: formData,
             })
                 .then(response => {
@@ -145,6 +119,7 @@ function changeSponsers(e) {
         try {
             fetch(`${domainName}/sts/sponsor`, {
                 method: 'POST',
+                headers: {'Authorization': token},
                 body: formData,
             })
                 .then(response => {
@@ -172,6 +147,7 @@ function deleteSponsers(id) {
         try {
             fetch(`${domainName}/sts/sponsor/${id}`, {
                 method: 'DELETE',
+                headers: {'Authorization': token},
             })
                 .then(response => {
                     if (response.ok) {

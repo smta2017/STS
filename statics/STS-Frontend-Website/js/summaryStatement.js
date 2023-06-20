@@ -5,34 +5,26 @@ function getCookie(name) {
   return cookieValue ? cookieValue.pop() : null;
 }
 
-var headers = new Headers();
-var token = getCookie("token");
-headers.append("Authorization", token);
-headers.append("Content-Type", "application/json");
 
 function generatePDF() {
   // Get the HTML table element
-  var table = document.getElementById("compatators-table");
+  var table = document.getElementById('table-summaryStatement');
 
   // Open a new window for the print preview
-  var win = window.open("", "_blank");
+  var win = window.open('', '_blank');
 
   // Create a new document in the new window
-  win.document.write(
-    "<html><head><title>Compatators Table</title></head><body>"
-  );
-  win.document.write(
-    "<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>"
-  );
-  win.document.write("<h1>Compatators Table</h1>");
+  win.document.write('<html><head><title>Summary Statement Table</title></head><body>');
+  win.document.write('<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>');
+  win.document.write('<h1>Summary Statement Table</h1>');
   win.document.write(table.outerHTML); // Write the table HTML to the new document
-  win.document.write("</body></html>");
+  win.document.write('</body></html>');
 
   // Close the document
   win.document.close();
 
-  // Wait for the document to summaryy load before printing
-  win.onload = function () {
+  // Wait for the document to fully load before printing
+  win.onload = function() {
     // Print the document
     // win.print();
     // Close the print preview window after printing
@@ -40,7 +32,7 @@ function generatePDF() {
   };
 }
 
-document.getElementById("generate-pdf").addEventListener("click", generatePDF);
+document.getElementById('generate-pdf').addEventListener('click', generatePDF);
 
 var summaryStatement;
 
@@ -50,9 +42,10 @@ function getsummaryStatement() {
   );
   var id = getCookie("subscriptionId");
 
+  document.getElementById("gif").style.display ="block"
   fetch(`${domainName}/sts/entry/mystatment/${id}`, {
     method: "GET",
-    headers: headers,
+    headers: {'Authorization': token},
   })
     .then((response) => response.json())
     .then((data) => {
@@ -69,6 +62,7 @@ function getsummaryStatement() {
       });
     })
     .catch((error) => console.log(error));
+    document.getElementById("gif").style.display ="none"
 }
 
 getsummaryStatement();

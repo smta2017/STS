@@ -15,6 +15,7 @@ document.getElementById('generate-pdf').addEventListener('click', function() {
 
 var row ;
 var i ;
+document.getElementById("gif").style.display ="block"
 fetch('https://api.example.com/data', {method: 'GET'})
     .then(response => response.json())
     .then(data => {
@@ -42,7 +43,9 @@ fetch('https://api.example.com/data', {method: 'GET'})
                             <div class="bg-danger p-2">Not Paid</div>`;
     
     })
-});
+        })
+    .catch(error => console.log(error));
+document.getElementById("gif").style.display ="none"
 
 
 

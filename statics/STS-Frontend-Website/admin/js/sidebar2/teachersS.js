@@ -1,180 +1,221 @@
+function getCookie(name) {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : null;
+}
 
-document.getElementById('generate-pdf').addEventListener('click', function() {
+
+function generatePDF() {
     // Get the HTML table element
-    var table = document.getElementById('teachers-table');
-    // Create a new jsPDF object
-    var pdf = new jsPDF();
-    // Generate the PDF with the table content
-    pdf.fromHTML(table, 15, 15, {
-    'width': 190
-    });
-    // pdf.autoTable({html: '#my-table'});
-    // Download the PDF file
-    pdf.save('Teachers Table.pdf');
-});
+    var table = document.getElementById('teachersA-table');
+  
+    // Open a new window for the print preview
+    var win = window.open('', '_blank');
+  
+    // Create a new document in the new window
+    win.document.write('<html><head><title>Teachers Table</title></head><body>');
+    win.document.write('<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>');
+    win.document.write('<h1>Teachers Table</h1>');
+    win.document.write(table.outerHTML); // Write the table HTML to the new document
+    win.document.write('</body></html>');
+  
+    // Close the document
+    win.document.close();
+  
+    // Wait for the document to fully load before printing
+    win.onload = function() {
+      // Print the document
+      // win.print();
+      // Close the print preview window after printing
+      // win.close();
+    };
+}
+  
+document.getElementById('generate-pdf').addEventListener('click', generatePDF);
+  
+var teachersData;
+
+function getTeachersAData() {
+    var teachersContainer = document.getElementById("table-body-teachersA");
+    var id = getCookie("schoolID");
+    console.log(id);
+    document.getElementById("gif").style.display ="block"
+    fetch(`${domainName}/sts/teacher/${id}`, {
+      method: 'GET',
+      headers: {'Authorization': token},
+    })
+        .then(response => response.json())
+        .then(data => {
+            teachersData = data.data;
+            teachersContainer.innerHTML = "";
+            teachersData.forEach(teacher=> {
+            const element = document.createElement('tr');
+            const date = `${teacher.dateOfBirth}`.split("T")[0];
+            element.innerHTML = `
+                <td>${teacher.firstName} ${teacher.lastName}</td>
+                <td>${date}</td>
+                <td>${teacher.mobileNumber}</td>
+                <td>${teacher.email}</td>
+                <td>
+                    <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddTeacherA" onclick="editTeacherA('${teacher._id}')"></i>
+                    <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteTeacherA('${teacher._id}')"></i>
+                </td>
+            `;
+            element.setAttribute('id', `teacher-${teacher._id}`);
+            teachersContainer.appendChild(element);
+            });
+    })
+    .catch(error => console.log(error));
+    document.getElementById("gif").style.display ="none"
+}
+
+getTeachersAData();
+
+function editTeacherA(id) {
+    var teacher = teachersData.find(teacher => teacher._id == id);
+  
+    document.getElementById("teachersIdA").value = teacher._id;
+    document.getElementById('firstnameA').value = teacher.firstName;
+    document.getElementById('lastnameA').value = teacher.lastName;
+    document.getElementById('dateOfBirthA').value = teacher.dateOfBirth.split("T")[0];
+    document.getElementById('emailA').value = teacher.email;
+    document.getElementById('callingCodeA').value = teacher.countryCallingCode;
+    document.getElementById('mobileNumberA').value = teacher.mobileNumber.split('ar-EG:+20')[1];
+}
+
+function changeTeacherA(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    var teachersId = document.getElementById('teachersIdA').value;
+
+    // Create an object with the form data
+    var formData = {
+        qualifierSubscription: getCookie('subscriptionId'),
+        firstName: document.getElementById('firstnameA').value,
+        lastName: document.getElementById('lastnameA').value,
+        mobileNumber: document.getElementById('mobileNumberA').value,
+        dateOfBirth: document.getElementById('dateOfBirthA').value,
+        countryCallingCode: document.getElementById('callingCodeA').value,
+        email: document.getElementById('emailA').value,
+    };
+
+    if (teachersId) {
+        // Existing teacher, send PUT request
+        document.getElementById("gif").style.display ="block"
+        fetch(`${domainName}/sts/teacher/${teachersId}`, {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" , 'Authorization': token},
+            body: JSON.stringify(formData),
+        })
+            .then(response => {  
+                
+            if (response.ok) {
+                console.log(JSON.stringify(formData))
+                console.log(response)
+                console.log('Teacher updated successfully');
+
+                document.getElementById('teachersIdA').value = '';
+                document.getElementById('firstnameA').value = '';
+                document.getElementById('lastnameA').value = '';
+                document.getElementById('dateOfBirthA').value = '';
+                document.getElementById('emailA').value = '';
+                document.getElementById('callingCodeA').value = '';
+                document.getElementById('mobileNumberA').value = '';
+
+                getTeachersAData();
+                } else {
+                    console.log('Error:', response.status);
+                }
+            })
+                .catch(function (error) {
+                    console.log('Error:', error);
+                });
+                document.getElementById("gif").style.display ="none"
+            } else {
+                // New teacher, send POST request
+                document.getElementById("gif").style.display ="block"
+                var id = getCookie("schoolID");
+                fetch(`${domainName}/sts/teacher/${id}`, {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" , 'Authorization': token},
+                    body: JSON.stringify(formData)
+                })
+                .then(function (response) {
+                    responseAlert(response);
+                    
+                    if (response.ok) {
+                        console.log(JSON.stringify(formData))
+                        console.log(response)
+                    console.log('Teacher added successfully');
+
+                    document.getElementById('teachersIdA').value = '';
+                    document.getElementById('firstnameA').value = '';
+                    document.getElementById('lastnameA').value = '';
+                    document.getElementById('dateOfBirthA').value = '';
+                    document.getElementById('emailA').value = '';
+                    document.getElementById('callingCodeA').value = '';
+                    document.getElementById('mobileNumberA').value = '';
+
+                    getTeachersAData();
+                    } else {
+                    console.log('Error:', response.status);
+                    }
+                })
+                .catch(function (error) {
+                    console.log('Error:', error);
+                });
+                document.getElementById("gif").style.display ="none"
+            }
+}
 
 
-var form = document.querySelector("#add-teachers-form");
-var tableBody = document.querySelector("#table-body-teachers");
-var searchInput = document.querySelector("#search");
-var firstnameInput = document.querySelector("#firstname");
-var lastnameInput = document.querySelector("#lastname");
-var positionInput = document.querySelector("#position");
-var emailInput = document.querySelector("#email");
-var mobileInput = document.querySelector("#mobile");
-var submitBtn = document.querySelector("#submit");
-
-var data = [];
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const firstname = firstnameInput.value;
-    const lastname = lastnameInput.value;
-    const position = positionInput.value;
-    const email = emailInput.value;
-    const mobile = mobileInput.value;
-
-    if (!firstname || !lastname || !position || !email || !mobile) {
-        alert("Please enter all the required data.");
-        return;
-    }
-
-    const person = { firstname, lastname, position, email, mobile };
-    
-    if (submitBtn.textContent === "Update") {
-        const rowIndex = submitBtn.dataset.rowIndex;
-        updatePerson(person, rowIndex);
+function deleteTeacherA(id) {
+    console.log(id)
+    if (id) {
+        try {
+            document.getElementById("gif").style.display ="block"
+            fetch(`${domainName}/sts/teacher/${id}`, {
+                method: 'DELETE',
+                headers: {'Authorization': token},
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Teacher data deleted successfully");
+                        getTeachersAData();
+                    } else {
+                        console.log("response");
+                        throw new Error('Request failed.');
+                    }
+                })
+                .catch(error => console.error(error));
+                document.getElementById("gif").style.display ="none"
+        } catch (error) {
+            console.log(error);
+        }
     } else {
-        addPerson(person);
+        console.log("No Teachers ID provided");
     }
-    form.reset();
-});
-
-
-function addPerson(person) {
-    fetch("/your-backend-endpoint", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(person)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            data.push(person);
-            renderRow(person, data.length - 1);
-        } else {
-            alert("Failed to add person. Please try again.");
-        }
-    })
-    .catch(error => {
-        alert("An error occurred. Please try again.");
-        console.error(error);
-    });
 }
 
-function updatePerson(person, rowIndex) {
-    fetch(`/your-backend-endpoint/${rowIndex}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(person)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            data[rowIndex] = person;
-            renderTable(data);
-            submitBtn.textContent = "Submit";
-            submitBtn.removeAttribute("data-row-index");
-        } else {
-            alert("Failed to update person. Please try again.");
-        }
-    })
-    .catch(error => {
-        alert("An error occurred. Please try again.");
-        console.error(error);
+document.getElementById('search').addEventListener('input', handleSearch);
+
+function handleSearch() {
+  var searchQuery = document.getElementById('search').value.toLowerCase();
+  var rows = document.querySelectorAll('#table-body-teachersA tr');
+
+  rows.forEach(function (row) {
+    var cells = row.getElementsByTagName('td');
+    var shouldShowRow = false;
+
+    Array.from(cells).forEach(function (cell) {
+      if (cell.textContent.toLowerCase().includes(searchQuery)) {
+        shouldShowRow = true;
+      }
     });
-}
 
-function deletePerson(rowIndex) {
-    fetch(`/your-backend-endpoint/${rowIndex}`, {
-        method: "DELETE"
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            data.splice(rowIndex, 1);
-            renderTable(data);
-        } else {
-            alert("Failed to delete person. Please try again.");
-        }
-    })
-    .catch(error => {
-        alert("An error occurred. Please try again.");
-        console.error(error);
-    });
-}
-
-tableBody.addEventListener("click", (event) => {
-    if (event.target.classList.contains("edit-btn")) {
-        const rowIndex = event.target.dataset.rowIndex;
-        const person = data[rowIndex];
-        
-        firstnameInput.value = person.firstname;
-        lastnameInput.value = person.lastname;
-        positionInput.value = person.position;
-        emailInput.value = person.email;
-        mobileInput.value = person.mobile;
-    
-        submitBtn.textContent = "Update";
-        submitBtn.dataset.rowIndex = rowIndex;
-
-    } else if (event.target.classList.contains("delete-btn")) {
-        const rowIndex = event.target.dataset.rowIndex;
-        deletePerson(rowIndex);
+    if (shouldShowRow) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
     }
-});
-
-renderTable(data);
-
-searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-    const filteredData = data.filter((person) => {
-    return (
-        person.firstname.toLowerCase().includes(query) ||
-        person.lastname.toLowerCase().includes(query) ||
-        person.position.toLowerCase().includes(query) ||
-        person.email.toLowerCase().includes(query) ||
-        person.mobile.toString().includes(query)
-    );
-    });
-    renderTable(filteredData);
-});
-
-function renderTable(dataArray) {
-    tableBody.innerHTML = "";
-    dataArray.forEach((person, rowIndex) => {
-    renderRow(person, rowIndex);
-    });
-}
-
-function renderRow(person, rowIndex) {
-    const newRow = tableBody.insertRow();
-    const firstnameCell = newRow.insertCell();
-    const lastnameCell = newRow.insertCell();
-    const positionCell = newRow.insertCell();
-    const emailCell = newRow.insertCell();
-    const mobileCell = newRow.insertCell();
-    const actionCell = newRow.insertCell();
-
-    firstnameCell.innerHTML = person.firstname;
-    lastnameCell.innerHTML = person.lastname;
-    positionCell.innerHTML = person.position;
-    emailCell.innerHTML = person.email;
-    mobileCell.innerHTML = person.mobile;
-    actionCell.innerHTML = `<i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-row-index="${rowIndex}" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-                            <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" data-row-index="${rowIndex}"></i>`;
+  });
 }

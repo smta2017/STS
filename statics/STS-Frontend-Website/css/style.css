@@ -19,7 +19,7 @@ body {
 }
 
 .dark {
-  background-color: #110f16fa;
+  background-color: #110f16;
 }
 
 a{
@@ -581,14 +581,14 @@ a:hover {
 
 .shop .label-top {
   /* position: absolute; */
-  background-color: #333531ef;
+  background-color: #1a7bbdef;
   color: #fff;
   top: 8px;
   right: 8px;
   padding: 5px 10px 5px 10px;
   /* font-size: .7rem; */
   font-weight: 600;
-  border-radius: 3px;
+  border-radius: 4px;
   text-transform: uppercase
 }
 

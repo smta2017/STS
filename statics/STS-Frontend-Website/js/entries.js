@@ -1,54 +1,71 @@
-
 function getCookie(name) {
   const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return cookieValue ? cookieValue.pop() : null;
 }
 
-var headers = new Headers();
-var token = getCookie('token');
-headers.append('Authorization', token);
-// headers.append('Content-Type', "application/json");
+function generatePDF() {
+  // Get all the HTML tables with the specified class name
+  var tables = document.getElementsByClassName('results_table');
 
-document.getElementById('generate-pdf').addEventListener('click', function () {
-  // Get the HTML table element
-  var table = document.getElementById('entry-table');
-  // Create a new jsPDF object
-  var pdf = new jsPDF();
+  // Open a new window for the print preview
+  var win = window.open('', '_blank');
 
-  // Set the desired styles for the PDF
-  var pdfStyles = {
-    headerColor: [41, 128, 185], // Header color (RGB format)
-    fontColor: [255, 255, 255], // Font color (RGB format)
-    lineColor: [230, 230, 230], // Line separator color (RGB format)
-    fontSize: 12, // Font size
-    fontStyle: 'bold', // Font style ('normal', 'bold', 'italic', 'bolditalic')
-    padding: 8 // Padding between cells
+  // Create a new document in the new window
+  win.document.write('<html><head><title>Entries Table</title></head><body>');
+  win.document.write('<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>');
+  win.document.write('<h1>Entries Table</h1>');
+
+  // Iterate over each table and write it to the new document
+  for (var i = 0; i < tables.length; i++) {
+    var table = tables[i];
+    win.document.write('<div class="table-container">');
+    win.document.write(table.outerHTML);
+    win.document.write('</div>');
+  }
+
+  win.document.write('</body></html>');
+
+  // Close the document
+  win.document.close();
+
+  // Wait for the document to fully load before printing
+  win.onload = function() {
+    // Print the document
+    // win.print();
+    // Close the print preview window after printing
+    // win.close();
   };
+}
 
-  // Generate the PDF with the table content
-  pdf.autoTable({
-    html: table,
-    startY: 20, // Y position of the table
-    styles: pdfStyles,
-    headStyles: { fillColor: pdfStyles.headerColor, textColor: pdfStyles.fontColor },
-    bodyStyles: { textColor: pdfStyles.fontColor },
-    alternateRowStyles: { fillColor: pdfStyles.lineColor }
-  });
 
-  // Download the PDF file
-  pdf.save('Entry Table.pdf');
-});
+document.getElementById('generate-pdf').addEventListener('click', generatePDF);
+
 
 
 var entriesData;
+var colorCode = localStorage.getItem("theme");
 
-function getEntriesData() {
+function getEntriesData(colorCode) {
+  var color ;
   var entriesContainer = document.getElementById("results_container-user");
   var id = getCookie("subscriptionId");
+  var theme = `${domainName}/sts/entry/${id}`
 
-  fetch(`${domainName}/sts/entry/${id}`, {
+  if(colorCode == "theme821919"){
+    color = "/dancer";
+  }else if (colorCode == "theme104b28"){
+    color = "/musician";
+  }else if (colorCode == "theme17547f"){
+    color = "/singer";
+  }else if (colorCode == "theme110f16"){
+    color = "";
+  }
+
+  
+  // document.getElementById("gif").style.display ="block"
+  fetch(`${theme}${color}`, {
     method: 'GET',
-    headers: headers
+    headers: {'Authorization': token},
   })
     .then(response => response.json())
     .then(data => {
@@ -56,36 +73,31 @@ function getEntriesData() {
       entriesContainer.innerHTML = "";
       data.data.forEach(entry => {
         const competitorList=entry.competitors.map(competitor=>competitor._id)
-        console.log(competitorList)
         const element = document.createElement('section');
         element.id = "entersU";
         element.className = "pb-5";
         let competitorsTable = `
             <div class="container">
-              <div class="row">
+              <div class="row col-11 mx-auto">
                 <div class="panel my-4">
                   <div class="panel-heading">
                     <div class="row">
                       <div class="row">
-                        <h4 class="title col-3" id="nameEntry">${entry.name}</h4>
-                        <div class="col-5 text-center">
+                        <h4 class="title col-lg-3" id="nameEntry">${entry.name}</h4>
+                        <div class="col-lg-4">
+                          <audio src="${domainName}/${entry.music}" id="audioPlayer1" controls>
+                            <source id="audio_${entry._id}"/>
+                          </audio>
+                        </div>
+                        <div class="col-lg-3 col-6  text-center">
                           <div class="btn_group">
                             <button class="btn btn-light"  data-bs-toggle="modal" data-bs-target="#AddCompatatorToEntry" onclick='getCompetitorsName("${entry._id}","${competitorList}")'>Add Compatators</button>
                           </div>
                         </div>
-                        <div class="title col-4 text-end">
+                        <div class="title col-lg-2 col-6 text-end">
                           <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddCompatator" onclick="editEntry('${entry._id}')"></i>
                           <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteEntry('${entry._id}')"></i>
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" ><i class="fa fa-file-pdf"></i></button>
-                        </div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col-12 text-center">
-                          <div class="btn_group">
-                            <audio src="${domainName}/${entry.music}" id="audioPlayer1" controls>
-                              <source id="audio_${entry._id}"/>
-                            </audio>
-                          </div>
+                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
                         </div>
                       </div>
                     </div>
@@ -101,10 +113,10 @@ function getEntriesData() {
                       </thead>
 
                       <tbody id="table-body-entriesU">`
-        entry.competitors.forEach(competitor=>{
-          competitorsTable+=`<tr><td>${competitor.firstName}${competitor.lastName}</td><td>${competitor.category}</td><td><i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick=></i></td></tr>`
-        })
-        competitorsTable+= ` </tbody>
+                        entry.competitors.forEach(competitor=>{
+                          competitorsTable+=`<tr><td>${competitor.firstName} ${competitor.lastName}</td><td>${competitor.category}</td><td><i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompatator('${competitor._id}','${entry._id}')"></i></td></tr>`
+                        })
+                        competitorsTable+= ` </tbody>
                     </table>
                   </div>
                 </div>
@@ -140,26 +152,24 @@ function getEntriesData() {
         element.innerHTML+= competitorsTable
         element.setAttribute('id', `entry-${entry._id}`);
         entriesContainer.appendChild(element);
+        // document.getElementById("gif").style.display ="none"
       });
     })
     .catch(error => console.log(error));
+    // document.getElementById("gif").style.display ="none"
 }
-
-getEntriesData();
+getEntriesData(colorCode);
 
 document.getElementById("uMusic").addEventListener("change", handleFiles, false);
 
 function handleFiles(event) {
-
   var files = event.target.files;
   document.getElementById("audio").src = URL.createObjectURL(files[0]);
   document.getElementById("audioPlayer").load();
-
 }
 
 function editEntry(id) {
   var entry = entriesData.find(entry => entry._id == id);
-  // console.log(entry._id);
   document.getElementById("entriesId").value = id;
   document.getElementById('entryname').value = entry.name;
   document.getElementById('uMusic').value = entry.music;
@@ -178,19 +188,23 @@ function changeEntry(e) {
 
   if (entriesId) {
     // Existing competitor, send PUT request
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry/${entriesId}`, {
       method: 'PUT',
-      headers: headers,
+      headers: {'Authorization': token},
       body: formData
     })
       .then(response => response.json())
       .then(response => {
+        console.log(response)
+        console.log(formData)
         if (response.apiStatus == true) {
+          console.log("your entry updated sucssefully")
           document.getElementById('entriesId').value = '';
           document.getElementById('entryname').value = '';
           document.getElementById('uMusic').value = '';
 
-          getEntriesData();
+          getEntriesData(colorCode);
         } else {
           console.log('Error:', response.status);
         }
@@ -198,51 +212,24 @@ function changeEntry(e) {
       .catch(function (error) {
         console.log('Error:', error);
       });
+      document.getElementById("gif").style.display ="none"
   } else {
     // New competitor, send POST request
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry`, {
       method: 'POST',
-      headers: headers,
+      headers: {'Authorization': token},
       body: formData
     })
       .then(response => {
         if (response.ok) {
-
+          console.log("your entry added sucssefully")
           document.getElementById('entriesId').value = '';
           document.getElementById('entryname').value = '';
           document.getElementById('uMusic').value = '';
 
-          // getEntriesData();
+          getEntriesData(colorCode);
 
-          response.json().then(data => {
-            const newEntryId = data.data.entry._id;
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-              <td>${formData.get('name')}</td>
-              <td>
-                <audio id="audioPlayer_${newEntryId}" controls>
-                  <source src="" id="audio_${newEntryId}"/>
-                </audio>
-              </td>
-              <td>
-                <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddCompatator" onclick="editEntry('${newEntryId}')"></i>
-                <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteEntry('${newEntryId}')"></i>
-              </td>
-            `;
-            newRow.setAttribute('id', `entry-${newEntryId}`);
-            document.getElementById("table-body-entries").appendChild(newRow);
-
-            const audioPlayer = document.getElementById(`audioPlayer_${newEntryId}`);
-            audioPlayer.src = URL.createObjectURL(formData.get('music'));
-            // audioPlayer.onloadeddata = function() {
-            //   audioPlayer.play();
-            // };
-
-            const playButton = audioPlayer.parentElement.querySelector('.play-btn');
-            playButton.addEventListener('click', function () {
-              audioPlayer.play();
-            });
-          });
         } else {
           console.log('Error:', response.status);
         }
@@ -250,24 +237,27 @@ function changeEntry(e) {
       .catch(function (error) {
         console.log('Error:', error);
       });
+      document.getElementById("gif").style.display ="none"
   }
 }
 
 function deleteEntry(id) {
   if (id) {
     try {
+      document.getElementById("gif").style.display ="block"
       fetch(`${domainName}/sts/entry/${id}`, {
         method: 'DELETE',
-        headers: headers
+        headers: {'Authorization': token},
       })
         .then(response => {
           if (response.ok) {
-            getEntriesData();
+            getEntriesData(colorCode);
           } else {
             throw new Error('Request failed.');
           }
         })
         .catch(error => console.error(error));
+        document.getElementById("gif").style.display ="none"
     } catch (error) {
       console.log(error);
     }
@@ -277,24 +267,16 @@ function deleteEntry(id) {
 
 
 function getCompetitorsName(entriesID, competitors) {
-  // e.preventDefault(); // Prevent the default form submission
-
-  // var entriesID = document.getElementById('entriesId').value;
-console.log(typeof competitors)
-competitors=competitors.split(',')
-console.log(competitors)
-    // competitors=competitors.map(competitor=>competitor._id)
+  competitors=competitors.split(',')
   var id = getCookie("subscriptionId");
-  // console.log(id); 
 
   var competitorsContainer = document.getElementById("name_list");
 
-  headers.append('Content-Type', "application/json");
-
   // Existing competitor, send PUT request
+  document.getElementById("gif").style.display ="block"
   fetch(`${domainName}/sts/competitor/${id}`, {
     method: 'GET',
-    headers: headers
+    headers: {'Authorization': token},
   })
     .then(response => response.json())
     .then(data => {
@@ -311,7 +293,7 @@ console.log(competitors)
             <td class="col-7">${competitor.firstName} ${competitor.lastName}</td>
             <td class="col-3">${competitor.category}</td>
             <td class="col-2">
-              <i class="add-compatator fa-solid fa-user-plus" id="${competitor._id}" style="color: #3e843e;cursor: pointer;" onclick="add_editCompatatorsToEntry('${competitor._id}','${entriesID}')"></i>
+              <i class="add-compatator fa-solid fa-user-plus" id="${competitor._id}" style="color: #3e843e;cursor: pointer;" data-bs-dismiss="modal" onclick="add_editCompatatorsToEntry('${competitor._id}','${entriesID}')"></i>
             </td>
           </tr>
         `;
@@ -319,15 +301,17 @@ console.log(competitors)
         competitorsContainer.appendChild(element);
       });
     })
+    .catch(error => console.log(error));
+    document.getElementById("gif").style.display ="none"
 }
 
 
 function add_editCompatatorsToEntry(compatatorID, entriesID) {
   // var competitors_Category = document.getElementById("table-body-entriesU");
-
+  document.getElementById("gif").style.display ="block"
   fetch(`${domainName}/sts/entry/${entriesID}/${compatatorID}`, {
     method: 'PUT',
-    headers: headers,
+    headers: { "Content-Type": "application/json" , 'Authorization': token},
   })
     .then(response => response.json())
     .then(response => {
@@ -362,14 +346,14 @@ function add_editCompatatorsToEntry(compatatorID, entriesID) {
               ${response.data.competitorsCategories.map(category => `<span>${category}</span>`).join('')}
             </td>
             <td>
-              <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteEntry('${response.data._id}')"></i>
+              <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompatator('${compatatorID}','${entriesID}')"></i>
             </td>
           `;
 
           // competitors_Category.appendChild(element);
         }
 
-        getEntriesData();
+        getEntriesData(colorCode);
       } else {
         console.log('Error:', response.apiMessage);
         // Display an error message to the user indicating the duplication
@@ -379,9 +363,29 @@ function add_editCompatatorsToEntry(compatatorID, entriesID) {
     .catch(function (error) {
       console.log('Error:', error);
     });
+    document.getElementById("gif").style.display ="none"
+
 }
 
 
+function deleteCompatator(compatatorID,entriesID) {
+  try {
+    fetch(`${domainName}/sts/entry/${entriesID}/${compatatorID}`, {
+      method: 'DELETE',
+      headers: {'Authorization': token},
+    })
+      .then(response => {
+        if (response.ok) {
+          getEntriesData(colorCode);
+        } else {
+          throw new Error('Request failed.');
+        }
+      })
+      .catch(error => console.error(error));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 changeTheme(themesCharctaristic[localStorage.getItem('theme')]);

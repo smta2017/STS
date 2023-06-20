@@ -1,115 +1,223 @@
-
-document.getElementById('generate-pdf').addEventListener('click', function() {
-    // Get the HTML table element
-    var table = document.getElementById('teachers-table');
-    // Create a new jsPDF object
-    var pdf = new jsPDF();
-    // Generate the PDF with the table content
-    pdf.fromHTML(table, 15, 15, {
-    'width': 190
-    });
-    // pdf.autoTable({html: '#my-table'});
-    // Download the PDF file
-    pdf.save('Teachers Table.pdf');
-});
-
-
-var form = document.querySelector("#add-teachers-form");
-var tableBody = document.querySelector("#table-body-teachers");
-var searchInput = document.querySelector("#search");
-var firstnameInput = document.querySelector("#firstname");
-var lastnameInput = document.querySelector("#lastname");
-var positionInput = document.querySelector("#position");
-var emailInput = document.querySelector("#email");
-var mobileInput = document.querySelector("#mobile");
-var submitBtn = document.querySelector("#submit");
-
-var data = [];
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const firstname = firstnameInput.value;
-    const lastname = lastnameInput.value;
-    const position = positionInput.value;
-    const email = emailInput.value;
-    const mobile = mobileInput.value;
-
-    if (!firstname || !lastname || !position || !email || !mobile) {
-        alert("please, enter your data ...");
-        return;
-    }
-
-    const person = { firstname, lastname, position, email, mobile };
-    if (submitBtn.textContent === "Update") {
-        const rowIndex = submitBtn.dataset.rowIndex;
-        data[rowIndex] = person;
-        renderTable(data);
-        submitBtn.textContent = "Submit";
-        } else {
-        data.push(person);
-        renderRow(person, data.length - 1);
-        }
-        form.reset();
-});
-
-tableBody.addEventListener("click", (event) => {
-    if (event.target.classList.contains("edit-btn")) {
-    const rowIndex = event.target.dataset.rowIndex;
-    const person = data[rowIndex];
-
-    firstnameInput.value = person.firstname;
-    lastnameInput.value = person.lastname;
-    positionInput.value = person.position;
-    emailInput.value = person.email;
-    mobileInput.value = person.mobile;
-
-    submitBtn.textContent = "Update";
-    submitBtn.dataset.rowIndex = rowIndex;
-
-    } else if (event.target.classList.contains("delete-btn")) {
-    const rowIndex = event.target.dataset.rowIndex;
-    data.splice(rowIndex, 1);
-    event.target.parentNode.parentNode.remove();
-    }
-});
-
-searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-    const filteredData = data.filter((person) => {
-    return (
-        person.firstname.toLowerCase().includes(query) ||
-        person.lastname.toLowerCase().includes(query) ||
-        person.position.toLowerCase().includes(query) ||
-        person.email.toLowerCase().includes(query) ||
-        person.mobile.toString().includes(query)
-    );
-    });
-    renderTable(filteredData);
-});
-
-function renderTable(dataArray) {
-    tableBody.innerHTML = "";
-    dataArray.forEach((person, index) => {
-    renderRow(person, index);
-    });
+function getCookie(name) {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : null;
 }
 
-function renderRow(person, index) {
-    const newRow = tableBody.insertRow();
-    const firstnameCell = newRow.insertCell();
-    const lastnameCell = newRow.insertCell();
-    const positionCell = newRow.insertCell();
-    const emailCell = newRow.insertCell();
-    const mobileCell = newRow.insertCell();
-    const actionCell = newRow.insertCell();
 
-    firstnameCell.innerHTML = person.firstname;
-    lastnameCell.innerHTML = person.lastname;
-    positionCell.innerHTML = person.position;
-    emailCell.innerHTML = person.email;
-    mobileCell.innerHTML = person.mobile;
-    actionCell.innerHTML = `<i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-row-index="${index}" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-                            <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" data-row-index="${index}"></i>`;
+function generatePDF() {
+    // Get the HTML table element
+    var table = document.getElementById('teachersU-table');
+  
+    // Open a new window for the print preview
+    var win = window.open('', '_blank');
+  
+    // Create a new document in the new window
+    win.document.write('<html><head><title>Teachers Table</title></head><body>');
+    win.document.write('<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>');
+    win.document.write('<h1>Teachers Table</h1>');
+    win.document.write(table.outerHTML); // Write the table HTML to the new document
+    win.document.write('</body></html>');
+  
+    // Close the document
+    win.document.close();
+  
+    // Wait for the document to fully load before printing
+    win.onload = function() {
+      // Print the document
+      // win.print();
+      // Close the print preview window after printing
+      // win.close();
+    };
+}
+  
+document.getElementById('generate-pdf').addEventListener('click', generatePDF);
+  
+var teachersData;
+
+function getTeachersData() {
+    var teachersContainer = document.getElementById("table-body-teachersU");
+    // var id = getCookie("subscriptionId");
+    document.getElementById("gif").style.display ="block"
+    fetch(`${domainName}/sts/teacher`, {
+      method: 'GET',
+      headers: {'Authorization': token},
+    })
+        .then(response => response.json())
+        .then(data => {
+            teachersData = data.data;
+            teachersContainer.innerHTML = "";
+            teachersData.forEach(teacher=> {
+            const element = document.createElement('tr');
+            const date = `${teacher.dateOfBirth}`.split("T")[0];
+            element.innerHTML = `
+                <td>${teacher.firstName} ${teacher.lastName}</td>
+                <td>${date}</td>
+                <td>${teacher.mobileNumber}</td>
+                <td>${teacher.email}</td>
+                <td>
+                    <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddTeacher" onclick="editTeacher('${teacher._id}')"></i>
+                    <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteTeacher('${teacher._id}')"></i>
+                </td>
+            `;
+            element.setAttribute('id', `teacher-${teacher._id}`);
+            teachersContainer.appendChild(element);
+            });
+    })
+    .catch(error => console.log(error));
+    document.getElementById("gif").style.display ="none"
+}
+
+getTeachersData();
+
+function editTeacher(id) {
+    var teacher = teachersData.find(teacher => teacher._id == id);
+  
+    document.getElementById("teachersIdU").value = teacher._id;
+    document.getElementById('firstnameU').value = teacher.firstName;
+    document.getElementById('lastnameU').value = teacher.lastName;
+    document.getElementById('dateOfBirthU').value = teacher.dateOfBirth.split("T")[0];
+    document.getElementById('emailU').value = teacher.email;
+    document.getElementById('callingCodeU').value = teacher.countryCallingCode;
+    document.getElementById('mobileNumberU').value = teacher.mobileNumber.split('ar-EG:+20')[1];
+}
+
+function changeTeacher(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    var teachersId = document.getElementById('teachersIdU').value;
+    // Get the form values
+    var qualifierSubscription = getCookie('subscriptionId');
+    var firstName = document.getElementById('firstnameU').value;
+    var lastName = document.getElementById('lastnameU').value;
+    var mobileNumber = document.getElementById('mobileNumberU').value;
+    var dateOfBirth = document.getElementById('dateOfBirthU').value;
+    var callingCode = document.getElementById('callingCodeU').value;
+    var email = document.getElementById('emailU').value;
+
+    // Create an object with the form data
+    var formData = {
+        qualifierSubscription: qualifierSubscription,
+        firstName: firstName,
+        lastName: lastName,
+        mobileNumber: mobileNumber,
+        dateOfBirth: dateOfBirth,
+        countryCallingCode: callingCode,
+        email: email,
+    };
+
+    if (teachersId) {
+        // Existing teacher, send PUT request
+        document.getElementById("gif").style.display ="block"
+        fetch(`${domainName}/sts/teacher/${teachersId}`, {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" , 'Authorization': token},
+            body: JSON.stringify(formData),
+        })
+            .then(response => {  
+            if (response.ok) {
+                console.log('Teacher updated successfully');
+
+                document.getElementById('teachersIdU').value = '';
+                document.getElementById('firstnameU').value = '';
+                document.getElementById('lastnameU').value = '';
+                document.getElementById('dateOfBirthU').value = '';
+                document.getElementById('emailU').value = '';
+                document.getElementById('callingCodeU').value = '';
+                document.getElementById('mobileNumberU').value = '';
+
+                getTeachersData();
+                } else {
+                    console.log('Error:', response.status);
+                }
+            })
+                .catch(function (error) {
+                    console.log('Error:', error);
+                });
+                document.getElementById("gif").style.display ="none"
+            } else {
+                // New teacher, send POST request
+                document.getElementById("gif").style.display ="block"
+                fetch(`${domainName}/sts/teacher`, {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" , 'Authorization': token},
+                    body: JSON.stringify(formData)
+                })
+                .then(function (response) {
+                    responseAlert(response);
+                    if (response.ok) {
+                    console.log('Teacher added successfully');
+
+                    document.getElementById('teachersIdU').value = '';
+                    document.getElementById('firstnameU').value = '';
+                    document.getElementById('lastnameU').value = '';
+                    document.getElementById('dateOfBirthU').value = '';
+                    document.getElementById('emailU').value = '';
+                    document.getElementById('callingCodeU').value = '';
+                    document.getElementById('mobileNumberU').value = '';
+
+                    getTeachersData();
+                    } else {
+                    console.log('Error:', response.status);
+                    }
+                })
+                .catch(function (error) {
+                    console.log('Error:', error);
+                });
+                document.getElementById("gif").style.display ="none"
+            }
+}
+
+
+function deleteTeacher(id) {
+    console.log(id)
+    if (id) {
+        try {
+            document.getElementById("gif").style.display ="block"
+            fetch(`${domainName}/sts/teacher/${id}`, {
+                method: 'DELETE',
+                headers: {'Authorization': token},
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Teacher data deleted successfully");
+                        getTeachersData();
+                    } else {
+                        console.log("response");
+                        throw new Error('Request failed.');
+                    }
+                })
+                .catch(error => console.error(error));
+                document.getElementById("gif").style.display ="none"
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        console.log("No Teachers ID provided");
+    }
+}
+
+document.getElementById('search').addEventListener('input', handleSearch);
+
+function handleSearch() {
+  var searchQuery = document.getElementById('search').value.toLowerCase();
+  var rows = document.querySelectorAll('#table-body-teachersU tr');
+
+  rows.forEach(function (row) {
+    var cells = row.getElementsByTagName('td');
+    var shouldShowRow = false;
+
+    Array.from(cells).forEach(function (cell) {
+      if (cell.textContent.toLowerCase().includes(searchQuery)) {
+        shouldShowRow = true;
+      }
+    });
+
+    if (shouldShowRow) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
 }
 
 

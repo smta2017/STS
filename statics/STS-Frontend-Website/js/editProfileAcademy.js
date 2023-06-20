@@ -1,39 +1,18 @@
+function editProfile() { 
+    document.getElementById("editFirstNameForAcademy").value = getCookie('firstName'); 
+    document.getElementById("editLastNameForAcademy").value = getCookie('lastName'); 
+
+} 
+ 
+function setCookie(name, value) {
+  document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+}
+
 function getCookie(name) {
   const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return cookieValue ? cookieValue.pop() : null;
 }
 
-function setCookie(name, value) {
-  document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
-}
-
-
-var token; 
-var headers = new Headers(); 
-token = getCookie('token'); 
-headers.append('Authorization', token); 
-headers.append('Content-Type', "application/json");
-
-
-function editProfile() { 
-    document.getElementById("editFirstNameForAcademy").value = getCookie('firstName'); 
-    console.log(getCookie('firstName')); 
-    document.getElementById("editLastNameForAcademy").value = getCookie('lastName'); 
-    console.log(getCookie('lastName')); 
-    // document.getElementById("schoolName").value = localStorage.getItem('schoolName'); 
-    // console.log(localStorage.getItem('schoolName')); 
-    // document.getElementById("buldingNumber").value = localStorage.getItem('buldingNumber'); 
-    // console.log(localStorage.getItem('buldingNumber')); 
-    // document.getElementById("Address").value = localStorage.getItem('Address'); 
-    // console.log(localStorage.getItem('Address')); 
-    // document.getElementById("City").value = localStorage.getItem('City'); 
-    // console.log(localStorage.getItem('City')); 
-    // document.getElementById("State").value = localStorage.getItem('State'); 
-    // console.log(localStorage.getItem('State')); 
-    // document.getElementById("Postal").value = localStorage.getItem('Postal'); 
-    // console.log(localStorage.getItem('Postal')); 
-} 
- 
 function profileModified(e) { 
     e.preventDefault(); 
     
@@ -62,22 +41,22 @@ function profileModified(e) {
     console.log(formEditProfile); 
     console.log(JSON.stringify(formEditProfile)); 
     try {
+      document.getElementById("gif").style.display ="block"
         fetch(`${domainName}/sts/user`, {
           method: 'PUT',
-          headers: headers,
+          headers: { "Content-Type": "application/json" , 'Authorization': token},
           body: JSON.stringify(formEditProfile)          
         })
           .then(response => response.json())
           .then((data) => {
-            console.log(response.json());
-
             if (data.apiMessage && data.apiMessage.includes('no password to log you in')) {
               alert('There is no password to log you in. Please enter your password.');
             } else {
-              // console.log('Congrats, your profile updated successfully');
+            
+              console.log('Congrats, your profile updated successfully');
 
-              setCookie('firstName', document.getElementById("editFirstNameForAcademy").value); 
-              setCookie('lastName', document.getElementById("editLastNameForAcademy").value); 
+            setCookie('firstName', document.getElementById("editFirstNameForAcademy").value); 
+            setCookie('lastName', document.getElementById("editLastNameForAcademy").value); 
             
               document.getElementById("callingCodeForAcademy").value = ""; 
               document.getElementById("editMobileNumbeForAcademy").value = ""; 
@@ -96,10 +75,11 @@ function profileModified(e) {
             if (error.message.includes('400')) {
               alert('There was a bad request. Please check your input and try again.');
             } else {
-              alert('There was an error updating your profile. Please try again later.');
+              console.log(error);
             }
           });
+      document.getElementById("gif").style.display ="none"
       } catch (error) {
         console.log(error);
       }
-} 
+}

@@ -7,19 +7,13 @@ function setCookie(name, value) {
     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
 }
 
-
-var headers = new Headers(); 
-var token = getCookie('token'); 
-headers.append('Authorization', token); 
-headers.append('Content-Type', "application/json");
-
-
 function getAllJoinedCompetition() {
     var allJoinedCompetition = document.querySelector('#joinedCompetitionName');
     try {
+        document.getElementById("gif").style.display ="block"
         fetch(`${domainName}/sts/subscription`, {
             method: 'GET',
-            headers: headers
+            headers: {'Authorization': token},
         })
         .then(response => response.json())
         .then(data => {
@@ -30,18 +24,24 @@ function getAllJoinedCompetition() {
                 button.id = competitions.competition._id;
                 button.value = competitions._id;
                 button.textContent =`${competitions.competition.type} - ${competitions.competition.year}`;
-                button.onclick = function () { goToHome(competitions._id) };
+                button.onclick = function () { goToHome(competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished) };
                 allJoinedCompetition.appendChild(button);
             });
         })
         .catch(error => console.log(error));
+        document.getElementById("gif").style.display ="none"
     } catch (error) {
         console.log(error);
     }
 }
 
-function goToHome(valueID) {
+function goToHome(valueID,type,stopSubscription,showSchedule,showResults,finished) {
     setCookie("subscriptionId", valueID);
+    setCookie("type", type);
+    setCookie("stopSubscription", stopSubscription);
+    setCookie("showSchedule", showSchedule);
+    setCookie("showResults", showResults);
+    setCookie("finished", finished);
     window.location.hash = "#compatators";
     window.location.reload();
 }

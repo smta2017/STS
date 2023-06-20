@@ -3,10 +3,6 @@ function getCookie(name) {
     return cookieValue ? cookieValue.pop() : null;
   }
   
-var headers = new Headers(); 
-var token = getCookie("token");
-headers.append('Authorization', token); 
-headers.append('Content-Type', "application/json");
   
 changeTheme(themesCharctaristic[localStorage.getItem("theme")]);
 var academySchadualData;
@@ -15,10 +11,10 @@ function getacademySchadualData() {
     var academySchadualContainer = document.getElementById("academySchadual-table");
     var id = getCookie('subscriptionId');
     // var theme = `${domainName}/sts/entry/schedual/${id}`;
-
+document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry/schedual/${id}`, {
         method: "GET",
-        headers: headers,
+        headers: {'Authorization': token},
     })
         .then((response) => response.json())
         .then((data) => {
@@ -36,6 +32,7 @@ function getacademySchadualData() {
             });
         })
         .catch((error) => console.log(error));
+document.getElementById("gif").style.display ="none"
 }
 
 getacademySchadualData();

@@ -1,10 +1,12 @@
 var countryData;
+
 function getData() {
     var countrys = document.getElementById("countrys")
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/country/all`,
         {
             method: 'GET',
-            headers: { "Content-Type": "application/json" }
+            headers: {'Authorization': token},
         })
         .then(response => response.json())
         .then(data => {
@@ -102,7 +104,7 @@ function getData() {
             );
         })
         .catch(error => console.log(error));
-
+        document.getElementById("gif").style.display ="none"
 }
 getData()
 
@@ -143,9 +145,10 @@ function changeFeesForCountry(e) {
     }
     var stringifyDataForUpdate = JSON.stringify(dataForUpdate)
     try {
+        document.getElementById("gif").style.display ="block"
         fetch(`${domainName}/sts/country/${id}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { "Content-Type": "application/json" , 'Authorization': token},
             body: stringifyDataForUpdate
         })
             .then(response => {
@@ -157,7 +160,7 @@ function changeFeesForCountry(e) {
                 getData()
             })
             .catch(error => console.error(error));
-
+            document.getElementById("gif").style.display ="none"
     } catch (error) {
         console.log(error);
     }

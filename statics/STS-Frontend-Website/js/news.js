@@ -1,11 +1,10 @@
 var newsData;
+
 function showNewsData() {
   var showNewsContainer = document.getElementById("showNews");
   document.getElementById("gif").style.display ="block"
-
   fetch(`${domainName}/sts/news/all`, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
   })
     .then((response) => response.json())
     .then((data) => {
@@ -76,31 +75,28 @@ function showNewsDetails(id) {
                                                     <div class="col-12 mx-auto text-canter">
                                                     
                                                         <div class="profile p-0">
-                                                            <div class="avatar pb-1">
+                                                            <div class="avatar">
                                                                 <img src='${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
                                                             </div>
                                                         </div>
 
                                                         <div class="gallery my-0 p-0" id="imgContent">
                                                             <div class="col-6 text-center mx-auto">
-                                                                <img id="photo" src="${domainName}/${showNewsD.photo}" class="rounded col-12 col-md-4">  					
+                                                                <img id="photo" src="${domainName}/${showNewsD.photo}" class="rounded col-12 col-md-4 mb-2">  					
                                                             </div>
                                                         </div>
 
-
                                                             <div class="name">
-                                                                <h3 class="title text-dark" id="title">${showNewsD.title}</h3>
+                                                                <h3 class="title text-dark text-center mt-2" id="title">${showNewsD.title}</h3>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                     
                                                 <div class="description text-center">
-                                                    <p id="paragraph">${showNewsD.paragraph}</p>
+                                                    <p class="m-0 pb-5 text-dark px-2 px-md-0" id="paragraph">${showNewsD.paragraph}</p>
                                                 </div>
-                                
-
-                                
+                            
                                             </div>
                                         </div>
                                     </div>

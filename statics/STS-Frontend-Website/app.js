@@ -1,4 +1,4 @@
-const domainName = "https://sts-5s7p.onrender.com";
+const domainName = "http://localhost:5000";
 
 const homeBeforeLoginTemplate = document.getElementById(
   "homeBeforeLogin-template"
@@ -200,7 +200,7 @@ const ruler = getCookie("ruler");
       renderContent(renderNavbar(), "body");
       load_css("admin/css/navbar.css");
       load_js("admin/js/navbar.js");
-      load_js("js/logOut.js");
+      load_js("js/logout.js");
 
       // window.addEventListener("load", handleNavigationAdmin1);
       // window.addEventListener("hashchange", handleNavigationAdmin1);
@@ -262,7 +262,7 @@ const ruler = getCookie("ruler");
       renderContent(renderNavbarR(), "body");
       load_css("admin/css/navbar.css");
       load_js("admin/js/navbarR.js");
-      load_js("js/logOut.js");
+      load_js("js/logout.js");
 
       // window.addEventListener("load", handleNavigationRuler);
       // window.addEventListener("hasher);change", handleNavigationRul
@@ -281,12 +281,13 @@ const ruler = getCookie("ruler");
         renderContent(renderhomeAfterLogin(), "body");
 
         if (window.location.hash == "") {
-          localStorage.setItem("theme", "themeNaN0f16");
+          localStorage.setItem("theme", "theme110f16");
         }
         load_js("js/multiThemes.js");
         load_js("js/competitions.js");
         load_js('js/editProfileAcademy.js');
-        load_js("js/logOut.js");
+        load_js("js/logout.js");
+        load_js("js/contactUs.js");
 
         // window.addEventListener("load", handleNavigationAfter);
         window.addEventListener("hashchange", handleNavigationAfter);
@@ -303,7 +304,7 @@ const ruler = getCookie("ruler");
       } else {
         renderContent(renderChoiceCompetition(), "body");
         load_js("js/joinCompetition.js");
-        load_js("js/logOut.js");
+        load_js("js/logout.js");
       }
     }
   } else {
@@ -366,9 +367,11 @@ function handleNavigationBefore() {
       break;
     case "#shop":
       renderContent(renderShop(), "content");
+      load_js("js/products.js");
       break;
     case "#contact":
       renderContent(renderContact(), "content");
+      load_js("js/contactUs.js");
       break;
     case "#signup":
       renderContent(renderSignup(), "content");
@@ -416,14 +419,15 @@ function handleNavigationAfter() {
         load_js('js/editProfileAcademy.js');
       // changeTheme(themeObj);
       break;
-    // case "#logOut":
-    //   load_js('js/logOut.js');
+    // case "#logout":
+    //   load_js('js/logout.js');
     //   break;
-    case "#contactUs":
-      renderContent(renderContact(), "content");
-      // load_js('js/competitions.js');
-      // changeTheme(themeObj);
-      break;
+    // case "#contactUs":
+    //   // renderContent(renderContact(), "content");
+    //   load_js("js/contactUs.js");
+    //   // load_js('js/competitions.js');
+    //   // changeTheme(themeObj);
+    //   break;
     // case "#competitions":
     //   // renderContent(renderCompetitions(), "content");
     //   load_js("js/competitions.js");
@@ -432,6 +436,8 @@ function handleNavigationAfter() {
     case "#compatators":
       renderContent(renderCompatators(), "content");
       load_js("js/compatators.js");
+      // getCompetitorsData("theme" + themeObj.bgColor.substring(1));
+
       // changeTheme(themeObj);
       break;
     case "#entries":
@@ -564,7 +570,7 @@ function handleNavigationAdmin1() {
     //     break;
     default:
        
-console.log(window.location.hash)
+// console.log(window.location.hash)
 
       if(["#compatatorsAS","#school","#compatatorsA","#entersA","#paymentA"].includes(window.location.hash)){
         handleNavigationAdmin2()
@@ -723,46 +729,92 @@ window.addEventListener("hashchange", HandleNavigation);
 //   });
 // };
 //aapi m   statts  data
+// function responseAlert(res) {
+//   // `<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+//   //     <symbol id="check-circle-fill" viewBox="0 0 16 16">
+//   //       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+//   //     </symbol>
+//   //     <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+//   //       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+//   //     </symbol>
+//   //   </svg>`
+
+//   if (res.apiStatus) {
+//     alert(`${res.apiMessage}`);
+//     // `<div class="alert alert-success alert-dismissible fade show" role="alert">
+//     //   <strong class="alert-heading">Holy guacamole!</strong> You should check in on some of those fields below.
+//     //     <div class="d-flex align-items-center">
+//     //       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+//     //       <div>
+//     //         ${res.apiMessage}
+//     //       </div>
+//     //     </div>
+
+//     //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+//     // </div>`
+//   } else if (!res.apiStatus) {
+//     alert(`${res.apiMessage}`);
+
+//     // `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+//     //   <strong class="alert-heading">Holy guacamole!</strong> You should check in on some of those fields below.
+//     //   <div class="d-flex align-items-center">
+//     //     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+//     //     <div>
+//     //     ${res.apiMessage}
+//     //     </div>
+//     //   </div>
+
+//     //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+//     // </div>`
+//   } else if (res.apiStatus === 500) {
+//     alert("500");
+//   }
+// }
+
 function responseAlert(res) {
-  // `<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  //     <symbol id="check-circle-fill" viewBox="0 0 16 16">
-  //       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-  //     </symbol>
-  //     <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
-  //       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-  //     </symbol>
-  //   </svg>`
+  // const successIcon = '<i class="bi flex-shrink-0 me-2 fas fa-check-circle-fill text-black fs-3" aria-label="Success"></i>';
+  // const errorIcon = '<i class="bi flex-shrink-0 me-2 fas fa-exclamation-triangle-fill text-black fs-3" aria-label="Danger"></i>';
+
+  const alertContainer = document.createElement('div');
+  alertContainer.classList.add('alert', 'alert-dismissible', 'fade', 'show', 'position-fixed', 'top-0', 'text-center');
+  alertContainer.setAttribute('role', 'alert');
+  alertContainer.style.maxWidth = '400px';
+  alertContainer.style.borderRadius = '1rem';
+  alertContainer.style.zIndex = '9999';
+  
+  // const alertHeading = document.createElement('strong');
+  // alertHeading.classList.add('alert-heading');
+  // alertHeading.textContent = 'Holy guacamole!';
+
+  const alertMessage = document.createElement('div');
+  alertMessage.classList.add('d-flex', 'align-items-center');
+  alertMessage.innerHTML = res.apiMessage;
 
   if (res.apiStatus) {
-    alert(`${res.apiMessage}`);
-    // `<div class="alert alert-success alert-dismissible fade show" role="alert">
-    //   <strong class="alert-heading">Holy guacamole!</strong> You should check in on some of those fields below.
-    //     <div class="d-flex align-items-center">
-    //       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-    //       <div>
-    //         ${res.apiMessage}
-    //       </div>
-    //     </div>
-
-    //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    // </div>`
+    alertContainer.classList.add('alert-success');
+    alertContainer.classList.remove('alert-danger');
+    alertMessage.innerHTML = res.apiMessage;
   } else if (!res.apiStatus) {
-    alert(`${res.apiMessage}`);
-
-    // `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    //   <strong class="alert-heading">Holy guacamole!</strong> You should check in on some of those fields below.
-    //   <div class="d-flex align-items-center">
-    //     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    //     <div>
-    //     ${res.apiMessage}
-    //     </div>
-    //   </div>
-
-    //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    // </div>`
+    alertContainer.classList.add('alert-danger');
+    alertContainer.classList.remove('alert-success');
+    alertMessage.innerHTML = res.apiMessage;
   } else if (res.apiStatus === 500) {
-    alert("500");
+    // alertContainer.classList.add('alert-danger');
+    // alertContainer.classList.remove('alert-success');
+    // alertContainer.textContent = '500';
   }
+
+  const closeButton = document.createElement('button');
+  closeButton.setAttribute('type', 'button');
+  closeButton.classList.add('btn-close');
+  closeButton.setAttribute('data-bs-dismiss', 'alert');
+  closeButton.setAttribute('aria-label', 'Close');
+
+  // alertContainer.appendChild(alertHeading);
+  alertContainer.appendChild(alertMessage);
+  alertContainer.appendChild(closeButton);
+
+  document.body.appendChild(alertContainer);
 }
 
 if (
@@ -771,3 +823,5 @@ if (
 ) {
   alert("not excist");
 }
+
+var token = getCookie("token");

@@ -53,8 +53,8 @@ document.getElementById("formToLogin").addEventListener("submit", function (e) {
             countryCallingCode: document.getElementById("callingCode").value == "" ? undefined : document.getElementById("callingCode").value,
             password: document.getElementById("loginPassword").value,
             lifeTime: document.getElementById("rememberMe").checked
-        }
-
+            }
+        document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/user/login`, {
         method: 'POST',
         body: JSON.stringify(fromApiBody),
@@ -66,19 +66,23 @@ document.getElementById("formToLogin").addEventListener("submit", function (e) {
         .then(data => {
             responseAlert(data)
             if(data.data.isAdmin){
+                token = data.data.token
                 setCookie('token', data.data.token, 1); // expires after 1 hour
                 setCookie('admin', "true", 1); // expires after 1 hour
             }
             if(data.data.isRuler){
+                token = data.data.token
                 setCookie('token', data.data.token, 1); // expires after 1 hour
                 setCookie('ruler', "true", 1); // expires after 1 hour
             }else{
                 if(data.apiStatus){
+                    token = data.data.token
                     setCookie('token', data.data.token, 1); // expires after 1 hour
                 }
 
             }
             if (document.getElementById("rememberMe").checked) { // لو عامل هنا مش هيتمسح ابدا 
+                token = data.data.token
                 setCookie('email', document.getElementById("loginEmail").value); // expires after 1 hour
                 setCookie('mobileNumber', document.getElementById("mobileNumber").value); // expires after 1 hour
                 setCookie('firstName', data.data.user.firstName); // expires after 1 hour
@@ -108,5 +112,8 @@ document.getElementById("formToLogin").addEventListener("submit", function (e) {
             window.location.hash = "";
             window.location.reload();
         })
+        .catch(error => console.log(error));
+        document.getElementById("gif").style.display ="none"
+
         // .catch(error => console.log('Error:', error));
 });

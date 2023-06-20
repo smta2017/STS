@@ -42,6 +42,7 @@ var selectedOptionsCountry = "";
 
 function getAllCountries() {
     var allCountry = document.querySelector('#selectBox');
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/country/all`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
@@ -64,6 +65,7 @@ function getAllCountries() {
             });
         })
         .catch(error => console.log(error));
+    document.getElementById("gif").style.display ="none"
 }
 
 getAllCountries();
@@ -113,11 +115,12 @@ document.getElementById("formSignUp").onsubmit = function (e) {
         // alert("start form");
         e.preventDefault();
         // console.log(dataAfterStringify);
+        document.getElementById("gif").style.display ="block"
         fetch(`${domainName}/sts/user`,
             {
                 method: 'POST',
                 body: dataAfterStringify,
-                headers: { "Content-Type": "application/json" }
+                headers: {"Content-Type": "application/json" , 'Authorization': token},
             })
             .then(response => response.json())
             .then(data => {
@@ -126,6 +129,8 @@ document.getElementById("formSignUp").onsubmit = function (e) {
                     window.location.hash = "#login";
                 }
             })
+            .catch(error => console.log(error));
+        document.getElementById("gif").style.display ="none"            
     } catch (eror) {
         console.log(eror);
     }

@@ -1,12 +1,12 @@
 var carouselItemCount = 0;
 var adventisersData;
 
+
 function showAdventisersData() {
     var showAdventisersContainer = document.getElementById("showAdventisers");
-    document.getElementById("gif").style.display ="block"
+document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/advertising/all`, {
         method: 'GET',
-        headers: { "Content-Type": "application/json" }
     })
         .then(response => response.json())
         .then(data => {
@@ -47,7 +47,7 @@ function showAdventisersData() {
             });
         })
         .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"
+document.getElementById("gif").style.display ="none"
 }
 
 showAdventisersData();
@@ -69,25 +69,29 @@ function showAdventisersDetails(id) {
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-12 ml-auto mr-auto">
-                                                        <div class="profile">
-                                                            <div class="avatar">
-                                                                <img src='${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
+
+                                                            <div class="profile p-0">
+                                                                <div class="avatar">
+                                                                    <img src='${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png' alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                                                </div>
                                                             </div>
+
+                                                            <div class="gallery my-0 p-0" id="imgContent">
+                                                                <div class="col-10 text-center mx-auto">
+                                                                    <img id="photo" src="${domainName}/${showAdventisersD.photo}" class="rounded col-12 col-md-4 mb-2">  					
+                                                                </div>
+                                                            </div>
+
+
                                                             <div class="name">
-                                                                <h3 class="title text-dark" id="title">${showAdventisersD.title}</h3>
+                                                                <h3 class="title text-dark text-center mt-2" id="title">${showAdventisersD.title}</h3>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                     
                                                 <div class="description text-center">
-                                                    <p id="paragraph">${showAdventisersD.paragraph}</p>
-                                                </div>
-                                
-                                                <div class="gallery " id="imgContent">
-                                                    <div class="col-10 text-center mx-auto">
-                                                        <img id="photo" src="${domainName}/${showAdventisersD.photo}" class="rounded col-12 col-md-4">  					
-                                                    </div>
+                                                    <p class="m-0 pb-5 text-dark px-2 px-md-0" id="paragraph">${showAdventisersD.paragraph}</p>
                                                 </div>
                                 
                                             </div>

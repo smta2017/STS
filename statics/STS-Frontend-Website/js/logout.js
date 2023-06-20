@@ -5,12 +5,11 @@ function deleteCookie(name) {
 
 document.getElementById("LogOut").addEventListener('click', function (e){
     e.preventDefault();
-    var token = getCookie("token");
-    const headers = new Headers();
-    headers.append('Authorization', token);
+
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/user/logout`, {
         method: 'DELETE',
-        headers: headers
+        headers: {'Authorization': token},
     })
     .then(response => {
         if(response.status === 401){
@@ -30,11 +29,18 @@ document.getElementById("LogOut").addEventListener('click', function (e){
             deleteCookie("firstName");
             deleteCookie("lastName");
             deleteCookie("email");
+            deleteCookie("type");
+            deleteCookie("stopSubscription");
+            deleteCookie("showSchedule");
+            deleteCookie("showResults");
+            deleteCookie("finished");
             window.location.hash = ""; // redirect to home page or login page
             window.location.reload();
+            document.getElementById("gif").style.display ="block"
         }
     })
     .catch(error => console.error('Error:', error.message));
+    document.getElementById("gif").style.display ="none"
 });
 
 function getCookie(name) {

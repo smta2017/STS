@@ -1,33 +1,3 @@
-// document.getElementById("formNews").onsubmit = function (e) {
-//     e.preventDefault();
-
-//     const formData = new FormData();
-//     formData.append('title', document.getElementById("TitleForNews").value);
-//     formData.append('description', document.getElementById("descrebtionForNews").value);
-//     formData.append('paragraph', document.getElementById("paragraphForNews").value);
-//     formData.append('photo', document.getElementById("uploadImgForNews").files[0]);
-
-//     try {
-//         fetch('http://localhost:5000/sts/news', {
-//             method: 'POST',
-//             body: formData,
-//         })
-//             .then(response => {
-//                 if (response.ok) {
-//                     console.log("Data saved successfully");
-//                     document.getElementById("TitleForNews").value = "";
-//                     document.getElementById("descrebtionForNews").value = "";
-//                     document.getElementById("paragraphForNews").value = "";
-//                     document.getElementById("uploadImgForNews").files[0] ="";
-//                 } else {
-//                     throw new Error('Request failed.');
-//                 }
-//             })
-//             .catch(error => console.error(error));
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 function previewImage(event) {
     const input = event.target;
     const imgPreview = document.getElementById("imgPreview");
@@ -44,12 +14,13 @@ function previewImage(event) {
     }
 }
 
+
 var newsData;
 function getNewsData() {
     var newsContainer = document.getElementById("Addnews");
     fetch(`${domainName}/sts/news/all`, {
         method: 'GET',
-        headers: { "Content-Type": "application/json" }
+        headers: {'Authorization': token},
     })
         .then(response => response.json())
         .then(data => {
@@ -118,6 +89,7 @@ function changeNews(e) {
         try {
             fetch(`${domainName}/sts/news/${id}`, {
                 method: 'PUT',
+                headers: {'Authorization': token},
                 body: formData,
             })
                 .then(response => {                    
@@ -143,6 +115,7 @@ function changeNews(e) {
             fetch(`${domainName}/sts/news`, {
                 method: 'POST',
                 body: formData,
+                headers: {'Authorization': token},
             })
                 .then(response => {
                     if (response) {
@@ -169,6 +142,7 @@ function deleteNews(id) {
         try {
             fetch(`${domainName}/sts/news/${id}`, {
                 method: 'DELETE',
+                headers: {'Authorization': token},
             })
                 .then(response => {
                     if (response.ok) {

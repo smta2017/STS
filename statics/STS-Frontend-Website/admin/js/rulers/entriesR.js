@@ -1,28 +1,51 @@
-var headers = new Headers(); 
-token = getCookie('token'); 
-headers.append('Authorization', token); 
-headers.append('Content-Type', "application/json");
+function generatePDF() {
+  // Get the HTML table element
+  var table = document.getElementById('table-entriesR');
 
-var patch = new Headers(); 
-token = getCookie('token'); 
-patch.append('Authorization', token); 
-patch.append('Content-Type', "application/json-patch+json");
+  // Open a new window for the print preview
+  var win = window.open('', '_blank');
+
+  // Create a new document in the new window
+  win.document.write('<html><head><title>Entries Table</title></head><body>');
+  win.document.write('<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>');
+  win.document.write('<h1>Entries Table</h1>');
+  win.document.write(table.outerHTML); // Write the table HTML to the new document
+  win.document.write('</body></html>');
+
+  // Close the document
+  win.document.close();
+
+  // Wait for the document to fully load before printing
+  win.onload = function() {
+    // Print the document
+    // win.print();
+    // Close the print preview window after printing
+    // win.close();
+  };
+}
+
+document.getElementById('generate-pdf').addEventListener('click', generatePDF);
 
 var entryDegreeID = getCookie("entryDegree"); 
 var type = getCookie("type"); 
 var year = getCookie("year"); 
-// console.log(entryDegreeID);
+
+function setCookie(name, value) {
+  document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+}
+
 var entriesData;
 function showEntriesData(entryDegreeID) {
-    var entriesContainer = document.getElementById("table-body-entries");
-    
+    var entriesContainer = document.getElementById("table-body-entriesR");
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry/completeresult/${entryDegreeID}`, {
         method: 'GET',
-        headers: headers
+        headers: {'Authorization': token},
     })
         .then(response => response.json())
         .then(data => {
             entriesData = data.data;
+            
             entriesContainer.innerHTML = "";
             data.data.forEach(entry => {
                 document.getElementById("namecompatator").innerHTML = `Entry List for ${type} - ${year}`
@@ -30,7 +53,7 @@ function showEntriesData(entryDegreeID) {
                 element.id = entry._id
                 element.innerHTML = `
                     <td id="entryNameSearch">${entry.name}</td>
-                    <td>${entry.qualifierSubscription.academy.academyDetails}</td>
+                    <td>${entry.qualifierSubscription.academy.academyDetails.schoolName}</td>
                     <td>
                         <form class="text-center" id="form_${entry._id}" onsubmit="addDegreeForEntry(event)">
                             <div class="btn_group row">
@@ -45,53 +68,36 @@ function showEntriesData(entryDegreeID) {
                     </td>
                 `;
                 entriesContainer.appendChild(element);
+                setCookie("subscriptionId" , entry.qualifierSubscription._id)
             });
         })
         .catch(error => console.log(error));
+        document.getElementById("gif").style.display ="none"
 }
 
 showEntriesData(entryDegreeID);
 
 function addDegreeForEntry(e) {
     e.preventDefault(); // Prevent the default form submission
-    console.log("start");
-    // var entriesId = document.getElementById('degreeEntry').value;
-    // console.log(entriesId);
     var subscriptionID = getCookie('subscriptionId');
     var competitionID =  e.target.id.split("_")[1];
-
-    console.log(subscriptionID);
-    console.log(competitionID);
-
-    // Get the form values
-    // const formData = new FormData();
-    // formData.append('degree', document.getElementById("degreeEntry").value);
 
     var formData = {
         degree: document.getElementById(`degreeEntry_${competitionID}`).value,
       };
 
-
       // New competitor, send POST request
+      document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry/${subscriptionID}/${competitionID}`, {
         method: 'PATCH',
-        headers: patch,
-        // body: JSON.stringify([
-        //     {
-        //        "op" : "replace",
-        //         "path" : "degree",
-        //         "value" : `document.getElementById('degreeEntry_${competitionID}').value` 
-        //     }
-        // ])
+        headers: { "Content-Type": "application/json" , 'Authorization': token},
         body: JSON.stringify(formData)
     })
         .then(response => {  
-          console.log(response);
           if (response.ok) {
-            console.log(response);
             console.log('your data added successfully');
 
-            // document.getElementById(competitionID).style.display = "none";
+            setCookie("degreeRuler1" ,  document.getElementById(`degreeEntry_${competitionID}`).value)
 
             showEntriesData(entryDegreeID);
            
@@ -102,6 +108,7 @@ function addDegreeForEntry(e) {
         .catch(function (error) {
           console.log('Error:', error);
         });
+        document.getElementById("gif").style.display ="none"
 }
 
 
@@ -109,7 +116,7 @@ document.getElementById('search').addEventListener('input', handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById('search').value.toLowerCase();
-  var rows = document.querySelectorAll('#table-body-entries tr');
+  var rows = document.querySelectorAll('#table-body-entriesR tr');
 
   rows.forEach(function (row) {
     var entryName = row.querySelector('#entryNameSearch').textContent.toLowerCase();

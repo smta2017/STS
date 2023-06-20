@@ -32,7 +32,7 @@ var summaryStatementName = document.querySelector('#summaryStatement');
 
 var compatators = document.createElement("select");
 compatators.id = "category";
-compatators.disabled = true;
+// compatators.disabled = true;
 compatators.name = "category";
 compatators.value = "category";
 compatators.className = "form-select";
@@ -71,22 +71,25 @@ function categorySelect(theme){
   if(theme === 'theme821919' ){
     compatators.value = "dancer";
     compatators.name = "dancer";
+    compatators.disabled = true;
     option2.selected = true;
     option3.hidden = true;
     option4.hidden = true;
   } else if (theme === 'theme104b28' ){
     compatators.value = "musician";
     compatators.name = "musician";
+    compatators.disabled = true;
     option2.hidden = true;
     option3.hidden = true;
     option4.selected = true;
   } else if (theme === 'theme17547f' ){
     compatators.value = "singer";
     compatators.name = "singer";
+    compatators.disabled = true;
     option2.hidden = true;
     option3.selected = true;
     option4.hidden = true;
-  } else if (theme === 'themeNaN0f16' ){
+  } else {
     if (compatators.options.length < 5) {
       compatators.value="category";
       compatators.disabled = false;
@@ -114,7 +117,6 @@ function categorySelect(theme){
 //   document.querySelector('.socialMediaI').style,
 // ]
 
-
 var themesCharctaristic = {
   theme821919: {
     element: document.querySelector('#cardRed'),
@@ -129,8 +131,8 @@ var themesCharctaristic = {
   },
   theme104b28: {
     element: document.querySelector('#cardGreen'),
-    bgColor: '#104B28',
-    socialMediaColor: '#104B28',
+    bgColor: '#104b28',
+    socialMediaColor: '#104b28',
     titleText: "ART ISN'T WHAT YOU SEE, BUT WHAT YOU MAKE OTHERS SEE.",
     subtitleText: "Let's Music!",
     headImgSrc: `${domainName}/STS-Frontend-Website/images/WhatsApp Image 2023-05-21 at 21.27.53.jpeg`,
@@ -140,8 +142,8 @@ var themesCharctaristic = {
   },
   theme17547f: {
     element: document.querySelector('#cardBlue'),
-    bgColor: '#17547F',
-    socialMediaColor: '#17547F',
+    bgColor: '#17547f',
+    socialMediaColor: '#17547f',
     titleText: "MUSIC IN THE SOUL CAN BE HEARD BY THE UNIVERSE.",
     subtitleText: "Let's Sing!",
     headImgSrc: `${domainName}/STS-Frontend-Website/images/WhatsApp Image 2023-05-21 at 21.28.08.jpeg`,
@@ -149,10 +151,10 @@ var themesCharctaristic = {
     fullStatementNameText: "Full Statement for Singers",
     summaryStatementNameText: "Summary Statement for Singers"
   },
-  themeNaN0f16: {
+  theme110f16: {
     element: document.querySelector('#cardBlack'),
-    bgColor: '#110f16fa',
-    socialMediaColor: '#110f16fa',
+    bgColor: '#110f16',
+    socialMediaColor: '#110f16',
     titleText: "SPECIAL TALENT STARS. DANCERS, SINGERS AND MUSICIANS",
     subtitleText: "Let's share with us!",
     headImgSrc: `${domainName}/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png`,
@@ -186,6 +188,18 @@ function changeTheme(themeObj) {
   if (summaryStatementName) summaryStatementName.textContent = themeObj.summaryStatementNameText;
   if (themeObj.element && themeObj.element.parentElement)
     themeObj.element.parentElement.style.display = "none";
+
+    const hash = window.location.hash;
+
+    if(hash=="#compatators" || hash=="" ){
+    getCompetitorsData("theme" + themeObj.bgColor.substring(1));
+    }  
+    if(hash=="#entries"){
+      getEntriesData("theme" + themeObj.bgColor.substring(1));
+      }
+    // getCompetitorsData("theme" + themeObj.bgColor.substring(1));
+    // getEntriesData("theme" + themeObj.bgColor.substring(1));
+
 }
 
 var theme ;
@@ -193,7 +207,9 @@ myCards.forEach(card => {
   card.addEventListener('click', function() {
     // window.location.reload();
     theme = this.style.backgroundColor;
+    
     localStorage.setItem('theme', 'theme' + convertRgb(theme));
+    // console.log(convertRgb(theme));
     changeTheme(themesCharctaristic['theme' + convertRgb(theme)]);
     categorySelect('theme' + convertRgb(theme));
   })
@@ -211,6 +227,10 @@ function convertRgb(rgb) {
   var r = (+rgb[0]).toString(16),
   g = (+rgb[1]).toString(16),
   b = (+rgb[2]).toString(16);
+
+  // console.log(r);
+  // console.log(g);
+  // console.log(b);
 
   if (r.length == 1)
     r = "0" + r;

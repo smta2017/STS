@@ -1,33 +1,3 @@
-// document.getElementById("formAdventisers").onsubmit = function (e) {
-//     e.preventDefault();
-
-//     const formData = new FormData();
-//     formData.append('title', document.getElementById("TitleAdventiser").value);
-//     formData.append('description', document.getElementById("descrebtionAdventiser").value);
-//     formData.append('paragraph', document.getElementById("paragraphAdventiser").value);
-//     formData.append('photo', document.getElementById("uploadImgForAdventiser").files[0]);
-
-//     try {
-//         fetch('http://localhost:5000/sts/advertising', {
-//             method: 'POST',
-//             body: formData,
-//         })
-//             .then(response => {
-//                 if (response.ok) {
-//                     console.log("Data saved successfully");
-//                     document.getElementById("TitleAdventiser").value = "";
-//                     document.getElementById("descrebtionAdventiser").value = "";
-//                     document.getElementById("paragraphAdventiser").value = "";
-//                     document.getElementById("uploadImgForAdventiser").files[0] ="";
-//                 } else {
-//                     throw new Error('Request failed.');
-//                 }
-//             })
-//             .catch(error => console.error(error));
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 function previewImage(event) {
     const input = event.target;
     const imgPreview = document.getElementById("imgPreview");
@@ -44,14 +14,16 @@ function previewImage(event) {
     }
 }
 
+
 var carouselItemCount = 0;
 var adventisersData;
 
 function getAdventisersData() {
     var adventisersContainer = document.getElementById("Addadventisers");
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/advertising/all`, {
         method: 'GET',
-        headers: { "Content-Type": "application/json" }
+        headers: {'Authorization': token},
     })
         .then(response => response.json())
         .then(data => {
@@ -97,6 +69,8 @@ function getAdventisersData() {
             });
         })
         .catch(error => console.log(error));
+    document.getElementById("gif").style.display ="none"
+
 }
 
 getAdventisersData();
@@ -124,8 +98,10 @@ function changeAdventisers(e) {
     const url = id ? `${domainName}/sts/advertising/${id}` : `${domainName}/sts/advertising`;
 
     try {
+        document.getElementById("gif").style.display ="block"
         fetch(url, {
             method: method,
+            headers: {'Authorization': token},
             body: formData,
         })
             .then(response => {
@@ -143,6 +119,7 @@ function changeAdventisers(e) {
                 }
             })
             .catch(error => console.error(error));
+        document.getElementById("gif").style.display ="none"
     } catch (error) {
         console.log(error);
     }
@@ -152,8 +129,10 @@ function changeAdventisers(e) {
 function deleteAdventisers(id) {
     if (id) {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/advertising/${id}`, {
                 method: 'DELETE',
+                headers: {'Authorization': token},
             })
                 .then(response => {
                     if (response.ok) {
@@ -182,6 +161,7 @@ function deleteAdventisers(id) {
                     }
                 })
                 .catch(error => console.error(error));
+            document.getElementById("gif").style.display ="none"
         } catch (error) {
             console.log(error);
         }

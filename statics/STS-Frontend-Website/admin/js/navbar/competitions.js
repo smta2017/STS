@@ -14,13 +14,17 @@ function previewImage(event) {
     }
 }
 
+
+
 var selectedOptionsCountry = "";
 
 function getAllCountries() {
     var allCountry = document.querySelector('#countries');
+
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/country/all`, {
     method: 'GET',
-    headers: { "Content-Type": "application/json" }
+    headers: {'Authorization': token},
     })
     .then(response => response.json())
     .then(data => {
@@ -40,18 +44,63 @@ function getAllCountries() {
         });
     })
     .catch(error => console.log(error));
+    document.getElementById("gif").style.display ="none"
 }
 
-getAllCountries();
-
+document.getElementById("selectType").onchange = function() {
+    const selectedOption = this.value;
+    const countriesSelect = document.getElementById("countries");
+    const labelCountry = document.getElementById("labelCountry");
+  
+    if (selectedOption === "final") {
+        labelCountry.style.display = "none";
+        countriesSelect.style.display = "none";
+    } else {
+        labelCountry.style.display = "block";
+        countriesSelect.style.display = "block";
+        getAllCountries();
+    }
+};
+  
+// document.getElementById("selectType").onchange = function() {
+//     const selectedOption = this.value;
+//     const countriesSelect = document.getElementById("countries");
+//     const labelCountry = document.getElementById("labelCountry");
+  
+//     if (selectedOption === "final") {
+//       labelCountry.parentNode.removeChild(labelCountry);
+//       countriesSelect.parentNode.removeChild(countriesSelect);
+//     } else {
+//       const parentNode = countriesSelect.parentNode;
+//       parentNode.insertBefore(labelCountry, countriesSelect);
+//       parentNode.insertBefore(countriesSelect, labelCountry.nextSibling);
+//       getAllCountries();
+//     }
+//   };
+  
+// document.getElementById("selectType").onchange = function() {
+//     const selectedOption = this.value;
+//     const selectCountry = document.getElementById("selectCountry");
+//     const labelCountry = document.querySelector(".form-label[for='selectCountry']");
+  
+//     if (selectedOption === "final") {
+//       labelCountry.style.display = "none";
+//       selectCountry.style.display = "none";
+//     } else {
+//       labelCountry.style.display = "block";
+//       selectCountry.style.display = "block";
+//       getAllCountries();
+//     }
+// };
 
 var competitionsData;
 
 function getCompetitionsData() {
     var competitionsContainer = document.getElementById("Addcompetitions");
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/competition/all`, {
         method: 'GET',
-        headers: { "Content-Type": "application/json" }
+        headers: {'Authorization': token},
     })
         .then(response => response.json())
         .then(data => {
@@ -155,87 +204,49 @@ function getCompetitionsData() {
             });
         })
         .catch(error => console.log(error));
+    document.getElementById("gif").style.display ="none"
 }
 
 getCompetitionsData();
 
 
-// function submitForm(id) {
-//     // event.preventDefault();
-
-//     const form = document.getElementById("opentoregisteration");
-//     // const id = document.getElementById("opentoregisterationID").value;
-
-//     const formData = new FormData(form);
-//     const checkboxFields = ["stopSubscription", "showSchedule", "showResults", "enableRefree", "finished"];
-
-//     checkboxFields.forEach(field => {
-//         const checkbox = document.getElementById(field);
-//         formData.append(field, checkbox.checked);
-//     });
-
-//     fetch(`http://localhost:5000/sts/competition/${id}`, {
-//         method: 'PUT' ,
-//         body: formData,
-//     })
-//         .then(response => {
-//             if (response.ok) {
-//                 console.log("Congratulations! You updated competition data successfully.");
-//                 form.reset();
-//                 getCompetitionsData();
-//             } else {
-//                 throw new Error('Request failed.');
-//             }
-//         })
-//         .catch(error => console.log(error));
-// }
-
-// var registerationData;
-// function editOpentoregisteration(id) {
-//     var myRegisteration = registerationData.find(registeration => { return registeration._id == id })
-//     console.log(myRegisteration)
-//     document.getElementById("opentoregisteration").value = myRegisteration._id;
-//     document.getElementById("stopSubscription").value = myRegisteration.stopSubscription ;
-//     document.getElementById("showSchedule").value = myRegisteration.showSchedule;
-//     document.getElementById("showResults").value = myRegisteration.showResults;
-//     document.getElementById("enableRefree").value = myRegisteration.enableRefree;
-//     document.getElementById("finished").value = myRegisteration.finished;
-// }
-
 function opentoregisteration(e) {
     e.preventDefault();
-    
+      
     let id = e.target[0].value;
     console.log(id);
-
+  
     formDataRegisteration = {
-        stopSubscription:  document.getElementById(`stopSubscription_${id}`).checked,
-        showSchedule:  document.getElementById(`showSchedule_${id}`).checked,
-        showResults:  document.getElementById(`showResults_${id}`).checked,
-        enableRefree: document.getElementById(`enableRefree_${id}`).checked,
-        finished:  document.getElementById(`finished_${id}`).checked
-    }
-
+      stopSubscription:  document.getElementById(`stopSubscription_${id}`).checked,
+      showSchedule:  document.getElementById(`showSchedule_${id}`).checked,
+      showResults:  document.getElementById(`showResults_${id}`).checked,
+      enableRefree: document.getElementById(`enableRefree_${id}`).checked,
+      finished:  document.getElementById(`finished_${id}`).checked
+    };
+    console.log(JSON.stringify(formDataRegisteration));
     try {
-        fetch(`${domainName}/sts/competition/${id}`, {
-            method: 'PUT',
-            body: JSON.stringify(formDataRegisteration),
-            headers: { "Content-Type": "application/json" }
-        })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Data Changed Successfully");
-
-                    getCompetitionsData();
-                } else {
-                    throw new Error('Request failed.');
-                }
-            })
-            .catch(error => console.error(error));
+      document.getElementById("gif").style.display ="block"
+      fetch(`${domainName}/sts/competition/${id}`, {
+        method: 'PUT',
+        headers: {'Authorization': token},
+        body: JSON.stringify(formDataRegisteration)
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log("Congrats, you updated competition data successfully");
+  
+          getCompetitionsData();
+        } else {
+          throw new Error('Request failed.');
+        }
+      })
+      .catch(error => console.error(error));
+      document.getElementById("gif").style.display ="none"
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-}
+  }
+  
 
 function editCompetitions(id) {
     var myCompetitions = competitionsData.find(competitions => { return competitions._id == id })
@@ -267,8 +278,10 @@ function changeCompetitions(e) {
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${domainName}/sts/competition/${id}` : `${domainName}/sts/competition`;
     try {
+        document.getElementById("gif").style.display ="block"
         fetch(url, {
             method: method,
+            headers: {'Authorization': token},
             body: formData,
         })
             .then(response => {
@@ -291,6 +304,7 @@ function changeCompetitions(e) {
                 }
             })
             .catch(error => console.log(error));
+        document.getElementById("gif").style.display ="none"
     } catch (error) {
         console.log(error);
     }
@@ -299,8 +313,10 @@ function changeCompetitions(e) {
 function deleteCompetitions(id) {
     if (id) {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/competition/${id}`, {
                 method: 'DELETE',
+                headers: {'Authorization': token},
             })
                 .then(response => {
                     if (response.ok) {
@@ -311,6 +327,7 @@ function deleteCompetitions(id) {
                     }
                 })
                 .catch(error => console.error(error));
+            document.getElementById("gif").style.display ="none"
         } catch (error) {
             console.log(error);
         }

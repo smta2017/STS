@@ -5,14 +5,6 @@ function getCookie(name) {
   return cookieValue ? cookieValue.pop() : null;
 } 
 
-var headers = new Headers(); 
-var token = getCookie("token");
-headers.append('Authorization', token); 
-headers.append('Content-Type', "application/json");
-
-
-
-
 function calculateAge(dateString) {
   var birthday = new Date(dateString);
   var ageDifMs = Date.now() - birthday.getTime();
@@ -28,10 +20,11 @@ function getCompetitorsData() {
     var id = getCookie("competition");
     fetch(`${domainName}/sts/competitor/allcompetition/${id}`, {
       method: 'GET',
-      headers: headers
+      headers: {'Authorization': token},
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data.data)
         competitorsData = data.data;
         competitorsContainer.innerHTML = "";
         competitorsData.forEach(competitor=> {
