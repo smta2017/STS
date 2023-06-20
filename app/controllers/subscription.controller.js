@@ -37,10 +37,11 @@ class Supscription {
                     entry.finalSubscription = finalSubscription
                     await entry.save()
                 }))
-                if (true) { return finalSubscription }
+                if (true) { return finalSubscriptionpopulate({path:'competition',select:['type',"stopSubscription","showSchedule", "showResults"]}) }
             } else {
                 delete req.body.subscriptionDate
-                return subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
+                const subscription=await  subscriptionModel.create({ competition: req.params.compId, academy: req.user._id })
+                if (true) { return subscription.populate({path:'competition',select:['type',"stopSubscription","showSchedule", "showResults"]}) }
             }
         }, 'congrats you have joined the competition successfully')
     }
