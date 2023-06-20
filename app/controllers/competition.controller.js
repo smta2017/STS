@@ -81,7 +81,7 @@ class Competition {
                             oldImage = competition.photo
                         }
                         for (let field in req.body) {
-                            if (!['country', 'type', 'year', '_id'].includes(field) && req.body[field]) { competition[field] = req.body[field] }
+                            if (!['country', 'type', 'year', '_id'].includes(field) && (req.body[field]||req.body==false)) { competition[field] = req.body[field] }
                         }
                         const result = await competition.save()
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + oldImage)) && req.file) {
