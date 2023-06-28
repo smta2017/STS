@@ -108,7 +108,7 @@ const EntrySchema = mongoose.Schema({
 EntrySchema.pre('save', async function () {
     if (this.isDirectModified('qualifierRefree1') || this.isDirectModified('qualifierRefree2') || this.isDirectModified('qualifierRefree3') || this.isDirectModified('qualifierLast10Present')) {
         this.qualifierTotalDegree = this.qualifierRefree1 + this.qualifierRefree2 + this.qualifierRefree3 + this.qualifierLast10Present
-        if (this.qualifierTotalDegree > 70) {
+        if (this.qualifierTotalDegree > 70&&this.isDirectModified('qualifierLast10Present')) {
             await Promise.all(
                 this.competitors.map(async (competitor) => {
                     const comp = await competitorModel.findByIdAndUpdate(competitor, { $set: {passedQualifiers: true } }, { returnDocument: "after" })
