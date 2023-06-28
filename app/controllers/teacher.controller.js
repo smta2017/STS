@@ -9,7 +9,7 @@ class Teacher {
                 e.name = 'ValidationError'
                 throw e
             }
-            if(req.user.role.toString()='6480d5701c02f26cd6668987'/*academy role */){
+            if(req.user.role.toString()=='6480d5701c02f26cd6668987'/*academy role */){
                 req.body.academy = req.user._id
             }else if(req.params.academyId&&!['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role.toString())){
                 req.body.academy=req.params.academyId
@@ -63,7 +63,6 @@ class Teacher {
                 e.name = 'CastError'
                 throw e
             }
-            console.log(academyID)
             return teacherModel.find({ academy: academyID })
         }, 'here are all your teachers')
     }

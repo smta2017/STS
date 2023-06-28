@@ -24,7 +24,6 @@ class Product {
                             req.body.photo = image
                         }
                         req.body.prices=JSON.parse(req.body.prices)//for post man
-                        // console.log(req.body.prices.length)
                         const product = await productModel.create(req.body)
                         // if (req.user.image != 'defaultuserimage.png') {
                         //     fs.unlinkSync(path.join(__dirname, '../../statics/' + req.user.image))
@@ -70,7 +69,8 @@ class Product {
                             req.body.prices=JSON.parse(req.body.prices)
                         }
                         for (let field in req.body) {
-                            if(field!='_id'){product[field] = req.body[field]}
+                            if(field!='_id'&&req.body[field]){
+                                product[field] = req.body[field]}
                         }
                         const result = await product.save()
                         if (fs.existsSync(path.join(__dirname, '../../statics/' + oldImage)) && req.file) {
@@ -108,9 +108,21 @@ class Product {
             }
         }, 'you deleted product successfully')
     }
-    static getAll = (req, res) => {
+    static getAllForAdmin = (req, res) => {
         Helper.handlingMyFunction(req, res, (req) => {
             return productModel.find({"prices.country":req.params.countryId})
+        }, 'here are all your products')
+    }
+    static getAll = (req, res) => {
+        Helper.handlingMyFunction(req, res, async(req) => {
+            let products=await productModel.find({"prices.country":req.params.countryId})
+            products=products.map(product=>{
+                product=product.toObject()
+                product.price=product.prices.find(price=>price.country.toString()==req.params.countryId).price
+                delete product.prices
+                return product
+            })
+           if(true) {return products}
         }, 'here are all your products')
     }
 }

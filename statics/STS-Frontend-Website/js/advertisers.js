@@ -20,9 +20,7 @@ document.getElementById("gif").style.display ="block"
                             <div class="carousel-caption">
                                 <h5 class="text-dark">${showAdventisers.title}</h5>
                                 <p>${showAdventisers.description}</p>
-                                <a href="#advertising" onclick="showAdventisersDetails('${showAdventisers._id}')" class="btn btn-warning btn-lg action-button login" type="button" >
-                                    Know More<i class="fa fa-long-arrow-right ml-2"></i>
-                                </a>
+                                <a href="#advertising" onclick="showAdventisersDetails('${showAdventisers._id}')" class="btn btn-warning btn-lg action-button login" type="button">Know More</a>
                             </div>
                         </div>
                     </div>
@@ -43,11 +41,13 @@ document.getElementById("gif").style.display ="block"
                 indicatorsContainer.appendChild(button);
 
                 carouselItemCount++;
-                
             });
-        })
-        .catch(error => console.log(error));
-document.getElementById("gif").style.display ="none"
+            document.getElementById("gif").style.display = "none";
+          })
+          .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          });
 }
 
 showAdventisersData();

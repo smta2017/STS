@@ -37,9 +37,12 @@ function getAllCompetition() {
 
                 console.log(competitions._id);
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          });
     } catch (error) {
         console.log(error);
     }
@@ -64,12 +67,15 @@ function getAllJoinedCompetition() {
                 button.id = competitions.competition._id;
                 button.value = competitions._id;
                 button.textContent =`${competitions.competition.type} - ${competitions.competition.year}`;
-                button.onclick = function () { goToHome(competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished) };
+                button.onclick = function () { goToHome(competitions.competition._id,competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished) };
                 allJoinedCompetition.appendChild(button);
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          });
     } catch (error) {
         console.log(error);
     }
@@ -114,27 +120,30 @@ function showCompetitionsData() {
                     <h3 class="text-center mt-3">${competitions.type} - ${competitions.year}</h3>
                     <div class="content p-3 text-center">
                         <div>
-                            <label class="card-title fw-bold text-light">Admission</label>
+                            <h6 class="card-title fw-bold text-light">Admission</h6>
                             <p class="ms-2">${startSubscription} to ${endSubscription}</p>
-                            <label class="card-title fw-bold text-light">Location Display your Show</label>
+                            <h6 class="card-title fw-bold text-light">Location Display your Show</h6>
                             <p class="ms-2">${competitions.stage}</p>
-                            <label class="card-title fw-bold text-light">Date Display your Show</label>
+                            <h6 class="card-title fw-bold text-light">Date Display your Show</h6>
                             <p class="ms-2">${date}</p>
                         </div>
                     </div>
                 `;
                 competitionsContainer.appendChild(element);
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          });
 }
 
 showCompetitionsData();
 
-function setCookie(name, value) {
-    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
-  }
+// function setCookie(name, value) {
+//     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+//   }
 
 function joinCompetitions(e) {
     e.preventDefault();
@@ -151,6 +160,7 @@ function joinCompetitions(e) {
             competitionJoin = data.data;
             console.log("joined successfully");
             setCookie("subscriptionId", competitionJoin._id);
+            setCookie("competition", competitionJoin.competition._id);
             setCookie("type", competitionJoin.competition.type);
             setCookie("stopSubscription", competitionJoin.competition.stopSubscription);
             setCookie("showSchedule", competitionJoin.competition.showSchedule);
@@ -158,17 +168,22 @@ function joinCompetitions(e) {
             setCookie("finished", competitionJoin.competition.finished);
             window.location.hash = "";
             window.location.reload();
-            console.log(data.data);
+            document.getElementById("gif").style.display = "none";
+            responseAlert(data);
         })
-            .catch(error => console.error(error));
-        document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+            responseAlert(error);
+        });
     } catch (error) {
         console.log(error);
     }
 }
 
-function goToHome(valueID,type,stopSubscription,showSchedule,showResults,finished) {
-    setCookie("subscriptionId", valueID);
+function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished) {
+    setCookie("competition", competitionID);
+    setCookie("subscriptionId", subscriptionID);
     setCookie("type", type);
     setCookie("stopSubscription", stopSubscription);
     setCookie("showSchedule", showSchedule);

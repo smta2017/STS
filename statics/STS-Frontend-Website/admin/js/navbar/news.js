@@ -17,7 +17,10 @@ function previewImage(event) {
 
 var newsData;
 function getNewsData() {
-    var newsContainer = document.getElementById("Addnews");
+    var AddnewsNormal = document.getElementById("AddnewsNormal");
+    var AddnewsImportant = document.getElementById("AddnewsImportant");
+    var AddnewsSpecial = document.getElementById("AddnewsSpecial");
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/news/all`, {
         method: 'GET',
         headers: {'Authorization': token},
@@ -25,43 +28,142 @@ function getNewsData() {
         .then(response => response.json())
         .then(data => {
             newsData = data.data;
-            newsContainer.innerHTML = "";
-            newsData.forEach((showNews, index) => {
-                const colors = ['blue', 'red', 'green', 'yellow']; 
-                const color = colors[index % colors.length]; 
-                const element = document.createElement('div');
-                element.innerHTML = `
-                    <article class="postcard light ${color}" id="showNews_${showNews._id}">
-                        <a class="postcard__img_link" href="#">
-                            <img class="postcard__img" src="${domainName}/${showNews.photo}" alt="Image Title" />
-                        </a>
-                        <div class="postcard__text t-dark">
-                            <h1 class="postcard__title ${color}"><a href="#">${showNews.title}</a></h1>
-                            <div class="postcard__subtitle small"></div>
-                            <div class="postcard__bar"></div>
-                            <div class="postcard__preview-txt">${showNews.description}</div>
-                            <ul class="postcard__tagbox">
-                                <li class="tag__item play ${color}">
-                                    <a onclick="showNewsDetails('${showNews._id}')"><i class="fas fa-play mr-2"></i> &nbsp;&nbsp; Know More</a>
-                                </li>
-                            </ul>
-                            <div class="col-12 text-end">
-                                <div class="btn_group">
-                                    <button class="btn btn-success" id="add-row" onclick="editNews('${showNews._id}')">
-                                        <i class="edit-btn fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="btn btn-danger" id="remove-row" onclick="deleteNews('${showNews._id}')">
-                                        <i class="delete-btn fa-solid fa-trash-can"></i>
-                                    </button>
-                                </div>
-                            </div> 
-                        </div>
-                    </article>
-                `;
-                newsContainer.appendChild(element);
-            });
+            if(data.data.category == "normal"){
+               AddnewsNormal.innerHTML = "";
+                newsData.forEach((showNews, index) => {
+                    const colors = ['blue', 'red', 'green', 'yellow']; 
+                    const color = colors[index % colors.length]; 
+                    const element = document.createElement('div');
+                    element.innerHTML = `
+                        <article class="postcard light ${color}" id="showNews_${showNews._id}">
+                            <a class="postcard__img_link" href="#">
+                                <img class="postcard__img" src="${domainName}/${showNews.photo}" alt="Image Title" />
+                            </a>
+                            <div class="postcard__text t-dark">
+                                <h1 class="postcard__title ${color}"><a href="#">${showNews.title}</a></h1>
+                                <div class="postcard__subtitle small"></div>
+                                <div class="postcard__bar"></div>
+                                <div class="postcard__preview-txt">${showNews.description}</div>
+                                <ul class="postcard__tagbox">
+                                    <li class="tag__item play ${color}">
+                                        <a onclick="showNewsDetails('${showNews._id}')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                    </svg> &nbsp;&nbsp; Know More</a>
+                                    </li>
+                                </ul>
+                                <div class="col-12 text-end">
+                                    <div class="btn_group">
+                                        <button class="btn btn-success" id="add-row" onclick="editNews('${showNews._id}')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill" viewBox="0 0 16 16" s>
+                                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn btn-danger" id="remove-row" onclick="deleteNews('${showNews._id}')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" viewBox="0 0 16 16">
+                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div> 
+                            </div>
+                        </article>
+                    `;
+                    AddnewsNormal.appendChild(element);
+                }); 
+            }
+            if(data.data.category == "important"){
+                AddnewsImportant.innerHTML = "";
+                 newsData.forEach((showNews, index) => {
+                     const colors = ['blue', 'red', 'green', 'yellow']; 
+                     const color = colors[index % colors.length]; 
+                     const element = document.createElement('div');
+                     element.innerHTML = `
+                         <article class="postcard light ${color}" id="showNews_${showNews._id}">
+                             <a class="postcard__img_link" href="#">
+                                 <img class="postcard__img" src="${domainName}/${showNews.photo}" alt="Image Title" />
+                             </a>
+                             <div class="postcard__text t-dark">
+                                 <h1 class="postcard__title ${color}"><a href="#">${showNews.title}</a></h1>
+                                 <div class="postcard__subtitle small"></div>
+                                 <div class="postcard__bar"></div>
+                                 <div class="postcard__preview-txt">${showNews.description}</div>
+                                 <ul class="postcard__tagbox">
+                                     <li class="tag__item play ${color}">
+                                         <a onclick="showNewsDetails('${showNews._id}')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                         <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                     </svg> &nbsp;&nbsp; Know More</a>
+                                     </li>
+                                 </ul>
+                                 <div class="col-12 text-end">
+                                     <div class="btn_group">
+                                         <button class="btn btn-success" id="add-row" onclick="editNews('${showNews._id}')">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill" viewBox="0 0 16 16" s>
+                                                 <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                             </svg>
+                                         </button>
+                                         <button class="btn btn-danger" id="remove-row" onclick="deleteNews('${showNews._id}')">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" viewBox="0 0 16 16">
+                                                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                             </svg>
+                                         </button>
+                                     </div>
+                                 </div> 
+                             </div>
+                         </article>
+                     `;
+                     AddnewsImportant.appendChild(element);
+                 }); 
+             }
+             if(data.data.category == "special"){
+                AddnewsSpecial.innerHTML = "";
+                 newsData.forEach((showNews, index) => {
+                     const colors = ['blue', 'red', 'green', 'yellow']; 
+                     const color = colors[index % colors.length]; 
+                     const element = document.createElement('div');
+                     element.innerHTML = `
+                         <article class="postcard light ${color}" id="showNews_${showNews._id}">
+                             <a class="postcard__img_link" href="#">
+                                 <img class="postcard__img" src="${domainName}/${showNews.photo}" alt="Image Title" />
+                             </a>
+                             <div class="postcard__text t-dark">
+                                 <h1 class="postcard__title ${color}"><a href="#">${showNews.title}</a></h1>
+                                 <div class="postcard__subtitle small"></div>
+                                 <div class="postcard__bar"></div>
+                                 <div class="postcard__preview-txt">${showNews.description}</div>
+                                 <ul class="postcard__tagbox">
+                                     <li class="tag__item play ${color}">
+                                         <a onclick="showNewsDetails('${showNews._id}')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                         <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                     </svg> &nbsp;&nbsp; Know More</a>
+                                     </li>
+                                 </ul>
+                                 <div class="col-12 text-end">
+                                     <div class="btn_group">
+                                         <button class="btn btn-success" id="add-row" onclick="editNews('${showNews._id}')">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill" viewBox="0 0 16 16" s>
+                                                 <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                             </svg>
+                                         </button>
+                                         <button class="btn btn-danger" id="remove-row" onclick="deleteNews('${showNews._id}')">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" viewBox="0 0 16 16">
+                                                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                             </svg>
+                                         </button>
+                                     </div>
+                                 </div> 
+                             </div>
+                         </article>
+                     `;
+                     AddnewsSpecial.appendChild(element);
+                 }); 
+             }
+            
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          }); 
 }
 
 getNewsData();
@@ -71,31 +173,40 @@ function editNews(id) {
     var myNews = newsData.find(newss => { return newss._id == id })
     console.log(myNews)
     document.getElementById("newsId").value = myNews._id;
-    document.getElementById("TitleForNews").value = myNews.title ;
+    // document.getElementById("categoryNews").value = myNews.category;
+    document.getElementById("TitleForNews").value = myNews.title;
     document.getElementById("descrebtionForNews").value = myNews.description;
     document.getElementById("paragraphForNews").value = myNews.paragraph;
-    document.getElementById("uploadImgForNews").value = myNews.photo;
+    document.querySelector('#imgPreview').src = myNews.photo
+    document.querySelector('#imgPreview').style.display = 'block'
 }
 
 function changeNews(e) {
     e.preventDefault();
     let id = document.getElementById("newsId").value;
+
+    const imageData = document.querySelector('#uploadImgForNews').files[0]
     const formData = new FormData();
+    // formData.append('category', document.getElementById("categoryNews").value);
     formData.append('title', document.getElementById("TitleForNews").value);
     formData.append('description', document.getElementById("descrebtionForNews").value);
     formData.append('paragraph', document.getElementById("paragraphForNews").value);
-    formData.append('photo', document.getElementById("uploadImgForNews").files[0]);
+    if(document.querySelector("#uploadImgForNews").files[0]){formData.append('photo', imageData)};
+
     if (id) {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/news/${id}`, {
                 method: 'PUT',
                 headers: {'Authorization': token},
                 body: formData,
             })
+            .then(response => response.json())
                 .then(response => {                    
-                    if (response) {
+                    if (response.apiStatus == true) {
                         console.log("congrats, you updated news data successfully");
                         document.getElementById("newsId").value = "";
+                        // document.getElementById("categoryNews").value = "";
                         document.getElementById("TitleForNews").value = "";
                         document.getElementById("descrebtionForNews").value = "";
                         document.getElementById("paragraphForNews").value = "";
@@ -105,21 +216,30 @@ function changeNews(e) {
                     } else {
                         throw new Error('Request failed.');
                     }
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(response);
                 })
-                .catch(error => console.log(error));
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(error);
+                  }); 
         } catch (error) {
             console.log(error);
         }
     } else {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/news`, {
                 method: 'POST',
                 body: formData,
                 headers: {'Authorization': token},
             })
-                .then(response => {
-                    if (response) {
+            .then(response => response.json())
+            .then(response => {
+                if (response.apiStatus == true) {
                         console.log("Data saved successfully");
+                        // document.getElementById("categoryNews").value = "";
                         document.getElementById("TitleForNews").value = "";
                         document.getElementById("descrebtionForNews").value = "";
                         document.getElementById("paragraphForNews").value = "";
@@ -129,8 +249,14 @@ function changeNews(e) {
                     } else { 
                         throw new Error('Request failed.loka'); 
                     } 
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(response);
                 }) 
-                .catch(error => console.log(error)); 
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(error);
+                  }); 
         } catch (error) { 
             console.log(error); 
         } 
@@ -140,19 +266,30 @@ function changeNews(e) {
 function deleteNews(id) {
     if (id) {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/news/${id}`, {
                 method: 'DELETE',
                 headers: {'Authorization': token},
             })
                 .then(response => {
-                    if (response.ok) {
+                    if (response.status == 200) {
                         console.log("News data deleted successfully");
                         getNewsData();
                     } else {
                         throw new Error('Request failed.');
                     }
+                    document.getElementById("gif").style.display = "none";
+                    response.json().then(data => {
+                        responseAlert(data);
+                    });
                 })
-                .catch(error => console.log(error));
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    error.json().then(data => {
+                        responseAlert(data);
+                      });
+                  }); 
         } catch (error) {
             console.log(error);
         }
@@ -211,4 +348,11 @@ function showNewsDetails(id) {
     } else {
         console.log("No news ID provided.");
     }
+}
+
+
+function clearData(){
+    document.getElementById("newsId").value = '';
+    document.querySelector('#imgPreview').src = '';
+    document.querySelector('#imgPreview').style.display = 'none'
 }

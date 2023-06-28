@@ -107,21 +107,18 @@ const EntrySchema = mongoose.Schema({
 })
 EntrySchema.pre('save', async function () {
     if (this.isDirectModified('qualifierRefree1') || this.isDirectModified('qualifierRefree2') || this.isDirectModified('qualifierRefree3') || this.isDirectModified('qualifierLast10Present')) {
-        console.log('qualifier Total Degree changes')
         this.qualifierTotalDegree = this.qualifierRefree1 + this.qualifierRefree2 + this.qualifierRefree3 + this.qualifierLast10Present
         if (this.qualifierTotalDegree > 70) {
             await Promise.all(
                 this.competitors.map(async (competitor) => {
-                    const comp = await competitorModel.findByIdAndUpdate(competitor, { $set: { passQualifier: true } }, { returnDocument: "after" })
-                    console.log(comp)
+                    const comp = await competitorModel.findByIdAndUpdate(competitor, { $set: {passedQualifiers: true } }, { returnDocument: "after" })
                 })
             )
             const sub = await subscriptionModel.findByIdAndUpdate(this.qualifierSubscription, { $set: { haveASuccessededEntry: true } }, { returnDocument: "after" })
-            console.log(sub)
+            this.passedQualifiers=true
         }
     }
     if (this.isDirectModified('finalRefree1') || this.isDirectModified('finalRefree2') || this.isDirectModified('finalRefree3') || this.isDirectModified('finalLast10Present')) {
-        console.log('final Total Degree changes')
         this.finalTotalDegree = this.finalRefree1 + this.finalRefree2 + this.finalRefree3 + this.finalLast10Present
     }
     if (this.isDirectModified('competitors')) {
@@ -143,10 +140,8 @@ EntrySchema.pre('save', async function () {
                 calCategory = 'group'
             }
         }
-        console.log('competitors category changes')
         const enteredCompetitors = []
         const subscription = await Helper.isThisIdExistInThisModel(this.qualifierSubscription, ['academy'], subscriptionModel, 'subscription', { path: 'academy', populate: { path: 'academyDetails', populate: { path: 'country' } } })
-        console.log(subscription.academy.academyDetails.country)
         let totalFees = 0
         this.competitorsCategories = []
         await Promise.all(

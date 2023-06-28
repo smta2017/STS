@@ -17,18 +17,33 @@ function editProfile() {
   document.getElementById("editLastNameForAdmin").value = getCookie('lastName'); 
 } 
 
-function setCookie(name, value) {
-document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+// function setCookie(name, value) {
+// document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+// }
+
+var selectBox = document.getElementById('callingCodeForMyProfile');
+var countries = window.intlTelInputGlobals.getCountryData();
+for (var country of countries) {
+  const option = document.createElement('option');
+  option.value = country.iso2;
+  option.textContent = `${country.name} (+${country.dialCode})`;
+  selectBox.append(option);
 }
 
 function profileModified(e) { 
   e.preventDefault(); 
   
+  var country = document.getElementById('callingCodeForMyProfile').value;
+  
+  var selectOption = document.querySelector(`option[value='${country}']`);
+  var CountryCode = selectOption.textContent.split(' ').pop().match(/\d+/g).join('');
+
+
   const formEditProfile = {
     user: {
       firstName: document.getElementById("editFirstNameForAdmin").value ? document.getElementById("editFirstNameForAdmin").value : undefined,
       lastName: document.getElementById("editLastNameForAdmin").value ? document.getElementById("editLastNameForAdmin").value : undefined,
-      countryCallingCode: document.getElementById("callingCodeForEmployee").value ? document.getElementById("callingCodeForEmployee").value : undefined,
+      countryCallingCode: `+${CountryCode}` ? `+${CountryCode}` : undefined,
       mobileNumber: document.getElementById("editMobileNumbeForAdmin").value ? document.getElementById("editMobileNumbeForAdmin").value : undefined,
       email: document.getElementById("editEmailForAdmin").value ? document.getElementById("editEmailForAdmin").value : undefined,
       password: document.getElementById("newPassword").value ? document.getElementById("newPassword").value : undefined,
@@ -39,6 +54,7 @@ function profileModified(e) {
   console.log(formEditProfile); 
   console.log(JSON.stringify(formEditProfile)); 
   try {
+    document.getElementById("gif").style.display ="block"
       fetch(`${domainName}/sts/user`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" , 'Authorization': token},
@@ -59,6 +75,8 @@ function profileModified(e) {
             document.getElementById("editOldPassword").value = ""; 
             document.getElementById("newPassword").value = "";             
           }
+          document.getElementById("gif").style.display = "none";
+          responseAlert(data);
         })
         .catch((error) => {
           if (error.message.includes('400')) {
@@ -66,6 +84,8 @@ function profileModified(e) {
           } else {
             console.log('There was an error updating your profile. Please try again later.');
           }
+          document.getElementById("gif").style.display = "none";
+          responseAlert(error);
         });
     } catch (error) {
       console.log(error);
@@ -98,9 +118,12 @@ function getAllTabs() {
         option.textContent = tabs.tabName;
         allTabs.appendChild(option);
       });
+      document.getElementById("gif").style.display = "none";
     })
-    .catch(error => console.log(error));
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    }); 
 }
 
 getAllTabs();
@@ -134,8 +157,9 @@ document.getElementById("addPositionForm").addEventListener("submit", function (
         headers: { "Content-Type": "application/json" , 'Authorization': token},
         body: JSON.stringify(formData)
       })
+      .then(response => response.json())
       .then((response) => {
-          if (response.ok) {
+          if (response.apiStatus == true) {
             console.log("Position added successfully");
             document.getElementById("positionAdding").value = "";
             document.getElementById("rules").selectedIndex = -1;
@@ -144,9 +168,14 @@ document.getElementById("addPositionForm").addEventListener("submit", function (
           } else {
             throw new Error("Request failed.");
           }
+          document.getElementById("gif").style.display = "none";
+          responseAlert(response);
         })
-        .catch((error) => console.error(error));
-      document.getElementById("gif").style.display ="none"
+        .catch(error => {
+          console.log(error);
+          document.getElementById("gif").style.display = "none";
+          responseAlert(error);
+        }); 
     } catch (error) {
       console.log(error);
     }
@@ -184,9 +213,12 @@ function getAllRoles() {
         option.textContent = roles.role;
         allRoles.appendChild(option);
       });
+      document.getElementById("gif").style.display = "none";
     })
-    .catch(error => console.log(error));
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    }); 
 }
 
 getAllRoles();
@@ -217,13 +249,15 @@ const formData = {
 if (formData.firstName && formData.lastName && formData.countryCallingCode && formData.mobileNumber && formData.email && selectedOptionsRole.length > 0) {
 
   try {
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/user/employee`, {
       method: "POST",
       headers: { "Content-Type": "application/json" , 'Authorization': token},
       body: JSON.stringify(formData)
     })
+    .then(response => response.json())
     .then((response) => {
-      if (response.ok) {
+      if (response.apiStatus == true) {
         console.log("Employee added successfully");
         document.getElementById("firstNameForEmployee").value = "";
         document.getElementById("lastNameForEmployee").value = "";
@@ -236,8 +270,14 @@ if (formData.firstName && formData.lastName && formData.countryCallingCode && fo
       } else {
         throw new Error("Request failed.");
       }
+      document.getElementById("gif").style.display = "none";
+      responseAlert(response);
     })
-    .catch((error) => console.error(error));
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+      responseAlert(error);
+    }); 
   } catch (error) {
     console.log(error);
   }

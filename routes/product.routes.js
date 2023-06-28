@@ -5,4 +5,5 @@ router.post('/',/*auth,authToThisRoute,*/Product.add)
 router.put('/:id',/*auth,authToThisRoute,*/Product.update)
 router.delete('/:id',/*auth,authToThisRoute,*/Product.delete)
 router.get('/:countryId',/*auth,authToThisRoute,*/Product.getAll)
+router.get('/foradmin/:countryId',/*auth,authToThisRoute,*/Product.getAllForAdmin)
 module.exports = router

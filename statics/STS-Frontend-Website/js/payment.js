@@ -1,167 +1,118 @@
-document.getElementById('generate-pdf').addEventListener('click', function() {
+function generatePDF() {
     // Get the HTML table element
-    var table = document.getElementById('my-table');
-    // Create a new jsPDF object
-    var pdf = new jsPDF();
-    // Generate the PDF with the table content
-    pdf.fromHTML(table, 15, 15, {
-    'width': 190
-    });
-    // pdf.autoTable({html: '#my-table'});
-    // Download the PDF file
-    pdf.save('table.pdf');
-});
-    
+    var table = document.getElementById('table-totalPayment');
+  
+    // Open a new window for the print preview
+    var win = window.open('', '_blank');
+  
+    // Create a new document in the new window
+    win.document.write('<html><head><title>Payments Table</title></head><body>');
+    win.document.write('<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>');
+    win.document.write('<h1>Payments Table</h1>');
+    win.document.write(table.outerHTML); // Write the table HTML to the new document
+    win.document.write('</body></html>');
+  
+    // Close the document
+    win.document.close();
+  
+    // Wait for the document to fully load before printing
+    win.onload = function() {
+      // Print the document
+      win.print();
+      // Close the print preview window after printing
+      // win.close();
+    };
+}
+  
 
-var row ;
-var i ;
-document.getElementById("gif").style.display ="block"
-fetch('https://api.example.com/data', {method: 'GET'})
-    .then(response => response.json())
-    .then(data => {
-    data.forEach(item => {
-        const table = document.getElementById('table-totalPayment').getElementsByTagName('tbody')[0];
-        for(i = 0 ; table.rows.length; i++){
-            row = table.rows[i];
-        }
-        var TAFcell = row.insertCell(-1);
-        var TMFcell = row.insertCell(-1);
-        var TEcell = row.insertCell(-1);
-        var TFcell = row.insertCell(-1);
-        var TCcell = row.insertCell(-1);
-        var TPcell = row.insertCell(-1);
-        var PScell = row.insertCell(-1);
+var paymentsData;
 
-        // Set the values for each cell
-        TAFcell.innerHTML = `${item.TAFcell} + $`;
-        TMFcell.innerHTML = `${item.TMFcell} + $`;
-        TEcell.innerHTML = `${item.TEcell} + $`;
-        TFcell.innerHTML = `${item.TFcell} + $`;
-        TCcell.innerHTML = `${item.TCcell} + $`;
-        TPcell.innerHTML = `${item.TPcell} + $`;
-        PScell.innerHTML = `<div class="bg-success p-2">Paid</div>
-                            <div class="bg-danger p-2">Not Paid</div>`;
-    
+function getPaymentData() {
+  var row1 = document.getElementById("row1");
+  var row2 = document.getElementById("row2");
+  var row3 = document.getElementById("row3");
+  var row4 = document.getElementById("row4");
+  var row5 = document.getElementById("row5");
+  var id = getCookie("subscriptionId");
+  document.getElementById("gif").style.display = "block";
+  fetch(`${domainName}/sts/subscription/payments/${id}`  , {
+    method: "GET",
+    headers: { Authorization: token },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      paymentsData = data.data;
+      row1.cells[1].innerText = paymentsData.adminstrationFeesDetails.total;
+      row2.cells[1].innerText = paymentsData.memberShipFeesDetails.total;
+      row3.cells[1].innerText = paymentsData.totalEntriesFees;
+      row4.cells[1].innerText = paymentsData.totalFees;
+      document.querySelector('#amount').value=paymentsData.totalFees;
+      row5.cells[1].innerText = "Paid";
+      if(row5.cells[1].innerText == "Paid"){
+        row5.cells[1].classList.add("bg-success");
+      }else{
+        row5.cells[1].classList.add("bg-danger");
+      }
+      document.getElementById("totalPaymentAcademy").innerHTML = `Total payment for this competition: ${paymentsData.totalFees}`;
+      document.getElementById("gif").style.display = "none";
     })
-        })
-    .catch(error => console.log(error));
-document.getElementById("gif").style.display ="none"
-
-
-
-// const form = document.querySelector("form");
-var tableHead = document.querySelector("#table-head");
-var searchInput = document.querySelector("#search");
-// const firstnameInput = document.querySelector("#firstname");
-// const lastnameInput = document.querySelector("#lastname");
-// const dayInput = document.querySelector("#day");
-// const monthInput = document.querySelector("#month");
-// const yearInput = document.querySelector("#year");
-// const genderInput = document.querySelector("#gender");
-// const emailInput = document.querySelector("#email");
-// const mobileInput = document.querySelector("#mobile");
-// const categoryInput = document.querySelector("#category");
-// const submitBtn = document.querySelector("#submit");
-
-var data = [];
-
-// form.addEventListener("submit", (event) => {
-//     event.preventDefault();
-//     const firstname = firstnameInput.value;
-//     const lastname = lastnameInput.value;
-//     const day = dayInput.value;
-//     const month = monthInput.value;
-//     const year = yearInput.value;
-//     const gender = genderInput.value;
-//     const email = emailInput.value;
-//     const mobile = mobileInput.value;
-//     const category = categoryInput.value;
-
-//     if (!firstname || !lastname || !day || !month || !year || !gender || !email || !mobile || !category) {
-//         alert("please, enter your data ...");
-//         return;
-//     }
-
-//     const person = { firstname, lastname, day, month, year, gender, email, mobile, category };
-//     if (submitBtn.textContent === "Update") {
-//         const rowIndex = submitBtn.dataset.rowIndex;
-//         data[rowIndex] = person;
-//         renderTable(data);
-//         submitBtn.textContent = "Submit";
-//         } else {
-//         data.push(person);
-//         renderRow(person, data.length - 1);
-//         }
-//         form.reset();
-// });
-
-// tableBody.addEventListener("click", (event) => {
-//     if (event.target.classList.contains("edit-btn")) {
-//     const rowIndex = event.target.dataset.rowIndex;
-//     const person = data[rowIndex];
-
-//     firstnameInput.value = person.firstname;
-//     lastnameInput.value = person.lastname;
-//     dayInput.value = person.day;
-//     monthInput.value = person.month;
-//     yearInput.value = person.year;
-//     genderInput.value = person.gender;
-//     emailInput.value = person.email;
-//     mobileInput.value = person.mobile;
-//     categoryInput.value = person.category;
-
-//     submitBtn.textContent = "Update";
-//     submitBtn.dataset.rowIndex = rowIndex;
-
-//     } else if (event.target.classList.contains("delete-btn")) {
-//     const rowIndex = event.target.dataset.rowIndex;
-//     data.splice(rowIndex, 1);
-//     event.target.parentNode.parentNode.remove();
-//     }
-// });
-
-searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-    const filteredData = data.filter((item) => {
-    return (
-        item.TAFcell.toLowerCase().includes(query) ||
-        item.TMFcell.toLowerCase().includes(query) ||
-        item.TEcell.toLowerCase().includes(query) ||
-        item.TFcell.toLowerCase().includes(query) ||
-        item.TCcell.toLowerCase().includes(query) ||
-        item.TPcell.toLowerCase().includes(query) ||
-        item.PScell.toLowerCase().includes(query) 
-    );
-    });
-    renderTable(filteredData);
-});
-
-function renderTable(dataArray) {
-    tableHead.innerHTML = "";
-    dataArray.forEach((item) => {
-    renderCol(item);
+    .catch((error) => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
     });
 }
 
-function renderCol(item) {
-    var TAFcell = row.insertCell(-1);
-    var TMFcell = row.insertCell(-1);
-    var TEcell = row.insertCell(-1);
-    var TFcell = row.insertCell(-1);
-    var TCcell = row.insertCell(-1);
-    var TPcell = row.insertCell(-1);
-    var PScell = row.insertCell(-1);
+getPaymentData();
 
-    // Set the values for each cell
-    TAFcell.innerHTML = `${item.TAFcell} + $`;
-    TMFcell.innerHTML = `${item.TMFcell} + $`;
-    TEcell.innerHTML = `${item.TEcell} + $`;
-    TFcell.innerHTML = `${item.TFcell} + $`;
-    TCcell.innerHTML = `${item.TCcell} + $`;
-    TPcell.innerHTML = `${item.TPcell} + $`;
-    PScell.innerHTML = `<div class="btn btn-success p-2">Paid</div>
-                        <div class="btn btn-danger p-2">Not Paid</div>`;
-
+function previewImage(event) {
+    const input = event.target;
+    const imgPreview = document.getElementById("imgPreview");
+     if (input.files && input.files[0]) {
+        const reader = new FileReader();
+         reader.onload = function (e) {
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = "block";
+        };
+         reader.readAsDataURL(input.files[0]);
+    } else {
+        imgPreview.src = "";
+        imgPreview.style.display = "none";
+    }
 }
 
-changeTheme(themesCharctaristic[localStorage.getItem('theme')]);
+async function creatDropIn(e) {// Step two: create a dropin instance using that container (or a string
+    //   that functions as a query selector such as '#dropin-container')
+    e.preventDefault()
+    let authorization
+    await fetch(`${domainName}/sts/payment/clienttoken`, {
+         method: "GET",
+     }).then(response=>response.json()).then(response=>{
+         authorization=response
+     })
+     
+     console.log(authorization)
+    
+    const form = document.getElementById('payment-form');
+
+    braintree.dropin.create({
+    authorization,
+    container: '#dropin-container'
+    }).then((dropinInstance) => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        dropinInstance.requestPaymentMethod().then((payload) => {
+        // Step four: when the user is ready to complete their
+        //   transaction, use the dropinInstance to get a payment
+        //   method nonce for the user's selected payment method, then add
+        //   it a the hidden field before submitting the complete form to
+        //   a server-side integration
+        document.getElementById('nonce').value = payload.nonce;
+        form.submit();
+        }).catch((error) => { throw error; });
+    });
+    }).catch((error) => {
+    // handle errors
+    });
+
+}

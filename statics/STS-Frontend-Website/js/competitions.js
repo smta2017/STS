@@ -3,9 +3,9 @@ function getCookie(name) {
     return cookieValue ? cookieValue.pop() : null;
 }
 
-function setCookie(name, value) {
-    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
-}
+// function setCookie(name, value) {
+//     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+// }
 
 function getAllJoinedCompetition() {
     var allJoinedCompetition = document.querySelector('#joinedCompetitionName');
@@ -24,19 +24,23 @@ function getAllJoinedCompetition() {
                 button.id = competitions.competition._id;
                 button.value = competitions._id;
                 button.textContent =`${competitions.competition.type} - ${competitions.competition.year}`;
-                button.onclick = function () { goToHome(competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished) };
+                button.onclick = function () { goToHome(competitions.competition._id,competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished) };
                 allJoinedCompetition.appendChild(button);
             });
+            document.getElementById("gif").style.display ="none"
         })
-        .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"
+        .catch(function (error) {
+            console.log('Error:', error);
+            document.getElementById("gif").style.display ="none"
+        });
     } catch (error) {
         console.log(error);
     }
 }
 
-function goToHome(valueID,type,stopSubscription,showSchedule,showResults,finished) {
-    setCookie("subscriptionId", valueID);
+function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished) {
+    setCookie("competition", competitionID);
+    setCookie("subscriptionId", subscriptionID);
     setCookie("type", type);
     setCookie("stopSubscription", stopSubscription);
     setCookie("showSchedule", showSchedule);

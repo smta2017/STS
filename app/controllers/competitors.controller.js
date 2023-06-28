@@ -104,8 +104,27 @@ class Competitor {
             const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
             const filter = {}
             filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
-            if (true) { return competitorModel.find(filter) }
+            if (true) { return competitorModel.find(filter).populate({path:'qualifierSubscription',select:['academy'],populate:{path:'academy',select:['academyDetails'],populate:{path:'academyDetails',select:['schoolName']}}}) }
         }, 'there are all this competition entries')
     }
+    // static updateFieldNameInAllDocs=(req,res)=>{
+    //     Helper.handlingMyFunction(req,res,async(req)=>{
+    //         // const allSubscriptions=await subscriptionModel.find()
+    //         // const subscriptionsID=allSubscriptions.map(sub=>sub._id)
+    //         // console.log(subscriptionsID)
+    //         // // if(true){return subscriptionsID}
+    //         // if(true){return competitorModel.deleteMany({qualifierSubscription:{$nin:subscriptionsID}})}
+    //        const allCompetitors=await competitorModel.find()
+    //       const a=  await Promise.all(allCompetitors.map(comp=>{
+    //         comp.passedQualifiers=comp.passQualifier
+    //         comp.passQualifier=undefined
+    //        return comp.save()
+    //        }))
+    //        if(true){
+    //         return competitorModel.updateMany
+    //        }
+    //     },'fieldname update successfully')
+    // }
 }
+
 module.exports = Competitor

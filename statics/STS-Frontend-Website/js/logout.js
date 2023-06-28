@@ -34,13 +34,23 @@ document.getElementById("LogOut").addEventListener('click', function (e){
             deleteCookie("showSchedule");
             deleteCookie("showResults");
             deleteCookie("finished");
+            deleteCookie("schoolName");
+            deleteCookie("schoolID");
             window.location.hash = ""; // redirect to home page or login page
             window.location.reload();
-            document.getElementById("gif").style.display ="block"
         }
-    })
-    .catch(error => console.error('Error:', error.message));
-    document.getElementById("gif").style.display ="none"
+        document.getElementById("gif").style.display = "none";
+        response.json().then(data => {
+          responseAlert(data);
+      });
+      })
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+      error.json().then(data => {
+        responseAlert(data);
+      });
+    });
 });
 
 function getCookie(name) {

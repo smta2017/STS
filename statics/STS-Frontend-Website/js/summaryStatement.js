@@ -26,13 +26,13 @@ function generatePDF() {
   // Wait for the document to fully load before printing
   win.onload = function() {
     // Print the document
-    // win.print();
+    win.print();
     // Close the print preview window after printing
     // win.close();
   };
 }
 
-document.getElementById('generate-pdf').addEventListener('click', generatePDF);
+// document.getElementById('generate-pdf').addEventListener('click', generatePDF);
 
 var summaryStatement;
 
@@ -60,14 +60,17 @@ function getsummaryStatement() {
         element.setAttribute("id", `summaryStatement-${summaryStatement._id}`);
         summaryStatementContainer.appendChild(element);
       });
+      document.getElementById("gif").style.display = "none";
     })
-    .catch((error) => console.log(error));
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    });  
 }
 
 getsummaryStatement();
 
-document.getElementById("search").addEventListener("input", handleSearch);
+// document.getElementById("search").addEventListener("input", handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById("search").value.toLowerCase();

@@ -7,20 +7,15 @@
     <title>STS Website</title>
 
     <!--Favicon-->
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png"
-    />
+    <link rel="icon" type="image/x-icon" href="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png"/>
 
     <!--Fonts-->
-    <link rel="stylesheet" href="https://sts-5s7p.onrender.com/STS-Frontend-Website/Font-Awesome-6.x/css/all.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-    />
+    <!-- <link rel="stylesheet" href="https://sts-5s7p.onrender.com/STS-Frontend-Website/fontawesome.css" /> -->
+   
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/fontawesome.css"/> -->
+    
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap"> -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap"> -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700"> -->
@@ -29,12 +24,17 @@
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
     <!-- Scrollbar Custom CSS -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"> -->
-
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/icon-css/3.5.0/css/flag-icon.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" /> -->
+  
     <!--Bootstrap-->
-    <link href="https://sts-5s7p.onrender.com/STS-Frontend-Website/bootstrap-5.2.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://sts-5s7p.onrender.com/STS-Frontend-Website/bootstrap.min.css" rel="stylesheet" />
 
     <!--CSS file-->
     <link rel="stylesheet" href="https://sts-5s7p.onrender.com/STS-Frontend-Website/css/style.css" />
+
+    <!--Calling Country Code-->
+    <link rel="stylesheet" href="https://sts-5s7p.onrender.com/STS-Frontend-Website/intlTelInput.css">
   </head>
 
   <body>
@@ -43,27 +43,27 @@
     <div id="body">
       <!--=================================================Navbar & Header & Footer===================================================-->
       <script id="homeBeforeLogin-template" type="text/template">
-        <header id="navbar" >
+        <header id="navbar" class="position-sticky top-0">
           <div class="header-blue dark">
-            <nav class="dark navbar navbar-expand-md navbar-dark navigation-clean-search p-0">
+            <nav class="navbar dark py-1 text-light border-none navbar-expand-md navbar-dark navigation-clean-search p-0">
               <div class="container-fluid">
                 <img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/28f975b2-033e-4611-ac6d-2e0a721b8f1c.png" alt="Logo" width="140" height="140"
-                  class="d-inline-block align-text-center img-fluid navbar-brand">
+                  class="d-inline-block align-text-center img-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                   aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse px-4 text-center mt-1" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#sliderNews">Home</a>
+                      <a class="nav-link active px-2 px-md-3" aria-current="page" href="#sliderNews">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#info" id="about">About</a>
+                      <a class="nav-link px-2 px-md-3" href="#info" id="about">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                      <button class="nav-link dropdown-toggle mx-auto" style="background-color:transparent;border:none" id="sponsorsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="nav-link px-2 px-md-3 dropdown-toggle mx-auto" style="background-color:transparent;border:none" id="sponsorsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Sponsors
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="sponsorsDropdown">
@@ -71,13 +71,13 @@
                       </ul>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#shop" id="shop">Shop</a>
+                      <a class="nav-link px-2 px-md-3" href="#shop" id="shop">Shop</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#contact" id="contact">Contact</a>
+                      <a class="nav-link px-2 px-md-3" href="#contact" id="contact">Contact</a>
                     </li>
                   </ul>
-                  <div class="d-flex justify-content-center">
+                  <div class="d-flex justify-content-center mb-2">
                     <a class="btn btn-light action-button login" role="button" href="#login" id="login">LogIn</a>
                     <a class="btn btn-light action-button login" role="button" href="#signup" id="signup">SignUp</a>
                   </div>
@@ -94,14 +94,17 @@
           <section class="footer">
             <footer style="box-shadow: 0 3px 8px goldenrod; background: #1f1f1f;">
               <div class="container-fluid text-center d-flex justify-content-center flex-wrap">
-                <div class="col-12 col-md-8 col-lg-9">
+                <div class="col-12 col-md-8 col-lg-9 text-light">
                   <h4 class="text-warning">Special Talent Stars</h4>
                   <div>
                     <div class="row align-items-center">
                         <div class="col-12 col-sm-4 ">
                             <div class="contact-us">
                                 <div class="contact-icon">
-                                    <i class="fa fa-map text-warning" aria-hidden="true"></i>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-map-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
+                                  </svg>
+                                    <!-- <i class="fa fa-map text-warning" aria-hidden="true"></i> -->
                                 </div>
                                 <div class="contact-info">
                                     <h5>Jaipur India</h5>
@@ -110,10 +113,13 @@
                             </div>
                         </div>
 
-                        <div class="col-12 col-sm-4 ">
+                        <div class="col-12 col-sm-4">
                             <div class="contact-us">
                                 <div class="contact-icon">
-                                    <i class="fa fa-volume-control-phone text-warning" aria-hidden="true"></i>
+                                    <!-- <i class="fa fa-volume-control-phone text-warning" aria-hidden="true"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
+                                      <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z"/>
+                                    </svg>
                                 </div>
                                 <div class="contact-info">
                                     <h5>95 711 9 5353</h5>
@@ -125,7 +131,10 @@
                         <div class="col-12 col-sm-4">
                           <div class="contact-us ">
                               <div class="contact-icon">
-                                  <i class="fa-solid fa-envelope fa-xl text-warning" aria-hidden="true"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="goldenrod" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                                </svg>
+                                  <!-- <i class="fa fa-solid fa-envelope text-warning" aria-hidden="true"></i> -->
                               </div>
                               <div class="contact-info">
                                   <h5>email@gmail.com</h5>
@@ -134,25 +143,33 @@
                           </div>
                       </div>
                     </div>
-              </div>
+                  </div>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-3">
                   <ul>
                     <li class="row align-items-center mb-1 d-flex justify-content-center">
                       <a href="https://www.facebook.com/profile.php?id=100090606410857" target="_blank" class="social py-2 col-6 col-md-3">
-                        <i class="fa fa-facebook"></i>
+                        <!-- <i class="fa fa-facebook"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-facebook" viewBox="0 0 16 16">
+                          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                        </svg>
                       </a><span class="text-light col-6 col-md-9">Special Talent Stars</span>
                     </li>
                     <li class="row align-items-center mb-1 d-flex justify-content-center">
                       <a href="#" target="_blank" class="social py-2 col-6 col-md-3">
-                        <i class="fa fa-youtube"></i>
+                        <!-- <i class="fa fa-youtube"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-youtube" viewBox="0 0 16 16">
+                          <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                        </svg>
                       </a><span class="text-light col-6 col-md-9">Special Talent Stars</span>
                     </li>
                     <!-- <hr> -->
                     <li class="row align-items-center d-flex justify-content-center">
                       <a href="https://www.instagram.com/special_talent_stars/" target="_blank" class="social py-2 col-6 col-md-3">
-                        <i class="fa fa-instagram"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" viewBox="0 0 448 512">
+                          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                        </svg>
                       </a><span class="text-light col-6 col-md-9">special_talent_stars</span>
                     </li>
                   </ul>
@@ -165,9 +182,9 @@
               </div> --> 
               <div class="container-fluid text-center" style="border-top: 1px solid rgba(218, 165, 32, 0.116);">
                 <div class="row pt-1">
-                  <span class="col-12 col-md-4  col-lg-6 text-center text-md-start">Copyright © 2023, All Right Reserved <span style="color: goldenrod;">STS</span></span>
-                  <span class="col-6 col-md-4 col-lg-4 text-Warning"> <a href="#" >Terms and Condition</a></span>
-                  <span class="col-6 col-md-4 col-lg-2 text-Warning"><a href="#">Privacy Policy</a></span>
+                  <span class="col-12 col-md-6 col-lg-6 text-center text-md-start text-light">Copyright © 2023, All Right Reserved <span style="color: goldenrod;">STS</span></span>
+                  <span class="col-12 col-sm-6 col-md-3 col-lg-4 text-Warning"><a href="#" >Terms and Condition</a></span>
+                  <span class="col-12 col-sm-6 col-md-3 col-lg-2 text-Warning"><a href="#">Privacy Policy</a></span>
                 </div>
               </div>
             </footer>
@@ -201,16 +218,6 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#entries" id="entries">Entries</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle mx-auto" role="button" data-bs-toggle="dropdown"
-                      aria-expanded="false" style="background-color:transparent ; border:none">
-                      Schadual
-                    </button>
-                    <ul class="dropdown-menu text-center">
-                      <li><a class="dropdown-item" href="#fullSchadual" id="fullSchadual">Full Schadual</a></li>
-                      <li><a class="dropdown-item" href="#schadualBySchool" id="schadualBySchool">Schadual By School</a></li>
-                    </ul>
-                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#teachers" id="teachers" id="teachers">Teachers</a>
                   </li>
@@ -227,8 +234,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#payment" id="payment">Payment</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="#results" id="results">Results</a>
+                  <li class="nav-item dropdown" id="schadualNav">
+                  </li> 
+                  <li class="nav-item dropdown" id="resultsNav">
                   </li>
                 </ul>
                 <div class="d-xl-flex justify-content-center">
@@ -269,7 +277,7 @@
                   style="font-family: 'Princess Sofia', cursive ;">
                   Let's share with us!</h4>
                 <div class="">
-                  <button class="btn btn-warning rounded-pill mx-5 px-4 fs-3">Welcome Ahmed</button>
+                  <h3 class="btn btn-warning rounded-pill mx-5 px-4 fs-3" id="UserName"></h3>
                 </div>
               </div>
               <div class="col-sm-5">
@@ -330,14 +338,17 @@
           <section class="footer">
             <footer style="box-shadow: 0 3px 8px goldenrod; background: #1f1f1f;" id="footer">
               <div class="container-fluid text-center d-flex justify-content-center flex-wrap">
-                <div class="col-12 col-md-8 col-lg-9">
+                <div class="col-12 col-md-8 col-lg-9 text-light">
                   <h4 class="text-warning">Special Talent Stars</h4>
                   <div>
                     <div class="row align-items-center">
                         <div class="col-12 col-sm-4 ">
                             <div class="contact-us">
                                 <div class="contact-icon">
-                                    <i class="fa fa-map text-warning" aria-hidden="true"></i>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-map-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
+                                  </svg>
+                                    <!-- <i class="fa fa-map text-warning" aria-hidden="true"></i> -->
                                 </div>
                                 <div class="contact-info">
                                     <h5>Jaipur India</h5>
@@ -346,10 +357,13 @@
                             </div>
                         </div>
 
-                        <div class="col-12 col-sm-4 ">
+                        <div class="col-12 col-sm-4">
                             <div class="contact-us">
                                 <div class="contact-icon">
-                                    <i class="fa fa-volume-control-phone text-warning" aria-hidden="true"></i>
+                                    <!-- <i class="fa fa-volume-control-phone text-warning" aria-hidden="true"></i> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
+                                      <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z"/>
+                                    </svg>
                                 </div>
                                 <div class="contact-info">
                                     <h5>95 711 9 5353</h5>
@@ -361,7 +375,10 @@
                         <div class="col-12 col-sm-4">
                           <div class="contact-us ">
                               <div class="contact-icon">
-                                  <i class="fa-solid fa-envelope fa-xl text-warning" aria-hidden="true"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="goldenrod" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                                </svg>
+                                  <!-- <i class="fa fa-solid fa-envelope text-warning" aria-hidden="true"></i> -->
                               </div>
                               <div class="contact-info">
                                   <h5>email@gmail.com</h5>
@@ -377,18 +394,26 @@
                   <ul>
                     <li class="row align-items-center mb-1 d-flex justify-content-center">
                       <a href="https://www.facebook.com/profile.php?id=100090606410857" target="_blank" class="social py-2 col-6 col-md-3">
-                        <i class="fa fa-facebook"></i>
+                        <!-- <i class="fa fa-facebook"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-facebook" viewBox="0 0 16 16">
+                          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                        </svg>
                       </a><span class="text-light col-6 col-md-9">Special Talent Stars</span>
                     </li>
                     <li class="row align-items-center mb-1 d-flex justify-content-center">
                       <a href="#" target="_blank" class="social py-2 col-6 col-md-3">
-                        <i class="fa fa-youtube"></i>
+                        <!-- <i class="fa fa-youtube"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" class="bi bi-youtube" viewBox="0 0 16 16">
+                          <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                        </svg>
                       </a><span class="text-light col-6 col-md-9">Special Talent Stars</span>
                     </li>
                     <!-- <hr> -->
                     <li class="row align-items-center d-flex justify-content-center">
                       <a href="https://www.instagram.com/special_talent_stars/" target="_blank" class="social py-2 col-6 col-md-3">
-                        <i class="fa fa-instagram"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="goldenrod" viewBox="0 0 448 512">
+                          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                        </svg>
                       </a><span class="text-light col-6 col-md-9">special_talent_stars</span>
                     </li>
                   </ul>
@@ -401,9 +426,9 @@
               </div> --> 
               <div class="container-fluid text-center" style="border-top: 1px solid rgba(218, 165, 32, 0.116);">
                 <div class="row pt-1">
-                  <span class="col-12 col-md-4  col-lg-6 text-center text-md-start">Copyright © 2023, All Right Reserved <span style="color: goldenrod;">STS</span></span>
-                  <span class="col-6 col-md-4 col-lg-4 text-Warning"> <a href="#" >Terms and Condition</a></span>
-                  <span class="col-6 col-md-4 col-lg-2 text-Warning"><a href="#">Privacy Policy</a></span>
+                  <span class="col-12 col-md-6 col-lg-6 text-center text-md-start text-light">Copyright © 2023, All Right Reserved <span style="color: goldenrod;">STS</span></span>
+                  <span class="col-12 col-sm-6 col-md-3 col-lg-4 text-Warning"><a href="#" >Terms and Condition</a></span>
+                  <span class="col-12 col-sm-6 col-md-3 col-lg-2 text-Warning"><a href="#">Privacy Policy</a></span>
                 </div>
               </div>
             </footer>
@@ -454,9 +479,9 @@
                                   <select class="form-select w-25 border border-warning" id="callingCodeForAcademy"
                                       required>
                                       <option value="-1" disabled>Choose your country</option>
-                                      <option value="+20">+20</option>
+                                      <!-- <option value="+20">+20</option>
                                       <option value="2">+54</option>
-                                      <option value="3">+90</option>
+                                      <option value="3">+90</option> -->
                                   </select>
                                   <input type="tel" class="form-control rounded-3 border border-warning p-2 w-75"
                                       aria-label="Text input with dropdown button" name="editMobileNumbeForAcademy"
@@ -476,7 +501,7 @@
                               <input type="email" class="form-control rounded-3 border border-warning p-2 fs-5"
                                   name="editEmailForAcademy" id="editEmailForAcademy" placeholder="Your Email Address"
                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)"
-                                  title="It must be like this EXP@EXP.EXP" required>
+                                  title="It must be like this EXP@EXP.EXP" required autocomplete="on">
                               <div class="valid-feedback">
                                   Looks good!
                               </div>
@@ -542,7 +567,7 @@
                           </div>
                           <div class="form-group d-flex flex-column mb-3">
                               <label for="Address" class=" form-label form-label mb-1 fs-4 fw-bold">Address</label>
-                              <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="Address" id="Address" placeholder="Address" pattern="[A-Za-z&\s]{10,}" title="at least 10 letter" required>
+                              <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="Address" id="Address" placeholder="Address" pattern="[A-Za-z&\s]{10,}" title="at least 10 letter" required autocomplete="on">
                               <div class="valid-feedback">
                                   Looks good!
                               </div>
@@ -623,11 +648,10 @@
           </div>
         </div>
       </script>
-        <!--=================================================Navbar & Header & Footer===================================================-->
+      <!--=================================================Navbar & Header & Footer===================================================-->
 
       <!--===============================================================Body===================================================-->
       <!--======================BeforeLogin=========================-->
-
       <!-- Home Before Login -->
       <script id="home-template" type="text/template">
         <section class="sliderNews" id="sliderNews" style=" font-family: 'Fugaz One', cursive;">
@@ -635,7 +659,7 @@
             <div class="carousel-indicators">
             </div>
 
-            <div class="row" id="showAdventisers">
+            <div id="showAdventisers">
             </div>
 
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -651,7 +675,7 @@
 
         <section class="latestNews" id="latestNews">
           <div class="container py-2">
-            <div class="h1 text-center text-light" id="pageHeaderTitle">Your Cards</div>
+            <div class="h1 text-center text-light fs-1 my-3">Lastest Nesws</div>
               <section id="newsU">
                 <div class="container mx-auto">
                   <div class="row" id="showNews">
@@ -680,7 +704,7 @@
       <script id="info-template" type="text/template">
         <section class="info" id="info">
           <div class="container pb-5">
-            <div class="h1 text-center text-light" >Your Info</div>
+            <div class="h1 text-center text-light fs-1 mb-3 pt-5">Your Info</div>
             <div class="d-flex justify-content-center row">
                 <div class="col-lg-10 col-md-12 ">
                     <div id="carousel-1" class="carousel slide" data-ride="carousel">
@@ -714,14 +738,14 @@
       <script id="shop-template" type="text/template">
         <div class="row">
           <div class="col-6 mb-2 mx-auto">
-            <label class="form-label form-label mb-1 fs-4 fw-bold text-light">Select Country</label>
+            <label for="selectCountryToShop" class="form-label form-label mb-1 fs-4 fw-bold text-light pt-3">Select Country</label>
             <select class="form-select rounded-3 border border-warning p-2 fs-5 country" id="selectCountryToShop" aria-label="Default select example" required ></select>
           </div>
           <div class="text-center py-3 bg-warning rounded fw-bold">You can Call Us to Buy anything &nbsp;&nbsp;&nbsp; <i class="fa fa-volume-control-phone" aria-hidden="true"></i> 01252468526 </div>
         </div>
         <section class="shop" id="shop" style="font-family: 'Fugaz One', cursive;">
           <div class="container-fluid bg-trasparent py-5 p-3" style="position: relative;">
-            <div class="h1 text-center pb-3" >Your Shop</div>
+            <div class="h1 text-center pb-3 text-light fs-1 my-3">Your Shop</div>
               <div class="row g-3" id="AddProducts">
               </div>
           </div>
@@ -735,10 +759,12 @@
             <div class="col-12">
               <div class="footer-widget p-3 rounded" style="box-shadow: 0 3px 10px goldenrod; ">
                 <div class="section-heading">
-                  <h3 ><i class="fa-solid fa-envelope fa-xl" style="color: goldenrod;"></i> Contact Us</h3>
+                  <h3 class="text-light"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="goldenrod" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                  </svg> Contact Us</h3>
                   <span class="animate-border border-black"></span>
                 </div>
-                <h5 >We would love to hear from you !</h5>
+                <h5 class="text-light">We would love to hear from you !</h5>
 
                 <form id="contact-form" role="form" onsubmit="sendMessage(event)">
                   <div class="controls">
@@ -746,13 +772,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="form_name" class="text-light">Firstname *</label>
-                          <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *"  data-error="Firstname is required.">
+                          <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *"  data-error="Firstname is required." autocomplete="on">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="form_lastname" class="text-light">Lastname *</label>
-                          <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *"  data-error="Lastname is required.">
+                          <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *"  data-error="Lastname is required." autocomplete="on">
                         </div>
                       </div>
                     </div>
@@ -760,7 +786,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="form_email" class="text-light">Email *</label>
-                          <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *"  data-error="Valid email is required.">
+                          <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *"  data-error="Valid email is required." autocomplete="on">
                         </div>
                       </div>
                       <!-- <div class="col-md-6">
@@ -785,7 +811,8 @@
                         </div>
                       </div>
                       <div class="col-md-12 ">
-                        <input type="submit" class="btn btn-warning btn-send mt-3 pt-2 btn-block" value="Send Message" >
+                        <input type="submit" class="btn btn-warning btn-send mt-3 pt-2 btn-block" 
+                        value="Send Message">
                       </div>
 
                     </div>
@@ -874,9 +901,9 @@
                               <div class="input-group">
                                 <select class="form-select w-25" id="callingCode" required>
                                   <option value="-1" disabled>Choose your country</option>
-                                  <option value="+20">+20</option>
+                                  <!-- <option value="+20">+20</option>
                                   <option value="2">+54</option>
-                                  <option value="3">+90</option>
+                                  <option value="3">+90</option> -->
                                 </select>
                                 <input type="tel" class="form-control rounded-3 border border-warning p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
                               </div>
@@ -889,7 +916,7 @@
                             </div>
                             <div class="form-group d-flex flex-column mb-3">
                                 <label for="Email" class="form-label mb-1 fs-4 fw-bold text-light">E-mail Address</label>
-                                <input type="email" class="form-control rounded-3 border border-warning p-2 fs-5" name="Email" id="Email" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required>
+                                <input type="email" class="form-control rounded-3 border border-warning p-2 fs-5" name="Email" id="Email" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required autocomplete="on">
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -911,7 +938,7 @@
                         <div class="card border border-warning mx-auto col-sm-9 col-lg-7 col-11" data-step="3" style="box-shadow: 0 3px 10px goldenrod;background: transparent;">
                             <h1 class="step-title text-center fw-bold my-4 text-light">School Location</h1>
 
-                            <div class="form-group d-flex flex-column mb-3">
+                            <!-- <div class="form-group d-flex flex-column mb-3">
                                 <label for="buldingNumber" class=" form-label form-label mb-1 fs-4 fw-bold text-light">bulding Number</label>
                                 <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="buldingNumber" id="buldingNumber" placeholder="bulding Number" pattern="[A-Za-z&\s|0-9]{1,}" title="at least one digit" required>
                                 <div class="valid-feedback">
@@ -920,10 +947,10 @@
                                 <div class="invalid-feedback">
                                     at least one digit
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group d-flex flex-column mb-3">
                                 <label for="Address" class=" form-label form-label mb-1 fs-4 fw-bold text-light">Address</label>
-                                <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="Address" id="Address" placeholder="Address" pattern="[A-Za-z&\s]{10,}" title="at least 10 letter" required>
+                                <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="Address" id="Address" placeholder="Address" pattern="[A-Za-z&\s]{10,}" title="at least 10 letter" required autocomplete="on">
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -1037,9 +1064,9 @@
                   <div class="input-group">
                     <select class="form-select w-25" id="callingCode" required>
                       <option value="-1" disabled>Choose your country</option>
-                      <option value="+20">+20</option>
+                      <!-- <option value="+20">+20</option>
                       <option value="2">+54</option>
-                      <option value="3">+90</option>
+                      <option value="3">+90</option> -->
                     </select>
                     <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number"  title="It must consist of at least 10 digits" >
                     </div>
@@ -1118,131 +1145,8 @@
 
       <!--======================AfterLogin and AfterCompetion=========================-->
 
-      <!-- Competitions --------------->
+      <!-- Competitions -->
       <script id="competitions-template" type="text/template">
-            <!-- <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <div class="panel my-4">
-                    <div class="panel-heading">
-                      <div class="row">
-                        <div class="col-12 col-md-4">
-                            <h4 class="title" id="competitions">competitions</h4>
-                        </div>
-                        <div class="col-12 col-md-5 text-center">
-                            <div class="btn_group">
-                              <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                              <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-3 text-end">
-                          <div class="btn_group">
-                            <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Compatator</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel-body table-responsive" id="my-table">
-                      <table class="table" >
-                        <thead>
-                          <tr>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>Day</th>
-                            <th>Month</th>
-                            <th>Year</th>
-                            <th>Gender</th>
-                            <th>Email</th>
-                            <th>Mobile</th>
-                            <th>CategoryName</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-
-                        <tbody id="table-body-competitions">
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-        Modal
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Dancer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form id="add-row-form" class="row g-3">
-                      <div class="col-12 col-md-6">
-                        <label for="firstname">First Name:</label>
-                        <input type="text" id="firstname" name="firstname" class="form-control" required>
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <label for="lastname">Last Name:</label>
-                        <input type="text" id="lastname" name="lastname" class="form-control" required>
-                      </div>
-                      <div class="col-md-12">
-                        <label for="dateOfBirth">Date of Birth:</label>
-                        <div class="input-group row" id="dateOfBirth">
-                          <div class="col-12 col-md-4">
-                            <label for="day">Day:</label>
-                            <select id="day" name="day" class="form-control" required>
-                              <option></option>
-                            </select>
-                          </div>
-                          <div class="col-12 col-md-4">
-                            <label for="month">Month:</label>
-                            <select id="month" name="month" class="form-control" required>
-                              <option></option>
-                            </select>
-                          </div>
-                          <div class="col-12 col-md-4">
-                            <label for="year">Year:</label>
-                            <select id="year" name="year" class="form-control" required>
-                              <option></option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <label for="gender">Gender:</label>
-                        <select  id="gender" name="gender" class="form-select" aria-label="Gender" class="form-control" required>
-                          <option selected>Gender</option>
-                          <option value="male" name="male">Male</option>
-                          <option value="female" name="female">Female</option>
-                        </select>
-                      </div>
-                      <div class="col-12">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                      </div>
-                      <div class="col-12">
-                        <label for="mobile">Mobile:</label>
-                        <input type="tel" id="mobile" name="mobile" class="form-control" required>
-                      </div>
-                      <div class="col-12">
-                        <label for="category" id="labelCategory">Category:</label>
-                        <div id="categorySelect">
-
-                        </div> -->
-                        <!-- <select  id="categorySelect"  name="category" value="Dancer" class="form-select" aria-label="category" class="form-control" required>
-                          <option value="-1" hidden>Category</option>
-                        </select>
-                      </div>
-                      <div class="row  mx-auto my-3">
-                        <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                        <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div> -->
       </script>
 
       <!-- Compatators -->
@@ -1253,26 +1157,30 @@
                 <div class="panel my-4">
                   <div class="panel-heading">
                     <div class="row">
-                      <div class="col-12 col-md-6 text-center">
-                          <h4 class="title" id="compatatorsName">List</h4>
+                      <div class="col-12 col-md-4">
+                          <h4 class="title" id="compatatorsName">List of all Compatators</h4>
                       </div>
-                      <div class="col-12 col-md-6 row">
-                          <div class="btn_group text-center col-12 col-lg-6">
-                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                          </div>
-                          <div class="btn_group text-center text-lg-end col-12 col-lg-6">
-                            <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#AddCompatator">Add Compatator</button>
-                          </div>
+                      <!-- <div class="col-12 col-md-8"> -->
+                      <div class="btn_group text-center col-12 col-md-4">
+                        <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                        <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf" onclick="generatePDF()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16" >
+                            <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                            <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                          </svg>
+                        </button>
                       </div>
-                      <!-- <div class="col-6 col-md-6 col-lg-4 ">
-     
-                      </div> -->
+                      <div class="btn_group text-md-end col-12 col-md-4">
+                        <div class="addComp">
+
+                        </div>
+                      </div> 
+                      <!-- </div> -->
                     </div>
                   </div>
                   <div class="panel-body table-responsive" id="compatators-table">
                     <table class="table">
-                      <thead>
+                      <thead id="headerTable">
                         <tr>
                           <th>FirstName</th>
                           <th>LastName</th>
@@ -1282,7 +1190,6 @@
                           <th>Email</th>
                           <th>Mobile</th>
                           <th>CategoryName</th>
-                          <th>Action</th>
                         </tr>
                       </thead>
 
@@ -1352,7 +1259,7 @@
                     </div>
                     <div class="col-12">
                       <label for="emailCompatators">Email:</label>
-                      <input type="email" id="emailCompatators" name="emailCompatators" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required>
+                      <input type="email" id="emailCompatators" name="emailCompatators" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required autocomplete="on">
                       <div class="valid-feedback">
                         Looks good!
                       </div>
@@ -1362,11 +1269,8 @@
                     </div>
                     <div class="col-12">
                       <div class="input-group">
-                        <select class="form-select w-25" name="callingCodeCompatators" id="callingCodeCompatators" class="form-control" required>
-                          <option value="-1" disabled>Choose your country Code</option>
-                          <option value="+20" name="+20">+20</option>
-                          <option value="+54" name="+54">+54</option>
-                          <option value="+90" name="+90">+90</option>
+                        <select class="form-select w-25" name="callingCodeCompatators" id="callingCodeCompatators" required>
+                          <option value="-1" disabled>Choose your country code</option>
                         </select>
                         <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumberCompatators" id="mobileNumberCompatators" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
                       </div>
@@ -1393,6 +1297,7 @@
                       </div>
                     </div>
                     <div class="row mx-auto my-3">
+                      <input type="reset" value="Clear" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData()">
                       <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
                       <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
                     </div>
@@ -1405,33 +1310,11 @@
 
       <!-- Entries -->
       <script id="entries-template" type="text/template">
-        <div class="container col-11 m-3 mx-auto" style="box-shadow: 0 3px 10px black;">
-          <h1 class="text-dark">Add Entry</h1>
-          <form id="form" class=" mx-auto row g-3" onsubmit="changeEntry(event);" enctype="multipart/form-data">
-            <input type="hidden" name="" id="entriesId">
-            <div class="col-12">
-              <label for="entryname">Entry Name:</label>
-              <input type="text" id="entryname" name="entryname" class="form-control" required>
-            </div>
-            <div class="col-11 row">
-              <div class="col-12 col-md-6">
-                <label for="uMusic">Upload Music:</label>
-                <input type="file" accept="audio/mpeg,audio/webm" id="uMusic" name="uMusic" aria-label="uMusic" class="form-control">
-              </div>
-              <div class="col-12 col-md-6 mt-2">
-                <audio id="audioPlayer" controls>
-                  <source src="" id="audio" />
-                </audio>
-              </div>
-              <small class="text-dark text-center">you can only upload these extentions for audio .mpeg, .webm</small>
-            </div>
-            <div class="row mx-auto my-3"><input class="btn btn-dark" type="submit" value="Submit"></div>
-          </form>
+        <div id="parentFormEntry"></div>
+        <div class="btn_group text-center col-10 col-md-6 mx-auto my-2">
+          <input type="text" class="form-control bg-dark text-light" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
         </div>
-
         <div id="results_container-user" class="table-container results_table"></div>
-
-        <button class="btn btn-default" hidden title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
       </script>
 
       <!-- Teachers -->
@@ -1447,26 +1330,29 @@
                       </div>
                       <div class="col-12 col-md-6 col-lg-4 text-center">
                           <div class="btn_group">
-                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16" onclick="generatePDF()">
+                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                              </svg>
+                            </button>
                           </div>
                       </div>
-                      <div class="col-12 col-md-6 col-lg-4 text-end">
-                        <div class="btn_group">
-                          <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#AddTeacher">Add Teatcher</button>
+                      <div class="col-12 col-md-6 col-lg-4 text-center text-md-end">
+                        <div class="addTeach">
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="panel-body table-responsive" id="teachersU-table">
                     <table class="table" >
-                      <thead>
+                      <thead id="headerTable">
                         <tr>
                           <th>Full Name</th>
                           <th>Date Of Birth</th>
                           <th>Mobile</th>
                           <th>Email</th>
-                          <th>Action</th>
                         </tr>
                       </thead>
 
@@ -1522,7 +1408,7 @@
                     </div>
                     <div class="col-12 col-md-6">
                       <label for="emailU">Email:</label>
-                      <input type="email" id="emailU" name="emailU" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required>
+                      <input type="email" id="emailU" name="emailU" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required autocomplete="on">
                       <div class="valid-feedback">
                         Looks good!
                       </div>
@@ -1534,9 +1420,9 @@
                       <div class="input-group">
                         <select class="form-select w-25" name="callingCodeU" id="callingCodeU" class="form-control" required>
                           <option value="-1" disabled>Choose your country Code</option>
-                          <option value="+20" name="+20">+20</option>
+                          <!-- <option value="+20" name="+20">+20</option>
                           <option value="+54" name="+54">+54</option>
-                          <option value="+90" name="+90">+90</option>
+                          <option value="+90" name="+90">+90</option> -->
                         </select>
                         <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumberU" id="mobileNumberU" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
                       </div>
@@ -1548,6 +1434,7 @@
                       </div>
                     </div>
                     <div class="row mx-auto my-3">
+                      <input type="reset" value="Clear" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData()">
                       <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
                       <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
                     </div>
@@ -1571,13 +1458,18 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 text-center">
                         <div class="btn_group">
-                          <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                          <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16" onclick="generatePDF()">
+                              <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                              <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                            </svg>
+                          </button>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 text-end">
                       <div class="btn_group">
-                        <div class="btn btn-light" id="priceAcademy">Price Of Academy</div>
+                        <div class="btn text-dark bg-warning" style="cursor: default;" id="priceAcademy"></div>
                       </div>
                     </div>
                   </div>
@@ -1586,10 +1478,10 @@
                   <table class="table" id="table-fullStatement">
                     <thead>
                       <tr>
-                        <th>Full Name</th>
-                        <th>Category Name</th>
-                        <th>Entry Name</th>
-                        <th>Fees Of Compatator</th>
+                        <th>FullName</th>
+                        <th>CategoryName</th>
+                        <th>EntryName</th>
+                        <th>FeesOfCompatator</th>
                       </tr>
                     </thead>
 
@@ -1614,17 +1506,17 @@
                     <div class="col-12 col-lg-6">
                         <h4 class="title" id="summaryStatement">Summary Statement List</h4>
                     </div>
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-6 text-end">
                         <div class="btn_group">
-                          <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                          <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16" onclick="generatePDF()">
+                              <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                              <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                            </svg>
+                          </button>
                         </div>
                     </div>
-                    <!-- <div class="col-12 col-md-3 text-end">
-                      <div class="btn_group">
-                        <div class="btn btn-light" id="priceAcademy">Price Of Academy</div>
-                      </div>
-                    </div> -->
                   </div>
                 </div>
                 <div class="panel-body table-responsive">
@@ -1646,7 +1538,7 @@
         </div>
       </script>
 
-      <!--Full schadual --------------------------->
+      <!--Full schadual -->
       <script id="fullSchadual-template" type="text/template">
           <div class="container">
             <div class="row">
@@ -1654,19 +1546,13 @@
                 <div class="panel my-4">
                   <div class="panel-heading">
                     <div class="row">
-                      <div class="col-12 col-md-4">
+                      <div class="col-12 col-md-6">
                           <h4 class="title" id="schadual">Full schadual</h4>
                       </div>
-                      <div class="col-12 col-md-5 text-center">
+                      <div class="col-12 col-md-6 text-end">
                           <div class="btn_group">
-                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
                           </div>
-                      </div>
-                      <div class="col-12 col-md-3 text-end">
-                        <div class="btn_group">
-                          <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Teatcher</button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -1674,9 +1560,9 @@
                     <table class="table" >
                       <thead>
                         <tr>
-                          <th>entry name</th>
-                          <th>school name</th>
-                          <th>schadual</th>
+                          <th>Entry Name</th>
+                          <th>School Name</th>
+                          <th>Schadual</th>
                         </tr>
                       </thead>
 
@@ -1688,49 +1574,9 @@
               </div>
             </div>
           </div>
-
-        <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-dark" id="exampleModalLabel">Teachers List</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form id="add-row-form" class="row g-3">
-                    <div class="col-12 col-md-6">
-                      <label for="firstname">First Name:</label>
-                      <input type="text" id="firstname" name="firstname" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="lastname">Last Name:</label>
-                      <input type="text" id="lastname" name="lastname" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="position">Position:</label>
-                      <input type="text" id="position" name="position" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="mobile">Mobile:</label>
-                      <input type="tel" id="mobile" name="mobile" class="form-control" required>
-                    </div>
-                    <div class="col-12">
-                      <label for="email">Email:</label>
-                      <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="row mx-auto my-3">
-                      <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                      <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
       </script>
 
-      <!--academy schadual --------------------------->
+      <!--academy schadual -->
       <script id="academySchadual-template" type="text/template">
           <div class="container">
             <div class="row">
@@ -1738,19 +1584,19 @@
                 <div class="panel my-4">
                   <div class="panel-heading">
                     <div class="row">
-                      <div class="col-12 col-md-4">
+                      <div class="col-12 col-md-6">
                           <h4 class="title" id="schadual">academy schadual </h4>
                       </div>
-                      <div class="col-12 col-md-5 text-center">
+                      <div class="col-12 col-md-6 text-end">
                           <div class="btn_group">
-                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16" onclick="generatePDF()">
+                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                              </svg>
+                            </button>
                           </div>
-                      </div>
-                      <div class="col-12 col-md-3 text-end">
-                        <div class="btn_group">
-                          <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Teatcher</button>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -1758,8 +1604,8 @@
                     <table class="table" >
                       <thead>
                         <tr>
-                          <th>entry name</th>
-                          <th>schadual</th>
+                          <th>Entry Name</th>
+                          <th>Schadual</th>
                         </tr>
                       </thead>
 
@@ -1767,46 +1613,6 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-dark" id="exampleModalLabel">Teachers List</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form id="add-row-form" class="row g-3">
-                    <div class="col-12 col-md-6">
-                      <label for="firstname">First Name:</label>
-                      <input type="text" id="firstname" name="firstname" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="lastname">Last Name:</label>
-                      <input type="text" id="lastname" name="lastname" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="position">Position:</label>
-                      <input type="text" id="position" name="position" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="mobile">Mobile:</label>
-                      <input type="tel" id="mobile" name="mobile" class="form-control" required>
-                    </div>
-                    <div class="col-12">
-                      <label for="email">Email:</label>
-                      <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="row mx-auto my-3">
-                      <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                      <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                    </div>
-                  </form>
                 </div>
               </div>
             </div>
@@ -1821,52 +1627,56 @@
               <div class="panel my-4">
                 <div class="panel-heading">
                   <div class="row">
-                    <div class="col-12 col-lg-4">
+                    <div class="col-12 col-md-4">
                         <h4 class="title" id="payment">Payment List</h4>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 text-center">
-                        <div class="btn_group">
-                          <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                        </div>
+                    <div class="col-12 col-md-2 text-center">
+                        <!-- <div class="btn_group"> -->
+                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf" onclick="generatePDF()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                              <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                              <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                            </svg>
+                          </button>
+                        <!-- </div> -->
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 text-end">
-                      <div class="btn_group">
-                        <div class="btn btn-light" id="totalPaymentAcademy">Total Payment Of Academy</div>
-                      </div>
+                    <div class="col-12 col-md-6 text-end">
+                      <!-- <div class="btn_group"> -->
+                        <div class="btn text-dark bg-warning" style="cursor: default;" id="totalPaymentAcademy"></div>
+                      <!-- </div> -->
                     </div>
                   </div>
                 </div>
                 <div class="panel-body table-responsive">
                   <table class="table text-light" id="table-totalPayment">
                     <thead id="table-head">
-                      <tr>
+                      <tr id="row1">
                         <td>Total Admin Fees</td>
                         <td></td>
                       </tr>
-                      <tr>
+                      <tr id="row2">
                         <td>Total Membership Fees</td>
                         <td></td>
                       </tr>
-                      <tr>
+                      <tr id="row3">
                         <td>Total Entries</td>
                         <td></td>
                       </tr>
-                      <tr>
+                      <tr id="row4">
                         <td>Total Fees</td>
                         <td></td>
                       </tr>
-                      <tr>
+                      <!-- <tr>
                         <td>Total Credits</td>
                         <td></td>
                       </tr>
                       <tr>
                         <td>Total Payment</td>
                         <td></td>
-                      </tr>
-                      <tr>
+                      </tr> -->
+                      <tr id="row5">
                         <td>Payment Status</td>
-                        <td class="bg-success"></td>
+                        <td></td>
                       </tr>
                     </thead>
 
@@ -1876,8 +1686,76 @@
                 </div>
                 <div class="">
                   <div class="btn_group row  ">
-                    <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-bank">Paid Bank</a>
-                    <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-paypal">Paid PayPal</a>
+                    <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-bank" data-bs-toggle="modal" data-bs-target="#Bank">
+                      Paid Bank
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
+                        <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z"/>
+                      </svg>
+                    </a>
+                    <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-paypal" data-bs-toggle="modal" data-bs-target="#PayPal" onclick="creatDropIn(event)">
+                      Paid PayPal
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paypal" viewBox="0 0 16 16">
+                        <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="Bank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Paid Bank</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" class="border border-warning p-4 rounded-3 needs-validation" novalidate onsubmit="sendMessageFromUser(event)">
+                    
+                          <div class="d-flex flex-column mb-3">
+                            <label for="uploadImgForbankReceipt" class=" form-label form-label mb-1 fs-4 fw-bold">Upload a copy of the
+                              bank receipt</label>
+                            <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgForbankReceipt"
+                              name="uploadImgForbankReceipt" accept="image/jpeg,image/png,image/gif,image/webp,image/apng"
+                              onchange="previewImage(event)" required>
+                            <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp,
+                              .apng</small>
+                          </div>
+                          <img id="imgPreview" src="" alt="Image Preview"
+                            style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
+                  
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                aria-label="Close">Submit</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="PayPal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Paid PayPal</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="payment-form" action="/route/on/your/server" method="post" autocomplete="off">
+                          <!-- Putting the empty container you plan to pass to
+                            'braintree.dropin.create' inside a form will make layout and flow
+                            easier to manage -->
+                          <div id="dropin-container"></div>
+                          <input type="submit" class="btn btn-success"/>
+                          <input type="hidden" id="nonce" name="paymentMethodNonce" />
+                          <input type="hidden" id="amount" name="amount"/>
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1886,87 +1764,83 @@
         </div>
       </script>
 
-      <!-- Results ------------------------------->
-      <script id="results-template" type="text/template">
+      <!--Full Results -->
+      <script id="fullResult-template" type="text/template">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="panel my-4">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <h4 class="title" id="Result">Full Result</h4>
+                    </div>
+                    <div class="col-12 col-md-6 text-end">
+                      <div class="btn_group">
+                        <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-body table-responsive" id="fullResult-table">
+                  <table class="table" >
+                    <thead>
+                      <tr>
+                        <th>Academy Name</th>
+                        <th>Entry Name</th>
+                        <th>Total Degree</th>
+                        <th>Result</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="table-body-fullResult">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </script>
+
+      <!--academy Results -->
+      <script id="academyResult-template" type="text/template">
           <div class="container">
             <div class="row">
               <div class="col-12">
                 <div class="panel my-4">
                   <div class="panel-heading">
                     <div class="row">
-                      <div class="col-12 col-md-4">
-                          <h4 class="title" id="results">Teachers List</h4>
+                      <div class="col-12 col-md-6">
+                          <h4 class="title" id="Result">Academy Result</h4>
                       </div>
-                      <div class="col-12 col-md-5 text-center">
+                      <div class="col-12 col-md-6 text-end">
                           <div class="btn_group">
-                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf" onclick="generatePDF()">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16" >
+                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                              </svg>
+                            </button>
                           </div>
-                      </div>
-                      <div class="col-12 col-md-3 text-end">
-                        <div class="btn_group">
-                          <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Teatcher</button>
-                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="panel-body table-responsive" id="my-table">
-                    <table class="table" >
+                  <div class="panel-body table-responsive" id="academyResult-table">
+                    <table class="table">
                       <thead>
                         <tr>
-                          <th>FirstName</th>
-                          <th>Lastname</th>
-                          <th>Position</th>
-                          <th>Mobile</th>
-                          <th>Email</th>
-                          <th>Action</th>
+                          <th>Entry Name</th>
+                          <th>Total Degree</th>
+                          <th>Result</th>
                         </tr>
                       </thead>
 
-                      <tbody id="table-body-results">
+                      <tbody id="table-body-academyResult">
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-dark" id="exampleModalLabel">Teachers List</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form id="add-row-form" class="row g-3">
-                    <div class="col-12 col-md-6">
-                      <label for="firstname">First Name:</label>
-                      <input type="text" id="firstname" name="firstname" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="lastname">Last Name:</label>
-                      <input type="text" id="lastname" name="lastname" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="position">Position:</label>
-                      <input type="text" id="position" name="position" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <label for="mobile">Mobile:</label>
-                      <input type="tel" id="mobile" name="mobile" class="form-control" required>
-                    </div>
-                    <div class="col-12">
-                      <label for="email">Email:</label>
-                      <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="row mx-auto my-3">
-                      <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                      <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                    </div>
-                  </form>
                 </div>
               </div>
             </div>
@@ -1976,59 +1850,59 @@
       <!--======================AfterLogin "-------ADMIN-----"=========================-->
       <!-- Navbar (Home1) -->
       <script id="navbar-template" type="text/template">
-        <div class="wrapper">
-          <div id="contentt">
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                  <a href="#competition" id="logoback">
-                      <img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/28f975b2-033e-4611-ac6d-2e0a721b8f1c.png" alt="Logo" width="100" height="100" class="d-inline-block align-text-center img-fluid navbar-brand">
-                  </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                    <div class="collapse navbar-collapse justify-content-between text-center" id="navbarSupportedContent">
-                      <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#competition" id="competition">Competition</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#news" id="news">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#sponser" id="sponser">Sponser</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#country" id="country">Country</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#prodect" id="prodect">Product</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#messages" id="messages">Messages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#adventiser" id="adventiser">Adventiser</a>
-                        </li>
-                      </ul>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            My Profile
-                        </button>
-                        <ul class="dropdown-menu">
-                          <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addingPosition">Add Position</a></li>
-                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addEmployee">Add Employee</a></li> -->
-                          <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editProfile" onclick="editProfile();">Edit Profile</button></li>
-                          <li>
-                              <hr class="dropdown-divider">
-                          </li>
-                          <li><button class="dropdown-item" id="LogOut">Log Out</button></li>
-                        </ul>
-                      </div>
-                    </div>
+        <div class="wrapper navbarAR">
+          <div id="contentt" >
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a href="#competition" id="logoback">
+                    <img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/28f975b2-033e-4611-ac6d-2e0a721b8f1c.png" alt="Logo" width="100" height="100" class="d-inline-block align-text-center img-fluid navbar-brand">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between text-center" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#competition" id="competition">Competition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news" id="news">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sponser" id="sponser">Sponser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#country" id="country">Country</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prodect" id="prodect">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#messages" id="messages">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#adventiser" id="adventiser">Adventiser</a>
+                    </li>
+                  </ul>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        My Profile
+                    </button>
+                    <ul class="dropdown-menu">
+                      <!-- <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addingPosition">Add Position</a></li>
+                      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addEmployee">Add Employee</a></li> -->
+                      <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editProfile" onclick="editProfile();">Edit Profile</button></li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li><button class="dropdown-item" id="LogOut">Log Out</button></li>
+                    </ul>
+                  </div>
                 </div>
-              </nav>
-            </div>
+              </div>
+            </nav>
           </div>
+        </div>
 
         <!-- Modal add employee-->
         <div class="modal fade" id="addEmployee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -2135,7 +2009,7 @@
                     <div class="modal-body">
                       <form action="" class="border border-warning p-4 rounded-3 p-3 needs-validation" novalidate id="addPositionForm">
                         <div class="form-group d-flex flex-column mb-3">
-                          <label for="addPosition" class="form-label mb-1 fs-4 fw-bold">Add Position</label>
+                          <label for="positionAdding" class="form-label mb-1 fs-4 fw-bold">Add Position</label>
                           <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="addPosition" id="positionAdding"
                              placeholder="Add Position" pattern="[A-Za-z]{2,}" title="at least Three letter" required>
                           <div class="valid-feedback">
@@ -2213,9 +2087,9 @@
                                     <select class="form-select w-25 border border-warning" id="callingCodeForMyProfile"
                                         required>
                                         <option value="-1" disabled>Choose your country</option>
-                                        <option value="+20">+20</option>
+                                        <!-- <option value="+20">+20</option>
                                         <option value="2">+54</option>
-                                        <option value="3">+90</option>
+                                        <option value="3">+90</option> -->
                                     </select>
                                     <input type="tel" class="form-control rounded-3 border border-warning p-2 w-75"
                                         aria-label="Text input with dropdown button" name="editMobileNumbeForAdmin"
@@ -2235,7 +2109,7 @@
                                 <input type="email" class="form-control rounded-3 border border-warning p-2 fs-5"
                                     name="editEmailForAdmin" id="editEmailForAdmin" placeholder="Your Email Address"
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)"
-                                    title="It must be like this EXP@EXP.EXP" required>
+                                    title="It must be like this EXP@EXP.EXP" required autocomplete="on">
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -2244,7 +2118,7 @@
                                 </div>
                             </div>
                             <div class="form-group d-flex flex-column mb-3">
-                                <label for="oldPassword" class="form-label mb-1 fs-4 fw-bold">Old
+                                <label for="editOldPassword" class="form-label mb-1 fs-4 fw-bold">Old
                                     Password</label>
                                 <input type="password"
                                     class="form-control rounded-3 border border-warning p-2 fs-5"
@@ -2306,7 +2180,7 @@
               <!-- left -->
               <div class="col-md-6 col-12">
                 <div class="d-flex flex-column mb-3 ">
-                  <label class="form-label form-label mb-1 fs-4 fw-bold">Year of Competition</label>
+                  <label for="yearOfCompetition" class="form-label form-label mb-1 fs-4 fw-bold">Year of Competition</label>
                   <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="yearOfCompetition"
                     id="yearOfCompetition" placeholder="Year of Competition" pattern="[0-9]{4}" title="at least four letter"
                     required min="1900" max="2100">
@@ -2319,7 +2193,7 @@
                 </div>
 
                 <div class="d-flex flex-column mb-3 ">
-                  <label class="form-label form-label mb-1 fs-4 fw-bold">Select Type of Competition</label>
+                  <label for="selectType" class="form-label form-label mb-1 fs-4 fw-bold">Select Type of Competition</label>
                   <select class="form-select border border-warning fs-5" id="selectType" required>
                     <option value="-1" disabled selected>Select Type</option>
                     <option value="qualifier" name="qualifier">Qualifier</option>
@@ -2334,8 +2208,8 @@
                 </div>
 
                 <div class="d-flex flex-column mb-3 ">
-                  <label class="form-label form-label mb-1 fs-4 fw-bold" id="labelCountry">Select Country</label>
-                  <select class="form-select border border-warning fs-5" id="countries" required></select>
+                  <label for="countries" class="form-label form-label mb-1 fs-4 fw-bold" id="labelCountry">Select Country</label>
+                  <select class="form-select border border-warning fs-5" id="countries"></select>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
@@ -2409,14 +2283,17 @@
                   </div>
                 </div>
 
-                <div class="d-flex justify-content-center">
-                  <input type="submit" value="Save Changes" class="btn btn-success px-4 py-2 fs-5">
+                <div class="d-flex justify-content-center row">
+                  <input type="reset" value="Clear" class="btn btn-danger col-6" onclick="clearData()">
+                  <input type="submit" value="Save Changes" class="btn btn-success col-6">
                 </div>
               </div>
             </div>
-
-
           </form>
+
+          <div class="btn_group text-center col-10 col-md-6 mx-auto my-2">
+            <input type="text" class="form-control bg-dark text-light" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+          </div>
 
           <section id="competitionsA">
             <div class="container mx-auto">
@@ -2432,6 +2309,21 @@
       <script id="newsA-template" type="text/template">
         <form action="" class="col-11 col-md-9 col-lg-7 border border-warning p-4 rounded-3 needs-validation mx-auto" novalidate id="formNews" onsubmit="changeNews(event)">
           <input type="hidden" name="" id="newsId">
+          <div class=" d-flex flex-column mb-3 ">
+            <label for="categoryNews" class=" form-label form-label mb-1 fs-4 fw-bold">Category of News</label>
+            <select id="categoryNews" name="categoryNews" class="form-select form-control rounded-3 border border-warning p-2 fs-5" aria-label="categoryNews" required>                    
+              <option value="-1" disabled>Category of News</option>
+              <option value="normal" name="normal">Normal</option>
+              <option value="important" name="important">Important</option>
+              <option value="special" name="special">Special</option>
+            </select>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              enter you Gender
+            </div>
+          </div>
           <div class=" d-flex flex-column mb-3 ">
               <label for="TitleForNews" class=" form-label form-label mb-1 fs-4 fw-bold">Title News</label>
               <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="TitleForNews" id="TitleForNews"
@@ -2472,13 +2364,26 @@
               <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp, .apng</small>
           </div>
           <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
-          <div class="d-flex justify-content-center">
-            <input type="submit" value="submit" class="btn btn-success px-4 py-2 fs-5">
+          <div class="d-flex justify-content-center row">
+            <input type="reset" value="Clear" class="btn btn-danger col-6" onclick="clearData()">
+            <input type="submit" value="submit" class="btn btn-success col-6">
         </div>
         </form>
-        <section id="newsA">
+        <section id="newsAnormal">
           <div class="container mx-auto">
-            <div class="row" id="Addnews">
+            <div class="row" id="AddnewsNormal">
+            </div>
+          </div>
+        </section>
+        <section id="newsAimportant">
+          <div class="container mx-auto">
+            <div class="row" id="AddnewsImportant">
+            </div>
+          </div>
+        </section>
+        <section id="newsAspecial">
+          <div class="container mx-auto">
+            <div class="row" id="AddnewsSpecial">
             </div>
           </div>
         </section>
@@ -2510,15 +2415,16 @@
                   at least 20 letter
               </div>
           </div>
-          <div class="d-flex flex-column mb-3 ">
-              <label for="uploadImgSponser" class=" form-label form-label mb-1 fs-4 fw-bold">Upload Img</label>
-              <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgSponser" name="uploadImgSponser"
-                accept="image/jpeg,image/png,image/gif,image/webp,image/apng" onchange="previewImage(event)">
-              <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp, .apng</small>
+          <div class="d-flex flex-column mb-3">
+            <label for="uploadImgSponser" class=" form-label form-label mb-1 fs-4 fw-bold">Upload Img</label>
+            <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgSponser" name="uploadImgSponser"
+              accept="image/jpeg,image/png,image/gif,image/webp,image/apng" onchange="previewImage(event)">
+            <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp, .apng</small>
           </div>
           <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
           <div class="d-flex justify-content-center">
-            <input type="submit" value="submit" class="btn btn-success px-4 py-2 fs-5">
+            <input type="reset" value="Clear" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData()">
+            <input type="submit" value="Submit" class="btn btn-success px-4 py-1 fs-5">
           </div>
         </form>
         <section id="sponsersA">
@@ -2539,13 +2445,13 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Dancer</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Country</h5>
                         <button type="button" class="btn-close" id="clospop" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         <form class="w-100 border border-warning p-4 rounded-3 needs-validation mx-auto" onsubmit="changeFeesForCountry(event)" novalidate>
                           <input type="hidden" name="" id="countryId">
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="countryName" class=" form-label form-label mb-1 fs-4 fw-bold">Country Name</label>
                             <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="countryName"
                               id="countryName" placeholder="Country Name" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
@@ -2556,10 +2462,21 @@
                               at least Three letter
                             </div>
                           </div>
+                          <div class="d-flex flex-column mb-3">
+                            <label for="selectCurrency" class="form-label form-label mb-1 fs-4 fw-bold">Select Currency</label>
+                            <select class="form-select rounded-3 border border-warning p-2 fs-5 selectCurrency" id="selectCurrency" aria-label="Default select example" required>
+                            </select>
+                            <div class="valid-feedback">
+                              Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                              at least two digits
+                            </div>
+                          </div>
 
                           <hr>
                           <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Dancer List</p>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="soloDance" class="form-label mb-1 fs-4 fw-bold">Solo Dance</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloDance" id="soloDance"
                               placeholder="Solo Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
@@ -2570,7 +2487,7 @@
                               at least two digit
                             </div>
                           </div>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="duo-Trio-Dance" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio Dance </label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Dance"
                               id="duo-Trio-Dance" placeholder="Duo/Trio Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1"
@@ -2582,7 +2499,7 @@
                               at least two digit
                             </div>
                           </div>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="danceGroup" class="form-label mb-1 fs-4 fw-bold">Dance Group</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="danceGroup" id="danceGroup"
                               placeholder="Dance Group" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
@@ -2595,7 +2512,7 @@
                           </div>
                           <hr>
                           <p class="form-label mb-1 fs-4 fw-bold text-center">Musician List</p>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="soloMusician" class="form-label mb-1 fs-4 fw-bold">Solo Musician</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloMusician"
                               id="soloMusician" placeholder="Solo Musician" pattern="[0-9]{2,}" title="at least Three letter"
@@ -2607,7 +2524,7 @@
                               at least two digit
                             </div>
                           </div>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="duo-Trio-Musician" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Musician
                             </label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Musician"
@@ -2620,7 +2537,7 @@
                               at least two digit
                             </div>
                           </div>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="musicianGroup" class="form-label mb-1 fs-4 fw-bold">Musician  Group</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="musicianGroup"
                               id="musicianGroup" placeholder="Musician Group" pattern="[0-9]{2,}" title="at least Three letter"
@@ -2634,7 +2551,7 @@
                           </div>
                           <hr>
                           <p class="form-label mb-1 fs-4 fw-bold text-center">Singer List</p>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="soloSinger" class="form-label mb-1 fs-4 fw-bold">Solo Singer</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloSinger"
                               id="soloSinger" placeholder="Solo Singer" pattern="[0-9]{2,}" title="at least Three letter"
@@ -2646,7 +2563,7 @@
                               at least two digit
                             </div>
                           </div>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="duo-Trio-Singer" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Singer
                             </label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Singer"
@@ -2659,7 +2576,7 @@
                               at least two digit
                             </div>
                           </div>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="singerGroup" class="form-label mb-1 fs-4 fw-bold">Singer  Group</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="singerGroup"
                               id="singerGroup" placeholder="Singer Group" pattern="[0-9]{2,}" title="at least Three letter"
@@ -2673,7 +2590,7 @@
                           </div>
                           <hr>
                           <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Fee</p>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="MEMBERSHIP-FEE" class="form-label mb-1 fs-4 fw-bold">Membership Fee</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
                               name="MEMBERSHIP-FEE" id="MEMBERSHIP-FEE" placeholder="MEMBERSHIP FEE"
@@ -2685,7 +2602,7 @@
                               at least two digit
                             </div>
                           </div>
-                          <div class=" d-flex flex-column mb-3 ">
+                          <div class="d-flex flex-column mb-3">
                             <label for="ADMINISTRATIVE-FEE" class="form-label mb-1 fs-4 fw-bold">Administrative Fee</label>
                             <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
                               name="ADMINISTRATIVE-FEE" id="ADMINISTRATIVE-FEE" placeholder="ADMINISTRATIVE FEE"
@@ -2698,7 +2615,7 @@
                             </div>
                           </div>
                           <div class="d-flex justify-content-center">
-                            <input type="submit" value="change" class="btn btn-success px-4 py-2 fs-5" data-bs-dismiss="modal" aria-label="Close">
+                            <input type="submit" value="change" class="btn btn-success px-4 py-1 fs-5" data-bs-dismiss="modal" aria-label="Close">
                           </div>
                         </form>
 
@@ -2849,12 +2766,12 @@
             </div>
             
             <div id="container">
-              <div class="row">
+              <div class="row price_object">
+                <input type="hidden" name="" id="hidden-value">
                 <div class="col-6">
-                  <label class="form-label form-label mb-1 fs-4 fw-bold">Select Country</label>
-                  <select class="form-select rounded-3 border border-warning p-2 fs-5 country" id="selectCountry" aria-label="Default select example" required 
+                  <label for="selectCountry" class="form-label form-label mb-1 fs-4 fw-bold">Select Country</label>
+                  <select class="form-select rounded-3 border border-warning p-2 fs-5 selectCountry" id="selectCountry" aria-label="Default select example" required 
                   oninput="toggleButtonVisibility()"></select>
-
                   <div class="valid-feedback">
                     Looks good!
                   </div>
@@ -2865,7 +2782,7 @@
                 <div class="col-4">
                   <div class="d-flex flex-column">
                     <label for="ProductPrice" class="form-label mb-1 fs-4 fw-bold">Product Price</label>
-                    <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="ProductPrice" 
+                    <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5 productPrice" name="ProductPrice" 
                       id="ProductPrice" placeholder="Product Price" pattern="[0-9]{2,}" title="at least one digit" required 
                       oninput="toggleButtonVisibility()">
                     <div class="valid-feedback">
@@ -2877,7 +2794,7 @@
                   </div>   
                 </div>    
                 <div class="col-2">                             
-                  <button onclick="generateInput()" class="btn btn-dark" style="display: none; margin-top:2.5rem">+</button>
+                  <button onclick="generateInput()" type="button" class="btn btn-dark" style="display: none; margin-top:2.5rem">+</button>
                 </div>
               </div>
             </div>
@@ -2891,20 +2808,21 @@
             <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
               
             <div class="d-flex justify-content-center">
-              <input type="submit" value="submit" class="btn btn-success px-4 py-2 fs-5">
+              <input type="reset" value="Clear" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData()">
+              <input type="submit" value="submit" class="btn btn-success px-4 py-1 fs-5">
             </div>
           </form>
 
           <div class="row my-4">
             <div class="col-6 mx-auto">
-              <label class="form-label form-label mb-1 fs-4 fw-bold">Select Country to Show Products in this Country</label>
+              <label for="selectCountryShowShop" class="form-label form-label mb-1 fs-4 fw-bold">Select Country to Show Products in this Country</label>
               <select class="form-select rounded-3 border border-warning p-2 fs-5 country" id="selectCountryShowShop" aria-label="Default select example" required ></select>
             </div>
           </div>
 
           <section class="shop" id="shop" style="font-family: 'Fugaz One', cursive;">
             <div class="container-fluid bg-trasparent py-5 p-3" style="position: relative;">
-              <div class="h1 text-center text-dark pb-3" >Your Shop</div>
+              <div class="h1 text-center text-dark pb-3">Your Shop</div>
                 <div class="row g-3" id="AddProducts">
                   
                 </div>
@@ -2922,29 +2840,21 @@
                   <div class="panel my-4">
                     <div class="panel-heading">
                       <div class="row">
-                          <div class="col-12 col-md-6 col-lg-4">
-                              <h4 class="title" id="messages">Messages List</h4>
-                          </div>
-                
-                          <div class="col-12 col-md-6 text-center col-lg-4">
-                              <div class="btn_group">
-                                  <input type="text" class="form-control w-50" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                                  <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                              </div>
-                          </div>
-                          
-                            <div class="form-check form-switch col-12 col-lg-4">
-                              <label class="form-check-label text-light fs-5" for="flexSwitchCheckDefault">switch to user only</label>
-                              <input class="form-check-input " type="checkbox" id="flexSwitchCheckDefault" onclick="checkboxToFilter()">
-                            </div>
-                          
+                        <div class="col-12 col-md-6">
+                            <h4 class="title" id="messages">Messages List</h4>
+                        </div>
+            
+                        <div class="form-check form-switch col-12 col-md-6">
+                          <label class="form-check-label text-light fs-5" for="flexSwitchCheckDefault">switch to user only</label>
+                          <input class="form-check-input " type="checkbox" id="flexSwitchCheckDefault" onclick="checkboxToFilter()">
+                        </div>
                       </div>
                     </div>
                     <div class="panel-body table-responsive">
                       <table class="table" id="table-messages">
                         <thead>
                           <tr>
-                            <th>Full Name</th>
+                            <th>FullName</th>
                             <th>Email</th>
                             <th>Message</th>
                             <th>Action</th>
@@ -3007,7 +2917,8 @@
           </div>
           <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
           <div class="d-flex justify-content-center">
-            <input type="submit" value="submit" class="btn btn-success px-4 py-2 fs-5">
+            <input type="reset" value="Clear" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData()">
+            <input type="submit" value="submit" class="btn btn-success px-4 py-1 fs-5">
           </div>
         </form>
         <section id="adventisersA">
@@ -3043,10 +2954,14 @@
         <!-- </div> -->
         <!-- <div class="d-flex justify-content-between"> -->
         <!-- <button type="button" id="sidebarCollapse" class="btn btn-info" style="margin-left:8rem;z-index: -1;">
-              <i class="fas fa-align-left"></i>
+              <i class="fa fas fa-align-left"></i>
             </button> -->
         <!-- Sidebar  -->
-        <button class="toggle-button btn btn-primary ms-2"><i class="fa-solid fa-bars"></i></button>
+        <button class="toggle-button btn btn-dark ms-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+          </svg>
+        </button>
         <br>
         <div class="row">
           <div class="position-relative w-25 parintsidebar">
@@ -3057,30 +2972,42 @@
             <ul class="sidebar list-unstyled rounded-3 components mb-5 p-3">
               <li class="my-3">
                 <a href="#school" id="school" class="text-light">
-                  <i class="fas fa-home"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+                  </svg>
                   School
                 </a>
               </li>
               <li class="my-3">
                 <a href="#compatatorsA" id="compatatorsA" class="text-light">
-                  <i class="fas fa-copy"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                  </svg>
                   Compatators
                 </a>
               </li>
               <li class="my-3">
                 <a href="#entersA" id="entersA" class="text-light">
-                  <i class="fas fa-question"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z"/>
+                  </svg>
                   Enteries
                 </a>
               </li>
               <li class="my-3">
                 <a href="#paymentA" id="paymentA" class="text-light">
-                  <i class="fas fa-paper-plane"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                    <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                    <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+                    <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                  </svg>
                   Payment
                 </a>
               </li>
             </ul>
           </div>
+          <!-- <h1 id="competionName" class="text-center text-dark">Competion1</h1> -->
           <div id="contentCompetition" class="centarbar col-11 col-md-9 mx-auto"></div>
 
         </div>
@@ -3095,7 +3022,7 @@
               <div class="row">
 
                 <div class="col-12">
-                  <h1 id="competionName" class="text-center text-dark">Competion1</h1>
+                  <!-- <h1 id="competionName" class="text-center text-dark">Competion1</h1> -->
 
                   <div class="panel my-4">
                     <div class="panel-heading">
@@ -3105,8 +3032,11 @@
                           </div>
                           <div class="col-12 col-lg-6 text-center">
                               <div class="btn_group">
-                                  <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                                  <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                                  <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                                  <!-- <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+  <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+  <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+</svg></button> -->
                               </div>
                           </div>
                            <!-- <div class="col-12 col-md-6 col-lg-4 text-end">
@@ -3146,7 +3076,7 @@
           <div class="container mx-auto">
               <div class="row">
                 <div class="col-12">
-                  <h1 id="competionName" class="text-center text-dark">Competion1</h1>
+                  <!-- <h1 id="competionName" class="text-center text-dark">Competion1</h1> -->
 
                   <div class="panel my-4">
                       <div class="panel-heading">
@@ -3156,8 +3086,11 @@
                               </div>
                               <div class="col-12 col-lg-6 text-center">
                                   <div class="btn_group">
-                                      <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                                      <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                                      <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
+                                      <!-- <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+  <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+  <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+</svg></button> -->
                                   </div>
                               </div>
                               <!-- <div class="col-12 col-md-6 col-lg-4 text-end">
@@ -3198,108 +3131,37 @@
       <!-- EntersAdmin in Competition  -->
       <script id="entersA-template" type="text/template">
         <div id="results_container-all"></div>
-         <!-- T <section id="entersA" class="pb-5">
-            <div class="container">
-              <h1 id="competionName" class="text-center text-dark">Competion1</h1>
-              <div class="row">
-                <div class="panel my-4">
-                  <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <h4 class="title" id="nameEntry">Entries Name - School Name</h4>
-                        </div>
-                        <div class="col-12 col-lg-6 text-center">
-                            <div class="btn_group">
-                                <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                                <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                            </div>
-                        </div>
-                         <div class="col-12 col-md-6 col-lg-4 text-end">
-                            <div class="btn_group">
-                            <div class="btn btn-light" id="priceAcademy">Price Of Academy</div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="panel-body table-responsive">
-                    <table class="table" id="table-entries">
-                      <thead>
-                        <tr>
-                          <th>Compatator Name</th>
-                          <th>Category Name</th>
-                        </tr>
-                      </thead>
-
-                      <tbody id="table-body-entries">
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                    eam member
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        <div class="image-flip" >
-                            <div class="mainflip flip-0">
-                                <div class="frontside">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
-                                            <h4 class="card-title" id="nameEntry">Entry Name</h4>
-                                            <h5 class="btn btn-primary btn-sm" id="nameSchool">School Name</h5>
-                                            <p class="card-text"  id="entryDescription">This is basic card with image on top, title, description and button.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="backside">
-                                    <div class="card">
-                                        <div class="card-body text-center  panel-body table-responsive">
-                                            <table class="table" id="table-entries">
-                                                <thead>
-                                                    <th>Compatator Name</th>
-                                                    <th>Category Name</th>
-                                                </thead>
-                                                <tbody id="table-body-entries">
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    ./Team member
-                </div>
-            </div>
-          </section> -->
       </script>
 
       <!-- PaymentAdmin in Competition  -->
       <script id="paymentA-template" type="text/template">
         <section id="payment">
           <div class="container">
-            <div class="row">
-              <!-- <h1 id="competionName" class="text-center text-dark">Competion1</h1> -->
-
-              <div class="receipt-main col-10 col-md-6 mx-auto">
+           <!-- <h1 id="competionName" class="text-center text-dark">Competion1</h1> -->
+            <div class="row receipt">
+              <div class="receipt-main col-11 col-md-10 col-lg-5 mx-auto">
                 <div class="row">
-                    <div class="receipt-header">
-                      <div class="col-xs-6 col-sm-6 col-md-6 text-left">
-                        <div class="receipt-left">
-                          <h3>School Name</h3>
-                          <p><i class="fa fa-phone"></i> +20 12345-6789 </p>
-                          <p><i class="fa fa-envelope-o"></i> info@gmail.com </p>
-                          <p><i class="fa fa-location-arrow"></i> Egypt </p>
-                        </div>
-                      </div>
-                      <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="receipt-right">
-                          <button class="btn btn-dark" id="paidWay">Paid Way</button>
-                        </div>
+                  <div class="receipt-header">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-10 text-left">
+                      <div class="receipt-left">
+                        <h3>School Name</h3>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0z"/>
+                        </svg> +20 12345-6789 </p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg> info@gmail.com </p>
+                        <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map-fill" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
+                        </svg> Egypt </p>
                       </div>
                     </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 ">
+                      <div class="receipt-right">
+                        <button class="btn btn-dark" id="paidWay">Paid Way</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="row mt-3">
@@ -3361,151 +3223,21 @@
                   </table>
                 </div>
 
-                <div class="row">
-                  <div class="receipt-header receipt-header-mid receipt-footer">
-                    <div class="receipt-right">
-                      <h6><b>Date :</b> 15 Aug 2016</h6>
-                    </div>
+                <div class="togglePaid text-center mb-2">
+                  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined">Paid</label>
 
-                    <div class="row">
-                      <div class="col-6" data-toggle="buttons">
-                        <label class="btn btn-lg btn-success active">
-                          <input type="radio" name="options" id="option1" autocomplete="off" checked>
-                          <i class="fa fa-check"></i> Paid
-                        </label>
-                        <label class="btn btn-lg btn-danger">
-                          <input type="radio" name="options" id="option2" autocomplete="off">
-                          <i class="fa fa-warning"></i> Not Paid
-                        </label>
-                      </div>
-                      <div class="col-6" data-toggle="buttons">
-                          <label class="btn btn-lg btn-success active">
-                            <input type="radio" name="options" id="option3" autocomplete="off" checked>
-                            <i class="fa fa-check"></i> Finish
-                          </label>
-                          <label class="btn btn-lg btn-danger">
-                            <input type="radio" name="options" id="option2" autocomplete="off">
-                            <i class="fa fa-warning"></i> Not Finish
-                          </label>
-                      </div>
-                    </div>
-                    <div class="text-center">
-                      <h5 style="color: rgb(140, 140, 140);">Thank you for your business!</h5>
-                    </div>
-                  </div>
+                  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off" checked>
+                  <label class="btn btn-outline-danger" for="danger-outlined">Not Paid</label>    
                 </div>
-              </div>
-            </div>
 
-            <div class="receipt-main col-10 col-md-6 mx-auto">
-              <div class="row">
-                <div class="receipt-header">
-                  <div class="col-xs-6 col-sm-6 col-md-6 text-left">
-                    <div class="receipt-left">
-                      <h3>School Name</h3>
-                      <p><i class="fa fa-phone"></i> +91 12345-6789 </p>
-                      <p><i class="fa fa-envelope-o"></i> info@gmail.com </p>
-                      <p><i class="fa fa-location-arrow"></i> Australia </p>
-                    </div>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="receipt-right">
-                      <button class="btn btn-dark" id="paidWay">Paid Way</button>
-                    </div>
-                  </div>
+                <div class="toggleFinish text-center mb-2">
+                  <input type="checkbox" class="btn-check" id="btn-check-2-outlined" autocomplete="off">
+                  <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Finish</label><br>   
                 </div>
-              </div>
-
-              <div class="row mt-3">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Description</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="col-md-9">Payment for August 2016</td>
-                      <td class="col-md-3"><i class="fa fa-inr"></i> 15,000/-</td>
-                    </tr>
-                    <tr>
-                      <td class="col-md-9">Payment for June 2016</td>
-                      <td class="col-md-3"><i class="fa fa-inr"></i> 6,00/-</td>
-                    </tr>
-                    <tr>
-                      <td class="col-md-9">Payment for May 2016</td>
-                      <td class="col-md-3"><i class="fa fa-inr"></i> 35,00/-</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">
-                      <p>
-                        <strong>Total Amount: </strong>
-                      </p>
-                      <p>
-                        <strong>Late Fees: </strong>
-                      </p>
-                      <p>
-                        <strong>Payable Amount: </strong>
-                      </p>
-                      <p>
-                        <strong>Balance Due: </strong>
-                      </p>
-                      </td>
-                      <td>
-                      <p>
-                        <strong><i class="fa fa-inr"></i> 65,500/-</strong>
-                      </p>
-                      <p>
-                        <strong><i class="fa fa-inr"></i> 500/-</strong>
-                      </p>
-                      <p>
-                        <strong><i class="fa fa-inr"></i> 1300/-</strong>
-                      </p>
-                      <p>
-                        <strong><i class="fa fa-inr"></i> 9500/-</strong>
-                      </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-center"><h2><strong>Total: </strong></h2></td>
-                      <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> 31.566/-</strong></h2></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="row">
-                <div class="receipt-header receipt-header-mid receipt-footer">
-                  <div class="receipt-right">
-                    <h6><b>Date :</b> 15 Aug 2016</h6>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-6" data-toggle="buttons">
-                      <label class="btn btn-lg btn-success active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked>
-                        <i class="fa fa-check"></i> Paid
-                      </label>
-                      <label class="btn btn-lg btn-danger">
-                        <input type="radio" name="options" id="option2" autocomplete="off">
-                        <i class="fa fa-warning"></i> Not Paid
-                      </label>
-                    </div>
-                    <div class="col-6" data-toggle="buttons">
-                      <label class="btn btn-lg btn-success active">
-                        <input type="radio" name="options" id="option3" autocomplete="off" checked>
-                        <i class="fa fa-check"></i> Finish
-                      </label>
-                      <label class="btn btn-lg btn-danger">
-                        <input type="radio" name="options" id="option2" autocomplete="off">
-                        <i class="fa fa-warning"></i> Not Finish
-                      </label>
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <h5 style="color: rgb(140, 140, 140);">Thank you for your business!</h5>
-                  </div>
+                
+                <div class="text-center">
+                  <h5 style="color: rgb(140, 140, 140);">Thank you for your business!</h5>
                 </div>
               </div>
             </div>
@@ -3517,26 +3249,37 @@
 
       <!-- Sidebar2 (Home3) -->
       <script id="sidebar2-template" type="text/template">
-        <button class="toggle-button btn btn-primary ms-2"><i class="fa-solid fa-bars"></i></button>
+        <button class="toggle-button btn btn-dark ms-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
+            <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/>
+          </svg>
+        </button>
         <br>
         <div class="row">
           <div class="position-relative w-25 parintsidebar">
             <ul class=" sidebar list-unstyled rounded-3 components mb-5 p-3">
               <li class="my-3">
                 <a href="#compatatorsAS" id="compatatorsS" class="text-light">
-                  <i class="fas fa-copy"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                  </svg>
                   Compatators
                 </a>
               </li>
               <li class="my-3">
                 <a href="#teachersAS" id="teachersS" class="text-light">
-                  <i class="fas fa-briefcase"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
+                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                  </svg>
                   Teachers
                 </a>
               </li>
               <li class="my-3">
                 <a href="#entriesAS" id="entersS" class="text-light">
-                  <i class="fas fa-question"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z"/>
+                  </svg>
                   Enteries
                 </a>
               </li>
@@ -3549,160 +3292,167 @@
 
       <!-- CompatatorsAdminSchool in School -->
       <script id="compatatorsAS-template" type="text/template">
-          <section id="compatatorsAS">
-            <div class="container mx-auto">
-              <div class="row">
-                <div class="col-12">
-                  <div class="panel my-4">
-                    <div class="panel-heading">
-                      <div class="row">
-                        <div class="col-12 col-lg-4">
-                            <h4 class="title" id="compatatorsName">Compatators List</h4>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 text-center">
-                            <div class="btn_group">
-                              <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                              <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4 text-end">
+        <section id="compatatorsAS">
+          <div class="container mx-auto">
+            <div class="row">
+              <div class="col-12">
+                <div class="panel my-4">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-12 col-lg-4">
+                          <h4 class="title" id="compatatorsName">Compatators List</h4>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 text-center">
                           <div class="btn_group">
-                            <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#AddCompatator" >Add Compatator</button>
+                            <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
+                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                              </svg>
+                            </button>
                           </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-4 text-end">
+                        <div class="btn_group">
+                          <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#AddCompatator" >Add Compatator</button>
                         </div>
                       </div>
                     </div>
-                    <div class="panel-body table-responsive" id="compatatorsAS-table">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>DateOfBirth</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Email</th>
-                            <th>Mobile</th>
-                            <th>CategoryName</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
+                  </div>
+                  <div class="panel-body table-responsive" id="compatatorsAS-table">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>FirstName</th>
+                          <th>LastName</th>
+                          <th>DateOfBirth</th>
+                          <th>Age</th>
+                          <th>Gender</th>
+                          <th>Email</th>
+                          <th>Mobile</th>
+                          <th>CategoryName</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
 
-                        <tbody id="table-body-compatators">
-                        </tbody>
-                      </table>
-                    </div>
+                      <tbody id="table-body-compatators">
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="AddCompatator" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Compatator</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form action="" id="formCompatators" class="row g-3 needs-validation" novalidate onsubmit="changeCompetitor(event)">
-                  <input type="hidden" name="" id="compatatorsId">
-                  <div class="col-12 col-md-6">
-                    <label for="firstname">First Name:</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="firstname" class="form-control" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-                    <div class="valid-feedback">
-                      Looks good!
+          <!-- Modal -->
+          <div class="modal fade" id="AddCompatator" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add Compatator</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="" id="formCompatators" class="row g-3 needs-validation" novalidate onsubmit="changeCompetitor(event)">
+                    <input type="hidden" name="" id="compatatorsId">
+                    <div class="col-12 col-md-6">
+                      <label for="firstname">First Name:</label>
+                      <input type="text" id="firstname" name="firstname" placeholder="firstname" class="form-control" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          at least Three letter
+                      </div>
                     </div>
-                    <div class="invalid-feedback">
-                        at least Three letter
+                    <div class="col-12 col-md-6">
+                      <label for="lastname">Last Name:</label>
+                      <input type="text" id="lastname" name="lastname" placeholder="lastname" class="form-control" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          at least Three letter
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" id="lastname" name="lastname" placeholder="lastname" class="form-control" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-                    <div class="valid-feedback">
-                      Looks good!
+                    <div class="col-12 col-md-6">
+                      <label for="dateOfBirth">Date of Birth:</label>
+                      <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          enter you Birthdate
+                      </div>
                     </div>
-                    <div class="invalid-feedback">
-                        at least Three letter
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="dateOfBirth">Date of Birth:</label>
-                    <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        enter you Birthdate
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label for="gender">Gender:</label>
-                    <select id="gender" name="gender" class="form-select form-control" aria-label="Gender" required>                    <option value="-1" disabled>Gender</option>
-                      <!-- <option value="-1" disabled>Gender</option> -->
-                      <option value="male" name="male">Male</option>
-                      <option value="female" name="female">Female</option>
-                    </select>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                      enter you Gender
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        It must be like this EXP@EXP.EXP
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="input-group">
-                      <select class="form-select w-25" name="callingCode" id="callingCode" class="form-control" required>
-                        <option value="-1" disabled>Choose your country Code</option>
-                        <option value="+20" name="+20">+20</option>
-                        <option value="+54" name="+54">+54</option>
-                        <option value="+90" name="+90">+90</option>
+                    <div class="col-12 col-md-6">
+                      <label for="gender">Gender:</label>
+                      <select id="gender" name="gender" class="form-select form-control" aria-label="Gender" required>                    
+                        <option value="-1" disabled>Gender</option>
+                        <option value="male" name="male">Male</option>
+                        <option value="female" name="female">Female</option>
                       </select>
-                      <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                        enter you Gender
+                      </div>
                     </div>
-                    <div class="valid-feedback">
-                      Looks good!
+                    <div class="col-12">
+                      <label for="email">Email:</label>
+                      <input type="email" id="email" name="email" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required autocomplete="on">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          It must be like this EXP@EXP.EXP
+                      </div>
                     </div>
-                    <div class="invalid-feedback">
-                        It must consist of at least 11 digits
+                    <div class="col-12">
+                      <div class="input-group">
+                        <select class="form-select w-25" name="callingCode" id="callingCode" class="form-control" required>
+                          <option value="-1" disabled>Choose your country Code</option>
+                          <!-- <option value="+20" name="+20">+20</option>
+                          <option value="+54" name="+54">+54</option>
+                          <option value="+90" name="+90">+90</option> -->
+                        </select>
+                        <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
+                      </div>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          It must consist of at least 11 digits
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="category" id="labelCategory">Category:</label>
-                    <select class="form-select w-25" id="category" required>
-                      <option value="-1" disabled>Choose Category</option>
-                      <option value="dancer">Dancer</option>
-                      <option value="musician">Musician</option>
-                      <option value="singer">Singer</option>
-                    </select>
-                    <div class="valid-feedback">
-                      Looks good!
+                    <div class="col-12">
+                      <label for="category" id="labelCategory">Category:</label>
+                      <select class="form-select" id="category" required>
+                        <option value="-1" disabled>Choose Category</option>
+                        <option value="dancer">Dancer</option>
+                        <option value="musician">Musician</option>
+                        <option value="singer">Singer</option>
+                      </select>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          at least choose one category
+                      </div>
                     </div>
-                    <div class="invalid-feedback">
-                        at least choose one category
+                    <div class="row mx-auto my-3">
+                      <input type="reset" value="Clear" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData()">
+                      <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
+                      <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
                     </div>
-                  </div>
-                  <div class="row mx-auto my-3">
-                    <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                    <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
-        </div>      </section>
+          </div>      
+        </section>
       </script>
 
       <!-- TeachersAdminSchool in School -->
@@ -3719,7 +3469,12 @@
                     <div class="col-12 col-md-6 col-lg-4 text-center">
                         <div class="btn_group">
                           <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                              <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                              <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                            </svg>
+                          </button>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 text-end">
@@ -3734,7 +3489,7 @@
                     <thead>
                       <tr>
                         <th>FullName</th>
-                        <th>Date Of Birth</th>
+                        <th>DateOfBirth</th>
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Action</th>
@@ -3793,7 +3548,7 @@
                   </div>
                   <div class="col-12 col-md-6">
                     <label for="emailA">Email:</label>
-                    <input type="email" id="emailA" name="emailA" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required>
+                    <input type="email" id="emailA" name="emailA" class="form-control" placeholder="Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)" title="It must be like this EXP@EXP.EXP" required autocomplete="on">
                     <div class="valid-feedback">
                       Looks good!
                     </div>
@@ -3805,9 +3560,9 @@
                     <div class="input-group">
                       <select class="form-select w-25" name="callingCodeA" id="callingCodeA" class="form-control" required>
                         <option value="-1" disabled>Choose your country Code</option>
-                        <option value="+20" name="+20">+20</option>
+                        <!-- <option value="+20" name="+20">+20</option>
                         <option value="+54" name="+54">+54</option>
-                        <option value="+90" name="+90">+90</option>
+                        <option value="+90" name="+90">+90</option> -->
                       </select>
                       <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumberA" id="mobileNumberA" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
                     </div>
@@ -3819,6 +3574,7 @@
                     </div>
                   </div>
                   <div class="row mx-auto my-3">
+                    <input type="reset" value="Clear" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData()">
                     <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
                     <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
                   </div>
@@ -3842,17 +3598,24 @@
             <div class="col-12 row">
               <div class="col-12 col-lg-6">
                 <label for="uMusic">Upload Music:</label>
-                <input type="file" accept="audio/mpeg,audio/webm" id="uMusic" name="uMusic" aria-label="uMusic" class="form-control">
+                <input type="file" accept="audio/mpeg,audio/webm" id="uMusic" name="uMusic" aria-label="uMusic" class="form-control" onchange="previewAudio(event)">
               </div>
               <div class="col-12 col-lg-6 mt-2">
-                <audio id="audioPlayer" controls>
+                <audio id="audioPreview" controls>
                   <source src="" id="audio" />
                 </audio>
               </div>
               <small class="text-dark text-center">you can only upload these extentions for audio .mpeg, .webm</small>
+            </div>  
+            <div class="row mx-auto my-3">
+              <input type="reset" value="Clear" class="btn btn-danger col-6" onclick="clearData()">
+              <input class="btn btn-dark col-6" type="submit" value="Submit">
             </div>
-            <div class="row mx-auto my-3"><input class="btn btn-dark" type="submit" value="Submit"></div>
           </form>
+        </div>
+
+        <div class="btn_group text-center col-10 col-md-6 mx-auto my-2">
+          <input type="text" class="form-control bg-dark text-light" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
         </div>
 
         <div id="results_container-school"></div>
@@ -3944,7 +3707,10 @@
                       <div class="col-12 col-lg-4 text-center">
                         <div class="btn_group">
                           <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+  <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+  <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+</svg></button>
                         </div>
                       </div>
                       <div class="col-12 col-lg-2 text-end">
@@ -3978,14 +3744,14 @@
       <!--======================AfterLogin "-------RULERS-----"=========================-->
       <!-- NavbarRuler (Home) -->
       <script id="navbarR-template" type="text/template">
-        <div class="wrapper">
+        <div class="wrapper navbarAR">
           <div id="contentt">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <div class="container-fluid">
                 <a href="#Home" id="logoback"><img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/28f975b2-033e-4611-ac6d-2e0a721b8f1c.png" alt="Logo" width="100" height="100"
                   class="d-inline-block align-text-center img-fluid navbar-brand" ></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="fas fa-align-justify"></span>
+                  <span class="fa fas fa-align-justify"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between text-center" id="navbarSupportedContent">
                   <ul class="nav navbar-nav">
@@ -4030,7 +3796,12 @@
                         <div class="col-6 text-end">
                           <div class="btn_group">
                               <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                              <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                              <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                  <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                  <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                                </svg>
+                              </button>
                           </div>
                         </div>
                     </div>
@@ -4059,25 +3830,24 @@
 
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script> -->
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script> -->
       <!-- Popper.JS -->
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> -->
       <!-- Bootstrap JS -->
       <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-    crossorigin="anonymous"></script> -->
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"></script> -->
       <!-- jQuery Custom Scroller CDN -->
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> -->
-      <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
       <!--jsPDF Download-->
       <!-- <script src="./jspdf.min.js"></script> -->
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-    integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+      integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
       <!-- <script src="jsPDF-AutoTable-master/dist/jspdf.plugin.autotable.min.js"></script>
-  <script src="jsPDF-master/dist/jspdf.umd.min.js"></script> -->
+      <script src="jsPDF-master/dist/jspdf.umd.min.js"></script> -->
       <!-- jsPDF CDN -->
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script> -->
 
@@ -4086,15 +3856,26 @@
 
       <!-- Include the pdfmake library -->
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
-   -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+      -->
 
       <!--Single Page-->
       <!-- <script src="handlebars.js-master/bin/handlebars.js"></script> -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-
-      <!--JS file-->
-      <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/app.js"></script>
+      
     </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/bootstrap.bundle.min.js"></script>
+
+    <!--Single Page-->
+    <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/handlebars.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script> -->
+
+    <!--JS file-->
+    <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/app.js"></script>
+
+    <!--Calling Country Code-->
+    <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/intlTelInput.min.js"></script>
   </body>
 </html>

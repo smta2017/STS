@@ -18,13 +18,13 @@ var competitorsData;
 function getCompetitorsData() {
     var competitorsContainer = document.getElementById("table-body-compatatorsA");
     var id = getCookie("competition");
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/competitor/allcompetition/${id}`, {
       method: 'GET',
       headers: {'Authorization': token},
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data.data)
         competitorsData = data.data;
         competitorsContainer.innerHTML = "";
         competitorsData.forEach(competitor=> {
@@ -34,7 +34,7 @@ function getCompetitorsData() {
           element.innerHTML = `
               <td>${competitor.firstName}</td>
               <td>${competitor.lastName}</td>
-              <td>${competitor.schoolName}</td>
+              <td>${competitor.qualifierSubscription.academy.academyDetails.schoolName}</td>
               <td>${competitor.category}</td>
               <td>${date}</td>
               <td>${age}</td>
@@ -46,8 +46,12 @@ function getCompetitorsData() {
           element.setAttribute('id', `competitor-${competitor._id}`);
           competitorsContainer.appendChild(element);
         });
+        document.getElementById("gif").style.display = "none";
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    }); 
 }
   
 getCompetitorsData();
@@ -58,7 +62,7 @@ document.getElementById('search').addEventListener('input', handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById('search').value.toLowerCase();
-  var rows = document.querySelectorAll('#table-body-competitors tr');
+  var rows = document.querySelectorAll('#table-body-compatatorsA tr');
 
   rows.forEach(function (row) {
     var cells = row.getElementsByTagName('td');

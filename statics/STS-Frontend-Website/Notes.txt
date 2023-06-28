@@ -71,8 +71,13 @@ dancer statement......تبع الى summary
 upload payment (img) تبع ال full
 وكل واحد دافع كام
 
+${klma[type + "TotalDegree"]}
+pass or not   passedQualifiers
+${klma[type + "TotalDegree"] >= 70?"Passed":"not Passed"}
 
-
+http://localhost:5000/sts/entry/completeresult/64873bface8e2cd17700da25
+http://localhost:5000/sts/entry/myresult/648742a5ce8e2cd17700dad2
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NzYzMDMyMX0.1oau3rygNy5XBQ5c6h9p7pfSaSMLLcGWccK_NcOsHig
 
 results
 بنظهر فيها الكاتجوريز (عنوان)كل واحد جواه كرت او 2 فلو بندخل رقصتين بكتب جمب العنوان عدد الادخلات دى (2 entry)
@@ -109,705 +114,50 @@ ADMIN
 2- show school 
 3- show 
 
-how to store token in frontend (local storge or not)
 
+function getAllCurrencies() {
+    var allCurrency = document.querySelector('#selectCurrency');
 
-
-
-// // Add products to <table>
-        // function productsAdd() {
-        //   // First check if a <tbody> tag exists, add one if not
-        //   if ($("#productTable tbody").length == 0) {
-        //       $("#productTable").append("<tbody></tbody>");
-        //   }
-          
-        //   // Append product to the table
-        //   $("#productTable tbody").append("<tr>" +
-        //       "<td>Extending Bootstrap with CSS, JavaScript and jQuery</td>" +
-        //       "<td>6/11/2015</td>" +
-        //       "<td>http://bit.ly/1SNzc0i</td>" +
-        //       "</tr>");
-              
-        //   $("#productTable tbody").append("<tr>" +
-        //       "<td>Build your own Bootstrap Business Application Template in MVC</td>" +
-        //       "<td>1/29/2015</td>" +
-        //       "<td>http://bit.ly/1I8ZqZg</td>" +
-        //       "</tr>");
-        // }
-
-        // $(document).ready(function () {
-        //   productsAdd();
-        // });
-
-        // function productUpdate() {
-        //   if ($("#productname").val() != null && $("#productname").val() != '') {
-        //       // Add product to Table
-        //       productAddToTable();
-
-        //       // Clear form fields
-        //       formClear();
-
-        //       // Focus to product name field
-        //       $("#productname").focus();
-        //   }
-        // }
-        // <button type="button" 
-        //         id="updateButton" 
-        //         class="btn btn-primary" 
-        //         onclick="productUpdate();">Add</button>
-
-        // function productAddToTable() {
-        //   // First check if a <tbody> tag exists, add one if not
-        //   if ($("#productTable tbody").length == 0) {
-        //       $("#productTable").append("<tbody></tbody>");
-        //   }
-
-        //   // Append product to the table
-        //   $("#productTable tbody").append("<tr>" +
-        //       "<td>" + $("#productname").val() + "</td>" +
-        //       "<td>" + $("#introdate").val() + "</td>" +
-        //       "<td>" + $("#url").val() + "</td>" +
-        //       "</tr>");
-        // }
-
-
-
-        // function productAddToTable() {
-        //   // First check if a <tbody> tag exists, add one if not
-        //   if ($("#productTable tbody").length == 0) {
-        //       $("#productTable").append("<tbody></tbody>");
-        //   }
-
-        //   // Append product to the table
-        //   $("#productTable tbody").append(
-        //       "<tr>" +
-        //       "<td>" + $("#productname").val() + "</td>" +
-        //       "<td>" + $("#introdate").val() + "</td>" +
-        //       "<td>" + $("#url").val() + "</td>" +
-        //       "<td>" +
-        //       `<button type='button' 
-        //               onclick='productDelete(this);' 
-        //               class='btn btn-default'>" +
-        //       "<span class='glyphicon glyphicon-remove' />" +
-        //       "</button>` +
-        //       "</td>" +
-        //       "</tr>");
-        // }
-
-        // function formClear() {
-        //   $("#productname").val("");
-        //   $("#introdate").val("");
-        //   $("#url").val("");
-        // }
-
-        // function productDelete(ctl) {
-        //   $(ctl).parents("tr").remove();
-        // }
-
-
-        // // function productBuildTableRow() {
-        // //   var ret = "<tr>" +
-        // //       "<td>" +
-        // //       "<button type='button' onclick='productDisplay(this);' class='btn btn-default'>" +
-        // //       "<span class='glyphicon glyphicon-edit' />" +
-        // //       "</button>" +
-        // //       "</td>" +
-        // //       "<td>" + $("#productname").val() + "</td>" +
-        // //       "<td>" + $("#introdate").val() + "</td>" +
-        // //       "<td>" + $("#url").val() + "</td>" +
-        // //       "<td>" +
-        // //       "<button type='button' onclick='productDelete(this);' class='btn btn-default'>" +
-        // //       "<span class='glyphicon glyphicon-remove' />" +
-        // //       "</button>" +
-        // //       "</td>" +
-        // //       "</tr>"
-
-        // //   return ret;
-        // // }
-
-        // var _row = null;
-        // _row = $(ctl).parents("tr");
-        // var cols = _row.children("td");
-
-        // // function productDisplay(ctl) {
-        // //   _row = $(ctl).parents("tr");
-        // //   var cols = _row.children("td");
-        // //   $("#productname").val($(cols[1]).text());
-        // //   $("#introdate").val($(cols[2]).text());
-        // //   $("#url").val($(cols[3]).text());
-          
-        // //   // Change Update Button Text
-        // //   $("#updateButton").text("Update");
-        // // }
-
-
-        // function productUpdate() {
-        //   if ($("#updateButton").text() == "Update") {
-        //       productUpdateInTable();
-        //   }
-        //   else {
-        //       productAddToTable();
-        //   }
-          
-        //   // Clear form fields
-        //   formClear();
-          
-        //   // Focus to product name field
-        //   $("#productname").focus();
-        // }
-
-        // function productUpdateInTable() {
-        //   // Add changed product to table
-        //   $(_row).after(productBuildTableRow());
-          
-        //   // Remove old product row
-        //   $(_row).remove();
-          
-        //   // Clear form fields
-        //   formClear();
-          
-        //   // Change Update Button Text
-        //   $("#updateButton").text("Add");
-        // }
-
-        // // Next ID for adding a new Product
-        // var _nextId = 1;
-            
-        // // ID of Product currently editing
-        // var _activeId = 0;
-
-        // function productBuildTableRow(id) {
-        //   var ret = "<tr>" +
-        //       "<td>" +
-        //       "<button type='button' onclick='productDisplay(this);' class='btn btn-default' data-id='" + id + "'>" +
-        //       "<span class='glyphicon glyphicon-edit' />" +
-        //       "</button>" +
-        //       "</td>" +
-        //       "<td>" + $("#productname").val() + "</td>" +
-        //       "<td>" + $("#introdate").val() + "</td>" +
-        //       "<td>" + $("#url").val() + "</td>" +
-        //       "<td>" +
-        //       "<button type='button' onclick='productDelete(this);' class='btn btn-default' data-id='" + id + "'>" +
-        //       "<span class='glyphicon glyphicon-remove' />" +
-        //       "</button>" +
-        //       "</td>" +
-        //       "</tr>"
-
-        //   return ret;
-        // }
-
-        // function productDisplay(ctl) {
-        //   var row = $(ctl).parents("tr");
-        //   var cols = row.children("td");
-        //   _activeId = $($(cols[0]).children("button")[0]).data("id");
-        //   $("#productname").val($(cols[1]).text());
-        //   $("#introdate").val($(cols[2]).text());
-        //   $("#url").val($(cols[3]).text());
-          
-        //   // Change Update Button Text
-        //   $("#updateButton").text("Update");
-        // }
-
-        // _activeId = $($(cols[0]).
-        // children("button")[0]).data("id");
-
-        // function productAddToTable() {
-        //   // Does tbody tag exist? add one if not
-        //   if ($("#productTable tbody").length == 0) {
-        //       $("#productTable").append("<tbody></tbody>");
-        //   }
-          
-        //   // Append product to table
-        //   $("#productTable tbody").append(productBuildTableRow(_nextId));
-          
-        //   // Increment next ID to use
-        //   _nextId += 1;
-        // }
-
-        // function productUpdateInTable(id) {
-        //   // Find Product in <table>
-        //   var row = $("#productTable button[data-id='" + id + "']")
-        //       .parents("tr")[0];
-        //   // Add changed product to table
-        //   $(row).after(productBuildTableRow(id));
-        //       // Remove original product
-        //   $(row).remove();
-          
-        // }
-
-        // function productUpdate() {
-        //   if ($("#updateButton").text() == "Update") {
-        //       productUpdateInTable(_activeId);
-        //   }
-        //   else {
-        //       productAddToTable();
-        //   }
-          
-        //   // Clear form fields
-        //   formClear();
-          
-        //   // Focus to product name field
-        //   $("#productname").focus();
-        // }
-
-
-
-
-
-
-
-
-
-
-//file.html
-<div class="container m-3 mx-auto" style="box-shadow: 0 3px 10px black;"> 
-        <h1 class=" text-dark">Add Entry</h1> 
-        <form class="row g-3 mx-auto" onsubmit="submitForm(); return false;"> 
-          <div class="col-12"> 
-            <label for="entryname">Entry Name:</label> 
-            <input type="text" id="entryname" name="entryname" class="form-control" required> 
-          </div> 
-          <div class="col-12"> 
-            <label for="category">Category:</label> 
-            <select  id="category"  name="category" value="category" class="form-select form-control" aria-label="category" required> 
-              <option value="A" hidden>Category</option> 
-              <option value="Dancer" name="Dance">Dancer</option> 
-              <option value="Singer" name="Singer">Singer</option> 
-              <option value="Musician" name="Musician">Musician</option> 
-            </select> 
-          </div> 
-          <div class="col-12"> 
-            <label for="CompatatorsNames">Select Compatators Names for one Entry:</label> 
-            <div id="popup" style="display: none;"> 
-              <!-- form controls will go here --> 
-            </div> 
-            <div id="name_list"></div> <!-- checkboxes for names will be added here --> 
-          </div> 
-          <div class="col-12">  
-            <label for="uMusic">Upload Music:</label> 
-            <input type="file" accept="audio/*" id="uMusic" name="uMusic" value="uMusic" aria-label="uMusic" class="form-control"> 
-          </div> 
-          <div class="row mx-auto my-3"><input class="btn btn-dark" type="submit" value="Submit"></div> 
-        </form> 
-      </div>   
-       
-      <div id="results_container"></div>
-
-
-<!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-dark" id="exampleModalLabel">Add Compatators</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="edit-Compatators-form" class="row g-3" onsubmit="submitForm(); return false;">
-                <div class="col-12"> 
-                  <label for="category">Category:</label> 
-                  <select  id="category"  name="category" value="category" class="form-select form-control" aria-label="category" required> 
-                    <option value="A" hidden>Category</option> 
-                    <option value="Dancer" name="Dance">Dancer</option> 
-                    <option value="Singer" name="Singer">Singer</option> 
-                    <option value="Musician" name="Musician">Musician</option> 
-                  </select> 
-                </div> 
-                <div class="col-12"> 
-                  <label for="CompatatorsNames">Select Compatators Names for one Entry:</label> 
-                  <div id="popup" style="display: none;"> 
-                    <!-- form controls will go here --> 
-                  </div> 
-                  <div id="name_list"></div> <!-- checkboxes for names will be added here --> 
-                </div> 
-                <div class="col-12">  
-                  <label for="uMusic">Upload Music:</label> 
-                  <input type="file" accept="audio/*" id="uMusic" name="uMusic" value="uMusic" aria-label="uMusic" class="form-control"> 
-                </div> 
-                <div class="row  mx-auto my-3">
-                  <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                  <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-//file.js 
-let tableNumber = 1;
-
-function getNames() {
-  // Get the selected category
-  let selectedCategory = document.getElementById("category").value;
-
-  // Create a dictionary to store the names for each category
-  const categoryNames = {
-    'Dancer': ['Alice', 'Bob', 'Charlie', 'David'],
-    'Singer': ['Emily', 'Frank', 'Grace', 'Harry'],
-    'Musician': ['Iris', 'Jack', 'Kathy', 'Leo']
-  };
-
-  // Get the names for the selected category
-  let nameList = categoryNames[selectedCategory] || [];
-
-  let html = '';
-  for (let i = 0; i < nameList.length; i++) {
-    let name = nameList[i];
-    html += '<label><input type="checkbox" name="name" value="' + name + '">' + name + '</label><br>';
-  }
-  document.getElementById("name_list").innerHTML = html;
+    document.getElementById("gif").style.display ="block"
+    fetch(`${domainName}/sts/allcurrencies`, {
+        method: 'GET',
+        headers: {'Authorization': token},
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        allCurrency.innerHTML = "";
+        const chooseOption = document.createElement('option');
+        chooseOption.value = "-1";
+        chooseOption.disabled = true;
+        chooseOption.selected = true;
+        chooseOption.textContent = "Select Currency";
+        allCurrency.appendChild(chooseOption);
+        for (let key in data) {
+            const option = document.createElement('option');
+            option.value = data[key];
+            option.textContent = data[key];
+            allCurrency.appendChild(option);
+        }
+        document.getElementById("gif").style.display = "none";
+    })
+    .catch(error => {
+        console.log(error);
+        document.getElementById("gif").style.display = "none";
+    }); 
 }
 
-document.getElementById("category").addEventListener("change", function () {
-  getNames();
-});
-
-
-function submitForm() {
-  // get the selected names, category, and audio
-  let entryName = document.getElementById("entryname").value;
-  let nameInputs = document.getElementsByName("name");
-  let category = document.getElementsByName("category")[0].value;
-  let audioFile = document.getElementsByName("uMusic")[0].files[0];
-
-  // check if an audio file is selected
-  let audioFileName = audioFile ? audioFile.name : " ";
-
-  // create table for the new data
-  let tableHtml = '<div class="container">';
-  tableHtml += '<div class="row">';
-  tableHtml += '<div class="col-md-offset-1 col-md-10">';
-  tableHtml += '<div class="panel my-4">';
-  tableHtml += '<div class="panel-heading">';
-  tableHtml += '<div class="row">';
-  tableHtml += '<div class="col-12">';
-  tableHtml += '<h2>' + entryName + ' Entry :- ' + audioFileName  +'</h2>';
-  tableHtml += '</div>';
-  tableHtml += '<div class="col-12 col-md-6 text-center">';
-  tableHtml += '<div class="btn_group">';
-  tableHtml += '<input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">';
-  tableHtml += '<button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>';
-  tableHtml += '</div></div>';
-  tableHtml += '<div class="col-12 col-md-6 text-end">';
-  tableHtml += '<div class="btn_group">';
-  tableHtml += '<button class="btn btn-light" id="add-Compatators" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Compatators</button>';
-  tableHtml += '</div></div></div></div>';
-  tableHtml += '<div class="panel-body table-responsive" id="my-table">';
-  tableHtml += '<table class="table">';
-  tableHtml += '<thead><tr><th>CompatatorsName</th><th>CategoryName</th><th>Action</th></tr></thead>';
-  tableHtml += '<tbody id="table-body-entries">';
-  for (let i = 0; i < nameInputs.length; i++) {
-    let nameInput = nameInputs[i];
-    if (nameInput.checked) {
-      let name = nameInput.value;
-      tableHtml += '<tr>';
-      tableHtml += '<td>' + name + '</td>';
-      tableHtml += '<td>' + category + '</td>';
-      // tableHtml += '<td>' + audioFile.name + '</td>';
-      tableHtml += `<td><i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;"></i>
-                    <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;"></i></td>`;
-      tableHtml += '</tr>';
-    }
-  }
-  tableHtml += '</tbody></table>';
-  tableHtml += '</div></div></div></div></div>';
-
-  // display the new table
-  let tableContainer = document.createElement("div");
-  tableContainer.id = "table" + tableNumber;
-  document.getElementById("results_container").appendChild(tableContainer);
-  document.getElementById(tableContainer.id).innerHTML = tableHtml;
-  tableNumber++;
-
-  // hide the popup window
-  document.getElementById("popup").style.display = "none";
-
-  // reset form
-  document.getElementById("entryname").value = '';
-  document.getElementById("name_list").innerHTML = '';
-  document.getElementsByName("category")[0].value = 'A';
-  document.getElementsByName("uMusic")[0].value = '';
-}
-
-
-fix this code to handle  <!-- Modal -->  part which that when press on Add Compatators btn (id="add-Compatators")  open popup window has form to add a new rows  again in the same table which pressed on it and not generate a new table and handle getNames() function in popup window too like the first form
-
-
-
-
-
-
-let tableNumber = 1; 
- function getNames() { 
-  // Get the selected category 
-  let selectedCategory = document.getElementById("category").value; 
-   // Create a dictionary to store the names for each category 
-  const categoryNames = { 
-    'Dancer': ['Alice', 'Bob', 'Charlie', 'David'], 
-    'Singer': ['Emily', 'Frank', 'Grace', 'Harry'], 
-    'Musician': ['Iris', 'Jack', 'Kathy', 'Leo'] 
-  }; 
-   // Get the names for the selected category 
-  let nameList = categoryNames[selectedCategory] || []; 
-   let html = ''; 
-  for (let i = 0; i < nameList.length; i++) { 
-    let name = nameList[i]; 
-    html += '<label><input type="checkbox" name="name" value="' + name + '">' + name + '</label><br>'; 
-  } 
-  document.getElementById("name_list").innerHTML = html; 
-} 
- document.getElementById("category").addEventListener("change", function () { 
-  getNames(); 
-}); 
- function submitForm() { 
-  // get the selected names, category, and audio 
-  let entryName = document.getElementById("entryname").value; 
-  let nameInputs = document.getElementsByName("name"); 
-  let category = document.getElementsByName("category")[0].value; 
-  let audioFile = document.getElementsByName("uMusic")[0].files[0]; 
-   // check if an audio file is selected 
-  let audioFileName = audioFile ? audioFile.name : " "; 
-   // create table for the new data 
-  let tableHtml = '<div class="container">'; 
-  tableHtml += '<div class="row">'; 
-  tableHtml += '<div class="col-md-offset-1 col-md-10">'; 
-  tableHtml += '<div class="panel my-4">'; 
-  tableHtml += '<div class="panel-heading">'; 
-  tableHtml += '<div class="row">'; 
-  tableHtml += '<div class="col-12">'; 
-  tableHtml += '<h2>' + entryName + ' Entry :- ' + audioFileName  +'</h2>'; 
-  tableHtml += '</div>'; 
-  tableHtml += '<div class="col-12 col-md-6 text-center">'; 
-  tableHtml += '<div class="btn_group">'; 
-  tableHtml += '<input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">'; 
-  tableHtml += '<button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>'; 
-  tableHtml += '</div></div>'; 
-  tableHtml += '<div class="col-12 col-md-6 text-end">'; 
-  tableHtml += '<div class="btn_group">'; 
-  tableHtml += '<button class="btn btn-light" id="add-Compatators" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Compatators</button>'; 
-  tableHtml += '</div></div></div></div>'; 
-  tableHtml += '<div class="panel-body table-responsive" id="my-table">'; 
-  tableHtml += '<table class="table">'; 
-  tableHtml += '<thead><tr><th>CompatatorsName</th><th>CategoryName</th><th>Action</th></tr></thead>'; 
-  tableHtml += '<tbody id="table-body-entries">'; 
-  for (let i = 0; i < nameInputs.length; i++) { 
-    let nameInput = nameInputs[i]; 
-    if (nameInput.checked) { 
-      let name = nameInput.value; 
-      tableHtml += '<tr>'; 
-      tableHtml += '<td>' + name + '</td>'; 
-      tableHtml += '<td>' + category + '</td>'; 
-      // tableHtml += '<td>' + audioFile.name + '</td>'; 
-      tableHtml +=  `<td><i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" onclick="editRow(this)"></i> 
-                    <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteRow(this)"></i></td>` ; 
-      tableHtml += '</tr>'; 
-    } 
-  } 
-  tableHtml += '</tbody></table></div></div></div></div></div>'; 
- 
-  // append the new table to the results container 
-  let resultsContainer = document.getElementById("results_container"); 
-  resultsContainer.insertAdjacentHTML("beforeend", tableHtml); 
- 
-  // clear the form inputs 
-  document.getElementById("entryname").value = ""; 
-  document.getElementById("uMusic").value = null; 
-  let nameList = document.getElementsByName("name"); 
-  for (let i = 0; i < nameList.length; i++) { 
-    let nameInput = nameList[i]; 
-    nameInput.checked = false; 
-  } 
-} 
- 
-function editRow(btn) { 
-  let row = btn.parentNode.parentNode; 
-  let compatatorName = row.cells[0].innerText; 
-  let categoryName = row.cells[1].innerText; 
- 
-  // set the form values for editing 
-  document.getElementById("entryname").value = row.cells[0].innerText; 
-  let categorySelect = document.getElementById("category"); 
-  for (let i = 0; i < categorySelect.options.length; i++) { 
-    let option = categorySelect.options[i]; 
-    if (option.value === categoryName) { 
-      option.selected = true; 
-    } else { 
-      option.selected = false; 
-    } 
-  } 
-  let nameList = document.getElementsByName("name"); 
-  for (let i = 0; i < nameList.length; i++) { 
-    let nameInput = nameList[i]; 
-    if (nameInput.value === compatatorName) { 
-      nameInput.checked = true; 
-    } else { 
-      nameInput.checked = false; 
-    } 
-  } 
- 
-  // remove the old row from the table 
-  row.parentNode.removeChild(row); 
-} 
- 
-function deleteRow(btn) { 
-  let row = btn.parentNode.parentNode; 
-  row.parentNode.removeChild(row); 
-} 
- 
-getNames(); // initialize the names list on page load
-
-
-
-
-
-//file.html
-<div class="container m-3 mx-auto" style="box-shadow: 0 3px 10px black;"> 
-        <h1 class=" text-dark">Add Entry</h1> 
-        <form class="row g-3 mx-auto" onsubmit="submitForm(); return false;"> 
-          <div class="col-12"> 
-            <label for="entryname">Entry Name:</label> 
-            <input type="text" id="entryname" name="entryname" class="form-control" required> 
-          </div> 
-          <div class="col-12"> 
-            <label for="category">Category:</label> 
-            <select  id="category"  name="category" value="category" class="form-select form-control" aria-label="category" required> 
-              <option value="A" hidden>Category</option> 
-              <option value="Dancer" name="Dance">Dancer</option> 
-              <option value="Singer" name="Singer">Singer</option> 
-              <option value="Musician" name="Musician">Musician</option> 
-            </select> 
-          </div> 
-          <div class="col-12"> 
-            <label for="CompatatorsNames">Select Compatators Names for one Entry:</label> 
-            <div id="popup" style="display: none;"> 
-              <!-- form controls will go here --> 
-            </div> 
-            <div id="name_list"></div> <!-- checkboxes for names will be added here --> 
-          </div> 
-          <div class="col-12">  
-            <label for="uMusic">Upload Music:</label> 
-            <input type="file" accept="audio/*" id="uMusic" name="uMusic" value="uMusic" aria-label="uMusic" class="form-control"> 
-          </div> 
-          <div class="row mx-auto my-3"><input class="btn btn-dark" type="submit" value="Submit"></div> 
-        </form> 
-      </div>   
-       
-      <div id="results_container"></div>
-
-
-//file.js 
-let tableNumber = 1;
-
-function getNames() {
-  // Get the selected category
-  let selectedCategory = document.getElementById("category").value;
-
-  // Create a dictionary to store the names for each category
-  const categoryNames = {
-    'Dancer': ['Alice', 'Bob', 'Charlie', 'David'],
-    'Singer': ['Emily', 'Frank', 'Grace', 'Harry'],
-    'Musician': ['Iris', 'Jack', 'Kathy', 'Leo']
-  };
-
-  // Get the names for the selected category
-  let nameList = categoryNames[selectedCategory] || [];
-
-  let html = '';
-  for (let i = 0; i < nameList.length; i++) {
-    let name = nameList[i];
-    html += '<label><input type="checkbox" name="name" value="' + name + '">' + name + '</label><br>';
-  }
-  document.getElementById("name_list").innerHTML = html;
-}
-
-document.getElementById("category").addEventListener("change", function () {
-  getNames();
-});
-
-
-function submitForm() {
-  // get the selected names, category, and audio
-  let entryName = document.getElementById("entryname").value;
-  let nameInputs = document.getElementsByName("name");
-  let category = document.getElementsByName("category")[0].value;
-  let audioFile = document.getElementsByName("uMusic")[0].files[0];
-
-  // check if an audio file is selected
-  let audioFileName = audioFile ? audioFile.name : " ";
-
-  // create table for the new data
-  let tableHtml = '<div class="container">';
-  tableHtml += '<div class="row">';
-  tableHtml += '<div class="col-md-offset-1 col-md-10">';
-  tableHtml += '<div class="panel my-4">';
-  tableHtml += '<div class="panel-heading">';
-  tableHtml += '<div class="row">';
-  tableHtml += '<div class="col-12">';
-  tableHtml += '<h2>' + entryName + ' Entry :- ' + audioFileName  +'</h2>';
-  tableHtml += '</div>';
-  tableHtml += '<div class="col-12 col-md-6 text-center">';
-  tableHtml += '<div class="btn_group">';
-  tableHtml += '<input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">';
-  tableHtml += '<button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>';
-  tableHtml += '</div></div>';
-  tableHtml += '<div class="col-12 col-md-6 text-end">';
-  tableHtml += '<div class="btn_group">';
-  tableHtml += '<button class="btn btn-light" id="add-Compatators" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Compatators</button>';
-  tableHtml += '</div></div></div></div>';
-  tableHtml += '<div class="panel-body table-responsive" id="my-table">';
-  tableHtml += '<table class="table">';
-  tableHtml += '<thead><tr><th>CompatatorsName</th><th>CategoryName</th><th>Action</th></tr></thead>';
-  tableHtml += '<tbody id="table-body-entries">';
-  for (let i = 0; i < nameInputs.length; i++) {
-    let nameInput = nameInputs[i];
-    if (nameInput.checked) {
-      let name = nameInput.value;
-      tableHtml += '<tr>';
-      tableHtml += '<td>' + name + '</td>';
-      tableHtml += '<td>' + category + '</td>';
-      // tableHtml += '<td>' + audioFile.name + '</td>';
-      tableHtml += `<td><i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;"></i>
-                    <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;"></i></td>`;
-      tableHtml += '</tr>';
-    }
-  }
-  tableHtml += '</tbody></table>';
-  tableHtml += '</div></div></div></div></div>';
-
-  // display the new table
-  let tableContainer = document.createElement("div");
-  tableContainer.id = "table" + tableNumber;
-  document.getElementById("results_container").appendChild(tableContainer);
-  document.getElementById(tableContainer.id).innerHTML = tableHtml;
-  tableNumber++;
-
-  // hide the popup window
-  document.getElementById("popup").style.display = "none";
-
-  // reset form
-  document.getElementById("entryname").value = '';
-  document.getElementById("name_list").innerHTML = '';
-  document.getElementsByName("category")[0].value = 'A';
-  document.getElementsByName("uMusic")[0].value = '';
-}
-
-
-fix this code to handle edit and delete function 
-when press on <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;"></i> in special row take value which that in the same row and put it in form to edit it and save the new value in the same row and when press <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;"></i> in special row that remove this row from table
-
-
-////////////////////////////////////////////////////////////////
-
+getAllCurrencies()
 
 var countryData;
+
 function getData() {
     var countrys = document.getElementById("countrys")
-    fetch('http://localhost:5000/sts/country/all',
+    document.getElementById("gif").style.display ="block"
+    fetch(`${domainName}/sts/country/all`,
         {
             method: 'GET',
-            headers: { "Content-Type": "application/json" }
+            headers: {'Authorization': token},
         })
         .then(response => response.json())
         .then(data => {
@@ -815,942 +165,180 @@ function getData() {
             countrys.innerHTML = "";
             data.data.forEach(data => {
                 const element = document.createElement('div');
+                element.className = "col-12 col-md-6 col-lg-4"
                 element.innerHTML = `
-        <div class="col-12">
-            <div class="panel my-4">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <h4 class="title" id="messages">${data.countryName}</h4>
-                        </div>
-                        <div class="col-12 col-md-4 text-center">
-                                <div class="btn_group">
-                                    <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                                    <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
+                    <div class="">
+                        <div class="panel my-4">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <h4 class="title" id="messages">${data.countryName}</h4>
+                                    </div>
+                                    <div class="col-12 col-md-6 text-end">
+                                        <div class="btn_group">
+                                            <button  onclick="editCountry('${data._id}')" class="btn btn-success" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="edit-btn bi bi-pen-fill" viewBox="0 0 16 16">
+                                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                
                                 </div>
-                        </div>
-                        <div class="col-12 col-md-4 text-end">
-                            <div class="btn_group">
-                                <button onclick="editCountry('${data._id}')" class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;" ></i>
-                                </button>
+                            </div> 
+                            <div class="panel-body table-responsive">
+                                <table class="table text-light" id="table-countries">
+                                    <thead>
+                                        <tr>
+                                            <th>country Name</th>
+                                            <th>Fees</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="table-body-countries">
+                                        <tr>
+                                            <td>Adminstration Fees</td>
+                                            <td id="adminstrationFees">${data.adminstrationFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Membership Fees</td>
+                                            <td id="membershipFees">${data.membershipFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Solo Dancer Fees</td>
+                                            <td id="soloDancerFees">${data.solodancerFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duo Or Trio Dancer Fees</td>
+                                            <td id="duoOrTrioDanceFees">${data.duoOrTriodancerFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Group Dancer Fees</td>
+                                            <td id="groupDanceFees">${data.groupdancerFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Solo Singer Fees</td>
+                                            <td id="soloSingerFees">${data.solosingerFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>duo Or Trio Singer Fees</td>
+                                            <td id="duoOrTrioSingingFees">${data.duoOrTriosingerFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Group Singer Fees</td>
+                                            <td id="groupSingingFees">${data.groupsingerFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Solo Musician Fees</td>
+                                            <td id="soloMusicianFees">${data.solomusicianFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duo Or Trio Musician Fees</td>
+                                            <td id="duoOrTrioMusicFees">${data.duoOrTriomusicianFees}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Group Musician Fees</td>
+                                            <td id="groupMusicFees">${data.groupmusicianFees}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-    
                     </div>
-                </div> 
-                <div class="panel-body table-responsive">
-                    <table class="table text-light" id="table-countries">
-                        <thead>
-                            <tr>
-                                <th>country Name</th>
-                                <th>Fees</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="table-body-countries">
-                            <tr>
-                                <td>Adminstration Fees</td>
-                                <td id="adminstrationFees">${data.adminstrationFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Membership Fees</td>
-                                <td id="membershipFees">${data.membershipFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Solo Dancer Fees</td>
-                                <td id="soloDancerFees">${data.soloDancerFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Duo Or Trio Dancer Fees</td>
-                                <td id="duoOrTrioDanceFees">${data.duoOrTrioDanceFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Group Dancer Fees</td>
-                                <td id="groupDanceFees">${data.groupDanceFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Solo Singer Fees</td>
-                                <td id="soloSingerFees">${data.soloSingerFees}</td>
-                            </tr>
-                            <tr>
-                                <td>duo Or Trio Singer Fees</td>
-                                <td id="duoOrTrioSingingFees">${data.duoOrTrioSingingFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Group Singer Fees</td>
-                                <td id="groupSingingFees">${data.groupSingingFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Solo Musician Fees</td>
-                                <td id="soloMusicianFees">${data.soloMusicianFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Duo Or Trio Musician Fees</td>
-                                <td id="duoOrTrioMusicFees">${data.duoOrTrioMusicFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Group Musician Fees</td>
-                                <td id="groupMusicFees">${data.groupMusicFees}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-`
+                `
                 countrys.appendChild(element);
             }
             );
+            document.getElementById("gif").style.display ="none"
         })
-        .catch(error => console.log(error));
-
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          }); 
 }
+
 getData()
 
 
 function editCountry(id) {
     var myCountry = countryData.find(country => { return country._id == id })
-    console.log(myCountry)
-    document.getElementById("countryName").value =myCountry.countryName ;
+    document.getElementById("countryName").value = myCountry.countryName ;
     document.getElementById("countryId").value = myCountry._id;
-    document.getElementById("adminstrationFees").value = myCountry.adminstrationFees;
-    document.getElementById("membershipFees").value = myCountry.membershipFees;
-    document.getElementById("soloDancerFees").value = myCountry.soloDancerFees;
-    document.getElementById("duoOrTrioDanceFees").value = myCountry.duoOrTrioDanceFees;
-    document.getElementById("groupDanceFees").value = myCountry.groupDanceFees;
-    document.getElementById("soloSingerFees").value = myCountry.soloSingerFees;
-    document.getElementById("duoOrTrioSingingFees").value = myCountry.duoOrTrioSingingFees;
-    document.getElementById("groupSingingFees").value = myCountry.groupSingingFees;
-    document.getElementById("soloMusicianFees").value = myCountry.soloMusicianFees;
-    document.getElementById("duoOrTrioMusicFees").value = myCountry.duoOrTrioMusicFees;
-    document.getElementById("groupMusicFees").value = myCountry.groupMusicFees;
+    document.getElementById("ADMINISTRATIVE-FEE").value = myCountry.adminstrationFees;
+    document.getElementById("MEMBERSHIP-FEE").value = myCountry.membershipFees;
+    document.getElementById("soloDance").value = myCountry.solodancerFees;
+    document.getElementById("duo-Trio-Dance").value = myCountry.duoOrTriodancerFees;
+    document.getElementById("danceGroup").value = myCountry.groupdancerFees;
+    document.getElementById("soloSinger").value = myCountry.solosingerFees;
+    document.getElementById("duo-Trio-Singer").value = myCountry.duoOrTriosingingFees;
+    document.getElementById("singerGroup").value = myCountry.groupsingerFees;
+    document.getElementById("soloMusician").value = myCountry.solomusicianFees;
+    document.getElementById("duo-Trio-Musician").value = myCountry.duoOrTriomusicianFees;
+    document.getElementById("musicianGroup").value = myCountry.groupmusicianFees;
+
+    var allCurrency = document.querySelector('#selectCurrency');
+    var options = allCurrency.options;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].text === myCountry.currencyNameEn) {
+            options[i].selected = true;
+            break;
+        }
+    }
 }
 
 function changeFeesForCountry(e) {
     e.preventDefault();
     let id = document.getElementById("countryId").value;
-    const formData = new FormData();
-    formData.append('countryName', document.getElementById("countryName").value);
-    formData.append('adminstrationFees', document.getElementById("ADMINISTRATIVE-FEE").value);
-    formData.append('membershipFees', document.getElementById("MEMBERSHIP-FEE").value);
-    formData.append('soloDancerFees', document.getElementById("soloDance").value);
-    formData.append('duoOrTrioDanceFees', document.getElementById("duo-Trio-Dance").value);
-    formData.append('groupDanceFees', document.getElementById("danceGroup").value);
-    formData.append('soloSingerFees', document.getElementById("soloSinger").value);
-    formData.append('duoOrTrioSingingFees', document.getElementById("duo-Trio-Singer").value);
-    formData.append('groupSingingFees', document.getElementById("singerGroup").value);
-    formData.append('soloMusicianFees', document.getElementById("soloMusician").value);
-    formData.append('duoOrTrioMusicFees', document.getElementById("duo-Trio-Musician").value);
-    formData.append('groupMusicFees', document.getElementById("musicianGroup").value);
-    // if (id) {
-        try {
-            fetch(`http://localhost:5000/sts/country/${id}`, {
-                method: 'PUT',
-                body: formData
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log("congrats, you updated news data successfully");
-                        document.getElementById("countryId").value = "";
-                        document.getElementById("countryName").value = "";
-                        document.getElementById("ADMINISTRATIVE-FEE").value = "";
-                        document.getElementById("MEMBERSHIP-FEE").value = "";
-                        document.getElementById("soloDance").value = "";
-                        document.getElementById("duo-Trio-Dance").value = "";
-                        document.getElementById("danceGroup").value = "";
-                        document.getElementById("soloSinger").value = "";
-                        document.getElementById("duo-Trio-Singer").value = "";
-                        document.getElementById("singerGroup").value = "";
-                        document.getElementById("soloMusician").value = "";
-                        document.getElementById("duo-Trio-Musician").value = "";
-                        document.getElementById("musicianGroup").value = "";
-                        getData();
-                        console.log(response);
-                        console.log(formData);
-                    } else {
-                        throw new Error('Request failed.');
-                    }
-                })
-                .catch(error => console.error(error));
-        } catch (error) {
-            console.log(error);
-        }
-    // }
-    getData();
-}
-//////////////////////////
 
- <script id="countriesA-template" type="text/template">
-    <section id="countriesA">
-      <div class="container mx-auto">
-          <div class="row" id="countrys">
-          </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Dancer</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-  <form class="w-100 border border-warning p-4 rounded-3 needs-validation mx-auto" onsubmit="changeFeesForCountry(event)" novalidate>
-<input type="hidden" name="" id="countryId">
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="countryName" class=" form-label form-label mb-1 fs-4 fw-bold">Country Name</label>
-      <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="countryName"
-        id="countryName" placeholder="Country Name" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least Three letter
-      </div>
-    </div>
+    var selectCurrencyElement = document.getElementById("selectCurrency");
+    var currencyNameEn = selectCurrencyElement.options[selectCurrencyElement.selectedIndex].value;
 
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Dancer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloDance" class="form-label mb-1 fs-4 fw-bold">Solo Dance</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloDance" id="soloDance"
-        placeholder="Solo Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Dance" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio Dance </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Dance"
-        id="duo-Trio-Dance" placeholder="Duo/Trio Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1"
-        max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="danceGroup" class="form-label mb-1 fs-4 fw-bold">Dance Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="danceGroup" id="danceGroup"
-        placeholder="Dance Group" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p class="form-label mb-1 fs-4 fw-bold text-center">Musician List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloMusician" class="form-label mb-1 fs-4 fw-bold">Solo Musician</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloMusician"
-        id="soloMusician" placeholder="Solo Musician" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Musician" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Musician
-      </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Musician"
-        id="duo-Trio-Musician" placeholder="Duo/Trio for Musician " pattern="[0-9]{2,}"
-        title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="musicianGroup" class="form-label mb-1 fs-4 fw-bold">Musician  Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="musicianGroup"
-        id="musicianGroup" placeholder="Musician Group" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p class="form-label mb-1 fs-4 fw-bold text-center">Singer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloSinger" class="form-label mb-1 fs-4 fw-bold">Solo Singer</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloSinger"
-        id="soloSinger" placeholder="Solo Singer" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Singer" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Singer
-      </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Singer"
-        id="duo-Trio-Singer" placeholder="Duo/Trio for Singer " pattern="[0-9]{2,}"
-        title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="singerGroup" class="form-label mb-1 fs-4 fw-bold">Singer  Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="singerGroup"
-        id="singerGroup" placeholder="Singer Group" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Fee</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="MEMBERSHIP-FEE" class="form-label mb-1 fs-4 fw-bold">Membership Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="MEMBERSHIP-FEE" id="MEMBERSHIP-FEE" placeholder="MEMBERSHIP FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="ADMINISTRATIVE-FEE" class="form-label mb-1 fs-4 fw-bold">Administrative Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="ADMINISTRATIVE-FEE" id="ADMINISTRATIVE-FEE" placeholder="ADMINISTRATIVE FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <input type="submit" value="change"  class="btn btn-success px-4 py-2">
-    </div>
-  </form> 
-
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </section>
-      <!-- start Country -->
-  <!-- <form class="w-50 border border-warning p-4 rounded-3 needs-validation mx-auto" novalidate>
-
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="countryName" class=" form-label form-label mb-1 fs-4 fw-bold">Country Name</label>
-      <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="countryName"
-        id="countryName" placeholder="Country Name" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least Three letter
-      </div>
-    </div>
-
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Dancer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloDance" class="form-label mb-1 fs-4 fw-bold">Solo Dance</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloDance" id="soloDance"
-        placeholder="Solo Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Dance" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio Dance </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Dance"
-        id="duo-Trio-Dance" placeholder="Duo/Trio Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1"
-        max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="group" class="form-label mb-1 fs-4 fw-bold">Dance Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="group" id="group"
-        placeholder="Dance Group" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Musician Or Singer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloMusician" class="form-label mb-1 fs-4 fw-bold">Solo Musician Or Singer</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloMusician"
-        id="soloMusician" placeholder="Solo Musician or Singer" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Musician" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Musician Or Singer
-      </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Musician"
-        id="duo-Trio-Musician" placeholder="Duo/Trio for Musician or Singer" pattern="[0-9]{2,}"
-        title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="musicianGroup" class="form-label mb-1 fs-4 fw-bold">Musician Or Singer Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="musicianGroup"
-        id="musicianGroup" placeholder="Musician or Singer Group" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Fee</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="MEMBERSHIP-FEE-For-Musician" class="form-label mb-1 fs-4 fw-bold">Membership Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="MEMBERSHIP-FEE-For-Musician" id="MEMBERSHIP-FEE-For-Musician" placeholder="MEMBERSHIP FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="ADMINISTRATIVE-FEE-For-Musician" class="form-label mb-1 fs-4 fw-bold">Administrative Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="ADMINISTRATIVE-FEE-For-Musician" id="ADMINISTRATIVE-FEE-For-Musician" placeholder="ADMINISTRATIVE FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <input type="submit" value="submit" class="btn btn-success px-4 py-2">
-    </div>
-  </form> -->
-  <!-- end Country -->
-  </script>
-
-////////////////////////////////////////////////////////////////////
-
-var countryData;
-function getData() {
-    var countrys = document.getElementById("countrys")
-    fetch('http://localhost:5000/sts/country/all',
-        {
-            method: 'GET',
-            headers: { "Content-Type": "application/json" }
+    var dataForUpdate = {
+        countryName: document.getElementById("countryName").value ?  document.getElementById("countryName").value : null ,
+        currencyNameEn: currencyNameEn ? currencyNameEn : null,
+        adminstrationFees: document.getElementById("ADMINISTRATIVE-FEE").value ?  document.getElementById("ADMINISTRATIVE-FEE").value : null ,
+        membershipFees: document.getElementById("MEMBERSHIP-FEE").value ?  document.getElementById("MEMBERSHIP-FEE").value : null ,
+        solodancerFees: document.getElementById("soloDance").value ?  document.getElementById("soloDance").value : null ,
+        duoOrTriodancerFees: document.getElementById("duo-Trio-Dance").value ?  document.getElementById("duo-Trio-Dance").value : null ,
+        groupdancerFees: document.getElementById("danceGroup").value ?  document.getElementById("danceGroup").value : null ,
+        solosingerFees: document.getElementById("soloSinger").value ?  document.getElementById("soloSinger").value : null ,
+        duoOrTriosingerFees: document.getElementById("duo-Trio-Singer").value ?  document.getElementById("duo-Trio-Singer").value : null ,
+        groupsingerFees: document.getElementById("singerGroup").value ?  document.getElementById("singerGroup").value : null ,
+        solomusicianFees: document.getElementById("soloMusician").value ?  document.getElementById("soloMusician").value : null ,
+        duoOrTriomusicianFees: document.getElementById("duo-Trio-Musician").value ?  document.getElementById("duo-Trio-Musician").value : null ,
+        groupmusicianFees: document.getElementById("musicianGroup").value ?  document.getElementById("musicianGroup").value : null 
+    }
+    console.log(dataForUpdate)
+    try {
+        document.getElementById("gif").style.display ="block"
+        fetch(`${domainName}/sts/country/${id}`, {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" , 'Authorization': token},
+            body: JSON.stringify(dataForUpdate)
         })
         .then(response => response.json())
-        .then(data => {
-            countryData = data.data
-            countrys.innerHTML = "";
-            data.data.forEach(data => {
-
-                const element = document.createElement('div');
-                element.innerHTML = `
-        <div class="col-12">
-            <div class="panel my-4">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <h4 class="title" id="messages">${data.countryName}</h4>
-                        </div>
-                        <div class="col-12 col-md-4 text-center">
-                                <div class="btn_group">
-                                    <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                                    <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                                </div>
-                        </div>
-                        <div class="col-12 col-md-4 text-end">
-                            <div class="btn_group">
-                                <button  onclick="editCountry('${data._id}')" class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;" ></i>
-                                </button>
-                            </div>
-                        </div>
-    
-                    </div>
-                </div> 
-                <div class="panel-body table-responsive">
-                    <table class="table text-light" id="table-countries">
-                        <thead>
-                            <tr>
-                                <th>country Name</th>
-                                <th>Fees</th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="table-body-countries">
-                            <tr>
-                                <td>Adminstration Fees</td>
-                                <td id="adminstrationFees">${data.adminstrationFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Membership Fees</td>
-                                <td id="membershipFees">${data.membershipFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Solo Dancer Fees</td>
-                                <td id="soloDancerFees">${data.soloDancerFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Duo Or Trio Dancer Fees</td>
-                                <td id="duoOrTrioDanceFees">${data.duoOrTrioDanceFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Group Dancer Fees</td>
-                                <td id="groupDanceFees">${data.groupDanceFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Solo Singer Fees</td>
-                                <td id="soloSingerFees">${data.soloSingerFees}</td>
-                            </tr>
-                            <tr>
-                                <td>duo Or Trio Singer Fees</td>
-                                <td id="duoOrTrioSingingFees">${data.duoOrTrioSingingFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Group Singer Fees</td>
-                                <td id="groupSingingFees">${data.groupSingingFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Solo Musician Fees</td>
-                                <td id="soloMusicianFees">${data.soloMusicianFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Duo Or Trio Musician Fees</td>
-                                <td id="duoOrTrioMusicFees">${data.duoOrTrioMusicFees}</td>
-                            </tr>
-                            <tr>
-                                <td>Group Musician Fees</td>
-                                <td id="groupMusicFees">${data.groupMusicFees}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-`
-                countrys.appendChild(element);
-            }
-            );
-        })
-        .catch(error => console.log(error));
-
-}
-getData()
-
-
-function editCountry(id) {
-    var myCountry = countryData.find(country => { return country._id == id })
-    console.log(myCountry)
-    // document.getElementById("countryName").value =myCountry.countryName ;
-    // document.getElementById("countryId").value = myCountry._id;
-    // document.getElementById("adminstrationFees").value = myCountry.adminstrationFees;
-    // document.getElementById("membershipFees").value = myCountry.membershipFees;
-    // document.getElementById("soloDancerFees").value = myCountry.soloDancerFees;
-    // document.getElementById("duoOrTrioDanceFees").value = myCountry.duoOrTrioDanceFees;
-    // document.getElementById("groupDanceFees").value = myCountry.groupDanceFees;
-    // document.getElementById("soloSingerFees").value = myCountry.soloSingerFees;
-    // document.getElementById("duoOrTrioSingingFees").value = myCountry.duoOrTrioSingingFees;
-    // document.getElementById("groupSingingFees").value = myCountry.groupSingingFees;
-    // document.getElementById("soloMusicianFees").value = myCountry.soloMusicianFees;
-    // document.getElementById("duoOrTrioMusicFees").value = myCountry.duoOrTrioMusicFees;
-    // document.getElementById("groupMusicFees").value = myCountry.groupMusicFees;
-}
-
-function changeFeesForCountry() {
-    e.preventDefault();
-    let id = document.getElementById("countryId").value;
-    var dataForUpdate = {
-        countryName: document.getElementById("countryName").value,
-        adminstrationFees: document.getElementById("ADMINISTRATIVE-FEE").value,
-        membershipFees: document.getElementById("MEMBERSHIP-FEE").value,
-        soloDancerFees: document.getElementById("soloDance").value,
-        duoOrTrioDanceFees: document.getElementById("duo-Trio-Dance").value,
-        groupDanceFees: document.getElementById("danceGroup").value,
-        soloSingerFees: document.getElementById("soloSinger").value,
-        duoOrTrioSingingFees: document.getElementById("duo-Trio-Singer").value,
-        groupSingingFees: document.getElementById("singerGroup").value,
-        soloMusicianFees: document.getElementById("soloMusician").value,
-        duoOrTrioMusicFees: document.getElementById("duo-Trio-Musician").value,
-        groupMusicFees: document.getElementById("musicianGroup").value,
-    }
-    var stringifyDataForUpdate = JSON.stringify(dataForUpdate)
-    try {
-        fetch(`http://localhost:5000/sts/country/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: stringifyDataForUpdate
-        })
             .then(response => {
-                if (response.ok) {
+                if (response.apiStatus == true) {
                     console.log("Data saved successfully");
                 } else {
                     throw new Error('Request failed.');
                 }
+                getData()
+                document.getElementById("gif").style.display ="none"
+                responseAlert(response);
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                document.getElementById("gif").style.display ="none"
+                responseAlert(error);
+            });
     } catch (error) {
         console.log(error);
     }
-    getData()
 }
 
+fix this code to take value from select and send it to the backend as a value for this key currencyNameEn and when make (PUT) on the special table show this value as a default value for select
 
-// document.getElementById("editRow").addEventListener =("click", function ({data_id}) {
-// })
 
-/////////////////////////
- <script id="countriesA-template" type="text/template">
-    <section id="countriesA">
-      <div class="container mx-auto">
-          <div class="row" id="countrys">
-          </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Dancer</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-  <form class="w-100 border border-warning p-4 rounded-3 needs-validation mx-auto" onsubmit="changeFeesForCountry(id)" novalidate>
-<input type="hidden" name="" id="countryId">
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="countryName" class=" form-label form-label mb-1 fs-4 fw-bold">Country Name</label>
-      <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="countryName"
-        id="countryName" placeholder="Country Name" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least Three letter
-      </div>
-    </div>
-
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Dancer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloDance" class="form-label mb-1 fs-4 fw-bold">Solo Dance</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloDance" id="soloDance"
-        placeholder="Solo Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Dance" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio Dance </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Dance"
-        id="duo-Trio-Dance" placeholder="Duo/Trio Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1"
-        max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="danceGroup" class="form-label mb-1 fs-4 fw-bold">Dance Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="danceGroup" id="danceGroup"
-        placeholder="Dance Group" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p class="form-label mb-1 fs-4 fw-bold text-center">Musician List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloMusician" class="form-label mb-1 fs-4 fw-bold">Solo Musician</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloMusician"
-        id="soloMusician" placeholder="Solo Musician" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Musician" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Musician
-      </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Musician"
-        id="duo-Trio-Musician" placeholder="Duo/Trio for Musician " pattern="[0-9]{2,}"
-        title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="musicianGroup" class="form-label mb-1 fs-4 fw-bold">Musician  Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="musicianGroup"
-        id="musicianGroup" placeholder="Musician Group" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p class="form-label mb-1 fs-4 fw-bold text-center">Singer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloSinger" class="form-label mb-1 fs-4 fw-bold">Solo Singer</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloSinger"
-        id="soloSinger" placeholder="Solo Singer" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Singer" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Singer
-      </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Singer"
-        id="duo-Trio-Singer" placeholder="Duo/Trio for Singer " pattern="[0-9]{2,}"
-        title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="singerGroup" class="form-label mb-1 fs-4 fw-bold">Singer  Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="singerGroup"
-        id="singerGroup" placeholder="Singer Group" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Fee</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="MEMBERSHIP-FEE" class="form-label mb-1 fs-4 fw-bold">Membership Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="MEMBERSHIP-FEE" id="MEMBERSHIP-FEE" placeholder="MEMBERSHIP FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="ADMINISTRATIVE-FEE" class="form-label mb-1 fs-4 fw-bold">Administrative Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="ADMINISTRATIVE-FEE" id="ADMINISTRATIVE-FEE" placeholder="ADMINISTRATIVE FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <input type="submit" value="change"  class="btn btn-success px-4 py-2">
-    </div>
-  </form> 
-
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-    </section>
-      <!-- start Country -->
-  <!-- <form class="w-50 border border-warning p-4 rounded-3 needs-validation mx-auto" novalidate>
-
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="countryName" class=" form-label form-label mb-1 fs-4 fw-bold">Country Name</label>
-      <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="countryName"
-        id="countryName" placeholder="Country Name" pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least Three letter
-      </div>
-    </div>
-
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Dancer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloDance" class="form-label mb-1 fs-4 fw-bold">Solo Dance</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloDance" id="soloDance"
-        placeholder="Solo Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Dance" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio Dance </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Dance"
-        id="duo-Trio-Dance" placeholder="Duo/Trio Dance" pattern="[0-9]{2,}" title="at least Three letter" min="1"
-        max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="group" class="form-label mb-1 fs-4 fw-bold">Dance Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="group" id="group"
-        placeholder="Dance Group" pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Musician Or Singer List</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="soloMusician" class="form-label mb-1 fs-4 fw-bold">Solo Musician Or Singer</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="soloMusician"
-        id="soloMusician" placeholder="Solo Musician or Singer" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="duo-Trio-Musician" class="form-label mb-1 fs-4 fw-bold">Duo Or Trio For Musician Or Singer
-      </label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="duo-Trio-Musician"
-        id="duo-Trio-Musician" placeholder="Duo/Trio for Musician or Singer" pattern="[0-9]{2,}"
-        title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="musicianGroup" class="form-label mb-1 fs-4 fw-bold">Musician Or Singer Group</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5" name="musicianGroup"
-        id="musicianGroup" placeholder="Musician or Singer Group" pattern="[0-9]{2,}" title="at least Three letter"
-        min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <hr>
-    <p for="" class="form-label mb-1 fs-4 fw-bold text-center">Fee</p>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="MEMBERSHIP-FEE-For-Musician" class="form-label mb-1 fs-4 fw-bold">Membership Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="MEMBERSHIP-FEE-For-Musician" id="MEMBERSHIP-FEE-For-Musician" placeholder="MEMBERSHIP FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class=" d-flex flex-column mb-3 ">
-      <label for="ADMINISTRATIVE-FEE-For-Musician" class="form-label mb-1 fs-4 fw-bold">Administrative Fee</label>
-      <input type="number" class="form-control rounded-3 border border-warning p-2 fs-5"
-        name="ADMINISTRATIVE-FEE-For-Musician" id="ADMINISTRATIVE-FEE-For-Musician" placeholder="ADMINISTRATIVE FEE"
-        pattern="[0-9]{2,}" title="at least Three letter" min="1" max="1000" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        at least two digit
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <input type="submit" value="submit" class="btn btn-success px-4 py-2">
-    </div>
-  </form> -->
-  <!-- end Country -->
-  </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>

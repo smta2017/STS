@@ -56,7 +56,6 @@ const TeacherSchema = mongoose.Schema({
 TeacherSchema.virtual('age')
     .get(function () {
         const age = moment(Date.now()).diff(moment(this.dateOfBirth), 'years', true)
-        console.log(age)
         return Math.floor(age)
     });
 const teacherModel = mongoose.model('teachers', TeacherSchema)

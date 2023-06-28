@@ -30,9 +30,9 @@ var entryDegreeID = getCookie("entryDegree");
 var type = getCookie("type"); 
 var year = getCookie("year"); 
 
-function setCookie(name, value) {
-  document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
-}
+// function setCookie(name, value) {
+//   document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+// }
 
 var entriesData;
 function showEntriesData(entryDegreeID) {
@@ -92,9 +92,9 @@ function addDegreeForEntry(e) {
         method: 'PATCH',
         headers: { "Content-Type": "application/json" , 'Authorization': token},
         body: JSON.stringify(formData)
-    })
+    }).then(response => response.json())
         .then(response => {  
-          if (response.ok) {
+          if (response.apiStatus == true) {
             console.log('your data added successfully');
 
             setCookie("degreeRuler1" ,  document.getElementById(`degreeEntry_${competitionID}`).value)
@@ -104,11 +104,14 @@ function addDegreeForEntry(e) {
           } else {
             console.log('Error:', response.status);
           }
+          document.getElementById("gif").style.display ="none";
+          responseAlert(response);
         })
-        .catch(function (error) {
-          console.log('Error:', error);
-        });
-        document.getElementById("gif").style.display ="none"
+        .catch(error => {
+          console.log(error);
+          document.getElementById("gif").style.display = "none";
+          responseAlert(error);
+        }); 
 }
 
 

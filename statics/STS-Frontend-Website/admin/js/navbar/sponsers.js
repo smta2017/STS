@@ -18,6 +18,7 @@ function previewImage(event) {
 var sponsersData;
 function getSponsersData() {
     var sponsorContainer = document.getElementById("Addsponsers");
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/sponsor/all`, {
         method: 'GET',
         headers: {'Authorization': token},
@@ -35,11 +36,15 @@ function getSponsersData() {
                                     <div style="margin-top: 5rem!important;">
                                         <div class="col-12 text-end">
                                             <div class="btn_group me-4">
-                                                <button class="btn btn-success" id="add-row" onclick="editSponsers('${sponsors._id}')">
-                                                    <i class="edit-btn fa-solid fa-pen-to-square"></i>
+                                                <button class="btn btn-success mt-2" id="add-row" onclick="editSponsers('${sponsors._id}')">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill" viewBox="0 0 16 16" s>
+                                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                                    </svg>
                                                 </button>
-                                                <button class="btn btn-danger" id="remove-row" onclick="deleteSponsers('${sponsors._id}')">
-                                                    <i class="delete-btn fa-solid fa-trash-can"></i>
+                                                <button class="btn btn-danger mt-2" id="remove-row" onclick="deleteSponsers('${sponsors._id}')">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" viewBox="0 0 16 16">
+                                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                    </svg>
                                                 </button>
                                             </div>
                                         </div> 
@@ -70,8 +75,12 @@ function getSponsersData() {
                 `;
                 sponsorContainer.appendChild(element);
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          }); 
 }
 
 getSponsersData();
@@ -81,25 +90,30 @@ function editSponsers(id) {
     document.getElementById("sponsersId").value = mySponsers._id;
     document.getElementById("titleSponser").value = mySponsers.title ;
     document.getElementById("paragraphSponser").value = mySponsers.paragraph;
-    document.getElementById("uploadImgSponser").value = mySponsers.photo;
+    document.querySelector('#imgPreview').src = mySponsers.photo
+    document.querySelector('#imgPreview').style.display = 'block'
 }
 
 function changeSponsers(e) {
     e.preventDefault();
     let id = document.getElementById("sponsersId").value;
+
+    const imageData = document.querySelector('#uploadImgSponser').files[0]
     const formData = new FormData();
     formData.append('title', document.getElementById("titleSponser").value);
     formData.append('paragraph', document.getElementById("paragraphSponser").value);
-    formData.append('photo', document.getElementById("uploadImgSponser").files[0]);
+    if(document.querySelector("#uploadImgSponser").files[0]){formData.append('photo', imageData)};
+
     if (id) {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/sponsor/${id}`, {
                 method: 'PUT',
                 headers: {'Authorization': token},
                 body: formData,
-            })
+            }).then(response => response.json())
                 .then(response => {
-                    if (response.ok) {
+                    if (response.apiStatus == true) {
                         console.log("congrats, you updated sponsors data successfully");
                         document.getElementById("sponsersId").value = "";
                         document.getElementById("titleSponser").value = "";
@@ -110,20 +124,27 @@ function changeSponsers(e) {
                     } else {
                         throw new Error('Request failed.');
                     }
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(response);
                 })
-                .catch(error => console.error(error));
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(error);
+                }); 
         } catch (error) {
             console.log(error);
         }
     } else {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/sponsor`, {
                 method: 'POST',
                 headers: {'Authorization': token},
                 body: formData,
-            })
+            }).then(response => response.json())
                 .then(response => {
-                    if (response.ok) {
+                    if (response.apiStatus == true) {
                         console.log("Data saved successfully");
                         document.getElementById("titleSponser").value = "";
                         document.getElementById("paragraphSponser").value = "";
@@ -133,8 +154,14 @@ function changeSponsers(e) {
                     } else { 
                         throw new Error('Request failed.'); 
                     } 
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(response);
                 }) 
-                .catch(error => console.error(error)); 
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(error);
+                }); 
         } catch (error) { 
             console.log(error); 
         } 
@@ -145,23 +172,41 @@ function changeSponsers(e) {
 function deleteSponsers(id) {
     if (id) {
         try {
+            document.getElementById("gif").style.display ="block"
             fetch(`${domainName}/sts/sponsor/${id}`, {
                 method: 'DELETE',
                 headers: {'Authorization': token},
             })
                 .then(response => {
-                    if (response.ok) {
+                    if (response.status == 200) {
                         console.log("Sponsors data deleted successfully");
                         getSponsersData();
                     } else {
                         throw new Error('Request failed.');
                     }
+                    document.getElementById("gif").style.display = "none";
+                    response.json().then(data => {
+                        responseAlert(data);
+                    });
                 })
-                .catch(error => console.error(error));
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    error.json().then(data => {
+                        responseAlert(data);
+                      });
+                }); 
         } catch (error) {
             console.log(error);
         }
     } else {
         console.log("No sponsors ID provided");
     }
+}
+
+
+function clearData(){
+    document.getElementById("sponsersId").value = '';
+    document.querySelector('#imgPreview').src = '';
+    document.querySelector('#imgPreview').style.display = 'none'
 }

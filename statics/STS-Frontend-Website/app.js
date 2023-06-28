@@ -1,280 +1,102 @@
 const domainName = "https://sts-5s7p.onrender.com";
 
-const homeBeforeLoginTemplate = document.getElementById(
-  "homeBeforeLogin-template"
-).innerHTML;
-const homeTemplate = document.getElementById("home-template").innerHTML;
-const infoTemplate = document.getElementById("info-template").innerHTML;
-const shopTemplate = document.getElementById("shop-template").innerHTML;
-const contactTemplate = document.getElementById("contact-template").innerHTML;
-const signupTemplate = document.getElementById("signup-template").innerHTML;
-const loginTemplate = document.getElementById("login-template").innerHTML;
-
-const insideContentTemplate = document.getElementById(
-  "insideContent-template"
-).innerHTML;
-
-const choiceCompetitionTemplate = document.getElementById(
-  "choiceCompetition-template"
-).innerHTML;
-
-const homeAfterLoginTemplate = document.getElementById(
-  "homeAfterLogin-template"
-).innerHTML;
-const competitionsTemplate = document.getElementById(
-  "competitions-template"
-).innerHTML;
-const compatatorsTemplate = document.getElementById(
-  "compatators-template"
-).innerHTML;
-const entriesTemplate = document.getElementById("entries-template").innerHTML;
-const teachersTemplate = document.getElementById("teachers-template").innerHTML;
-const fullStatementTemplate = document.getElementById(
-  "fullStatement-template"
-).innerHTML;
-const summaryStatementTemplate = document.getElementById(
-  "summaryStatement-template"
-).innerHTML;
-const fullSchadualTemplate = document.getElementById("fullSchadual-template").innerHTML;
-const academySchadualTemplate = document.getElementById("academySchadual-template").innerHTML;
-const paymentTemplate = document.getElementById("payment-template").innerHTML;
-const resultsTemplate = document.getElementById("results-template").innerHTML;
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const renderhomeBeforeLogin = Handlebars.compile(homeBeforeLoginTemplate);
-const renderHome = Handlebars.compile(homeTemplate);
-const renderInfo = Handlebars.compile(infoTemplate);
-const renderShop = Handlebars.compile(shopTemplate);
-const renderContact = Handlebars.compile(contactTemplate);
-const renderSignup = Handlebars.compile(signupTemplate);
-const renderLogin = Handlebars.compile(loginTemplate);
-
-const renderInsideContent = Handlebars.compile(insideContentTemplate);
-
-const renderChoiceCompetition = Handlebars.compile(choiceCompetitionTemplate);
-
-const renderhomeAfterLogin = Handlebars.compile(homeAfterLoginTemplate);
-const renderCompetitions = Handlebars.compile(competitionsTemplate);
-const renderCompatators = Handlebars.compile(compatatorsTemplate);
-const renderEntries = Handlebars.compile(entriesTemplate);
-const renderTeachers = Handlebars.compile(teachersTemplate);
-const renderFullStatement = Handlebars.compile(fullStatementTemplate);
-const renderSummaryStatement = Handlebars.compile(summaryStatementTemplate);
-const renderFullSchadual = Handlebars.compile(fullSchadualTemplate);
-const rendercAcademySchadual = Handlebars.compile(academySchadualTemplate);
-const renderPayment = Handlebars.compile(paymentTemplate);
-const renderResults = Handlebars.compile(resultsTemplate);
+const renderhomeBeforeLogin = Handlebars.compile(document.getElementById("homeBeforeLogin-template").innerHTML);
+const renderHome = Handlebars.compile(document.getElementById("home-template").innerHTML);
+const renderInfo = Handlebars.compile(document.getElementById("info-template").innerHTML);
+const renderShop = Handlebars.compile(document.getElementById("shop-template").innerHTML);
+const renderContact = Handlebars.compile(document.getElementById("contact-template").innerHTML);
+const renderSignup = Handlebars.compile(document.getElementById("signup-template").innerHTML);
+const renderLogin = Handlebars.compile(document.getElementById("login-template").innerHTML);
+const renderInsideContent = Handlebars.compile(document.getElementById("insideContent-template").innerHTML);
+const renderChoiceCompetition = Handlebars.compile(document.getElementById("choiceCompetition-template").innerHTML);
+const renderhomeAfterLogin = Handlebars.compile(document.getElementById("homeAfterLogin-template").innerHTML);
+const renderCompetitions = Handlebars.compile(document.getElementById("competitions-template").innerHTML);
+const renderCompatators = Handlebars.compile(document.getElementById("compatators-template").innerHTML);
+const renderEntries = Handlebars.compile(document.getElementById("entries-template").innerHTML);
+const renderTeachers = Handlebars.compile(document.getElementById("teachers-template").innerHTML);
+const renderFullStatement = Handlebars.compile(document.getElementById("fullStatement-template").innerHTML);
+const renderSummaryStatement = Handlebars.compile(document.getElementById("summaryStatement-template").innerHTML);
+const renderFullSchadual = Handlebars.compile(document.getElementById("fullSchadual-template").innerHTML);
+const rendercAcademySchadual = Handlebars.compile(document.getElementById("academySchadual-template").innerHTML);
+const renderPayment = Handlebars.compile(document.getElementById("payment-template").innerHTML);
+const renderFullResult = Handlebars.compile(document.getElementById("fullResult-template").innerHTML);
+const renderAcademyResult = Handlebars.compile(document.getElementById("academyResult-template").innerHTML);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////// ADMIN ////////////////////////////////
-const navbarTemplate = document.getElementById("navbar-template").innerHTML;
-
-const competitionsATemplate = document.getElementById(
-  "competitionsA-template"
-).innerHTML;
-const newsATemplate = document.getElementById("newsA-template").innerHTML;
-const sponsersATemplate =
-  document.getElementById("sponsersA-template").innerHTML;
-const countriesATemplate = document.getElementById(
-  "countriesA-template"
-).innerHTML;
-const productsATemplate =
-  document.getElementById("productsA-template").innerHTML;
-const messagesATemplate =
-  document.getElementById("messagesA-template").innerHTML;
-const adventisersATemplate = document.getElementById(
-  "adventisersA-template"
-).innerHTML;
-
 ///////////////////////////////////////////////////
 
-const sidebarTemplate = document.getElementById("sidebar1-template").innerHTML;
-
-const schoolTemplate = document.getElementById("school-template").innerHTML;
-const compatatorsATemplate = document.getElementById(
-  "compatatorsA-template"
-).innerHTML;
-const entersATemplate = document.getElementById("entersA-template").innerHTML;
-const paymentATemplateA =
-  document.getElementById("paymentA-template").innerHTML;
-
-///////////////////////////////////////////////////
-
-const sidebar2Template = document.getElementById("sidebar2-template").innerHTML;
-
-const compatatorsASTemplate = document.getElementById(
-  "compatatorsAS-template"
-).innerHTML;
-const teachersASTemplate = document.getElementById(
-  "teachersAS-template"
-).innerHTML;
-const entriesASTemplate =
-  document.getElementById("entriesAS-template").innerHTML;
+const renderNavbar = Handlebars.compile(document.getElementById("navbar-template").innerHTML);
+const renderCompetitionsA = Handlebars.compile(document.getElementById("competitionsA-template").innerHTML);
+const renderNewsA = Handlebars.compile(document.getElementById("newsA-template").innerHTML);
+const renderSponsersA = Handlebars.compile(document.getElementById("sponsersA-template").innerHTML);
+const renderCountriesA = Handlebars.compile(document.getElementById("countriesA-template").innerHTML);
+const renderProductsA = Handlebars.compile(document.getElementById("productsA-template").innerHTML);
+const renderMessagesA = Handlebars.compile(document.getElementById("messagesA-template").innerHTML);
+const renderAdventisersA = Handlebars.compile(document.getElementById("adventisersA-template").innerHTML);
 
 ///////////////////////////////////////
 
-const renderNavbar = Handlebars.compile(navbarTemplate);
+const renderSidebar = Handlebars.compile(document.getElementById("sidebar1-template").innerHTML);
 
-const renderCompetitionsA = Handlebars.compile(competitionsATemplate);
-const renderNewsA = Handlebars.compile(newsATemplate);
-const renderSponsersA = Handlebars.compile(sponsersATemplate);
-const renderCountriesA = Handlebars.compile(countriesATemplate);
-const renderProductsA = Handlebars.compile(productsATemplate);
-const renderMessagesA = Handlebars.compile(messagesATemplate);
-const renderAdventisersA = Handlebars.compile(adventisersATemplate);
+const renderSchool = Handlebars.compile(document.getElementById("school-template").innerHTML);
+const renderCompatatorsA = Handlebars.compile(document.getElementById("compatatorsA-template").innerHTML);
+const renderEntersA = Handlebars.compile(document.getElementById("entersA-template").innerHTML);
+const renderPaymentA = Handlebars.compile(document.getElementById("paymentA-template").innerHTML);
 
 ///////////////////////////////////////
 
-const renderSidebar = Handlebars.compile(sidebarTemplate);
+const renderSidebar2 = Handlebars.compile(document.getElementById("sidebar2-template").innerHTML);
 
-const renderSchool = Handlebars.compile(schoolTemplate);
-const renderCompatatorsA = Handlebars.compile(compatatorsATemplate);
-const renderEntersA = Handlebars.compile(entersATemplate);
-const renderPaymentA = Handlebars.compile(paymentATemplateA);
-
-///////////////////////////////////////
-
-const renderSidebar2 = Handlebars.compile(sidebar2Template);
-
-const renderCompatatorsAS = Handlebars.compile(compatatorsASTemplate);
-const renderTeachersAS = Handlebars.compile(teachersASTemplate);
-const renderEntriesAS = Handlebars.compile(entriesASTemplate);
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const renderCompatatorsAS = Handlebars.compile(document.getElementById("compatatorsAS-template").innerHTML);
+const renderTeachersAS = Handlebars.compile(document.getElementById("teachersAS-template").innerHTML);
+const renderEntriesAS = Handlebars.compile(document.getElementById("entriesAS-template").innerHTML);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////// RULERS ////////////////////////////////
 
-const navbarRTemplate = document.getElementById("navbarR-template").innerHTML;
-const competitionsRTemplate = document.getElementById(
-  "competitionsR-template"
-).innerHTML;
-const entriesRTemplate = document.getElementById("entriesR-template").innerHTML;
-
-const renderNavbarR = Handlebars.compile(navbarRTemplate);
-const renderCompetitionsR = Handlebars.compile(competitionsRTemplate);
-const renderEntriesR = Handlebars.compile(entriesRTemplate);
+const renderNavbarR = Handlebars.compile(document.getElementById("navbarR-template").innerHTML);
+const renderCompetitionsR = Handlebars.compile(document.getElementById("competitionsR-template").innerHTML);
+const renderEntriesR = Handlebars.compile(document.getElementById("entriesR-template").innerHTML);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function renderContent(content, tagId) {
   const contentDiv = document.getElementById(tagId);
   contentDiv.innerHTML = content;
 }
-
 function load_js(path) {
   var script = document.createElement("script");
   script.src = `${domainName}/STS-Frontend-Website/${path}`;
-  document.body.appendChild(script);
+  document.querySelector('#body').appendChild(script);
 }
-
-function load_css(path) {
-  var style = document.createElement("link");
-  style.rel = "stylesheet";
-  style.href = `${domainName}/STS-Frontend-Website/${path}`;
-  document.head.appendChild(style);
-}
-
-
 function getCookie(name) {
   const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return cookieValue ? cookieValue.pop() : null;
 }
-
+function changeHashing(event) {
+  event.preventDefault();
+  window.location.hash = this.getAttribute("href");
+}
+function setCookie(name, value) {
+    const expires=getCookie('expirationDate')?getCookie('expirationDate'):''
+  document.cookie = name + "=" + value + ";" + expires ;
+}
 function HandleNavigation() {
-  // const token = localStorage.getItem("token");
-  // const competition = localStorage.getItem("subscriptionId");
-  // const admin = localStorage.getItem("admin");
-  // const ruler = localStorage.getItem("ruler");
-
   var token = getCookie("token");
-const competition = getCookie("subscriptionId");
-const admin = getCookie("admin");
-const ruler = getCookie("ruler");
-
-
-
+  const competition = getCookie("subscriptionId");
+  const admin = getCookie("admin");
+  const ruler = getCookie("ruler");
   if (token) {
     if (admin) {
-      
-      // debugger
       renderContent(renderNavbar(), "body");
-      load_css("admin/css/navbar.css");
       load_js("admin/js/navbar.js");
       load_js("js/logout.js");
-
-      // window.addEventListener("load", handleNavigationAdmin1);
-      // window.addEventListener("hashchange", handleNavigationAdmin1);
-
-      const navLinks = document.querySelectorAll("nav a");
-      navLinks.forEach((link) => {
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
-          window.location.hash = this.getAttribute("href");
-        });
-      });
-
       handleNavigationAdmin1();
-
-      if (window.location.hash == "#school") {
-        // renderContent(renderSidebar(),"content");
-        // console.log("comp");
-        // load_css('admin/css/sidebar.css');
-        // console.log("compcss");
-        // load_js('admin/js/sidebar1.js');
-        // console.log("compjs");
-
-        // window.addEventListener("load", handleNavigationAdmin2);
-        // window.addEventListener("hashchange", handleNavigationAdmin2);
-
-        const navLinks = document.querySelectorAll("nav a");
-        navLinks.forEach((link) => {
-          link.addEventListener("click", function (event) {
-            event.preventDefault();
-            window.location.hash = this.getAttribute("href");
-          });
-        });
-        handleNavigationAdmin2();
-        console.log("compend");
-      }
-      if (window.location.hash == "#compatatorsAS") {
-        // debugger
-        // renderContent(renderSidebar2(),"content");
-        // console.log("comp");
-        // load_css('admin/css/sidebar.css');
-        // console.log("compcss");
-        // load_js('admin/js/sidebar1.js');
-        // console.log("compjs");
-
-        // window.addEventListener("load", handleNavigationAdmin3);
-        // window.addEventListener("hashchange", handleNavigationAdmin3);
-
-        const navLinks = document.querySelectorAll("nav a");
-        navLinks.forEach((link) => {
-          link.addEventListener("click", function (event) {
-            event.preventDefault();
-            window.location.hash = this.getAttribute("href");
-          });
-        });
-        handleNavigationAdmin3();
-        console.log("compend");
-      }
     } else if (ruler) {
       renderContent(renderNavbarR(), "body");
-      load_css("admin/css/navbar.css");
       load_js("admin/js/navbarR.js");
       load_js("js/logout.js");
-
-      // window.addEventListener("load", handleNavigationRuler);
-      // window.addEventListener("hasher);change", handleNavigationRul
-
-      const navLinks = document.querySelectorAll("nav a");
-      navLinks.forEach((link) => {
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
-          window.location.hash = this.getAttribute("href");
-        });
-      });
-
       handleNavigationRuler();
     } else {
       if (competition) {
@@ -288,18 +110,6 @@ const ruler = getCookie("ruler");
         load_js('js/editProfileAcademy.js');
         load_js("js/logout.js");
         load_js("js/contactUs.js");
-
-        // window.addEventListener("load", handleNavigationAfter);
-        window.addEventListener("hashchange", handleNavigationAfter);
-
-        const navLinks = document.querySelectorAll("nav a");
-        navLinks.forEach((link) => {
-          link.addEventListener("click", function (event) {
-            event.preventDefault();
-            window.location.hash = this.getAttribute("href");
-          });
-        });
-
         handleNavigationAfter();
       } else {
         renderContent(renderChoiceCompetition(), "body");
@@ -308,60 +118,24 @@ const ruler = getCookie("ruler");
       }
     }
   } else {
-    const h=document.querySelector('#content')?document.querySelector('#content').innerHTML:''
-    // console.log(h)
-    if (!["#news", "#sponsor", "#advertising"].includes(window.location.hash)||h=='') {
+    const h = document.querySelector('#content') ? document.querySelector('#content').innerHTML : ''
+    if (!["#news", "#sponsor", "#advertising"].includes(window.location.hash) || h == '') {
       renderContent(renderhomeBeforeLogin(), "body");
-      load_js("js/sponsors.js");
-      load_js("js/advertisers.js");
-      load_js("js/news.js");
-      load_css("css/insideContent.css");
+      
     }
-
-    // window.addEventListener("load", handleNavigationBefore);
-    window.addEventListener("hashchange", handleNavigationBefore);
-
-    const navLinks = document.querySelectorAll("nav a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        window.location.hash = this.getAttribute("href");
-      });
-    });
-
     handleNavigationBefore();
   }
 }
 
 function handleNavigationBefore() {
   const hash = window.location.hash;
+  load_js('js/sponsors.js');
   switch (hash) {
-    // case "#":
-    //   renderContent(renderHome(),"content");
-    //   load_js('js/beforeLogin.js');
-    //   load_js('js/advertisers.js');
-    //   load_js('js/news.js');
-    //   load_css('css/insideContent.css');
-    //   break;
     case "#sliderNews":
       renderContent(renderHome(), "content");
-      // load_js('js/sponsors.js');
-      // load_js('js/advertisers.js');
-      // load_js('js/news.js');
-      // load_css('css/insideContent.css');
+      load_js('js/advertisers.js');
+      load_js('js/news.js');
       break;
-    // case "#knowMoreSponsers":
-    //   renderContent(renderInsideContent() ,"content");
-    //   load_js('js/sponsors.js');
-    //   break;
-    // case "#knowMoreAdventisers":
-    //   renderContent(renderInsideContent() ,"content");
-    //   load_js('js/advertisers.js');
-    //   break;
-    // case "#knowMoreNews":
-    //   renderContent(renderInsideContent() ,"content");
-    //   load_js('js/news.js');
-    //   break;
     case "#info":
       renderContent(renderInfo(), "content");
       break;
@@ -382,30 +156,33 @@ function handleNavigationBefore() {
       load_js("js/login.js");
       break;
     case "#sponsor":
-      if(document.querySelector('#content')&&document.querySelector('#content').innerHTML==''){
+      if (document.querySelector('#content') && document.querySelector('#content').innerHTML == '') {
         renderContent(renderHome(), "content");
-        load_js("js/sponsors.js");
-        load_css("css/insideContent.css");
+        // load_js("js/sponsors.js");
+        load_js("js/advertisers.js");
+        load_js("js/news.js");
       }
       break;
     case "#advertising":
-      if(document.querySelector('#content').innerHTML==''){
+      if (document.querySelector('#content').innerHTML == '') {
         renderContent(renderHome(), "content");
+        // load_js("js/sponsors.js");
         load_js("js/advertisers.js");
-        load_css("css/insideContent.css");
+        load_js("js/news.js");
       }
       break;
     case "#news":
-      if(document.querySelector('#content').innerHTML==''){
+      if (document.querySelector('#content').innerHTML == '') {
         renderContent(renderHome(), "content");
+        // load_js("js/sponsors.js");
+        load_js("js/advertisers.js");
         load_js("js/news.js");
-        load_css("css/insideContent.css");
       }
       break;
     default:
       renderContent(renderHome(), "content");
+      load_js("js/advertisers.js");
       load_js("js/news.js");
-      load_css("css/insideContent.css");
       break;
   }
 }
@@ -416,73 +193,55 @@ function handleNavigationAfter() {
   switch (hash) {
     case "#myProfile":
       // renderContent(renderCompetitions(),"content");
-        load_js('js/editProfileAcademy.js');
-      // changeTheme(themeObj);
+      load_js('js/editProfileAcademy.js');
       break;
-    // case "#logout":
-    //   load_js('js/logout.js');
-    //   break;
-    // case "#contactUs":
-    //   // renderContent(renderContact(), "content");
-    //   load_js("js/contactUs.js");
-    //   // load_js('js/competitions.js');
-    //   // changeTheme(themeObj);
-    //   break;
-    // case "#competitions":
-    //   // renderContent(renderCompetitions(), "content");
-    //   load_js("js/competitions.js");
-    //   // changeTheme(themeObj);
-    //   break;
     case "#compatators":
       renderContent(renderCompatators(), "content");
       load_js("js/compatators.js");
       // getCompetitorsData("theme" + themeObj.bgColor.substring(1));
-
-      // changeTheme(themeObj);
-      break;
+    break
     case "#entries":
       renderContent(renderEntries(), "content");
       load_js("js/entries.js");
-      // changeTheme(themeObj);
       break;
     case "#teachers":
       renderContent(renderTeachers(), "content");
       load_js("js/teachers.js");
-      // changeTheme(themeObj);
       break;
     case "#fullStatement":
       renderContent(renderFullStatement(), "content");
       load_js("js/fullStatement.js");
-      // changeTheme(themeObj);
       break;
     case "#summaryStatement":
       renderContent(renderSummaryStatement(), "content");
       load_js("js/summaryStatement.js");
-      // changeTheme(themeObj);
       break;
-      case "#fullSchadual":
+    case "#fullSchadual":
       renderContent(renderFullSchadual(), "content");
       load_js("js/fullSchadual.js");
-      // changeTheme(themeObj);
       break;
-      case "#schadualBySchool":
+    case "#schadualBySchool":
       renderContent(rendercAcademySchadual(), "content");
       load_js("js/academySchadual.js");
-      // changeTheme(themeObj);
       break;
     case "#payment":
+      var script = document.createElement("script");
+      script.src = `https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js`;
+      document.querySelector('head').appendChild(script);
       renderContent(renderPayment(), "content");
       load_js("js/payment.js");
-      // changeTheme(themeObj);
       break;
-    case "#results":
-      renderContent(renderResults(), "content");
-      load_js("js/results.js");
-      // changeTheme(themeObj);
+    case "#fullResults":
+      renderContent(renderFullResult(), "content");
+      load_js("js/fullResult.js");
+      break;
+    case "#academyResults":
+      renderContent(renderAcademyResult(), "content");
+      load_js("js/academyResult.js");
       break;
     default:
       renderContent(renderCompatators(), "content");
-      load_js("js/competitions.js");
+     
       load_js("js/compatators.js");
       break;
   }
@@ -491,9 +250,7 @@ function handleNavigationAfter() {
 ///////////////////////////////////ADMIN//////////////////////////////////////
 
 function handleNavigationAdmin1() {
-  // debugger
   const hash = window.location.hash;
-  // console.log("homeadmin");
 
   // if
   // (hash === "#showCompetitionDetails") {
@@ -505,62 +262,52 @@ function handleNavigationAdmin1() {
   switch (hash) {
     // case "#logoback":
     //   renderContent(renderNavbar(),"body");
-    //   load_css('admin/css/navbar.css');
     //   load_js('admin/js/navbar.js');
     //   break;
     case "#competition":
       renderContent(renderCompetitionsA(), "content");
-      // console.log("compadmin");
       load_js("admin/js/navbar/competitions.js");
       break;
-    case "#school":
-      // handleNavigationAdmin2();
-      break;
+    // case "#school":
+    //   // handleNavigationAdmin2();
+    //   break;
     case "#news":
-      if(document.querySelector('#content').innerHTML==''){
+      if (document.querySelector('#content').innerHTML == '') {
         renderContent(renderNewsA(), "content");
         load_js("admin/js/navbar/news.js");
-        load_css("css/insideContent.css");
       }
       break;
     case "#sponser":
-      if(document.querySelector('#content').innerHTML==''){
+      if (document.querySelector('#content').innerHTML == '') {
         renderContent(renderSponsersA(), "content");
         load_js("admin/js/navbar/sponsers.js");
-        load_css("css/insideContent.css");
       }
       break;
     case "#country":
       renderContent(renderCountriesA(), "content");
       load_js("admin/js/navbar/countries.js");
-      // changeTheme(themeObj);
       break;
     case "#prodect":
       renderContent(renderProductsA(), "content");
       load_js("admin/js/navbar/products.js");
-      // changeTheme(themeObj);
       break;
     case "#messages":
       renderContent(renderMessagesA(), "content");
       load_js("admin/js/navbar/messages.js");
-      // changeTheme(themeObj);
       break;
     case "#adventiser":
-      if(document.querySelector('#content').innerHTML==''){
+      if (document.querySelector('#content').innerHTML == '') {
         renderContent(renderAdventisersA(), "content");
         load_js("admin/js/navbar/adventisers.js");
-        load_css("css/insideContent.css");
       }
       break;
     case "#addAdmin":
       // renderContent(renderFullStatement(),"content");
       // load_js('js/fullStatement.js');
-      // changeTheme(themeObj);
       break;
     case "#editProfile":
       // renderContent(renderSummaryStatement(),"content");
       // load_js('js/summaryStatement.js');
-      // changeTheme(themeObj);
       break;
     // case "#showCompetitionDetails":
     //     handleNavigationAdmin2();
@@ -569,18 +316,16 @@ function handleNavigationAdmin1() {
     //     handleNavigationAdmin3();
     //     break;
     default:
-       
-// console.log(window.location.hash)
 
-      if(["#compatatorsAS","#school","#compatatorsA","#entersA","#paymentA"].includes(window.location.hash)){
+
+      if (["#compatatorsAS", "#school", "#compatatorsA", "#entersA", "#paymentA"].includes(window.location.hash)) {
         handleNavigationAdmin2()
-      }else if(["#compatatorsAS","#teachersAS","#entriesAS"].includes(window.location.hash)){
+      } else if (["#compatatorsAS", "#teachersAS", "#entriesAS"].includes(window.location.hash)) {
         handleNavigationAdmin3()
-      }else{
+      } else {
         renderContent(renderCompetitionsA(), "content");
         load_js("admin/js/navbar/competitions.js");
       }
-      // load_css('admin/css/navbar.css');
       // load_js('admin/js/navbar.js');
       break;
 
@@ -590,54 +335,42 @@ function handleNavigationAdmin1() {
 
 function handleNavigationAdmin2() {
   const hash = window.location.hash;
-//  debugger
   renderContent(renderSidebar(), "content");
-  load_css("admin/css/sidebar.css");
   load_js("admin/js/sidebar1.js");
-
   switch (hash) {
     // case "#logoback":
     // renderContent(renderNavbar(),"body");
-    // load_css('admin/css/navbar.css');
     // load_js('admin/js/navbar.js');
     // break;
     // case "#competition":
     //   renderContent(renderCompetitionsA(), "content");
     //   load_js("admin/js/navbar/competitions.js");
-    //   // load_css('admin/css/tables.css');
     //   break;
     case "#compatatorsAS":
       renderContent(renderSidebar2(), "content");
-      load_css("admin/css/sidebar.css");
       load_js("admin/js/sidebar1.js");
       renderContent(renderCompatatorsAS(), "contentSchool");
-      load_css("admin/css/tables.css");
       load_js("admin/js/sidebar2/compatatorsS.js");
 
       break;
     case "#school":
       renderContent(renderSchool(), "contentCompetition");
-      // load_css('admin/css/tables.css');
       load_js("admin/js/sidebar1/schools.js");
       break;
     case "#compatatorsA":
       renderContent(renderCompatatorsA(), "contentCompetition");
-      // load_css('admin/css/tables.css');
       load_js("admin/js/sidebar1/compatators.js");
       break;
     case "#entersA":
       renderContent(renderEntersA(), "contentCompetition");
-      load_css("admin/css/entryCard.css");
       load_js("admin/js/sidebar1/entries.js");
       break;
     case "#paymentA":
       renderContent(renderPaymentA(), "contentCompetition");
-      load_css("admin/css/recitCard.css");
       load_js("admin/js/sidebar1/payments.js");
       break;
     default:
       renderContent(renderSchool(), "contentCompetition");
-      //  load_css('admin/css/recitCard.css');
       load_js("admin/js/sidebar1/schools.js");
       handleNavigationAdmin1()
 
@@ -651,38 +384,28 @@ function handleNavigationAdmin3() {
 
 
   const hash = window.location.hash;
-  console.log("home3admin");
   renderContent(renderSidebar2(), "content");
-  load_css("admin/css/sidebar.css");
   load_js("admin/js/sidebar1.js");
 
   switch (hash) {
     // case "#schoolDetails":
     //   renderContent(renderSidebar2(),"body");
-    //   console.log("renderSidebar2");
-    //   load_css('admin/css/sidebar.css');
-    //   console.log("schoolrendercss");
     //   load_js('admin/js/sidebar2.js');
-    //   console.log("schoolrenderjs");
     //   break;
     case "#compatatorsAS":
       renderContent(renderCompatatorsAS(), "contentSchool");
-      load_css("admin/css/tables.css");
       load_js("admin/js/sidebar2/compatatorsS.js");
       break;
     case "#teachersAS":
       renderContent(renderTeachersAS(), "contentSchool");
-      load_css("admin/css/tables.css");
       load_js("admin/js/sidebar2/teachersS.js");
       break;
     case "#entriesAS":
       renderContent(renderEntriesAS(), "contentSchool");
-      load_css("admin/css/tables.css");
       load_js("admin/js/sidebar2/entriesS.js");
       break;
     default:
       renderContent(renderCompatatorsAS(), "contentSchool");
-      load_css("admin/css/tables.css");
       load_js("admin/js/sidebar2/compatatorsS.js");
       handleNavigationAdmin1()
       handleNavigationAdmin2()
@@ -708,7 +431,6 @@ function handleNavigationRuler() {
     default:
       renderContent(renderCompetitionsR(), "content");
       load_js("admin/js/rulers/compitetionsR.js");
-      // load_css('css/insideContent.css');
       break;
   }
 }
@@ -716,92 +438,39 @@ function handleNavigationRuler() {
 window.addEventListener("load", HandleNavigation);
 window.addEventListener("hashchange", HandleNavigation);
 
-// function changeHash(){
-//   window.location.hash = '#contact';
-// }
 
-// function backToTop() {
-//   // event.preventDefault();
-//   alert('fbdbdbdgbdgb');
-//   document.getElementById("back-to-top").addEventListener('click', function (event) {
-//     event.preventDefault();
-//     window.location.hash = this.getAttribute('href');
-//   });
-// };
-//aapi m   statts  data
-// function responseAlert(res) {
-//   // `<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-//   //     <symbol id="check-circle-fill" viewBox="0 0 16 16">
-//   //       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-//   //     </symbol>
-//   //     <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
-//   //       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-//   //     </symbol>
-//   //   </svg>`
-
-//   if (res.apiStatus) {
-//     alert(`${res.apiMessage}`);
-//     // `<div class="alert alert-success alert-dismissible fade show" role="alert">
-//     //   <strong class="alert-heading">Holy guacamole!</strong> You should check in on some of those fields below.
-//     //     <div class="d-flex align-items-center">
-//     //       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-//     //       <div>
-//     //         ${res.apiMessage}
-//     //       </div>
-//     //     </div>
-
-//     //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-//     // </div>`
-//   } else if (!res.apiStatus) {
-//     alert(`${res.apiMessage}`);
-
-//     // `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-//     //   <strong class="alert-heading">Holy guacamole!</strong> You should check in on some of those fields below.
-//     //   <div class="d-flex align-items-center">
-//     //     <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-//     //     <div>
-//     //     ${res.apiMessage}
-//     //     </div>
-//     //   </div>
-
-//     //   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-//     // </div>`
-//   } else if (res.apiStatus === 500) {
-//     alert("500");
-//   }
-// }
-
-function responseAlert(res) {
-  // const successIcon = '<i class="bi flex-shrink-0 me-2 fas fa-check-circle-fill text-black fs-3" aria-label="Success"></i>';
-  // const errorIcon = '<i class="bi flex-shrink-0 me-2 fas fa-exclamation-triangle-fill text-black fs-3" aria-label="Danger"></i>';
+function responseAlert(response) {
+  const existingAlerts = document.querySelectorAll('.alert');
+  existingAlerts.forEach(alert => alert.remove());
 
   const alertContainer = document.createElement('div');
-  alertContainer.classList.add('alert', 'alert-dismissible', 'fade', 'show', 'position-fixed', 'top-0', 'text-center');
+  alertContainer.classList.add('alert', 'alert-dismissible', 'fade', 'show', 'position-fixed', 'top-1', 'text-center');
   alertContainer.setAttribute('role', 'alert');
   alertContainer.style.maxWidth = '400px';
   alertContainer.style.borderRadius = '1rem';
   alertContainer.style.zIndex = '9999';
-  
-  // const alertHeading = document.createElement('strong');
-  // alertHeading.classList.add('alert-heading');
-  // alertHeading.textContent = 'Holy guacamole!';
+  alertContainer.style.top = '10%';
+  alertContainer.style.left = '50%';
+  alertContainer.style.transform = 'translate(-50%, -50%)';
 
   const alertMessage = document.createElement('div');
   alertMessage.classList.add('d-flex', 'align-items-center');
-  alertMessage.innerHTML = res.apiMessage;
+  alertMessage.innerHTML = response.apiMessage;
 
-  if (res.apiStatus) {
+  if (response.apiStatus) {
     alertContainer.classList.add('alert-success');
     alertContainer.classList.remove('alert-danger');
-    alertMessage.innerHTML = res.apiMessage;
-  } else if (!res.apiStatus) {
+    alertMessage.innerHTML = response.apiMessage;
+  } else if (!response.apiStatus) {
     alertContainer.classList.add('alert-danger');
     alertContainer.classList.remove('alert-success');
-    alertMessage.innerHTML = res.apiMessage;
-  } else if (res.apiStatus === 500) {
-    // alertContainer.classList.add('alert-danger');
-    // alertContainer.classList.remove('alert-success');
-    // alertContainer.textContent = '500';
+    alertMessage.innerHTML = response.apiMessage;
+  } else if (response.apiStatus === 500) {
+    alertContainer.classList.add('alert-warning');
+    alertMessage.textContent = 'Internal server error.';
+  } else {
+    alertContainer.classList.add('alert-info');
+    alertMessage.textContent = 'Unknown response status.';
   }
 
   const closeButton = document.createElement('button');
@@ -810,11 +479,14 @@ function responseAlert(res) {
   closeButton.setAttribute('data-bs-dismiss', 'alert');
   closeButton.setAttribute('aria-label', 'Close');
 
-  // alertContainer.appendChild(alertHeading);
   alertContainer.appendChild(alertMessage);
   alertContainer.appendChild(closeButton);
-
   document.body.appendChild(alertContainer);
+
+  // Add a timer to remove the alert after 10 seconds
+  setTimeout(() => {
+    alertContainer.remove();
+  }, 6000);
 }
 
 if (

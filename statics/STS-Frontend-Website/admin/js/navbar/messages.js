@@ -15,7 +15,6 @@ if(checkBox.checked){
     .then(response => response.json())
     .then(data => {
       messageData = data.data;
-      console.log(messageData)
       messageContainer.innerHTML = "";
       messageData.forEach(message=> {
         const element = document.createElement('tr');
@@ -25,15 +24,20 @@ if(checkBox.checked){
             <td>${message.owner.email}</td>
             <td>${message.message}</td>
             <td>
-              <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompetitor('${message._id}')"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompetitor('${message._id}')" viewBox="0 0 16 16">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg>
             </td>
         `;
         // element.setAttribute('id', `competitor-${competitor._id}`);
         messageContainer.appendChild(element);
       });
+      document.getElementById("gif").style.display = "none";
     })
-    .catch(error =>  console.log('Error:', error) );
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    }); 
 
 
 }else{
@@ -58,7 +62,9 @@ if(checkBox.checked){
               <td>${message.owner.email}</td>
               <td>${message.message}</td>
               <td>
-                <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompetitor('${message._id}')"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompetitor('${message._id}')" viewBox="0 0 16 16">
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                </svg>
               </td>
           `;
           messageContainer.appendChild(element);
@@ -72,7 +78,9 @@ if(checkBox.checked){
             <td>${message.email}</td>
             <td>${message.message}</td>
             <td>
-              <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompetitor('${message._id}')"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" style="color: #c10b0b;cursor: pointer;" onclick="deleteCompetitor('${message._id}')" viewBox="0 0 16 16">
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg>
             </td>
         `;
         messageContainer.appendChild(element);
@@ -80,9 +88,12 @@ if(checkBox.checked){
         }
 
       });
+      document.getElementById("gif").style.display = "none";
     })
-    .catch(error =>  console.log('Error:', error) );
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    }); 
 
 }
 
@@ -91,8 +102,8 @@ if(checkBox.checked){
 checkboxToFilter()
 
 function deleteCompetitor(id){
-  console.log(id)
   if(id){
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/message/${id}`, {
       method: 'DELETE',
       headers: {'Authorization': token},
@@ -101,8 +112,14 @@ function deleteCompetitor(id){
   .then(data => {
     console.log(data.apiMessage)
     checkboxToFilter()
+    document.getElementById("gif").style.display = "none";
+    responseAlert(data);
   })
-  .catch(error =>  console.log('Error:', error) );
+  .catch(error => {
+    console.log(error);
+    document.getElementById("gif").style.display = "none";
+    responseAlert(error);
+  }); 
 
   }
 }

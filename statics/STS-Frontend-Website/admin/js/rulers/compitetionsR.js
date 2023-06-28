@@ -38,27 +38,31 @@ function getCompetitionsData() {
                     <h3 class="text-center pt-3 bg-dark">${competitions.type} - ${competitions.year}</h3>
                     <div class="content">
                         <div class="text-center">
-                            <label class="card-title fw-bold text-light">Admission</label>
+                            <h6 class="card-title fw-bold text-light">Admission</h6>
                             <p class="ms-2">${startSubscription} to ${endSubscription}</p>
-                            <label class="card-title fw-bold text-light">Location Display your Show</label>
+                            <h6 class="card-title fw-bold text-light">Location Display your Show</h6>
                             <p class="ms-2">${competitions.stage}</p>
-                            <label class="card-title fw-bold text-light">Date Display your Show</label>
+                            <h6 class="card-title fw-bold text-light">Date Display your Show</h6>
                             <p class="ms-2">${date}</p>
                         </div>
                     </div>
                 `;   
                 competitionsContainer.appendChild(element);
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          }); 
+
 }
 
 getCompetitionsData();
 
-function setCookie(name, value) {
-    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
-  }
+// function setCookie(name, value) {
+//     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+//   }
 
 function storeID(id,type,year) {
     setCookie("entryDegree" , id)

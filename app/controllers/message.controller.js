@@ -6,8 +6,6 @@ class Country {
             if(req.user){
                 req.body.owner=req.user._id
             }
-            // console.log(req.user._id)
-            console.log(req.body)
             return messageModel.create(req.body)
         }, 'your message arrived successfully and we will reply to you ASAP')
     }

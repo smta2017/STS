@@ -24,9 +24,12 @@ function getSponsersTitles() {
                 list.appendChild(anchor);
                 sponsorTitles.appendChild(list);
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          });   
 }
 
 getSponsersTitles();

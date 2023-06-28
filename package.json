@@ -19,6 +19,7 @@
   "homepage": "https://github.com/george-abadier/STS#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "braintree": "^3.16.0",
     "cors": "^2.8.5",
     "country-codes-list": "^1.6.10",
     "dotenv": "^16.0.3",

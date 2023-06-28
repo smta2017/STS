@@ -38,13 +38,15 @@ function getAdventisersData() {
                                 <h5 class="text-dark">${adventisers.title}</h5>
                                 <p>${adventisers.description}</p>
                                 <button class="btn btn-success" id="add-row" onclick="editAdventisers('${adventisers._id}')">
-                                    <i class="edit-btn fa-solid fa-pen-to-square"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                                    </svg>
                                 </button>
-                                <a onclick="showAdventisersDetails('${adventisers._id}')" class="btn btn-warning btn-lg action-button login" type="button" >
-                                    Know More<i class="fa fa-long-arrow-right ml-2"></i>
-                                </a>
+                                <a onclick="showAdventisersDetails('${adventisers._id}')" class="btn btn-warning btn-lg action-button login" type="button">Know More</a>
                                 <button class="btn btn-danger" id="remove-row" onclick="deleteAdventisers('${adventisers._id}')">
-                                    <i class="delete-btn fa-solid fa-trash-can"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill" viewBox="0 0 16 16">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -67,9 +69,12 @@ function getAdventisersData() {
 
                 carouselItemCount++;
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
-    document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          }); 
 
 }
 
@@ -77,22 +82,25 @@ getAdventisersData();
 
 function editAdventisers(id) {
     var myAdventisers = adventisersData.find(adventiserss => { return adventiserss._id == id })
-    console.log(myAdventisers)
+   
     document.getElementById("adventisersId").value = myAdventisers._id;
     document.getElementById("TitleAdventiser").value = myAdventisers.title ;
     document.getElementById("descrebtionAdventiser").value = myAdventisers.description;
     document.getElementById("paragraphAdventiser").value = myAdventisers.paragraph;
-    document.getElementById("uploadImgForAdventiser").value = myAdventisers.photo;
+    document.querySelector('#imgPreview').src = myAdventisers.photo
+    document.querySelector('#imgPreview').style.display = 'block'
 }
 
 function changeAdventisers(e) {
     e.preventDefault();
     let id = document.getElementById("adventisersId").value;
+
+    const imageData = document.querySelector('#uploadImgForAdventiser').files[0]
     const formData = new FormData();
     formData.append('title', document.getElementById("TitleAdventiser").value);
     formData.append('description', document.getElementById("descrebtionAdventiser").value);
     formData.append('paragraph', document.getElementById("paragraphAdventiser").value);
-    formData.append('photo', document.getElementById("uploadImgForAdventiser").files[0]);
+    if(document.querySelector("#uploadImgForAdventiser").files[0]){formData.append('photo', imageData)};
 
     const method = id ? 'PUT' : 'POST';
     const url = id ? `${domainName}/sts/advertising/${id}` : `${domainName}/sts/advertising`;
@@ -104,8 +112,9 @@ function changeAdventisers(e) {
             headers: {'Authorization': token},
             body: formData,
         })
+        .then(response => response.json())
             .then(response => {
-                if (response.ok) {
+                if (response.apiStatus == true) {
                     console.log(id ? "congrats, you updated advertising data successfully" : "Data saved successfully");
                     document.getElementById("adventisersId").value = "";
                     document.getElementById("TitleAdventiser").value = "";
@@ -117,9 +126,14 @@ function changeAdventisers(e) {
                 } else {
                     throw new Error('Request failed.');
                 }
+                document.getElementById("gif").style.display = "none";
+                responseAlert(response);
             })
-            .catch(error => console.error(error));
-        document.getElementById("gif").style.display ="none"
+            .catch(error => {
+                console.log(error);
+                document.getElementById("gif").style.display = "none";
+                responseAlert(error);  
+            }); 
     } catch (error) {
         console.log(error);
     }
@@ -135,7 +149,7 @@ function deleteAdventisers(id) {
                 headers: {'Authorization': token},
             })
                 .then(response => {
-                    if (response.ok) {
+                    if (response.status == 200) {
                         console.log("Advertising data deleted successfully");
                         
                         // // Find the index of the deleted item
@@ -159,9 +173,18 @@ function deleteAdventisers(id) {
                     } else {
                         throw new Error('Request failed.');
                     }
+                    document.getElementById("gif").style.display = "none";
+                    response.json().then(data => {
+                        responseAlert(data);
+                    });
                 })
-                .catch(error => console.error(error));
-            document.getElementById("gif").style.display ="none"
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    error.json().then(data => {
+                        responseAlert(data);
+                      });
+                  }); 
         } catch (error) {
             console.log(error);
         }
@@ -220,4 +243,11 @@ function showAdventisersDetails(id) {
     } else {
         console.log("No news ID provided.");
     }
+}
+
+
+function clearData(){
+    document.getElementById("adventisersId").value = '';
+    document.querySelector('#imgPreview').src = '';
+    document.querySelector('#imgPreview').style.display = 'none'
 }

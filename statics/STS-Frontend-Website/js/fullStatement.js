@@ -23,21 +23,20 @@ function generatePDF() {
   // Wait for the document to fully load before printing
   win.onload = function() {
     // Print the document
-    // win.print();
+    win.print();
     // Close the print preview window after printing
     // win.close();
   };
 }
 
-document.getElementById('generate-pdf').addEventListener('click', generatePDF);
-
 var fullStatement;
+var total = 0; // Initialize total variable outside the function
 
 function getfullStatement() {
   var fullStatementContainer = document.getElementById("table-body-fullStatement");
   var id = getCookie("subscriptionId");
-  document.getElementById("gif").style.display ="block"
-  fetch(`${domainName}/sts/entry/fullstatment/${id}`, {
+  document.getElementById("gif").style.display = "block";
+  fetch(  `${domainName}/sts/entry/fullstatment/${id}`  , {
     method: 'GET',
     headers: {'Authorization': token},
   })
@@ -45,25 +44,32 @@ function getfullStatement() {
     .then(data => {
       fullStatement = data.data;
       fullStatementContainer.innerHTML = "";
-      fullStatement.forEach(fullStatement=> {
+      total = 0; // Reset total before calculating again
+      fullStatement.forEach(fullStatement => {
         const element = document.createElement('tr');
-        element.innerHTML = `
+        element.innerHTML = ` 
             <td>${fullStatement.firstName} ${fullStatement.lastName}</td>
             <td>${fullStatement.category}</td>
             <td>${fullStatement.entryName}</td>
             <td>${fullStatement.entryFees}</td>
-        `;
-        element.setAttribute('id', `fullStatement-${fullStatement._id}`);
+         ` ;
+        total += fullStatement.entryFees; // Add entryFees to total
+
+        element.setAttribute('id',`fullStatement-${fullStatement._id}`);
         fullStatementContainer.appendChild(element);
       });
+      document.getElementById("gif").style.display = "none";
+      document.getElementById("priceAcademy").innerHTML = `Price Of Academy: ${total}`
     })
-    .catch(error => console.log(error));
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    });
 }
 
 getfullStatement();
 
-document.getElementById("search").addEventListener("input", handleSearch);
+// document.getElementById("search").addEventListener("input", handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById("search").value.toLowerCase();

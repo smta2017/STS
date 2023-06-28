@@ -32,12 +32,20 @@ function generatePDF() {
   
 document.getElementById('generate-pdf').addEventListener('click', generatePDF);
   
+var selectBox = document.getElementById('callingCodeA');
+var countries = window.intlTelInputGlobals.getCountryData();
+for (var country of countries) {
+  const option = document.createElement('option');
+  option.value = country.iso2;
+  option.textContent = `${country.name} (+${country.dialCode})`;
+  selectBox.append(option);
+}
+
 var teachersData;
 
 function getTeachersAData() {
     var teachersContainer = document.getElementById("table-body-teachersA");
     var id = getCookie("schoolID");
-    console.log(id);
     document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/teacher/${id}`, {
       method: 'GET',
@@ -56,16 +64,23 @@ function getTeachersAData() {
                 <td>${teacher.mobileNumber}</td>
                 <td>${teacher.email}</td>
                 <td>
-                    <i class="edit-btn fa-solid fa-pen-to-square" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddTeacherA" onclick="editTeacherA('${teacher._id}')"></i>
-                    <i class="delete-btn fa-solid fa-trash-can" style="color: #c10b0b;cursor: pointer;" onclick="deleteTeacherA('${teacher._id}')"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddTeacherA" onclick="editTeacherA('${teacher._id}')" viewBox="0 0 16 16">
+                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="delete-btn bi bi-trash-fill delete" style="color: #c10b0b;cursor: pointer;" onclick="deleteTeacherA('${teacher._id}')" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                    </svg>
                 </td>
             `;
             element.setAttribute('id', `teacher-${teacher._id}`);
             teachersContainer.appendChild(element);
             });
+            document.getElementById("gif").style.display = "none";
     })
-    .catch(error => console.log(error));
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+        console.log(error);
+        document.getElementById("gif").style.display = "none";
+      }); 
 }
 
 getTeachersAData();
@@ -87,6 +102,12 @@ function changeTeacherA(e) {
 
     var teachersId = document.getElementById('teachersIdA').value;
 
+    var country = document.getElementById('callingCodeA').value;
+  
+    var selectOption = document.querySelector(`option[value='${country}']`);
+    var CountryCode = selectOption.textContent.split(' ').pop().match(/\d+/g).join('');
+
+    
     // Create an object with the form data
     var formData = {
         qualifierSubscription: getCookie('subscriptionId'),
@@ -94,7 +115,7 @@ function changeTeacherA(e) {
         lastName: document.getElementById('lastnameA').value,
         mobileNumber: document.getElementById('mobileNumberA').value,
         dateOfBirth: document.getElementById('dateOfBirthA').value,
-        countryCallingCode: document.getElementById('callingCodeA').value,
+        countryCallingCode: `+${CountryCode}`,
         email: document.getElementById('emailA').value,
     };
 
@@ -105,10 +126,10 @@ function changeTeacherA(e) {
             method: 'PUT',
             headers: { "Content-Type": "application/json" , 'Authorization': token},
             body: JSON.stringify(formData),
-        })
+        }).then(response => response.json())
             .then(response => {  
                 
-            if (response.ok) {
+            if (response.apiStatus == true) {
                 console.log(JSON.stringify(formData))
                 console.log(response)
                 console.log('Teacher updated successfully');
@@ -125,11 +146,14 @@ function changeTeacherA(e) {
                 } else {
                     console.log('Error:', response.status);
                 }
+                document.getElementById("gif").style.display = "none";
+                responseAlert(response);
             })
-                .catch(function (error) {
-                    console.log('Error:', error);
-                });
-                document.getElementById("gif").style.display ="none"
+            .catch(error => {
+                console.log(error);
+                document.getElementById("gif").style.display = "none";
+                responseAlert(error);
+            }); 
             } else {
                 // New teacher, send POST request
                 document.getElementById("gif").style.display ="block"
@@ -138,11 +162,9 @@ function changeTeacherA(e) {
                     method: 'POST',
                     headers: { "Content-Type": "application/json" , 'Authorization': token},
                     body: JSON.stringify(formData)
-                })
+                }).then(response => response.json())
                 .then(function (response) {
-                    responseAlert(response);
-                    
-                    if (response.ok) {
+                    if (response.apiStatus == true) {
                         console.log(JSON.stringify(formData))
                         console.log(response)
                     console.log('Teacher added successfully');
@@ -159,11 +181,14 @@ function changeTeacherA(e) {
                     } else {
                     console.log('Error:', response.status);
                     }
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(response);
                 })
-                .catch(function (error) {
-                    console.log('Error:', error);
-                });
-                document.getElementById("gif").style.display ="none"
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    responseAlert(error);
+                }); 
             }
 }
 
@@ -178,16 +203,25 @@ function deleteTeacherA(id) {
                 headers: {'Authorization': token},
             })
                 .then(response => {
-                    if (response.ok) {
+                    if (response.status == 200) {
                         console.log("Teacher data deleted successfully");
                         getTeachersAData();
                     } else {
                         console.log("response");
                         throw new Error('Request failed.');
                     }
+                    document.getElementById("gif").style.display = "none";
+                    response.json().then(data => {
+                        responseAlert(data);
+                    });
                 })
-                .catch(error => console.error(error));
-                document.getElementById("gif").style.display ="none"
+                .catch(error => {
+                    console.log(error);
+                    document.getElementById("gif").style.display = "none";
+                    error.json().then(data => {
+                        responseAlert(data);
+                      });
+                }); 
         } catch (error) {
             console.log(error);
         }
@@ -218,4 +252,9 @@ function handleSearch() {
       row.style.display = 'none';
     }
   });
+}
+
+
+function clearData(){
+    document.getElementById("teachersIdA").value = '';
 }

@@ -19,7 +19,6 @@ const tokenSchema = mongoose.Schema({
 tokenSchema.statics.createToken = async function (data, lifeTime) {
     let token
     if (lifeTime) {
-        console.log('creating token');
         token = jsonWebToken.sign(data, process.env.tokenPass)
         await tokenModel({ owner: data.id, token }).save()
     } else {

@@ -4,8 +4,17 @@ function editProfile() {
 
 } 
  
-function setCookie(name, value) {
-  document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+// function setCookie(name, value) {
+//   document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
+// }
+
+var selectBox = document.getElementById('callingCodeForAcademy');
+var countries = window.intlTelInputGlobals.getCountryData();
+for (var country of countries) {
+  const option = document.createElement('option');
+  option.value = country.iso2;
+  option.textContent = `${country.name} (+${country.dialCode})`;
+  selectBox.append(option);
 }
 
 function getCookie(name) {
@@ -16,6 +25,11 @@ function getCookie(name) {
 function profileModified(e) { 
     e.preventDefault(); 
     
+    var country = document.getElementById('callingCodeForAcademy').value;
+  
+    var selectOption = document.querySelector(`option[value='${country}']`);
+    var CountryCode = selectOption.textContent.split(' ').pop().match(/\d+/g).join('');
+  
     const formEditProfile = {
         academy: {
             schoolLocation: {
@@ -30,16 +44,16 @@ function profileModified(e) {
         user: {
             firstName: document.getElementById("editFirstNameForAcademy").value ? document.getElementById("editFirstNameForAcademy").value : undefined,
             lastName: document.getElementById("editLastNameForAcademy").value ? document.getElementById("editLastNameForAcademy").value : undefined,
-            countryCallingCode: document.getElementById("callingCodeForAcademy").value ? document.getElementById("callingCodeForAcademy").value : undefined,
+            countryCallingCode: `+${CountryCode}` ? `+${CountryCode}` : undefined,
             mobileNumber: document.getElementById("editMobileNumbeForAcademy").value ? document.getElementById("editMobileNumbeForAcademy").value : undefined,
             email: document.getElementById("editEmailForAcademy").value ? document.getElementById("editEmailForAcademy").value : undefined,
             password: document.getElementById("newPasswordForUsre").value ? document.getElementById("newPasswordForUsre").value : undefined,
         },
         oldPassword: document.getElementById("editOldPasswordForUser").value ? document.getElementById("editOldPasswordForUser").value : undefined,
     };
-    console.log(document.getElementById("editMobileNumbeForAcademy").value);
-    console.log(formEditProfile); 
-    console.log(JSON.stringify(formEditProfile)); 
+    // console.log(document.getElementById("editMobileNumbeForAcademy").value);
+    // console.log(formEditProfile); 
+    // console.log(JSON.stringify(formEditProfile)); 
     try {
       document.getElementById("gif").style.display ="block"
         fetch(`${domainName}/sts/user`, {
@@ -70,6 +84,8 @@ function profileModified(e) {
               document.getElementById("Postal").value = "";  
               document.getElementById("schoolName").value = "";  
             }
+            document.getElementById("gif").style.display ="none"
+            responseAlert(data);
           })
           .catch((error) => {
             if (error.message.includes('400')) {
@@ -77,8 +93,9 @@ function profileModified(e) {
             } else {
               console.log(error);
             }
+            document.getElementById("gif").style.display ="none"
+            responseAlert(error);
           });
-      document.getElementById("gif").style.display ="none"
       } catch (error) {
         console.log(error);
       }

@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "3458fe1f-97de-4f1b-a7da-48947fc3237e",
+        "_postman_id": "c8054ee6-a39d-4fb9-884d-39e3fd632731",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -356,309 +356,19 @@
             ]
         },
         {
-            "name": "messages",
+            "name": "sponsor",
             "item": [
                 {
-                    "name": "add",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/message",
-                            "host": [
-                                "message"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "authrization",
-                                "value": "",
-                                "disabled": true
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": [
-                                {
-                                    "key": "firstName",
-                                    "value": "aaaaaaaaaaaasss"
-                                },
-                                {
-                                    "key": "lastName",
-                                    "value": "ssssssssss"
-                                },
-                                {
-                                    "key": "email",
-                                    "value": "aaaa@gmail.com"
-                                },
-                                {
-                                    "key": "message",
-                                    "value": "asdafdfdfdsdfa  dfadfdsfdfs                                                              fdfdfdaf"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "add from user",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/message/inside",
-                            "path": [
-                                "inside"
-                            ],
-                            "host": [
-                                "message"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic"
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": [
-                                {
-                                    "key": "firstName",
-                                    "value": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "lastName",
-                                    "value": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "email",
-                                    "value": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "message",
-                                    "value": "saddddddddddddddd dsada sadkslmdmv"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "get all",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/message/all",
-                            "path": [
-                                "all"
-                            ],
-                            "host": [
-                                "message"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            },
-                            "raw": "{\n  \"onlyUsers\":true\n}"
-                        }
-                    }
-                },
-                {
-                    "name": "delete",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/message/6473edc43155fbea54a65ed8",
-                            "path": [
-                                "6473edc43155fbea54a65ed8"
-                            ],
-                            "host": [
-                                "message"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "teachers",
-            "item": [
-                {
-                    "name": "get all",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/teacher",
-                            "host": [
-                                "teacher"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjU4OTc4NX0.YQWmhMWYnKqLFCkaRXp80piB3ha15gGBn0KUkMxHuwA"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "get all for admin",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/teacher/648742e77676e7779f1de6a7",
-                            "path": [
-                                "648742e77676e7779f1de6a7"
-                            ],
-                            "host": [
-                                "teacher"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "delete",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/teacher/6473edc43155fbea54a65ed8",
-                            "path": [
-                                "6473edc43155fbea54a65ed8"
-                            ],
-                            "host": [
-                                "teacher"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "add",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/teacher",
-                            "host": [
-                                "teacher"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjYwNDgzNH0.r9aeyROIzqPEEoX0rsSmcdb8-Zjy84wzI0ttmiD24GM"
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": [
-                                {
-                                    "key": "firstName",
-                                    "value": "aaaaaaaa"
-                                },
-                                {
-                                    "key": "lastName",
-                                    "value": "sssssssssss"
-                                },
-                                {
-                                    "key": "mobileNumber",
-                                    "value": "1234567891"
-                                },
-                                {
-                                    "key": "countryCallingCode",
-                                    "value": "+20"
-                                },
-                                {
-                                    "key": "dateOfBirth",
-                                    "value": "1996-11-20"
-                                },
-                                {
-                                    "key": "email",
-                                    "value": "qwer@gmail.com"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "edit",
+                    "name": "update  ",
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/teacher/648d0ad3c48ed9d7b4485b62",
+                            "raw": "/sponsor/64858576d9001f84d20342f1",
                             "path": [
-                                "648d0ad3c48ed9d7b4485b62"
+                                "64858576d9001f84d20342f1"
                             ],
                             "host": [
-                                "teacher"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjYwNDgzNH0.r9aeyROIzqPEEoX0rsSmcdb8-Zjy84wzI0ttmiD24GM"
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": [
-                                {
-                                    "key": "firstName",
-                                    "value": "mmmmm"
-                                },
-                                {
-                                    "key": "lastName",
-                                    "value": "nnnnnnnn"
-                                },
-                                {
-                                    "key": "mobileNumber",
-                                    "value": "1234567898"
-                                },
-                                {
-                                    "key": "countryCallingCode",
-                                    "value": "+20"
-                                },
-                                {
-                                    "key": "dateOfBirth",
-                                    "value": "1996-11-20"
-                                },
-                                {
-                                    "key": "email",
-                                    "value": "qweeeer@gmail.com"
-                                },
-                                {
-                                    "key": "academy",
-                                    "value": "648d0ad3c48ed9d7b4485b62"
-                                },
-                                {
-                                    "key": "_id",
-                                    "value": "648d0ad3c48ed9d7b4484444"
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "news",
-            "item": [
-                {
-                    "name": "add",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/news",
-                            "host": [
-                                "news"
+                                "sponsor"
                             ]
                         },
                         "body": {
@@ -666,17 +376,12 @@
                             "formdata": [
                                 {
                                     "key": "title",
-                                    "value": "aaaaa",
+                                    "value": "cccccccc",
                                     "type": "default"
                                 },
                                 {
                                     "key": "paragraph",
-                                    "value": "sssssss",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "description",
-                                    "value": "ddddddd",
+                                    "value": "yyyyyyyy",
                                     "type": "default"
                                 },
                                 {
@@ -689,16 +394,13 @@
                     }
                 },
                 {
-                    "name": "update ",
+                    "name": "add  ",
                     "request": {
-                        "method": "PUT",
+                        "method": "POST",
                         "url": {
-                            "raw": "/news/648584d7d9001f84d20342e7",
-                            "path": [
-                                "648584d7d9001f84d20342e7"
-                            ],
+                            "raw": "/sponsor",
                             "host": [
-                                "news"
+                                "sponsor"
                             ]
                         },
                         "body": {
@@ -706,17 +408,12 @@
                             "formdata": [
                                 {
                                     "key": "title",
-                                    "value": "mmmmmmmm",
+                                    "value": "danon",
                                     "type": "default"
                                 },
                                 {
                                     "key": "paragraph",
-                                    "value": "ttttttt",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "description",
-                                    "value": "kkkkkkuuuuuuuuuuu",
+                                    "value": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaaaaaaaaa sdsdlkjlkjlkdjasjlkjlkjlk",
                                     "type": "default"
                                 },
                                 {
@@ -733,12 +430,12 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/news/all",
+                            "raw": "/sponsor/all",
                             "path": [
                                 "all"
                             ],
                             "host": [
-                                "news"
+                                "sponsor"
                             ]
                         }
                     }
@@ -748,12 +445,12 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/news/6476031eb8c49a21807f1f9b",
+                            "raw": "/sponsor/6475e42616821349edae71e3",
                             "path": [
-                                "6476031eb8c49a21807f1f9b"
+                                "6475e42616821349edae71e3"
                             ],
                             "host": [
-                                "news"
+                                "sponsor"
                             ]
                         }
                     }
@@ -866,6 +563,118 @@
                             ],
                             "host": [
                                 "advertising"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "news",
+            "item": [
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/news",
+                            "host": [
+                                "news"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "aaaaa",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "sssssss",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "ddddddd",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update ",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/news/648584d7d9001f84d20342e7",
+                            "path": [
+                                "648584d7d9001f84d20342e7"
+                            ],
+                            "host": [
+                                "news"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "mmmmmmmm",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "ttttttt",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "kkkkkkuuuuuuuuuuu",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/news/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "news"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/news/6476031eb8c49a21807f1f9b",
+                            "path": [
+                                "6476031eb8c49a21807f1f9b"
+                            ],
+                            "host": [
+                                "news"
                             ]
                         }
                     }
@@ -1213,210 +1022,6 @@
             ]
         },
         {
-            "name": "sponsor",
-            "item": [
-                {
-                    "name": "update  ",
-                    "request": {
-                        "method": "PUT",
-                        "url": {
-                            "raw": "/sponsor/64858576d9001f84d20342f1",
-                            "path": [
-                                "64858576d9001f84d20342f1"
-                            ],
-                            "host": [
-                                "sponsor"
-                            ]
-                        },
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "title",
-                                    "value": "cccccccc",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "paragraph",
-                                    "value": "yyyyyyyy",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "photo",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "add  ",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/sponsor",
-                            "host": [
-                                "sponsor"
-                            ]
-                        },
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "title",
-                                    "value": "danon",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "paragraph",
-                                    "value": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaaaaaaaaa sdsdlkjlkjlkdjasjlkjlkjlk",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "photo",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "get all",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/sponsor/all",
-                            "path": [
-                                "all"
-                            ],
-                            "host": [
-                                "sponsor"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "delete",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/sponsor/6475e42616821349edae71e3",
-                            "path": [
-                                "6475e42616821349edae71e3"
-                            ],
-                            "host": [
-                                "sponsor"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "product",
-            "item": [
-                {
-                    "name": "add  ",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/product",
-                            "host": [
-                                "product"
-                            ]
-                        },
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "name",
-                                    "value": "danon",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "prices",
-                                    "value": "[{\"country\":\"64748c907f9e9854168fe025\",\"price\":50}]",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "photo",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "update",
-                    "request": {
-                        "method": "PUT",
-                        "url": {
-                            "raw": "/product/648eee078e4d6ecfd2c129f2",
-                            "path": [
-                                "648eee078e4d6ecfd2c129f2"
-                            ],
-                            "host": [
-                                "product"
-                            ]
-                        },
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "name",
-                                    "value": "conan",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "prices",
-                                    "value": "[{\"country\":\"63e2346155257516346ae7cb\",\"price\":50},{\"country\":\"64748ca07f9e9854168fe027\",\"price\":20}]",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "photo",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "get all",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/product/63e2346155257516346ae7cb",
-                            "path": [
-                                "63e2346155257516346ae7cb"
-                            ],
-                            "host": [
-                                "product"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "delete",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/product/648eec21891abedcb18399e4",
-                            "path": [
-                                "648eec21891abedcb18399e4"
-                            ],
-                            "host": [
-                                "product"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
             "name": "competition",
             "item": [
                 {
@@ -1538,7 +1143,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
                             }
                         ]
                     }
@@ -1631,9 +1236,9 @@
                     "request": {
                         "method": "POST",
                         "url": {
-                            "raw": "/subscription/6490794c7533cd857b5589aa",
+                            "raw": "/subscription/6486756ec6dab1e71dbd6fbf",
                             "path": [
-                                "6490794c7533cd857b5589aa"
+                                "6486756ec6dab1e71dbd6fbf"
                             ],
                             "host": [
                                 "subscription"
@@ -1672,6 +1277,28 @@
                             {
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get subscription Payments Details",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/subscription/payments/64867ab2c6dab1e71dbd7003",
+                            "path": [
+                                "payments",
+                                "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
                             }
                         ]
                     }
@@ -2004,9 +1631,9 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/entry/64904fe6ce37b10487f575d3",
+                            "raw": "/entry/64867ab2c6dab1e71dbd7003",
                             "path": [
-                                "64904fe6ce37b10487f575d3"
+                                "64867ab2c6dab1e71dbd7003"
                             ],
                             "host": [
                                 "entry"
@@ -2108,7 +1735,7 @@
                                 },
                                 {
                                     "key": "Refree1",
-                                    "value": "20"
+                                    "value": "28"
                                 },
                                 {
                                     "key": "Refree2",
@@ -2170,7 +1797,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGEyNWE3MjEyM2Q3NzlkMDU4YWRjMiIsImlhdCI6MTY4Njg1MDk2N30.FVMYONZ6gGP3KV7C70Kiq2WccfTBcM4fXfawtujJ7V8"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
                             }
                         ]
                     }
@@ -2198,6 +1825,33 @@
                             {
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get school result",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/myresult/64904fe6ce37b10487f575d3",
+                            "path": [
+                                "myresult",
+                                "64904fe6ce37b10487f575d3"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA",
+                                "disabled": true
                             }
                         ]
                     }
@@ -2249,6 +1903,387 @@
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjU4MzUxMH0.cDM0RUyGMGqhhtMKffUx-Lv1_y6SDTDwBl7oWVPYbnY"
                             }
                         ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "teachers",
+            "item": [
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/teacher",
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjU4OTc4NX0.YQWmhMWYnKqLFCkaRXp80piB3ha15gGBn0KUkMxHuwA"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get all for admin",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/teacher/648742e77676e7779f1de6a7",
+                            "path": [
+                                "648742e77676e7779f1de6a7"
+                            ],
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/teacher/6473edc43155fbea54a65ed8",
+                            "path": [
+                                "6473edc43155fbea54a65ed8"
+                            ],
+                            "host": [
+                                "teacher"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/teacher",
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjYwNDgzNH0.r9aeyROIzqPEEoX0rsSmcdb8-Zjy84wzI0ttmiD24GM"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "aaaaaaaa"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "sssssssssss"
+                                },
+                                {
+                                    "key": "mobileNumber",
+                                    "value": "1234567891"
+                                },
+                                {
+                                    "key": "countryCallingCode",
+                                    "value": "+20"
+                                },
+                                {
+                                    "key": "dateOfBirth",
+                                    "value": "1996-11-20"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "qwer@gmail.com"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "edit",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/teacher/648d0ad3c48ed9d7b4485b62",
+                            "path": [
+                                "648d0ad3c48ed9d7b4485b62"
+                            ],
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjYwNDgzNH0.r9aeyROIzqPEEoX0rsSmcdb8-Zjy84wzI0ttmiD24GM"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "mmmmm"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "nnnnnnnn"
+                                },
+                                {
+                                    "key": "mobileNumber",
+                                    "value": "1234567898"
+                                },
+                                {
+                                    "key": "countryCallingCode",
+                                    "value": "+20"
+                                },
+                                {
+                                    "key": "dateOfBirth",
+                                    "value": "1996-11-20"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "qweeeer@gmail.com"
+                                },
+                                {
+                                    "key": "academy",
+                                    "value": "648d0ad3c48ed9d7b4485b62"
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "648d0ad3c48ed9d7b4484444"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "product",
+            "item": [
+                {
+                    "name": "add  ",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/product",
+                            "host": [
+                                "product"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "danon",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "prices",
+                                    "value": "[{\"country\":\"64748c907f9e9854168fe025\",\"price\":50}]",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "update",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/product/648eee078e4d6ecfd2c129f2",
+                            "path": [
+                                "648eee078e4d6ecfd2c129f2"
+                            ],
+                            "host": [
+                                "product"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"photo\":null\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/product/63e2346155257516346ae7cb",
+                            "path": [
+                                "63e2346155257516346ae7cb"
+                            ],
+                            "host": [
+                                "product"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/product/648eec21891abedcb18399e4",
+                            "path": [
+                                "648eec21891abedcb18399e4"
+                            ],
+                            "host": [
+                                "product"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "messages",
+            "item": [
+                {
+                    "name": "add",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/message",
+                            "host": [
+                                "message"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "authrization",
+                                "value": "",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "aaaaaaaaaaaasss"
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "ssssssssss"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "aaaa@gmail.com"
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "asdafdfdfdsdfa  dfadfdsfdfs                                                              fdfdfdaf"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "add from user",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/message/inside",
+                            "path": [
+                                "inside"
+                            ],
+                            "host": [
+                                "message"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "firstName",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "lastName",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "saddddddddddddddd dsada sadkslmdmv"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/message/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "message"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "onlyUsers",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/message/6473edc43155fbea54a65ed8",
+                            "path": [
+                                "6473edc43155fbea54a65ed8"
+                            ],
+                            "host": [
+                                "message"
+                            ]
+                        }
                     }
                 }
             ]

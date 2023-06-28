@@ -56,7 +56,6 @@ class Entry {
                 }
             })
         } catch (e) {
-            console.log(e.name) 
             if (e.name == 'Error') {
                 Helper.formatMyAPIRes(res, 200, false, e, e.message)
             } else if (e.name == 'MongoServerError' || e.name == 'ValidationError' || e.name == 'CastError') {
@@ -109,12 +108,24 @@ class Entry {
             const filter = {}
             let projection = ['name', 'music', 'competitors', 'category']
             filter[subscription.competition.type + 'Subscription'] = req.params.subscriptionId
+            if(subscription.competition.type=='final'){
+                filter.passedQualifiers = true 
+            }
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/schedual/:subscriptionId') {
                 projection = [subscription.competition.type + 'ShowDate', 'name']
                 filter[subscription.competition.type + 'ShowDate'] = { $nin: [null, ''] }
             } else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/mystatment/:subscriptionId') {
                 projection = ['totalFees', 'name']
+            }else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/myresult/:subscriptionId') {
+                projection = [subscription.competition.type+'TotalDegree','passedQualifiers', 'name']
+                filter[subscription.competition.type+'Refree1']={$exists:true}
+                filter[subscription.competition.type+'Refree2']={$exists:true}
+                filter[subscription.competition.type+'Refree3']={$exists:true}
+                filter[subscription.competition.type+'Last10Present']={$exists:true}
+            }else if(req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/:subscriptionId'){
+                delete filter.passedQualifiers
             }
+            console.log(filter)
             if (!projection || projection.includes('competitors')) {
                 return entryModel.find(filter, projection)/*.populate({ path: subscription.competition.type + 'Subscription',select:['academy'], populate: { path: 'academy',select:['academyDetails'], populate: 'academyDetails' } })*/.populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] })
             } else {
@@ -217,6 +228,9 @@ class Entry {
             const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
             const filter = {}
             filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
+            if(allCompetitonSubscripetition[0].competition.type=='final'){
+                filter.passedQualifiers = true 
+            }
             let projection //= [allCompetitonSubscripetition[0].competition.type + 'Subscription','competitors','name','music','passedQualifiers','category']
             if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeschedule/:compId') {
                 projection = [allCompetitonSubscripetition[0].competition.type + 'ShowDate', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
@@ -224,14 +238,16 @@ class Entry {
             } else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeresult/:compId') {
                 if (['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role.toString())) { /*refree roles ids */
                     await req.user.populate('role')
-                    console.log(allCompetitonSubscripetition[0].competition.type + req.user.role.role)
                     projection = [allCompetitonSubscripetition[0].competition.type + req.user.role.role, allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
                     filter[allCompetitonSubscripetition[0].competition.type + req.user.role.role] = { $exists: false }
                 } else {
-                    projection = [allCompetitonSubscripetition[0].competition.type + 'Refree1', allCompetitonSubscripetition[0].competition.type + 'Refree2', allCompetitonSubscripetition[0].competition.type + 'Refree3', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name']
+                    projection = [allCompetitonSubscripetition[0].competition.type + 'TotalDegree', allCompetitonSubscripetition[0].competition.type + 'Subscription','passedQualifiers', 'name']
+                    filter[allCompetitonSubscripetition[0].competition.type + 'Refree1'] = { $exists: true }
+                    filter[allCompetitonSubscripetition[0].competition.type + 'Refree2'] = { $exists: true }
+                    filter[allCompetitonSubscripetition[0].competition.type + 'Refree3'] = { $exists: true }
+                    filter[allCompetitonSubscripetition[0].competition.type + 'Last10Present'] = { $exists: true }
                 }
             }
-            console.log(!projection)
             if (!projection || projection.includes('competitors')) {
                 return entryModel.find(filter, projection).populate({ path: allCompetitonSubscripetition[0].competition.type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } }).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] })
             } else {
@@ -244,6 +260,11 @@ class Entry {
             await req.user.populate('role')
             const type = (await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', { path: 'competition' })).competition.type
             const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry')
+            if(type=='final'&&!entry.passedQualifiers){
+                const e = new Error('this entry is not qulified for this competition')
+                    e.name = 'CastError'
+                    throw e
+            }
             if (['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role._id.toString())) {/*refree roles ids */
                 if (!req.body.degree) {
                     const e = new Error('we did not recieve any degree to record')
@@ -252,9 +273,7 @@ class Entry {
                 }
                 entry[type + req.user.role.role] = req.body.degree
             } else {
-                console.log(req.body)
                 for (let field in req.body) {
-                    console.log(type + field)
                     if (!['_id', 'qualifierSubscription', 'totalFees', 'finalSubscription', 'category', 'passedQualifiers', 'competitorsCategories'].includes(field) && req.body[field]) { entry[type + field] = req.body[field] }
                 }
             }
@@ -267,6 +286,9 @@ class Entry {
             const type = (await Helper.isThisIdExistInThisModel(req.params.subscriptionId, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
             const filter = {}
             filter[type + 'Subscription'] = req.params.subscriptionId
+            if(type=='final'){
+                filter.passedQualifiers = true 
+            }
             const entries = await entryModel.find(filter, ['name', type + 'Subscription', 'category']).populate({ path: 'competitors', select: ['firstName', 'lastName', 'category'] }).populate({ path: type + 'Subscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } })
             const fullStatment = []
             await req.user.populate({ path: 'academyDetails', populate: { path: 'country' } })
@@ -277,7 +299,6 @@ class Entry {
                     competitor.entryName = entry.name
                     const calCat = entry.category == 'solo' ? 'solo' : ['due', 'trio'].includes(entry.category) ? 'duoOrTrio' : 'group'
                     competitor.entryFees = req.user.academyDetails.country[calCat + competitor.category + 'Fees']
-                    console.log(calCat, competitor.category)
                     fullStatment.push(competitor)
                 })
             })

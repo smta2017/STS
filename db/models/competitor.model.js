@@ -40,13 +40,11 @@ const CompetitorSchema = mongoose.Schema({
         validate: async function () {
             const year = (await Helper.isThisIdExistInThisModel(this.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.year
             const age = moment(year + '-06-01').diff(moment(this.dateOfBirth), 'years', true)
-            console.log(age)
             if (age < 4) {
                 const e = new Error('this comprtitor is too young to take apart in this competition')
                 e.name = 'ValidationError'
                 throw e
             } else if ((this.category == 'dancer' && age > 28) || age > 45) {
-                console.log('hhh')
                 const e = new Error('this competition is for younger persons')
                 e.name = 'ValidationError'
                 throw e
@@ -101,7 +99,7 @@ const CompetitorSchema = mongoose.Schema({
         trim: true,
         lowercase: true
     },
-    passQualifier: {
+    passedQualifiers: {
         type: Boolean,
         default: false
     }

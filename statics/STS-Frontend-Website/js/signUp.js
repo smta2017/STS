@@ -63,9 +63,12 @@ function getAllCountries() {
                 option.textContent = countries.countryName;
                 allCountry.appendChild(option);
             });
+            document.getElementById("gif").style.display = "none";
         })
-        .catch(error => console.log(error));
-    document.getElementById("gif").style.display ="none"
+        .catch(error => {
+            console.log(error);
+            document.getElementById("gif").style.display = "none";
+          });
 }
 
 getAllCountries();
@@ -76,7 +79,7 @@ document.forms[0].onsubmit = function (e) {
     let password = document.getElementById("password").value;
     let repeatPassword = document.getElementById("repeatpassword").value;
     console.log(password)
-    console.log(repeatpassword)
+    console.log(repeatPassword)
     if (password != repeatPassword) {
         e.preventDefault()
         alert("not same password")
@@ -84,12 +87,26 @@ document.forms[0].onsubmit = function (e) {
 
 }
 
+var selectBox = document.getElementById('callingCode');
+var countries = window.intlTelInputGlobals.getCountryData();
+for (var country of countries) {
+  const option = document.createElement('option');
+  option.value = country.iso2;
+  option.textContent = `${country.name} (+${country.dialCode})`;
+  selectBox.append(option);
+}
 
 document.getElementById("formSignUp").onsubmit = function (e) {
     e.preventDefault();
+
+    var country = document.getElementById('callingCode').value;
+  
+    var selectOption = document.querySelector(`option[value='${country}']`);
+    var CountryCode = selectOption.textContent.split(' ').pop().match(/\d+/g).join('');
+
     let data = {
         schoolLocation: {
-            blockNum: document.getElementById("buldingNumber").value,
+            // blockNum: document.getElementById("buldingNumber").value,
             street: document.getElementById("Address").value,
             cityOrTown: document.getElementById("City").value,
             provinceOrState: document.getElementById("State").value,
@@ -100,7 +117,7 @@ document.getElementById("formSignUp").onsubmit = function (e) {
             firstName: document.getElementById("firstName").value,
             lastName: document.getElementById("lastName").value,
             mobileNumber: document.getElementById("mobileNumber").value,
-            countryCallingCode: document.getElementById("callingCode").value,
+            countryCallingCode: `+${CountryCode}`,
             email: document.getElementById("Email").value,
             password: document.getElementById("password").value
         },
@@ -124,13 +141,17 @@ document.getElementById("formSignUp").onsubmit = function (e) {
             })
             .then(response => response.json())
             .then(data => {
-                responseAlert(data)
                 if (data.apiStatus == true) {
                     window.location.hash = "#login";
                 }
+                document.getElementById("gif").style.display = "none";
+                responseAlert(data);
             })
-            .catch(error => console.log(error));
-        document.getElementById("gif").style.display ="none"            
+            .catch(error => {
+                console.log(error);
+                document.getElementById("gif").style.display = "none";
+                responseAlert(error);
+            });         
     } catch (eror) {
         console.log(eror);
     }

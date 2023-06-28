@@ -27,7 +27,6 @@ const ProductSchema=mongoose.Schema({
         type:[PriceSchema],
         validate:(value)=>{
             if(value.length<=0){
-                console.log(value.length)
                 throw new Error('you need to add one country with the price of this product in this country  at least')
             }
         }

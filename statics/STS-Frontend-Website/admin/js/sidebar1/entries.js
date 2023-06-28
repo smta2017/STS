@@ -5,7 +5,7 @@ function getCookie(name) {
   return cookieValue ? cookieValue.pop() : null;
 } 
 
-
+var entriesData;
 
 function getEntriesData() {
   var entriesContainer = document.getElementById("results_container-all");
@@ -40,9 +40,6 @@ function getEntriesData() {
                               </audio>
                             </div>
                           </div>
-                          <div class="title col-2 text-end">
-                            <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><i class="fa fa-file-pdf"></i></button>
-                          </div>
                         </div>
                       </div>
                     </div> 
@@ -69,22 +66,56 @@ function getEntriesData() {
             element.innerHTML+= competitorsTable
         element.setAttribute('id', `entry-${entry._id}`);
         entriesContainer.appendChild(element);       
-        document.getElementById("gif").style.display ="none" 
       });
+      document.getElementById("gif").style.display ="none" 
     })
-    .catch(error => console.error(error));
-    document.getElementById("gif").style.display ="none"
+    .catch(error => {
+      console.log(error);
+      document.getElementById("gif").style.display = "none";
+    }); 
 }
 
 getEntriesData();
 
 
-document.getElementById("uMusic").addEventListener("change", handleFiles, false);
+function handleSearch() {
+  var searchQuery = document.getElementById('search').value.toLowerCase();
+  var rows = document.querySelectorAll('#table-body-entriesU tr');
+  var titles = document.querySelectorAll('.title');
+  
+  rows.forEach(function (row) {
+    var cells = row.getElementsByTagName('td');
+    var shouldShowRow = false;
 
-function handleFiles(event) {
-  var files = event.target.files;
-  document.getElementById("audio").src = URL.createObjectURL(files[0]);
-  document.getElementById("audioPlayer").load();
+    Array.from(cells).forEach(function (cell) {
+      if (cell.textContent.toLowerCase().includes(searchQuery)) {
+        shouldShowRow = true;
+      }
+    });
+
+    if (shouldShowRow) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  titles.forEach(function (title) {
+    // var cells = row.getElementsByTagName('td');
+    var shouldShowRow = false;
+
+    Array.from(title).forEach(function (tit) {
+      if (tit.textContent.toLowerCase().includes(searchQuery)) {
+        shouldShowRow = true;
+      }
+    });
+
+    if (shouldShowRow) {
+      title.style.display = '';
+    } else {
+      title.style.display = 'none';
+    }
+  });
 }
 
 // ENTRIES //
