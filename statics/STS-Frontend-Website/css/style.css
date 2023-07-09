@@ -662,13 +662,13 @@ ul {list-style-type: none;}
 img.rounded {border-radius: 6px !important;}
 .tab-content>.active {display: block;}
 #goToShop #image{border-top-left-radius: 10px;border-bottom-left-radius: 10px;
-  background: url('http://localhost:5000/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg') no-repeat center center/cover;
+  background: url('https://sts-5s7p.onrender.com/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg') no-repeat center center/cover;
 }
 #goToShop .btn:hover{background: goldenrod;color: black;border: none;}
 @media(min-width:431px) and (max-width:767px){
   #goToShop #parentInfo{background-color:transparent !important}
   #goToShop #info{border-radius: 10px;padding: 20px 0 10px;
-      background: url('http://localhost:5000/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg') no-repeat center center/cover;
+      background: url('https://sts-5s7p.onrender.com/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg') no-repeat center center/cover;
   }
   #goToShop .container{color: #fff;}
 } 
@@ -676,7 +676,7 @@ img.rounded {border-radius: 6px !important;}
   #goToShop .container{color: #fff;}
   #goToShop #parentInfo{background-color:transparent !important}
   #goToShop #info{border-radius: 10px;padding: 20px 0 10px;
-      background: url('http://localhost:5000/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg') no-repeat center center/cover;
+      background: url('https://sts-5s7p.onrender.com/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg') no-repeat center center/cover;
   }
 }
 .hr-added{margin: 1rem 2rem;color: black;border-top: 5px solid;opacity: 1;}
