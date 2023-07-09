@@ -1,7 +1,7 @@
 function getAllCountries() {
     var allCountry = document.querySelector('#selectCountryToShop');
     document.getElementById("gif").style.display = "block";
-    fetch(`${domainName}/sts/country/all`, {
+    fetch(`${domainName}/sts/country/allaccessable`, {
         method: 'GET',
         headers: {'Authorization': token},
     })
