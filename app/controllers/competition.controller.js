@@ -120,8 +120,14 @@ class Competition {
         }, 'you deleted competition successfully')
     }
     static getAll = (req, res) => {
-        Helper.handlingMyFunction(req, res, (req) => {
-            return competitionModel.find()//.populate('joinedAcademy')
+        Helper.handlingMyFunction(req, res, async(req) => {
+            const comps=await competitionModel.find()
+            const result=comps.map(comp=>{
+                const returedcomp=comp.toObject()
+                returedcomp.otherCountry=comp.otherCountry
+                return returedcomp
+            })
+            if(true){return result}
         }, 'here are all your competitions')
     }
     static getOpenToRegister = (req, res) => {

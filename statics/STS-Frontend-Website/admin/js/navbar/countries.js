@@ -153,7 +153,7 @@ function editCountry(id) {
     document.getElementById("duo-Trio-Dance").value = myCountry.duoOrTriodancerFees;
     document.getElementById("danceGroup").value = myCountry.groupdancerFees;
     document.getElementById("soloSinger").value = myCountry.solosingerFees;
-    document.getElementById("duo-Trio-Singer").value = myCountry.duoOrTriosingingFees;
+    document.getElementById("duo-Trio-Singer").value = myCountry.duoOrTriosingerFees;
     document.getElementById("singerGroup").value = myCountry.groupsingerFees;
     document.getElementById("soloMusician").value = myCountry.solomusicianFees;
     document.getElementById("duo-Trio-Musician").value = myCountry.duoOrTriomusicianFees;
@@ -161,11 +161,9 @@ function editCountry(id) {
 
     // Find the option element with the corresponding currency name and set its selected attribute to true
     var allCurrency = document.querySelector('#selectCurrency');
-    console.log(document.querySelector('#selectCurrency').value);
-    console.log(myCountry.currencyNameEn);
     var options = allCurrency.options;
     for (var i = 0; i < options.length; i++) {
-        if (options[i].value === myCountry.currencyNameEn) {
+        if (options[i].value === myCountry.currency) {
             options[i].selected = true;
             break;
         }
@@ -181,7 +179,7 @@ function changeFeesForCountry(e) {
 
     var dataForUpdate = {
         countryName: document.getElementById("countryName").value ?  document.getElementById("countryName").value : null ,
-        currencyNameEn: currencyNameEn ? currencyNameEn : null,
+        currency: currencyNameEn ? currencyNameEn : null,
         adminstrationFees: document.getElementById("ADMINISTRATIVE-FEE").value ?  document.getElementById("ADMINISTRATIVE-FEE").value : null ,
         membershipFees: document.getElementById("MEMBERSHIP-FEE").value ?  document.getElementById("MEMBERSHIP-FEE").value : null ,
         solodancerFees: document.getElementById("soloDance").value ?  document.getElementById("soloDance").value : null ,

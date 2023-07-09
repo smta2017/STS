@@ -3,7 +3,6 @@ function getCookie(name) {
   return cookieValue ? cookieValue.pop() : null;
 }
 
-
 // document.getElementById('generate-pdf').addEventListener('click', function() {
 //   // Get the HTML table element
 //   var table = document.getElementById('compatators-table');
@@ -73,12 +72,12 @@ function calculateAge(dateString) {
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
-if (getCookie('stopSubscription') === "false" && getCookie('type') === "qualifier") {
+if (getCookie('stopSubscription') === "false" && getCookie('type') === "qualifier" && getCookie('paid') === "false") {
   var addCompdiv = document.querySelector(".addComp");
   const addCompButton = document.createElement('div');
   addCompdiv.innerHTML = "";
   addCompButton.innerHTML = `
-  <button class="btn btn-light add" id="add-row" data-bs-toggle="modal" data-bs-target="#AddCompatator">Add Compatator</button>`
+  <button class="btn btn-light add" id="add-row" data-bs-toggle="modal" data-bs-target="#AddCompatator" onclick="goToAdd();">Add Compatator</button>`
   addCompdiv.appendChild(addCompButton);
 
   const headerTable = document.getElementById("headerTable");
@@ -145,9 +144,15 @@ function getCompetitorsData(colorCode){
             <td>${competitor.category}</td>
         `;
         element.setAttribute('id', `competitor-${competitor._id}`);
+        
+        if (getCookie('type') === "final"){
+          if (competitor.passedQualifiers === true){
+            element.style.backgroundColor = "#198754";
+          }
+        }
         competitorsContainer.appendChild(element);
 
-          if (getCookie('stopSubscription') === "false" && getCookie('type') === "qualifier") {
+          if (getCookie('stopSubscription') === "false" && getCookie('type') === "qualifier" && getCookie('paid') === "false") {
             const elementIcon = document.createElement('td');
             elementIcon.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill edit" viewBox="0 0 16 16" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddCompatator" onclick="editCompetitor('${competitor._id}')">
@@ -171,7 +176,9 @@ function getCompetitorsData(colorCode){
 
 getCompetitorsData(localStorage.getItem("theme"));
 
+
 function editCompetitor(id) {
+  document.getElementById("addToEdit").innerHTML = "Update";
   var competitor = competitorsData.find(competitor => competitor._id == id);
 
   document.getElementById("compatatorsId").value = competitor._id;
@@ -210,6 +217,7 @@ function changeCompetitor(e) {
   if (compatatorsId) {
     // Existing competitor, send PUT request
     document.getElementById("gif").style.display ="block"
+
     fetch(`${domainName}/sts/competitor/${compatatorsId}`, {
       method: 'PUT',
       headers: { "Content-Type": "application/json" , 'Authorization': token},
@@ -339,6 +347,7 @@ function handleSearch() {
 }
 
 function clearData(){
+  goToAdd();
   document.getElementById("compatatorsId").value = '';
 }
 

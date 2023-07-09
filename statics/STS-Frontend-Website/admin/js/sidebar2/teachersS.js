@@ -24,14 +24,12 @@ function generatePDF() {
     // Wait for the document to fully load before printing
     win.onload = function() {
       // Print the document
-      // win.print();
+      win.print();
       // Close the print preview window after printing
       // win.close();
     };
 }
-  
-document.getElementById('generate-pdf').addEventListener('click', generatePDF);
-  
+    
 var selectBox = document.getElementById('callingCodeA');
 var countries = window.intlTelInputGlobals.getCountryData();
 for (var country of countries) {
@@ -44,6 +42,9 @@ for (var country of countries) {
 var teachersData;
 
 function getTeachersAData() {
+    const schoolName = getCookie("schoolName");
+    document.getElementById("schoolName").innerHTML = `${schoolName} Academy`;
+
     var teachersContainer = document.getElementById("table-body-teachersA");
     var id = getCookie("schoolID");
     document.getElementById("gif").style.display ="block"
@@ -86,6 +87,8 @@ function getTeachersAData() {
 getTeachersAData();
 
 function editTeacherA(id) {
+    goToTop();
+    document.getElementById("addToEdit").innerHTML = "Update";
     var teacher = teachersData.find(teacher => teacher._id == id);
   
     document.getElementById("teachersIdA").value = teacher._id;
@@ -130,8 +133,6 @@ function changeTeacherA(e) {
             .then(response => {  
                 
             if (response.apiStatus == true) {
-                console.log(JSON.stringify(formData))
-                console.log(response)
                 console.log('Teacher updated successfully');
 
                 document.getElementById('teachersIdA').value = '';
@@ -141,7 +142,7 @@ function changeTeacherA(e) {
                 document.getElementById('emailA').value = '';
                 document.getElementById('callingCodeA').value = '';
                 document.getElementById('mobileNumberA').value = '';
-
+                goToAdd();
                 getTeachersAData();
                 } else {
                     console.log('Error:', response.status);
@@ -230,8 +231,6 @@ function deleteTeacherA(id) {
     }
 }
 
-document.getElementById('search').addEventListener('input', handleSearch);
-
 function handleSearch() {
   var searchQuery = document.getElementById('search').value.toLowerCase();
   var rows = document.querySelectorAll('#table-body-teachersA tr');
@@ -256,5 +255,6 @@ function handleSearch() {
 
 
 function clearData(){
+    goToAdd();
     document.getElementById("teachersIdA").value = '';
 }

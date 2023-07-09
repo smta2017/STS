@@ -86,6 +86,8 @@ function getSponsersData() {
 getSponsersData();
 
 function editSponsers(id) {
+    goToTop();
+    document.getElementById("addToEdit").innerHTML = "Update";
     var mySponsers = sponsersData.find(Sponserss => { return Sponserss._id == id })
     document.getElementById("sponsersId").value = mySponsers._id;
     document.getElementById("titleSponser").value = mySponsers.title ;
@@ -120,6 +122,7 @@ function changeSponsers(e) {
                         document.getElementById("paragraphSponser").value = "";
                         document.getElementById("uploadImgSponser").value = "";
                         document.getElementById("imgPreview").style.display = "none";
+                        goToAdd();
                         getSponsersData();
                     } else {
                         throw new Error('Request failed.');
@@ -206,6 +209,7 @@ function deleteSponsers(id) {
 
 
 function clearData(){
+    goToAdd();
     document.getElementById("sponsersId").value = '';
     document.querySelector('#imgPreview').src = '';
     document.querySelector('#imgPreview').style.display = 'none'

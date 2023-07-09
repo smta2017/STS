@@ -8,6 +8,10 @@ function getCookie(name) {
 var entriesData;
 
 function getEntriesData() {
+    const type = getCookie("type");
+    const year = getCookie("year");
+    document.getElementById("competionName").innerHTML = `${type}-${year}`;
+
   var entriesContainer = document.getElementById("results_container-all");
   var id = getCookie("competition");
 
@@ -32,15 +36,14 @@ function getEntriesData() {
                     <div class="panel-heading">
                       <div class="row">
                         <div class="row">
-                          <h4 class="title col-3" id="nameEntry">${entry.name} - ${entry.qualifierSubscription.academy.academyDetails.schoolName}</h4>
-                          <div class="col-6 text-center">
+                          <h4 class="title col-12 col-lg-4" id="nameEntry">${entry.name} - ${entry[type + "Subscription"].academy.academyDetails.schoolName} ${entry.classCode ? `- ${entry.classCode} Class Code` : ''}</h4>
+                          <div class="col-12 col-lg-4 text-center">
                             <div class="btn_group">
-                              <audio src="${domainName}/${entry.music}" id="audioPlayer1" controls>
-                                <source id="audio_${entry._id}"/>
-                              </audio>
+                              ${getCookie('isOtherCountry') == "true" ? `<video src="${domainName}/${entry.music}" id="audioPlayer1" controls><source src="" id="audio_${entry._id}" /></video>` : `<audio src="${domainName}/${entry.music}" id="audioPlayer1" controls><source id="audio_${entry._id}"/></audio>`}
                             </div>
                           </div>
-                        </div>
+                          ${getCookie('type') === "final" ? entry.passedQualifiers ?  `<h6 class="title col-12 col-lg-3 mx-auto bg-success rounded-5 text-center py-2 px-0">Qualified</h6>` : `<h6 class="title col-12 col-lg-3 mx-auto bg-danger rounded-5 text-center py-2">Not Qualified</h6>` : ''}
+                          </div>
                       </div>
                     </div> 
                     <div class="panel-body table-responsive">

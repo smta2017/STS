@@ -1,4 +1,4 @@
-const domainName = "https://sts-5s7p.onrender.com";
+const domainName = "https://dashboard.render.com";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -9,7 +9,6 @@ const renderShop = Handlebars.compile(document.getElementById("shop-template").i
 const renderContact = Handlebars.compile(document.getElementById("contact-template").innerHTML);
 const renderSignup = Handlebars.compile(document.getElementById("signup-template").innerHTML);
 const renderLogin = Handlebars.compile(document.getElementById("login-template").innerHTML);
-const renderInsideContent = Handlebars.compile(document.getElementById("insideContent-template").innerHTML);
 const renderChoiceCompetition = Handlebars.compile(document.getElementById("choiceCompetition-template").innerHTML);
 const renderhomeAfterLogin = Handlebars.compile(document.getElementById("homeAfterLogin-template").innerHTML);
 const renderCompetitions = Handlebars.compile(document.getElementById("competitions-template").innerHTML);
@@ -29,6 +28,8 @@ const renderAcademyResult = Handlebars.compile(document.getElementById("academyR
 ///////////////////////////////////////////////////
 
 const renderNavbar = Handlebars.compile(document.getElementById("navbar-template").innerHTML);
+const renderAddingPositionA = Handlebars.compile(document.getElementById("addingPositionA-template").innerHTML);
+const renderAddingEmployeeA = Handlebars.compile(document.getElementById("addingEmployeeA-template").innerHTML);
 const renderCompetitionsA = Handlebars.compile(document.getElementById("competitionsA-template").innerHTML);
 const renderNewsA = Handlebars.compile(document.getElementById("newsA-template").innerHTML);
 const renderSponsersA = Handlebars.compile(document.getElementById("sponsersA-template").innerHTML);
@@ -93,6 +94,14 @@ function HandleNavigation() {
       load_js("admin/js/navbar.js");
       load_js("js/logout.js");
       handleNavigationAdmin1();
+      if (["#addingPosition"].includes(window.location.hash)) {
+        renderContent(renderAddingPositionA(), "content");
+        load_js("admin/js/navbar/addingPosition.js");
+      }
+      if (["#addingEmployee"].includes(window.location.hash)) {
+        renderContent(renderAddingEmployeeA(), "content");
+        load_js("admin/js/navbar/addingEmployee.js");
+      }
     } else if (ruler) {
       renderContent(renderNavbarR(), "body");
       load_js("admin/js/navbarR.js");
@@ -121,7 +130,6 @@ function HandleNavigation() {
     const h = document.querySelector('#content') ? document.querySelector('#content').innerHTML : ''
     if (!["#news", "#sponsor", "#advertising"].includes(window.location.hash) || h == '') {
       renderContent(renderhomeBeforeLogin(), "body");
-      
     }
     handleNavigationBefore();
   }
@@ -189,7 +197,15 @@ function handleNavigationBefore() {
 
 function handleNavigationAfter() {
   const hash = window.location.hash;
-
+  if(document.querySelector('script[src="https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js"]')){
+    document.querySelector('script[src="https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js"]').remove()
+  }
+  if(document.querySelector('script[src="https://js.braintreegateway.com/web/3.87.0/js/data-collector.min.js"]')){
+    document.querySelector('script[src="https://js.braintreegateway.com/web/3.87.0/js/data-collector.min.js"]').remove()
+  }
+  if(document.querySelector('script[src="https://js.braintreegateway.com/web/3.87.0/js/client.min.js"]')){
+    document.querySelector('script[src="https://js.braintreegateway.com/web/3.87.0/js/client.min.js"]').remove()
+  }
   switch (hash) {
     case "#myProfile":
       // renderContent(renderCompetitions(),"content");
@@ -228,6 +244,12 @@ function handleNavigationAfter() {
       var script = document.createElement("script");
       script.src = `https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.min.js`;
       document.querySelector('head').appendChild(script);
+      var script = document.createElement("script");
+      script.src = `https://js.braintreegateway.com/web/3.87.0/js/client.min.js`;
+      document.querySelector('head').appendChild(script);
+      var script = document.createElement("script");
+      script.src = `https://js.braintreegateway.com/web/3.87.0/js/data-collector.min.js`;
+      document.querySelector('head').appendChild(script);
       renderContent(renderPayment(), "content");
       load_js("js/payment.js");
       break;
@@ -241,7 +263,6 @@ function handleNavigationAfter() {
       break;
     default:
       renderContent(renderCompatators(), "content");
-     
       load_js("js/compatators.js");
       break;
   }
@@ -277,7 +298,7 @@ function handleNavigationAdmin1() {
         load_js("admin/js/navbar/news.js");
       }
       break;
-    case "#sponser":
+    case "#sponsor":
       if (document.querySelector('#content').innerHTML == '') {
         renderContent(renderSponsersA(), "content");
         load_js("admin/js/navbar/sponsers.js");
@@ -318,7 +339,7 @@ function handleNavigationAdmin1() {
     default:
 
 
-      if (["#compatatorsAS", "#school", "#compatatorsA", "#entersA", "#paymentA"].includes(window.location.hash)) {
+      if (["#school", "#compatatorsA", "#entersA", "#paymentA"].includes(window.location.hash)) {
         handleNavigationAdmin2()
       } else if (["#compatatorsAS", "#teachersAS", "#entriesAS"].includes(window.location.hash)) {
         handleNavigationAdmin3()
@@ -489,11 +510,51 @@ function responseAlert(response) {
   }, 6000);
 }
 
-if (
-  getCookie("token") == "" ||
-  getCookie("token") == "undefined"
-) {
-  alert("not excist");
+function goToAdd(){
+  document.getElementById("addToEdit").innerHTML = "Add";
 }
+
+function goToTop(){
+  document.body.scrollTop = 160; //For Safari
+  document.documentElement.scrollTop = 160; //For Chrome, FireFox, IE and Opera
+}
+
+
+// var scrollPositions = {};
+
+// function recordThePosition(buttonId) {
+//   // Record the position of the scroll when the button is pressed
+//   window.addEventListener("scroll", function() {
+//     scrollPositions[buttonId] = window.scrollY;
+//   });
+// }
+
+// function goToTheSamePlace(buttonId) {
+//   // Restore the position of the scroll when the user returns to the page
+//   window.addEventListener("load", function() {
+//     var scrollPosition = scrollPositions[buttonId];
+//     if (scrollPosition !== undefined) {
+//       window.scrollTo(0, scrollPosition);
+//     }
+//   });
+// }
+// function recordThePosition(){
+//   // Record the position of the scroll when it happens
+//   window.addEventListener("scroll", function() {
+//     sessionStorage.setItem("scrollPosition", window.scrollY);
+//   });
+// }
+
+// function goToTheSamePlase(){
+//   // Restore the position of the scroll when the user returns to the page
+//   window.addEventListener("load", function() {
+//     var scrollPosition = sessionStorage.getItem("scrollPosition");
+//     if (scrollPosition !== null) {
+//       window.scrollTo(0, parseInt(scrollPosition));
+//     }
+//   });
+// }
+
+if (getCookie("token") == "" || getCookie("token") == "undefined") {alert("not excist");}
 
 var token = getCookie("token");

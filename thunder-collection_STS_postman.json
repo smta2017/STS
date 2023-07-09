@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "c8054ee6-a39d-4fb9-884d-39e3fd632731",
+        "_postman_id": "e560d084-2f51-4f70-95c1-b2efe7e6467c",
         "name": "STS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -27,33 +27,6 @@
                                 }
                             },
                             "raw": "{\n  \"schoolLocation\":{\n    \"blockNum\":\"sfsfsaas\",\n    \"street\":\"sfs\",\n    \"cityOrTown\":\"sadsd\",\n    \"provinceOrState\":\"sdsdas\",\n    \"postalCode\":\"11652\"\n  },\n  \"owner\":{\n    \"role\":\"6480d5701c02f26cd6668987\",\n    \"firstName\":\"george\",\n    \"lastName\":\"Abadier\",\n    \"mobileNumber\":\"1281777777\",\n    \"countryCallingCode\":\"+20\",\n    \"email\":\"jojo@gmail.com\",\n    \"password\":\"12345\"\n  },\n  \"schoolName\":\"asdsda\",\n  \"country\":\"63e2346155257516346ae7cb\"\n  \n}"
-                        }
-                    }
-                },
-                {
-                    "name": "edit profile",
-                    "request": {
-                        "method": "PUT",
-                        "url": {
-                            "raw": "/user",
-                            "host": [
-                                "user"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            },
-                            "raw": "{\n  \"academy\": {\n    \"schoolLocation\": {\n      \"blockNum\": \"hhhhh\",\n      \"street\": \"hhhh\",\n      \"cityOrTown\": \"hhhh\",\n      \"provinceOrState\": \"hhhhhh\",\n      \"postalCode\": \"11652\"\n    },\n    \"schoolName\": \"hhhhhhhhhhhh\",\n    \"country\": \"63e2346155257516346ae7cb\"\n  },\n  \"user\": {\n    \"role\": \"6480d5701c02f26cd6668987\",\n    \"firstName\": \"gogo\",\n    \"lastName\": \"Abad\",\n    \"mobileNumber\": \"1281533229\",\n    \"countryCallingCode\": \"+20\",\n    \"email\": null,\n    \"password\": \"12345\"\n  },\n  \"oldPassword\":\"12345\"\n}"
                         }
                     }
                 },
@@ -184,12 +157,54 @@
                             }
                         ]
                     }
+                },
+                {
+                    "name": "edit profile",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/user",
+                            "host": [
+                                "user"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"academy\": {\n    \"schoolLocation\": {\n      \"blockNum\": \"hhhhh\",\n      \"street\": \"hhhh\",\n      \"cityOrTown\": \"hhhh\",\n      \"provinceOrState\": \"hhhhhh\",\n      \"postalCode\": \"11652\"\n    },\n    \"schoolName\": \"hhhhhhhhhhhh\",\n    \"country\": \"63e2346155257516346ae7cb\"\n  },\n  \"user\": {\n    \"role\": \"6480d5701c02f26cd6668987\",\n    \"firstName\": \"gogo\",\n    \"lastName\": \"Abad\",\n    \"mobileNumber\": \"1281533229\",\n    \"countryCallingCode\": \"+20\",\n    \"email\": null,\n    \"password\": \"12345\"\n  },\n  \"oldPassword\":\"12345\"\n}"
+                        }
+                    }
                 }
             ]
         },
         {
             "name": "countries",
             "item": [
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/country/6473edc43155fbea54a65ed8",
+                            "path": [
+                                "6473edc43155fbea54a65ed8"
+                            ],
+                            "host": [
+                                "country"
+                            ]
+                        }
+                    }
+                },
                 {
                     "name": "add",
                     "request": {
@@ -205,7 +220,7 @@
                             "urlencoded": [
                                 {
                                     "key": "countryName",
-                                    "value": "USA"
+                                    "value": "final"
                                 },
                                 {
                                     "key": "adminstrationFees",
@@ -229,28 +244,47 @@
                                 },
                                 {
                                     "key": "solosingerFees",
-                                    "value": "450"
+                                    "value": "550"
                                 },
                                 {
                                     "key": "duoOrTriosingerFees",
-                                    "value": "400"
+                                    "value": "450"
                                 },
                                 {
                                     "key": "groupsingerFees",
-                                    "value": "600"
+                                    "value": "350"
                                 },
                                 {
-                                    "key": "solomusicianFee",
-                                    "value": "6554"
+                                    "key": "solomusicianFees",
+                                    "value": "550"
                                 },
                                 {
                                     "key": "duoOrTriomusicianFees",
-                                    "value": "7986"
+                                    "value": "450"
                                 },
                                 {
                                     "key": "groupmusicianFees",
-                                    "value": "658"
+                                    "value": "350"
+                                },
+                                {
+                                    "key": "currency",
+                                    "value": "usd"
                                 }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/country/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "country"
                             ]
                         }
                     }
@@ -324,28 +358,13 @@
                     }
                 },
                 {
-                    "name": "get all",
+                    "name": "get all accessable",
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/country/all",
+                            "raw": "/country/allaccessable",
                             "path": [
-                                "all"
-                            ],
-                            "host": [
-                                "country"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "delete",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/country/6473edc43155fbea54a65ed8",
-                            "path": [
-                                "6473edc43155fbea54a65ed8"
+                                "allaccessable"
                             ],
                             "host": [
                                 "country"
@@ -359,36 +378,31 @@
             "name": "sponsor",
             "item": [
                 {
-                    "name": "update  ",
+                    "name": "get all",
                     "request": {
-                        "method": "PUT",
+                        "method": "GET",
                         "url": {
-                            "raw": "/sponsor/64858576d9001f84d20342f1",
+                            "raw": "/sponsor/all",
                             "path": [
-                                "64858576d9001f84d20342f1"
+                                "all"
                             ],
                             "host": [
                                 "sponsor"
                             ]
-                        },
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "title",
-                                    "value": "cccccccc",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "paragraph",
-                                    "value": "yyyyyyyy",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "photo",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
-                                }
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/sponsor/6475e42616821349edae71e3",
+                            "path": [
+                                "6475e42616821349edae71e3"
+                            ],
+                            "host": [
+                                "sponsor"
                             ]
                         }
                     }
@@ -426,31 +440,36 @@
                     }
                 },
                 {
-                    "name": "get all",
+                    "name": "update  ",
                     "request": {
-                        "method": "GET",
+                        "method": "PUT",
                         "url": {
-                            "raw": "/sponsor/all",
+                            "raw": "/sponsor/64858576d9001f84d20342f1",
                             "path": [
-                                "all"
+                                "64858576d9001f84d20342f1"
                             ],
                             "host": [
                                 "sponsor"
                             ]
-                        }
-                    }
-                },
-                {
-                    "name": "delete",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/sponsor/6475e42616821349edae71e3",
-                            "path": [
-                                "6475e42616821349edae71e3"
-                            ],
-                            "host": [
-                                "sponsor"
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "cccccccc",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "yyyyyyyy",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
                             ]
                         }
                     }
@@ -460,6 +479,36 @@
         {
             "name": "advertising",
             "item": [
+                {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/advertising/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "advertising"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/advertising/647604efd0d6e0cbb08c5255",
+                            "path": [
+                                "647604efd0d6e0cbb08c5255"
+                            ],
+                            "host": [
+                                "advertising"
+                            ]
+                        }
+                    }
+                },
                 {
                     "name": "update ",
                     "request": {
@@ -536,18 +585,23 @@
                             ]
                         }
                     }
-                },
+                }
+            ]
+        },
+        {
+            "name": "news",
+            "item": [
                 {
                     "name": "get all",
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/advertising/all",
+                            "raw": "/news/all",
                             "path": [
                                 "all"
                             ],
                             "host": [
-                                "advertising"
+                                "news"
                             ]
                         }
                     }
@@ -557,54 +611,12 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/advertising/647604efd0d6e0cbb08c5255",
+                            "raw": "/news/6476031eb8c49a21807f1f9b",
                             "path": [
-                                "647604efd0d6e0cbb08c5255"
+                                "6476031eb8c49a21807f1f9b"
                             ],
                             "host": [
-                                "advertising"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "news",
-            "item": [
-                {
-                    "name": "add",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/news",
-                            "host": [
                                 "news"
-                            ]
-                        },
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "title",
-                                    "value": "aaaaa",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "paragraph",
-                                    "value": "sssssss",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "description",
-                                    "value": "ddddddd",
-                                    "type": "default"
-                                },
-                                {
-                                    "key": "photo",
-                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
-                                    "type": "file"
-                                }
                             ]
                         }
                     }
@@ -650,31 +662,38 @@
                     }
                 },
                 {
-                    "name": "get all",
+                    "name": "add",
                     "request": {
-                        "method": "GET",
+                        "method": "POST",
                         "url": {
-                            "raw": "/news/all",
-                            "path": [
-                                "all"
-                            ],
+                            "raw": "/news",
                             "host": [
                                 "news"
                             ]
-                        }
-                    }
-                },
-                {
-                    "name": "delete",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/news/6476031eb8c49a21807f1f9b",
-                            "path": [
-                                "6476031eb8c49a21807f1f9b"
-                            ],
-                            "host": [
-                                "news"
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "aaaaa",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "paragraph",
+                                    "value": "sssssss",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "ddddddd",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Downloads\\Image_created_with_a_mobile_phone.png",
+                                    "type": "file"
+                                }
                             ]
                         }
                     }
@@ -826,66 +845,6 @@
                     }
                 },
                 {
-                    "name": "getAllRoles",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/role/all",
-                            "path": [
-                                "all"
-                            ],
-                            "host": [
-                                "role"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "add tab",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "/role/tab",
-                            "path": [
-                                "tab"
-                            ],
-                            "host": [
-                                "role"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            },
-                            "raw": "{\n  \"tabId\":\"sponsor\",\n  \"tabName\":\"sponsor\",\n  \"routes\":[\n    \"647b96819839d1b3bad89331\",\n    \"647b97189839d1b3bad89335\",\n    \"647b97189839d1b3bad89333\",\n    \"647b975c9839d1b3bad89337\"\n    ]\n}"
-                        }
-                    }
-                },
-                {
-                    "name": "get tabs",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/role/tabs",
-                            "path": [
-                                "tabs"
-                            ],
-                            "host": [
-                                "role"
-                            ]
-                        }
-                    }
-                },
-                {
                     "name": "addRoute",
                     "request": {
                         "method": "POST",
@@ -949,6 +908,27 @@
                     }
                 },
                 {
+                    "name": "getAllRoles",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/role/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
+                            }
+                        ]
+                    }
+                },
+                {
                     "name": "getAllAccessableRoutes",
                     "request": {
                         "method": "GET",
@@ -967,6 +947,45 @@
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2UyNTI4MGEzY2MxNGFlOTdkOTI1ZGEiLCJpYXQiOjE2NzU3ODAyMTd9.en08n7fLygUTfcQJGx990Xwjnt4SntmZxa_IgPbsrOo"
                             }
                         ]
+                    }
+                },
+                {
+                    "name": "add tab",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/role/tab",
+                            "path": [
+                                "tab"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"tabId\":\"sponsor\",\n  \"tabName\":\"sponsor\",\n  \"routes\":[\n    \"647b96819839d1b3bad89331\",\n    \"647b97189839d1b3bad89335\",\n    \"647b97189839d1b3bad89333\",\n    \"647b975c9839d1b3bad89337\"\n    ]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "get tabs",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/role/tabs",
+                            "path": [
+                                "tabs"
+                            ],
+                            "host": [
+                                "role"
+                            ]
+                        }
                     }
                 },
                 {
@@ -1214,24 +1233,6 @@
             "name": "subscription",
             "item": [
                 {
-                    "name": "get joined competitions",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/subscription",
-                            "host": [
-                                "subscription"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
-                            }
-                        ]
-                    }
-                },
-                {
                     "name": "join competetion",
                     "request": {
                         "method": "POST",
@@ -1256,6 +1257,24 @@
                             {
                                 "key": "64905036ce37b10487f575d9",
                                 "value": ""
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get joined competitions",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/subscription",
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjUyMjkwMX0.o5OU8Me65e1sUk4Thv1U7K1TpLQ5N1f-dO9nWQ1ub_A"
                             }
                         ]
                     }
@@ -1298,9 +1317,40 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
                             }
                         ]
+                    }
+                },
+                {
+                    "name": "change payment status",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/subscription/payments/64867ab2c6dab1e71dbd7003",
+                            "path": [
+                                "payments",
+                                "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "subscription"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"paid\":true\n}"
+                        }
                     }
                 }
             ]
@@ -1336,13 +1386,13 @@
                     }
                 },
                 {
-                    "name": "get all competitor",
+                    "name": "delete competitor",
                     "request": {
-                        "method": "GET",
+                        "method": "DELETE",
                         "url": {
-                            "raw": "/competitor/64904fe6ce37b10487f575d3",
+                            "raw": "/competitor/649054a9f2867599eaa8d855",
                             "path": [
-                                "64904fe6ce37b10487f575d3"
+                                "649054a9f2867599eaa8d855"
                             ],
                             "host": [
                                 "competitor"
@@ -1351,20 +1401,19 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
                             }
                         ]
                     }
                 },
                 {
-                    "name": "get all competitor by category",
+                    "name": "get all competitor",
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/competitor/64867ab2c6dab1e71dbd7003/dancer",
+                            "raw": "/competitor/64867ab2c6dab1e71dbd7003",
                             "path": [
-                                "64867ab2c6dab1e71dbd7003",
-                                "dancer"
+                                "64867ab2c6dab1e71dbd7003"
                             ],
                             "host": [
                                 "competitor"
@@ -1373,7 +1422,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
                             }
                         ]
                     }
@@ -1414,6 +1463,28 @@
                     }
                 },
                 {
+                    "name": "get all competitor by category",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/competitor/64867ab2c6dab1e71dbd7003/dancer",
+                            "path": [
+                                "64867ab2c6dab1e71dbd7003",
+                                "dancer"
+                            ],
+                            "host": [
+                                "competitor"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            }
+                        ]
+                    }
+                },
+                {
                     "name": "get all comp competitors",
                     "request": {
                         "method": "GET",
@@ -1431,27 +1502,6 @@
                             {
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "delete competitor",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/competitor/649054a9f2867599eaa8d855",
-                            "path": [
-                                "649054a9f2867599eaa8d855"
-                            ],
-                            "host": [
-                                "competitor"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
                             }
                         ]
                     }
@@ -1512,10 +1562,10 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "/entry/64905a5ec9ca573f60e38fac/64905498f2867599eaa8d83f",
+                            "raw": "/entry/6488511d4dd23653a664d1a0/648883d609e3356305794f43",
                             "path": [
-                                "64905a5ec9ca573f60e38fac",
-                                "64905498f2867599eaa8d83f"
+                                "6488511d4dd23653a664d1a0",
+                                "648883d609e3356305794f43"
                             ],
                             "host": [
                                 "entry"
@@ -1524,7 +1574,7 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
                             }
                         ]
                     }
@@ -1534,10 +1584,10 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "/entry/64905a5ec9ca573f60e38fac/64905498f2867599eaa8d83f",
+                            "raw": "/entry/6486990ab17e6dd91d5ec4e5/648883d609e3356305794f43",
                             "path": [
-                                "64905a5ec9ca573f60e38fac",
-                                "64905498f2867599eaa8d83f"
+                                "6486990ab17e6dd91d5ec4e5",
+                                "648883d609e3356305794f43"
                             ],
                             "host": [
                                 "entry"
@@ -1546,46 +1596,19 @@
                         "header": [
                             {
                                 "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE4NDMwMn0.cGJCC7t5_iTF3LnFaYPenJnrWR1u44t7xeZTfUds0U4"
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
                             }
                         ]
                     }
                 },
                 {
-                    "name": "get all entries by category",
+                    "name": "get all entries",
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/entry/64867ab2c6dab1e71dbd7003/dancer",
+                            "raw": "/entry/64904fe6ce37b10487f575d3",
                             "path": [
-                                "64867ab2c6dab1e71dbd7003",
-                                "dancer"
-                            ],
-                            "host": [
-                                "entry"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic",
-                                "disabled": true
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "delete entry",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "/entry/64905a5ec9ca573f60e38fac",
-                            "path": [
-                                "64905a5ec9ca573f60e38fac"
+                                "64904fe6ce37b10487f575d3"
                             ],
                             "host": [
                                 "entry"
@@ -1605,35 +1628,13 @@
                     }
                 },
                 {
-                    "name": "get all comp entries",
+                    "name": "delete entry",
                     "request": {
-                        "method": "GET",
+                        "method": "DELETE",
                         "url": {
-                            "raw": "/entry/allcompetition/64867569c6dab1e71dbd6fbc",
+                            "raw": "/entry/64905a5ec9ca573f60e38fac",
                             "path": [
-                                "allcompetition",
-                                "64867569c6dab1e71dbd6fbc"
-                            ],
-                            "host": [
-                                "entry"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "get all entries",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/entry/64867ab2c6dab1e71dbd7003",
-                            "path": [
-                                "64867ab2c6dab1e71dbd7003"
+                                "64905a5ec9ca573f60e38fac"
                             ],
                             "host": [
                                 "entry"
@@ -1699,6 +1700,55 @@
                                 }
                             ]
                         }
+                    }
+                },
+                {
+                    "name": "get all entries by category",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/64867ab2c6dab1e71dbd7003/dancer",
+                            "path": [
+                                "64867ab2c6dab1e71dbd7003",
+                                "dancer"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTA0YWYyNTJmOGU0MzhkNGQ0N2VjZiIsImlhdCI6MTY4NzE3Nzk5OSwiZXhwIjoxNjg3MTk1OTk5fQ.YJQnrWWDddIOPIxkYxC0lS2gbwEcaCmIiMxarwnfqic",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "get all comp entries",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/allcompetition/64867569c6dab1e71dbd6fbc",
+                            "path": [
+                                "allcompetition",
+                                "64867569c6dab1e71dbd6fbc"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZlNWQyZTVjMWU3NzQwNDVlMGM0NyIsImlhdCI6MTY4NjY1ODgyOX0.7jzpXgfNrDGUTfSdkSh_99SflED4qEis3inO-1dwgRo"
+                            }
+                        ]
                     }
                 },
                 {
@@ -1830,14 +1880,14 @@
                     }
                 },
                 {
-                    "name": "get school result",
+                    "name": "get summary statement",
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "/entry/myresult/64904fe6ce37b10487f575d3",
+                            "raw": "/entry/mystatment/64867ab2c6dab1e71dbd7003",
                             "path": [
-                                "myresult",
-                                "64904fe6ce37b10487f575d3"
+                                "mystatment",
+                                "64867ab2c6dab1e71dbd7003"
                             ],
                             "host": [
                                 "entry"
@@ -1852,33 +1902,6 @@
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA",
                                 "disabled": true
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "get summary statement",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/entry/mystatment/64904fe6ce37b10487f575d3",
-                            "path": [
-                                "mystatment",
-                                "64904fe6ce37b10487f575d3"
-                            ],
-                            "host": [
-                                "entry"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE",
-                                "disabled": true
-                            },
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA"
                             }
                         ]
                     }
@@ -1904,6 +1927,33 @@
                             }
                         ]
                     }
+                },
+                {
+                    "name": "get school result",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/entry/myresult/64904fe6ce37b10487f575d3",
+                            "path": [
+                                "myresult",
+                                "64904fe6ce37b10487f575d3"
+                            ],
+                            "host": [
+                                "entry"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4NjYwNjcyMX0.ERlHYlLtEhtZM1YTXb8uo1ceBwfs4Gu1vEtEXqQOpyA",
+                                "disabled": true
+                            }
+                        ]
+                    }
                 }
             ]
         },
@@ -1924,27 +1974,6 @@
                             {
                                 "key": "Authorization",
                                 "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODc0MmU3NzY3NmU3Nzc5ZjFkZTZhNyIsImlhdCI6MTY4NjU4OTc4NX0.YQWmhMWYnKqLFCkaRXp80piB3ha15gGBn0KUkMxHuwA"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "get all for admin",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "/teacher/648742e77676e7779f1de6a7",
-                            "path": [
-                                "648742e77676e7779f1de6a7"
-                            ],
-                            "host": [
-                                "teacher"
-                            ]
-                        },
-                        "header": [
-                            {
-                                "key": "Authorization",
-                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
                             }
                         ]
                     }
@@ -2009,6 +2038,27 @@
                                 }
                             ]
                         }
+                    }
+                },
+                {
+                    "name": "get all for admin",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/teacher/648742e77676e7779f1de6a7",
+                            "path": [
+                                "648742e77676e7779f1de6a7"
+                            ],
+                            "host": [
+                                "teacher"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4NjY1NTk5MX0.c83PmWVE_Oem4O21MwvbX9nKCoSTsAoiQuxVudT0HxE"
+                            }
+                        ]
                     }
                 },
                 {
@@ -2107,30 +2157,6 @@
                     }
                 },
                 {
-                    "name": "update",
-                    "request": {
-                        "method": "PUT",
-                        "url": {
-                            "raw": "/product/648eee078e4d6ecfd2c129f2",
-                            "path": [
-                                "648eee078e4d6ecfd2c129f2"
-                            ],
-                            "host": [
-                                "product"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            },
-                            "raw": "{\n  \"photo\":null\n}"
-                        }
-                    }
-                },
-                {
                     "name": "get all",
                     "request": {
                         "method": "GET",
@@ -2157,6 +2183,30 @@
                             "host": [
                                 "product"
                             ]
+                        }
+                    }
+                },
+                {
+                    "name": "update",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/product/648eee078e4d6ecfd2c129f2",
+                            "path": [
+                                "648eee078e4d6ecfd2c129f2"
+                            ],
+                            "host": [
+                                "product"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"photo\":null\n}"
                         }
                     }
                 }
@@ -2206,6 +2256,42 @@
                     }
                 },
                 {
+                    "name": "get all",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/message/all",
+                            "path": [
+                                "all"
+                            ],
+                            "host": [
+                                "message"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "onlyUsers",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/message/6473edc43155fbea54a65ed8",
+                            "path": [
+                                "6473edc43155fbea54a65ed8"
+                            ],
+                            "host": [
+                                "message"
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "add from user",
                     "request": {
                         "method": "POST",
@@ -2249,41 +2335,106 @@
                             ]
                         }
                     }
-                },
+                }
+            ]
+        },
+        {
+            "name": "payment",
+            "item": [
                 {
-                    "name": "get all",
+                    "name": "bank receipt payment",
                     "request": {
-                        "method": "GET",
+                        "method": "POST",
                         "url": {
-                            "raw": "/message/all",
+                            "raw": "/payment/bankreceipt/64867ab2c6dab1e71dbd7003",
                             "path": [
-                                "all"
+                                "bankreceipt",
+                                "64867ab2c6dab1e71dbd7003"
                             ],
                             "host": [
-                                "message"
+                                "payment"
                             ]
                         },
                         "header": [
                             {
-                                "key": "onlyUsers",
-                                "value": "true"
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4ODI0NTQxN30.aj89WKb2fzr3ETYd5YHZdqwgeXSN1mWlKchtNFlE_Rw"
                             }
-                        ]
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "photo",
+                                    "src": "c:\\Users\\Office\\Pictures\\Screenshots\\Screenshot (12).png",
+                                    "type": "file"
+                                }
+                            ]
+                        }
                     }
                 },
                 {
-                    "name": "delete",
+                    "name": "bank receipt payment decision",
                     "request": {
-                        "method": "DELETE",
+                        "method": "PUT",
                         "url": {
-                            "raw": "/message/6473edc43155fbea54a65ed8",
+                            "raw": "/payment/bankreceipt/64a0b7e1080f54f05ee63455",
                             "path": [
-                                "6473edc43155fbea54a65ed8"
+                                "bankreceipt",
+                                "64a0b7e1080f54f05ee63455"
                             ],
                             "host": [
-                                "message"
+                                "payment"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODg0ZGU5YmE1ZGRjN2I0YmM3MzNkYSIsImlhdCI6MTY4ODI1OTM1Nn0.VpC4cn9N3SDUa8e284HrY4QKrBxKg62IcjfNGXS4ViY"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "decision",
+                                    "value": "refused || accepted"
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "the rejection message if he refused"
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "123"
+                                },
+                                {
+                                    "key": "currency",
+                                    "value": "usd"
+                                }
                             ]
                         }
+                    }
+                },
+                {
+                    "name": "get payments",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/payment/64867ab2c6dab1e71dbd7003",
+                            "path": [
+                                "64867ab2c6dab1e71dbd7003"
+                            ],
+                            "host": [
+                                "payment"
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODJlODU4ODJjMWIxNTJiNTcyOTEwYSIsImlhdCI6MTY4ODI0NTQxN30.aj89WKb2fzr3ETYd5YHZdqwgeXSN1mWlKchtNFlE_Rw"
+                            }
+                        ]
                     }
                 }
             ]
@@ -2315,6 +2466,18 @@
                         }
                     },
                     "raw": "{\n  \"role\": \"project inserter\",\n  \"routes\": [\n    \"63aecb0f609cd49cad76d4e5\",\n    \"63aeccf75fef29fc31df7ce2\",\n    \"63e280bcf462a38c6207f3b8\"\n  ]\n}"
+                }
+            }
+        },
+        {
+            "name": "country currency",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "/allcurrencies",
+                    "host": [
+                        "allcurrencies"
+                    ]
                 }
             }
         }

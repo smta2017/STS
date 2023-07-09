@@ -3,38 +3,89 @@ const tokenModel = require('../../db/models/tokens.model')
 const userModel = require('../../db/models/user.model')
 const createToken = require('../../db/models/tokens.model').createToken
 const Helper = require('../helper')
+const {sendmail}=require('../mail')
 const countryCodeslist = require('country-codes-list').customList('countryCallingCode', '{officialLanguageCode}-{countryCode}')
 class User {
    static academyRegistration = (req, res) => {
       Helper.handlingMyFunction(req, res, async (req) => {
+         if(!req.body.termsAndConditionsAccepted){
+            const e = new Error('the academy have to accept our terms and conditions to have an account')
+            e.name = 'CastError'
+            throw e
+         }
          if (!req.body.owner.countryCallingCode) {
             const e = new Error('we need you country calling code with your phone number to complete this registeration')
             e.name = 'ValidationError'
             throw e
          }
          const academy = await academyModel.create(req.body)
-         req.body.owner.role = '6480d5701c02f26cd6668987'/*academy role id */
+         req.body.owner.role = process.env.academy/*academy role id */
          req.body.owner.academyDetails = academy._id
          req.body.owner.mobileNumber = countryCodeslist[req.body.owner.countryCallingCode.substring(1)] + ":" + req.body.owner.countryCallingCode + req.body.owner.mobileNumber
-         if (true) { return userModel.create(req.body.owner) }
-      }, 'you registered successfully')
+         const user=await userModel.create(req.body.owner) 
+         const token = await createToken({ id: user._id })
+         sendmail(user.email,'Confirmation Mail',`<h1>Email Confirmation</h1>
+         <h2>Hello ${user.firstName}</h2>
+         <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
+         <a href=${process.env.domainName}/sts/user/confirm/${token}> Click here</a>
+         </div>`)
+      }, 'now you need to check your mail form a confimation mail to complete your registeration,you have maximum one hour to make this process otherwise this mail will be invalid and you will need to sign up again  ')
    }
    static employeeRegistration = (req, res) => {
       Helper.handlingMyFunction(req, res, async (req) => {
          req.body.mobileNumber = countryCodeslist[req.body.countryCallingCode.substring(1)] + ":" + req.body.countryCallingCode + req.body.mobileNumber
          req.body.password = 'Asd?1234'
          return userModel.create(req.body)
-      }, 'this Email is now registered as an employee')
+      }, 'this Email is now registered as an employee , tell your employee to complete the registeration by checking his confirmation mail in one hour otherwise this account will be deleted')
+   }
+   static confirmMail=async(req,res)=>{
+      try{
+        const token = req.params.confimation
+        const tokenExist = await tokenModel.findOne({ token })
+        if (!tokenExist) {
+            res.json('this confimation mail is no longer valid')
+        }
+
+        const user = await Helper.isThisIdExistInThisModel(tokenExist.owner, null, userModel, 'user') //.populate('userData')
+        if (!user) {
+            res.json('your user has been removed because you had token long time to confirm ,you can user the same mail to sgin up again  ')
+        } 
+        user.date = ""
+            user.suspended= false
+            await user.save()
+        res.json('now you can go back to our website to log in')
+      }catch(e){
+         req.json('there is something go wrong, please contact us if you need any help')
+      }
+   }
+   static sendMailToUpdatePass=(req,res)=>{
+      Helper.handlingMyFunction(req,res,async(req)=>{
+         const user=await userModel.find({email:req.body.email})
+         if(!user){
+            const e = new Error('this email is not registered you can sign up now')
+            e.name = 'CastError'
+            throw e
+         }
+         sendmail(user.email,'this mail to change your password','s')
+      },'please check your mail')
    }
    static logIn = (req, res) => {
       Helper.handlingMyFunction(req, res, async (req) => {
          const user = await userModel.logIn(req.body)
          await user.populate('academyDetails')
-         const isRuler = ['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(user.role.toString())/*refree roles ids */
-         const isAdmin = (user.role.toString() != '6480d5701c02f26cd6668987'/*academy role id */) && !isRuler
+         const isRuler = [process.env.refree1, process.env.refree2, process.env.refree3].includes(user.role.toString())/*refree roles ids */
+         const isAdmin = (user.role.toString() != process.env.academy/*academy role id */) && !isRuler
+         let isOtherCountry=false
+         if(!isAdmin&&!isRuler){
+            isOtherCountry=(user.academyDetails.country==process.env.otherCountry)
+         }
+         if(isAdmin){
+            await user.populate({path:'role',select:['tabs'],populate:'tabs'})
+         }
+
          const token = await createToken({ id: user._id }, req.body.lifeTime)
          if (true) {
-            return { user, token, isRuler, isAdmin/*,joinCompetions:user.joinedCompetions*/ }
+            return { user, token, isRuler, isAdmin,isOtherCountry/*,joinCompetions:user.joinedCompetions*/ }
          }
       }, "you logged in successfully")
    }
@@ -67,10 +118,10 @@ class User {
             }
             result.userData = await req.user.save()
          }
-         if (req.user.role == '6480d5701c02f26cd6668987'/*academy role id */ && req.body.academy && Object.keys(req.body.academy).length > 0) {
+         if (req.user.role == process.env.academy/*academy role id */ && req.body.academy && Object.keys(req.body.academy).length > 0) {
             const academy = await Helper.isThisIdExistInThisModel(req.user.academyDetails, null, academyModel, 'academy')
             for (let field in req.body.academy) {
-               if (!['country', '_id'].includes(field)) { academy[field] = req.body.academy[field] }
+               if (!['country', '_id','termsAndConditionsAccepted'].includes(field)) { academy[field] = req.body.academy[field] }
             }
             result.newAcademyData = await academy.save()
          }

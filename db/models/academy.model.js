@@ -1,13 +1,10 @@
 const mongoose = require('mongoose')
-const OwnerSchema = mongoose.Schema({
-
-})
 const LocationSchema = mongoose.Schema({
-    blockNum: {
-        type: String,
-        trim: true,
-        required: [true, 'please enter all your loction details,you forget to enter your block number']
-    },
+    // blockNum: {
+    //     type: String,
+    //     trim: true,
+    //     required: [true, 'please enter all your loction details,you forget to enter your block number']
+    // },
     street: {
         type: String,
         trim: true,
@@ -30,6 +27,10 @@ const LocationSchema = mongoose.Schema({
     }
 })
 const AcademySchema = mongoose.Schema({
+    termsAndConditionsAccepted:{
+        type:Boolean,
+        default:true
+    },
     country: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'countries',

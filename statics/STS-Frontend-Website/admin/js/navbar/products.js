@@ -17,7 +17,7 @@ function previewImage(event) {
 var countries=[]
 var allCountries=[]
 async function getAllCountries() {
-    countries = await fetch(`${domainName}/sts/country/all`, {
+    countries = await fetch(`${domainName}/sts/country/allaccessable`, {
         method: 'GET',
         headers: { 'Authorization': token },
     }).then(data => data.json())
@@ -259,6 +259,8 @@ var allCountryShow = document.querySelector('#selectCountryShowShop');
 allCountryShow.addEventListener('change', getProductsData);
 
 function editProducts(id) {
+    goToTop();
+    document.getElementById("addToEdit").innerHTML = "Update";
     var myProducts = productsData.find(Productss => { return Productss._id == id })
     document.getElementById("productsId").value = myProducts._id;
     document.querySelector('#ProductName').value = myProducts.name;
@@ -349,6 +351,7 @@ function changeProducts(e) {
                         document.querySelector('#hidden-value').value = "";
                         console.log([...document.querySelectorAll('.added_object')]);
                         [...document.querySelectorAll('.added_object')].forEach(section=>section.querySelector('.btn-dark').click())
+                        goToAdd();
                         getProductsData();
                     } else {
                         throw new Error('Request failed.');
@@ -441,6 +444,7 @@ function deleteProducts(id) {
 
 
 function clearData(){
+    goToAdd();
     document.getElementById("productsId").value = '';
     document.querySelector('#imgPreview').src = '';
     document.querySelector('#imgPreview').style.display = 'none'

@@ -28,7 +28,7 @@ class Role {
     }
     static getRole = (req, res) => {
         Helper.handlingMyFunction(req, res, (req) => {
-            return Helper.isThisIdExistInThisModel(req.params.id, null, roleModel, 'role')
+            return Helper.isThisIdExistInThisModel(req.params.id, null, roleModel, 'role','tabs')
         }, 'here is your role')
     }
     static getRoles = (req, res) => {

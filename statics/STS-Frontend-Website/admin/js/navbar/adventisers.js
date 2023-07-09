@@ -81,6 +81,8 @@ function getAdventisersData() {
 getAdventisersData();
 
 function editAdventisers(id) {
+    goToTop();
+    document.getElementById("addToEdit").innerHTML = "Update";
     var myAdventisers = adventisersData.find(adventiserss => { return adventiserss._id == id })
    
     document.getElementById("adventisersId").value = myAdventisers._id;
@@ -122,6 +124,7 @@ function changeAdventisers(e) {
                     document.getElementById("paragraphAdventiser").value = "";
                     document.getElementById("uploadImgForAdventiser").value = "";
                     document.getElementById("imgPreview").style.display = "none";
+                    goToAdd();
                     getAdventisersData();
                 } else {
                     throw new Error('Request failed.');
@@ -247,6 +250,7 @@ function showAdventisersDetails(id) {
 
 
 function clearData(){
+    goToAdd();
     document.getElementById("adventisersId").value = '';
     document.querySelector('#imgPreview').src = '';
     document.querySelector('#imgPreview').style.display = 'none'

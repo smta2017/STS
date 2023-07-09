@@ -1,13 +1,16 @@
 function generatePDF() {
   // Get the HTML table element
-  var table = document.getElementById('table-entriesR');
+  var table = document.getElementById('table-entriesR').cloneNode(true);
+
+  // Remove the last column of each row in the table
+  Array.from(table.rows).forEach(row => row.lastElementChild.remove());
 
   // Open a new window for the print preview
   var win = window.open('', '_blank');
 
   // Create a new document in the new window
   win.document.write('<html><head><title>Entries Table</title></head><body>');
-  win.document.write('<style>table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }</style>');
+  win.document.write('<style>@media print { table { border-collapse: collapse; } th, td { border: 2px solid black; padding: 8px; }} </style>');
   win.document.write('<h1>Entries Table</h1>');
   win.document.write(table.outerHTML); // Write the table HTML to the new document
   win.document.write('</body></html>');
@@ -18,21 +21,16 @@ function generatePDF() {
   // Wait for the document to fully load before printing
   win.onload = function() {
     // Print the document
-    // win.print();
+    win.print();
     // Close the print preview window after printing
     // win.close();
   };
 }
 
-document.getElementById('generate-pdf').addEventListener('click', generatePDF);
-
 var entryDegreeID = getCookie("entryDegree"); 
 var type = getCookie("type"); 
 var year = getCookie("year"); 
 
-// function setCookie(name, value) {
-//   document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
-// }
 
 var entriesData;
 function showEntriesData(entryDegreeID) {
@@ -115,7 +113,6 @@ function addDegreeForEntry(e) {
 }
 
 
-document.getElementById('search').addEventListener('input', handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById('search').value.toLowerCase();

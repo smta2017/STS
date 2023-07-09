@@ -60,11 +60,11 @@ const CompetitorSchema = mongoose.Schema({
             if (age > 4 && age < 10) {
                 return 'mini'
             } else if (age >= 10 && age < 14) {
-                return 'k'
+                return 'K'
             } else if (age >= 14 && age < 18) {
-                return 'j'
+                return 'J'
             } else if ((age >= 18 && age < 28) || (age >= 28 && age < 45 && this.category != 'dancer')) {
-                return 'sn'
+                return 'Sn'
             } else {
                 return 'unknown'
             }

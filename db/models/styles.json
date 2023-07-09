@@ -1,0 +1,437 @@
+[
+    {
+        "style": "for music only:Solo Classical",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Sc"
+    },
+    {
+        "style": "for music only: Duo Classical",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Dc"
+    },
+    {
+        "style": "for music only: Concerto Classical",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Cc"
+    },
+    {
+        "style": "for music only: Chamber_ensemble Classical",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "CEc"
+    },
+    {
+        "style": "for music only: Orchestra Classical",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Oc"
+    },
+    {
+        "style": "for music only: Solo Jazz",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Sj"
+    },
+    {
+        "style": "for music only: Duo Jazz",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Dj"
+    },
+    {
+        "style": "for music only: Concerto Jazz",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Cj"
+    },
+    {
+        "style": "for music only: Chamber_music_Jazz",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Cjj"
+    },
+    {
+        "style": "for music only: Solo Pop",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Sp"
+    },
+    {
+        "style": "for music only: Duo Pop",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Dp"
+    },
+    {
+        "style": "for music only: Concerto Pop",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "Cp"
+    },
+    {
+        "style": "for music only: Chamber_music_Pop",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "CPP"
+    },
+    {
+        "style": "for music only: Solo Traditional Music ",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "CPP"
+    },
+    {
+        "style": "for music only: Duo Traditional Music ",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "CPP"
+    },
+    {
+        "style": "for music only: Concerto Traditional Music ",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "CPP"
+    },
+    {
+        "style": "for music only: Chamber Traditional Music ",
+        "massage": "be aware that this style is for music competitors only",
+        "abstraction": "CPP"
+    },
+    {
+        "style": "for Singing only: Solo Rock ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "SR"
+    },
+    {
+        "style": "for Singing only: Duo Rock ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "DR"
+    },
+    {
+        "style": "for Singing only: Mini_group Rock ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "MGR"
+    },
+    {
+        "style": "for Singing only: Large_group Rock ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "LGR"
+    },
+    {
+        "style": "for Singing only: Solo Pop ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "SP"
+    },
+    {
+        "style": "for Singing only: Duo Pop ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "DP"
+    },
+    {
+        "style": "for Singing only: Mini_group Pop ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "MGP"
+    },
+    {
+        "style": "for Singing only: Large_group Pop ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "LGP"
+    },
+    {
+        "style": "for Singing only: Solo Classical",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "SC"
+    },
+    {
+        "style": "for Singing only: Duo Classical ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "DC"
+    },
+    {
+        "style": "for Singing only: choir Classical ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "CC"
+    },
+    {
+        "style": "for Singing only: Orchestra Classical ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "OC"
+    },
+    {
+        "style": "for Singing only: Solo Opera ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "SO"
+    },
+    {
+        "style": "for Singing only: Duo Opera ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "DO"
+    },
+    {
+        "style": "for Singing only: choir Opera ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "CO"
+    },
+    {
+        "style": "for Singing only: Orchestra Opera ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "OO"
+    },
+    {
+        "style": "for Singing only: Solo Blues OR Jazz",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "SBJ"
+    },
+    {
+        "style": "for Singing only: Duo Blues OR Jazz ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "DBJ"
+    },
+    {
+        "style": "for Singing only: Mini_group Blues OR Jazz",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "MGBJ"
+    },
+    {
+        "style": "for Singing only: Large_group Blues OR Jazz",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "LGBJ"
+    },
+    {
+        "style": "for Singing only: Solo Soul ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "Ss"
+    },
+    {
+        "style": "for Singing only: Duo Soul ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "Ds"
+    },
+    {
+        "style": "for Singing only: Mini_group Soul ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "MGs"
+    },
+    {
+        "style": "for Singing only: Large_group Soul ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "LGs"
+    },
+    {
+        "style": "for Singing only: Solo Rap ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "Sr"
+    },
+    {
+        "style": "for Singing only: Duo Rap ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "Dr"
+    },
+    {
+        "style": "for Singing only: Mini_group Rap ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "MGr"
+    },
+    {
+        "style": "for Singing only: Large_group Rap ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "LGr"
+    },
+    {
+        "style": "for Singing only: Mini_group A Cappella ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "MGAC"
+    },
+    {
+        "style": "for Singing only: Large_group A Cappella ",
+        "massage": "be aware that this style is for Singing competitors only",
+        "abstraction": "LGAC"
+    },
+    {
+        "style": "for Dance only: Classical Neoclassical Repertoire Any other ballet style ",
+        "massage": "be aware that this style is for Dance competitors who are younger than 10 years old only",
+        "abstraction": "B"
+    },
+    {
+        "style": "for Dance only: Classical Neoclassical Any other ballet style ",
+        "massage": "be aware that this style is for only one Dance competitor who his age start from 10 years old ",
+        "abstraction": "B"
+    },
+    {
+        "style": "for Dance only: Classical Neoclassical Any other ballet style(pointe shoes) ",
+        "massage": "be aware that this style is for only one Dance competitor who his age start from 10 and less than 14 years old ",
+        "abstraction": "PB"
+    },
+    {
+        "style": "for Dance only: Reportoire",
+        "massage": "be aware that this style is for only one Dance competitor who his age start from 10 and less than 14 years old ",
+        "abstraction": "BR"
+    },
+    {
+        "style": "for Dance only: Reportoire(pointe shoes allowed)",
+        "massage": "be aware that this style is for only Dance competitors who his age start from  14 years old ",
+        "abstraction": "Fuck"
+    },
+    {
+        "style": "for Dance only: National & flokore",
+        "massage": "be aware that this style is for Dance competitors ",
+        "abstraction": "N"
+    },
+    {
+        "style": "for Dance only: Lyrical",
+        "massage": "be aware that this style is for Dance competitors who their ages start from  10 years old ",
+        "abstraction": "L"
+    },
+    {
+        "style": "for Dance only: Contemporary",
+        "massage": "be aware that this style is for Dance competitors who their ages start from  10 years old ",
+        "abstraction": "E"
+    },
+    {
+        "style": "for Dance only: Show Dance",
+        "massage": "be aware that this style is for Dance competitors who their ages start from  10 years old ",
+        "abstraction": "W"
+    },
+    {
+        "style": "for Dance only: Jazz",
+        "massage": "be aware that this style is for Dance competitors who their ages start from  10 years old ",
+        "abstraction": "Z"
+    },
+    {
+        "style": "for Dance only: Street Dance",
+        "massage": "be aware that this style is for Dance competitors who their ages start from  10 years old ",
+        "abstraction": "H"
+    },
+    {
+        "style": "for Dance only: Commercial",
+        "massage": "be aware that this style is for solo show or group of more than 6 Dance competitors ,this competitor or competitors ages start from  10 years old ",
+        "abstraction": "C"
+    },
+    {
+        "style": "for Dance only: Arco",
+        "massage": "be aware that this style is for Dance competitors ",
+        "abstraction": "A"
+    },
+    {
+        "style": "for Dance only: Tap",
+        "massage": "be aware that this style is for Dance competitors ",
+        "abstraction": "T"
+    },
+    {
+        "style": "for Dance only: Lyrical and Contemporary ",
+        "massage": "be aware that this style is for Dance competitors who are younger than 10 years old only",
+        "abstraction": "L"
+    },
+    {
+        "style": "for Dance only: Jazz and Show Dance ",
+        "massage": "be aware that this style is for Dance competitors who are younger than 10 years old only",
+        "abstraction": "W"
+    },
+    {
+        "style": "for Dance only: Street Dance & Commercial",
+        "massage": "be aware that this style is for Dance competitors who are younger than 10 years old only",
+        "abstraction": "H"
+    },
+    {
+        "style": "for Dance and singing: Song and Dance",
+        "massage": "be aware that this style is for Dance competitors ",
+        "abstraction": "V"
+    },
+    {
+        "style": "for Music and Singing only: Duo Rock ",
+        "massage": "be aware that this style is for music and Singing competitors only",
+        "abstraction": "DR"
+    },
+    {
+        "style": "for Music and Singing only: Mini_group Rock ",
+        "massage": "be aware that this style is for music and Singing competitors only",
+        "abstraction": "MGR"
+    },
+    {
+        "style": "for Music and Singing only: Large_group Rock ",
+        "massage": "be aware that this style is for music and Singing competitors only",
+        "abstraction": "LGR"
+    },
+    {
+        "style": "for Music and Singing only: Duo Pop ",
+        "massage": "be aware that this style is for music and Singing competitors only",
+        "abstraction": "DP"
+    },
+    {
+        "style": "for Music and Singing only: Mini_group Pop ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "MGP"
+    },
+    {
+        "style": "for Music and Singing only: Large_group Pop ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "LGP"
+    },
+    {
+        "style": "for Music and Singing only: Duo Classical ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "DC"
+    },
+    {
+        "style": "for Music and Singing only: Mini_group Classical ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "MGC"
+    },
+    {
+        "style": "for Music and Singing only: Large_group Classical ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "LGC"
+    },
+    {
+        "style": "for Music and Singing only: choir Classical ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "CC"
+    },
+    {
+        "style": "for Music and Singing only: Orchestra Classical ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "OC"
+    },
+    {
+        "style": "for Music and Singing only: Duo Blues OR Jazz ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "DBJ"
+    },
+    {
+        "style": "for Music and Singing only: Mini_group Blues OR Jazz ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "MGBJ"
+    },
+    {
+        "style": "for Music and Singing only: Large_group Blues OR Jazz ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "LGBJ"
+    },
+    {
+        "style": "for Music and Singing  only: Duo Soul ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "Ds"
+    },
+    {
+        "style": "for Music and Singing only: Mini_group Soul ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "MGs"
+    },
+    {
+        "style": "for Music and Singing only: Large_group Soul ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "LGs"
+    },
+    {
+        "style": "for Music and Singing only: Duo Rap ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "Dr"
+    },
+    {
+        "style": "for Music and Singing only: Mini_group Rap ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "MGr"
+    },
+    {
+        "style": "for Music and Singing only: Large_group Rap ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "LGr"
+    },
+    {
+        "style": "for Dance and Music only: Musical Dance Show ",
+        "massage": "be aware that this style is for Music and Singing competitors only",
+        "abstraction": "DM"
+    },
+    {
+        "style": "for all Dance and Music and Singing: shared entry ",
+        "massage": "be aware that this style should have competitors from all sections",
+        "abstraction": "SH"
+    }
+]

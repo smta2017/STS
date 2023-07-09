@@ -24,7 +24,7 @@ function getAllJoinedCompetition() {
                 button.id = competitions.competition._id;
                 button.value = competitions._id;
                 button.textContent =`${competitions.competition.type} - ${competitions.competition.year}`;
-                button.onclick = function () { goToHome(competitions.competition._id,competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished) };
+                button.onclick = function () { goToHome(competitions.competition._id,competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished,competitions.paid) };
                 allJoinedCompetition.appendChild(button);
             });
             document.getElementById("gif").style.display ="none"
@@ -38,7 +38,7 @@ function getAllJoinedCompetition() {
     }
 }
 
-function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished) {
+function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished,paid) {
     setCookie("competition", competitionID);
     setCookie("subscriptionId", subscriptionID);
     setCookie("type", type);
@@ -46,6 +46,7 @@ function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedul
     setCookie("showSchedule", showSchedule);
     setCookie("showResults", showResults);
     setCookie("finished", finished);
+    setCookie('paid', paid);
     window.location.hash = "#compatators";
     window.location.reload();
 }

@@ -33,7 +33,7 @@ function profileModified(e) {
     const formEditProfile = {
         academy: {
             schoolLocation: {
-                blockNum: document.getElementById("buldingNumber").value ? document.getElementById("buldingNumber").value : undefined,
+                // blockNum: document.getElementById("buldingNumber").value ? document.getElementById("buldingNumber").value : undefined,
                 street: document.getElementById("Address").value ? document.getElementById("Address").value : undefined,
                 cityOrTown: document.getElementById("City").value ? document.getElementById("City").value : undefined,
                 provinceOrState: document.getElementById("State").value ? document.getElementById("State").value : undefined,
@@ -77,7 +77,7 @@ function profileModified(e) {
               document.getElementById("editEmailForAcademy").value = ""; 
               document.getElementById("editOldPasswordForUser").value = ""; 
               document.getElementById("newPasswordForUsre").value = "";  
-              document.getElementById("buldingNumber").value = "";  
+              // document.getElementById("buldingNumber").value = "";  
               document.getElementById("Address").value = "";  
               document.getElementById("City").value = "";   
               document.getElementById("State").value = "";   

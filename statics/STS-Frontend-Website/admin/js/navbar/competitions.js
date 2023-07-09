@@ -14,15 +14,13 @@ function previewImage(event) {
     }
 }
 
-
-
 var selectedOptionsCountry = "";
 
 function getAllCountries() {
     var allCountry = document.querySelector('#countries');
 
     document.getElementById("gif").style.display ="block"
-    fetch(`${domainName}/sts/country/all`, {
+    fetch(`${domainName}/sts/country/allaccessable`, {
     method: 'GET',
     headers: {'Authorization': token},
     })
@@ -68,6 +66,12 @@ document.getElementById("selectType").onchange = function() {
 var competitionsData;
 
 function getCompetitionsData() {
+    deleteCookie("competition");
+    deleteCookie("year");
+    deleteCookie("type");
+    deleteCookie("schoolID");
+    deleteCookie("schoolName");    
+
     var competitionsContainer = document.getElementById("Addcompetitions");
     document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/competition/all`, {
@@ -88,18 +92,17 @@ function getCompetitionsData() {
                 const date = `${competitions.date}`.split("T")[0];
 
                 element.innerHTML = `
-                <div class="photo ">
+                <div class="photo">
                     <img src="${domainName}/${competitions.poster}" class="w-100">
                 </div>
 
                 <div class="footer">
-                    <a class="btn btn-warning w-100 text-dark" id="${competitions.type} - ${competitions.year}" onclick="goToSchool(event)" >Show Competition Details</a>
+                    <a class="btn btn-warning w-100 text-dark" id="${competitions.type}-${competitions.year}_${competitions.otherCountry}" onclick="goToSchool(event)">Show Competition Details</a>
                 </div>
 
-                <h3 class="text-center pt-3 bg-dark">${competitions.type} - ${competitions.year}</h3>
-                <div class="content row ">
-                    <div class="col-6  ">
-                        
+                <h3 class="text-center pt-3 bg-dark">${competitions.type}-${competitions.year}</h3>
+                <div class="content row">
+                    <div class="col-6">
                         <h6 class="card-title fw-bold text-light">Admission</h6>
                         <p class="ms-2">${startSubscription} to ${endSubscription}</p>
                         <h6 class="card-title fw-bold text-light">Location Display your Show</h6>
@@ -220,9 +223,7 @@ function opentoregisteration(e) {
       .then(response => {
         if (response.apiStatus == true) {
           console.log("Congrats, you updated competition data successfully");
-  
           getCompetitionsData();
-          console.log( response.json())
         } else {
           throw new Error('Request failed.');
         }
@@ -241,6 +242,8 @@ function opentoregisteration(e) {
   
 
 function editCompetitions(id) {
+    goToTop();
+    document.getElementById("addToEdit").innerHTML = "Update";
     var myCompetitions = competitionsData.find(competitions => { return competitions._id == id })
     document.getElementById("competitionsId").value = myCompetitions._id;
     document.getElementById("yearOfCompetition").value = myCompetitions.year;
@@ -301,7 +304,7 @@ function changeCompetitions(e) {
                     document.getElementById("lastDay").value = "";
                     document.getElementById("uploadImgForCompetition").value = "";
                     document.getElementById("imgPreview").style.display = "none";
-
+                    goToAdd();
                     getCompetitionsData();
                 } else {
                     throw new Error('Request failed.');
@@ -358,7 +361,15 @@ function goToSchool(e){
     window.location.hash="#school"
     const parntId = e.target.parentElement.parentElement.id;
     const afterSpliting = parntId.split("_")[1];
+    const type = e.target.id.split("-")[0];
+    const year = e.target.id.split("-")[1].split("_")[0];
+    const isOtherCountry = e.target.id.split("_")[1];
+    console.log(isOtherCountry);
+
     setCookie('competition', afterSpliting);
+    setCookie("type" , type);
+    setCookie("year" , year);
+    setCookie("isOtherCountry" , isOtherCountry);
 }
 
 function handleSearch() {
@@ -376,8 +387,8 @@ function handleSearch() {
     });
 }
 
-
 function clearData(){
+    goToAdd();
     document.getElementById("competitionsId").value = '';
     document.querySelector('#imgPreview').src = '';
     document.querySelector('#imgPreview').style.display = 'none'

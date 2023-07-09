@@ -22,6 +22,10 @@ const SubscriptionSchema = mongoose.Schema({
     haveASuccessededEntry: {
         type: Boolean,
         default: false
+    },
+    paid:{
+        type:Boolean,
+        default:false
     }
 })
 SubscriptionSchema.methods.deleteMe = async function (type) {

@@ -29,15 +29,13 @@ function generatePDF() {
       // win.close();
     };
 }
-  
-// document.getElementById('generate-pdf').addEventListener('click', generatePDF);
-  
-if (getCookie('stopSubscription') == "false" && getCookie('type') == "qualifier") {
+    
+if (getCookie('stopSubscription') == "false" && getCookie('type') == "qualifier" && getCookie('paid') === "false") {
     var addTeachDiv = document.querySelector(".addTeach");
     const addTeachButton = document.createElement('div');
     addTeachDiv.innerHTML = "";
     addTeachButton.innerHTML = `
-    <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#AddTeacher">Add Teatcher</button>`
+    <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#AddTeacher" onclick="goToAdd();">Add Teatcher</button>`
     addTeachDiv.appendChild(addTeachButton);
 
 
@@ -88,7 +86,7 @@ function getTeachersData() {
             element.setAttribute('id', `teacher-${teacher._id}`);
             teachersContainer.appendChild(element);
 
-        if (getCookie('stopSubscription') == "false" && getCookie('type') == "qualifier") {
+        if (getCookie('stopSubscription') == "false" && getCookie('type') == "qualifier" && getCookie('paid') === "false") {
             const elementIcon = document.createElement('td');
             elementIcon.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="edit-btn bi bi-pen-fill edit" viewBox="0 0 16 16" style="color: #3e843e;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#AddTeacher" onclick="editTeacher('${teacher._id}')">
@@ -113,6 +111,7 @@ function getTeachersData() {
 getTeachersData();
 
 function editTeacher(id) {
+    document.getElementById("addToEdit").innerHTML = "Update";
     var teacher = teachersData.find(teacher => teacher._id == id);
   
     document.getElementById("teachersIdU").value = teacher._id;
@@ -262,8 +261,6 @@ function deleteTeacher(id) {
     }
 }
 
-// document.getElementById('search').addEventListener('input', handleSearch);
-
 function handleSearch() {
   var searchQuery = document.getElementById('search').value.toLowerCase();
   var rows = document.querySelectorAll('#table-body-teachersU tr');
@@ -287,6 +284,7 @@ function handleSearch() {
 }
 
 function clearData(){
+    goToAdd();
     document.getElementById("teachersIdU").value = '';
 }
 

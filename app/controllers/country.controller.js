@@ -35,5 +35,10 @@ class Country {
             return countryModel.find()
         }, 'here are all your countries')
     }
+    static getAllAcessable = (req, res) => {
+        Helper.handlingMyFunction(req, res, (req) => {
+            return countryModel.find({countryName:{$ne:'final'}})
+        }, 'here are all your countries')
+    }
 }
 module.exports = Country

@@ -1,6 +1,7 @@
 require('../db/connection')
 const express = require('express')
 const path = require('path')
+const fs=require('fs')
 const cors = require('cors')
 const app = express()
 const countrylist=require('country-codes-list')//.customList
@@ -8,6 +9,27 @@ const countrylist=require('country-codes-list')//.customList
 app.use(cors())
 app.use(express.json({ limit: '200mb' }))
 app.use(express.urlencoded({ extended: true, limit: '200mb' }))
+app.get("/entries_vedios/:vediopath", function (req, res) {
+    const range = req.headers.range;
+    if (!range) {
+        res.status(400).send("Requires Range header");
+    }
+    const videoPath = req.params.vediopath;
+    const videoSize = fs.statSync(path.join(__dirname,'../statics/entries_vedios/'+videoPath)).size;
+    const CHUNK_SIZE = 10 ** 6;
+    const start = Number(range.replace(/\D/g, ""));
+    const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
+    const contentLength = end - start + 1;
+    const headers = {
+        "Content-Range": `bytes ${start}-${end}/${videoSize}`,
+        "Accept-Ranges": "bytes",
+        "Content-Length": contentLength,
+        "Content-Type": "video/mp4",
+    };
+    res.writeHead(206, headers);
+    const videoStream = fs.createReadStream(path.join(__dirname,'../statics/entries_vedios/'+videoPath), { start, end });
+    videoStream.pipe(res);
+})
 app.use(express.static(path.join(__dirname, '../statics')))
 //routes
 app.use(express.static(path.join(__dirname, '../statics/STS-Frontend-Website',)))

@@ -29,13 +29,16 @@ document.getElementById("LogOut").addEventListener('click', function (e){
             deleteCookie("firstName");
             deleteCookie("lastName");
             deleteCookie("email");
-            deleteCookie("type");
             deleteCookie("stopSubscription");
             deleteCookie("showSchedule");
             deleteCookie("showResults");
             deleteCookie("finished");
             deleteCookie("schoolName");
             deleteCookie("schoolID");
+            deleteCookie("isOtherCountry");
+            deleteCookie("paid");
+            deleteCookie("role");
+
             window.location.hash = ""; // redirect to home page or login page
             window.location.reload();
         }

@@ -32,32 +32,33 @@ function generatePDF() {
   };
 }
 
-// document.getElementById('generate-pdf').addEventListener('click', generatePDF);
-
 var summaryStatement;
 
 function getsummaryStatement() {
-  var summaryStatementContainer = document.getElementById(
-    "table-body-summaryStatement"
-  );
+  var summaryStatementContainer = document.getElementById("table-body-summaryStatement");
   var id = getCookie("subscriptionId");
+  var type = getCookie('type');
 
-  document.getElementById("gif").style.display ="block"
+  document.getElementById("gif").style.display = "block";
   fetch(`${domainName}/sts/entry/mystatment/${id}`, {
     method: "GET",
     headers: {'Authorization': token},
   })
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => {
+      const currency = response.headers.get('currency');
+      return response.json()
+        .then(data => ({ currency, data }));
+    })
+    .then(({ currency, data }) => {
       summaryStatement = data.data;
       summaryStatementContainer.innerHTML = "";
-      summaryStatement.forEach((summaryStatement) => {
+      summaryStatement.forEach(summaryStatement => {
         const element = document.createElement("tr");
         element.innerHTML = `
               <td>${summaryStatement.name}</td>
-              <td>${summaryStatement.totalFees}</td>
-          `;
-        element.setAttribute("id", `summaryStatement-${summaryStatement._id}`);
+              <td>${summaryStatement[type + "TotalFees"]} ${currency}</td>
+           `;
+        element.setAttribute("id",`summaryStatement-${summaryStatement._id}`);
         summaryStatementContainer.appendChild(element);
       });
       document.getElementById("gif").style.display = "none";
@@ -70,7 +71,6 @@ function getsummaryStatement() {
 
 getsummaryStatement();
 
-// document.getElementById("search").addEventListener("input", handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById("search").value.toLowerCase();

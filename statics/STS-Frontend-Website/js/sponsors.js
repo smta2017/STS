@@ -83,9 +83,6 @@ function showSponsersDetails(id) {
                     </div>
                     `;
             sponsersContainer.appendChild(element);
-            console.log("5")
-
-
         } else {
             console.log("No sponsors item found with the provided ID.");
         }

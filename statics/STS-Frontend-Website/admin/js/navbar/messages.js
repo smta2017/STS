@@ -45,7 +45,7 @@ if(checkBox.checked){
 
     document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/message/all`, {
-        method: 'get',
+        method: 'GET',
         headers: { "Content-Type": "application/json" , 'Authorization': token},
     })
     .then(response => response.json())

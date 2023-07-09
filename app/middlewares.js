@@ -19,12 +19,12 @@ const auth = async (req, res, next) => {
         // //confirmation^
         const tokenExist = await tokenModel.findOne({ token })
         if (!tokenExist) {
-            return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token ')
+            return Helper.formatMyAPIRes(res, 401, false, {}, 'you need to log in again now')
         }
 
         const user = await Helper.isThisIdExistInThisModel(tokenExist.owner, null, userModel, 'user') //.populate('userData')
         if (!user) {
-            return Helper.formatMyAPIRes(res, 401, false, {}, 'invalid token owner')
+            return Helper.formatMyAPIRes(res, 401, false, {}, 'you need to login again with a certain user account')
         } else {
             // //confirmation>
             // if (req.params.confimation) {

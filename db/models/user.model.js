@@ -60,12 +60,17 @@ const UserSchema = mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'academies',
         required: [function type() {
-            return this.role == '6480d5701c02f26cd6668987'//you need to put the objectId of academy role
+            return this.role == process.env.academy//you need to put the objectId of academy role
         }, 'you are academy we need your academy details for registration']
     },
     suspended: {
         type: Boolean,
-        default: false
+        default: true
+    },
+    date: {
+        type: Date,
+        default: new Date(),
+        expires: 600
     }
 })
 UserSchema.pre('save', function () {
@@ -78,7 +83,7 @@ UserSchema.methods.toJSON = function () {
     return userObject
 }
 UserSchema.methods.isThisSubscriptionBelongToMe = async function (subscriptionId) {
-    if (this.role == '6480d5701c02f26cd6668987'/*academy role id */) {
+    if (this.role == process.env.academy/*academy role id */) {
         const subscription = await Helper.isThisIdExistInThisModel(subscriptionId, ['academy'], subscriptionModel, 'subscription')
         if (subscription.academy.toString() != this._id.toString()) {
             const e = new Error('this is not your subscription to make changes in or to ask any data about it')
@@ -99,14 +104,19 @@ UserSchema.statics.logIn = async (loginData) => {
         throw e
     }
     if (!isUserExist) {
-        const e = new Error('there is no user with such email or mobile number ')
+        const e = new Error('there is no user with such email or mobile number (if you have registered before but did not make the confirmation from your mail then your account has been deleted please sign up again )')
         e.name = 'CastError'
         throw e
     }
     if (isUserExist.suspended) {
-        const e = new Error('your account has been blocked from  the website organizers please contact with us from our mail or contact us form ')
+      if(isUserExist.date){
+        const e = new Error('you need to confirm registeration from your mail,please check your mail to be able to log in')
         e.name = 'Error'
         throw e
+      }else{ 
+         const e = new Error('your account has been blocked from  the website organizers please contact us from our mail or contact us form ')
+        e.name = 'Error'
+        throw e}
     }
     if (loginData.password) {
         if (!bcrypt.compareSync(loginData.password, isUserExist.password)) {

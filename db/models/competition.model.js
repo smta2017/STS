@@ -104,6 +104,10 @@ const CompetitionSchema = mongoose.Schema({
     }
 
 })
+CompetitionSchema.virtual('otherCountry')
+.get(function () {
+    return this.country==process.env.otherCountry
+});
 CompetitionSchema.statics.deleteCompetition = async function (id) {
     const deletedComp = await competitionModel.findByIdAndDelete(id)
     const mustBeDeletedSubscriptions = await subscriptionModel.find({ competition: id })

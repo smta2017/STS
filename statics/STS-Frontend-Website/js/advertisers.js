@@ -4,7 +4,7 @@ var adventisersData;
 
 function showAdventisersData() {
     var showAdventisersContainer = document.getElementById("showAdventisers");
-document.getElementById("gif").style.display ="block"
+    document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/advertising/all`, {
         method: 'GET',
     })
@@ -62,7 +62,7 @@ function showAdventisersDetails(id) {
             showAdventisersContainer.innerHTML = "";
             const element = document.createElement('div');
             element.innerHTML = `
-                            <div class="profile-page" id="news_${showAdventisersD._id}">
+                            <div class="profile-page" id="adventisers_${showAdventisersD._id}">
                                 <div class="page-header" data-parallax="true" style="background-image:url('${domainName}/STS-Frontend-Website/images/339914637_169095876036285_1735365296112837238_n.jpg');"></div>
                                     <div class="main main-raised">
                                         <div class="profile-content">

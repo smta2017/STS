@@ -16,6 +16,10 @@ function calculateAge(dateString) {
 var competitorsData;
 
 function getCompetitorsData() {
+    const type = getCookie("type");
+    const year = getCookie("year");
+    document.getElementById("competionName").innerHTML = `${type}-${year}`;
+
     var competitorsContainer = document.getElementById("table-body-compatatorsA");
     var id = getCookie("competition");
     document.getElementById("gif").style.display ="block"
@@ -44,6 +48,11 @@ function getCompetitorsData() {
               
           `;
           element.setAttribute('id', `competitor-${competitor._id}`);
+          if (getCookie('type') === "final"){
+            if (competitor.passedQualifiers === true){
+              element.style.backgroundColor = "#198754";
+            }
+          }
           competitorsContainer.appendChild(element);
         });
         document.getElementById("gif").style.display = "none";
@@ -56,9 +65,6 @@ function getCompetitorsData() {
   
 getCompetitorsData();
 
-
-  
-document.getElementById('search').addEventListener('input', handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById('search').value.toLowerCase();

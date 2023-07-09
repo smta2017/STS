@@ -4,6 +4,7 @@ const router = require('express').Router()
 //auth api
 router.post('/', User.academyRegistration)
 router.post('/employee', User.employeeRegistration)
+router.get('/confirm/:confimation',User.confirmMail)
 router.post('/login', User.logIn)
 router.delete('/logout', auth, User.logOut)
 router.delete('/logoutall', auth, User.logOutFromAllDevices)

@@ -60,10 +60,6 @@ function getCompetitionsData() {
 
 getCompetitionsData();
 
-// function setCookie(name, value) {
-//     document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; path=/';
-//   }
-
 function storeID(id,type,year) {
     setCookie("entryDegree" , id)
     setCookie("type" , type)

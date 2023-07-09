@@ -17,6 +17,11 @@ const NewsSchema = mongoose.Schema({
         type: String,
         required: [true, 'please enter the news poster'],
         trim: true
+    },
+    type:{
+        type:String,
+        enum:['1','2','3','4','5','6'],
+        required:[true,'where do you want this poster to be shown']
     }
 })
 const newsModel = mongoose.model('news', NewsSchema)

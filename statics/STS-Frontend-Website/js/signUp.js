@@ -43,7 +43,7 @@ var selectedOptionsCountry = "";
 function getAllCountries() {
     var allCountry = document.querySelector('#selectBox');
     document.getElementById("gif").style.display ="block"
-    fetch(`${domainName}/sts/country/all`, {
+    fetch(`${domainName}/sts/country/allaccessable`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
     })
@@ -122,7 +122,8 @@ document.getElementById("formSignUp").onsubmit = function (e) {
             password: document.getElementById("password").value
         },
         schoolName: document.getElementById("schoolName").value,
-        country: document.getElementById("selectBox").value
+        country: document.getElementById("selectBox").value,
+        termsAndConditionsAccepted: true
     }
 
     let dataAfterStringify = JSON.stringify(data);

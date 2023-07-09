@@ -1,9 +1,8 @@
-we need to add academy role manualy to data base and user model
-we need to add super admin role and 
+we need to add academy,rfree1,2,3 ,and admin& super admin roles,countries,routes,tabs manualy to data base 
 we need to remove the not accessable routes in role routes
 we need to hide developer user
 we need to add validation to password in registration controller
-make sure that all your edits secure
-use is this sub mine in every api the user uses
+need to add error model
 refree roles is with capital R
-change the role IDs in login and any other controller
+make a wild route
+take care of default academy id and default product shop country in frontend

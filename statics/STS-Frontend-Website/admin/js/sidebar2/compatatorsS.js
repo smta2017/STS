@@ -22,6 +22,9 @@ for (var country of countries) {
 }
 
 function getCompetitorsData() {
+  const schoolName = getCookie("schoolName");
+  document.getElementById("schoolName").innerHTML = `${schoolName} Academy`;
+
   var competitorsContainer = document.getElementById("table-body-compatators");
   var id = getCookie("subscriptionId");
   document.getElementById("gif").style.display ="block"
@@ -55,6 +58,11 @@ function getCompetitorsData() {
               </svg>
             </td>
         `;
+        if (getCookie('type') === "final"){
+          if (competitor.passedQualifiers === true){
+            element.style.backgroundColor = "rgb(1 255 137 / 67%)";
+          }
+        }
         // element.setAttribute('id', `competitor-${competitor._id}`);
         competitorsContainer.appendChild(element);
     });
@@ -106,6 +114,8 @@ function deleteCompetitor(id) {
 
 
 function editCompetitor(id) {
+    goToTop();
+    document.getElementById("addToEdit").innerHTML = "Update";
     var competitor = competitorsData.find(competitor => competitor._id == id);
   
     document.getElementById("compatatorsId").value = competitor._id;
@@ -176,7 +186,7 @@ function changeCompetitor(e) {
             document.getElementById('callingCode').value = '';
             document.getElementById('mobileNumber').value = '';
             document.getElementById('category').value = '';
-  
+            goToAdd();
             getCompetitorsData();
           } else {
             console.log('Error:', response.status);
@@ -233,5 +243,6 @@ function changeCompetitor(e) {
 
 
 function clearData(){
+  goToAdd();
   document.getElementById("compatatorsId").value = '';
 }

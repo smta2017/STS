@@ -1,4 +1,3 @@
-
 function getCookie(name) {
     const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return cookieValue ? cookieValue.pop() : null;
@@ -34,8 +33,6 @@ function getAllCompetition() {
                 button.appendChild(span);
                 button.appendChild(anchor);
                 allCompetition.appendChild(button);
-
-                console.log(competitions._id);
             });
             document.getElementById("gif").style.display = "none";
         })
@@ -67,7 +64,7 @@ function getAllJoinedCompetition() {
                 button.id = competitions.competition._id;
                 button.value = competitions._id;
                 button.textContent =`${competitions.competition.type} - ${competitions.competition.year}`;
-                button.onclick = function () { goToHome(competitions.competition._id,competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished) };
+                button.onclick = function () { goToHome(competitions.competition._id,competitions._id,competitions.competition.type,competitions.competition.stopSubscription,competitions.competition.showSchedule,competitions.competition.showResults,competitions.competition.finished,competitions.paid) };
                 allJoinedCompetition.appendChild(button);
             });
             document.getElementById("gif").style.display = "none";
@@ -166,6 +163,7 @@ function joinCompetitions(e) {
             setCookie("showSchedule", competitionJoin.competition.showSchedule);
             setCookie("showResults", competitionJoin.competition.showResults);
             setCookie("finished", competitionJoin.competition.finished);
+            setCookie("paid", competitionJoin.paid);
             window.location.hash = "";
             window.location.reload();
             document.getElementById("gif").style.display = "none";
@@ -181,7 +179,7 @@ function joinCompetitions(e) {
     }
 }
 
-function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished) {
+function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished,paid) {
     setCookie("competition", competitionID);
     setCookie("subscriptionId", subscriptionID);
     setCookie("type", type);
@@ -189,6 +187,7 @@ function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedul
     setCookie("showSchedule", showSchedule);
     setCookie("showResults", showResults);
     setCookie("finished", finished);
+    setCookie('paid', paid);
     window.location.hash = "";
     window.location.reload();
 }

@@ -10,7 +10,7 @@ class Competitor {
         Helper.handlingMyFunction(req, res, async (req) => {
             const competitionType = (await Helper.isThisIdExistInThisModel(req.body.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
             if (competitionType == 'final') {
-                if (req.user.role.toString() == '6480d5701c02f26cd6668987') {
+                if (req.user.role.toString() == process.env.academy) {
                     const e = new Error('you can not add new entry that did not take apart in the qualifier')
                     e.name = 'Error'
                     throw e
@@ -31,7 +31,7 @@ class Competitor {
     static removeCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
             const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' })
-            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
                 const e = new Error('you can not delete this competitor right now ,please contact us for any questions')
                 e.name = 'Error'
                 throw e
@@ -72,7 +72,7 @@ class Competitor {
     static editCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
             const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' })
-            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == '6480d5701c02f26cd6668987') {
+            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
                 const e = new Error('you can not delete this competitor right now ,please contact us for any questions')
                 e.name = 'Error'
                 throw e

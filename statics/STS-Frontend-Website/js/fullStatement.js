@@ -54,12 +54,28 @@ function getfullStatement() {
             <td>${fullStatement.entryFees}</td>
          ` ;
         total += fullStatement.entryFees; // Add entryFees to total
+        // Extracting all numbers from the string
+        let numbers = total.match(/\d+/g).map(Number);
+        // Summing the extracted numbers
+        let sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
+        const words = total.split(" ");
+        // Find the repeated character part without any digit
+        let repeatedPart = "";
+        for (let i = 1; i < words.length; i++) {
+          const currentWord = words[i].replace(/\d+/g, ""); // Remove any digits from the current word
+          const previousWord = words[i - 1].replace(/\d+/g, ""); // Remove any digits from the previous word
+          if (currentWord === previousWord) {
+            repeatedPart = currentWord;
+            break;
+          }
+        }
+        let finalString = sum + " " + repeatedPart;
 
         element.setAttribute('id',`fullStatement-${fullStatement._id}`);
         fullStatementContainer.appendChild(element);
+        document.getElementById("priceAcademy").innerHTML = `Price Of Academy: ${finalString}`
       });
       document.getElementById("gif").style.display = "none";
-      document.getElementById("priceAcademy").innerHTML = `Price Of Academy: ${total}`
     })
     .catch(error => {
       console.log(error);
@@ -68,8 +84,6 @@ function getfullStatement() {
 }
 
 getfullStatement();
-
-// document.getElementById("search").addEventListener("input", handleSearch);
 
 function handleSearch() {
   var searchQuery = document.getElementById("search").value.toLowerCase();

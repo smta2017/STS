@@ -9,9 +9,9 @@ class Teacher {
                 e.name = 'ValidationError'
                 throw e
             }
-            if(req.user.role.toString()=='6480d5701c02f26cd6668987'/*academy role */){
+            if(req.user.role.toString()==process.env.academy/*academy role */){
                 req.body.academy = req.user._id
-            }else if(req.params.academyId&&!['6486bca99dd036cbf366140a', '6486bcef9dd036cbf366140e', '6486bd269dd036cbf3661410'].includes(req.user.role.toString())){
+            }else if(req.params.academyId&&![process.env.refree1, process.env.refree2, process.env.refree3].includes(req.user.role.toString())){
                 req.body.academy=req.params.academyId
             }
             req.body.mobileNumber = countryCodeslist[req.body.countryCallingCode.substring(1)] + ":" + req.body.countryCallingCode + req.body.mobileNumber
@@ -54,7 +54,7 @@ class Teacher {
     static getAll = (req, res) => {
         Helper.handlingMyFunction(req, res, (req) => {
             let academyID
-            if (req.user.role == '6480d5701c02f26cd6668987') {
+            if (req.user.role == process.env.academy) {
                 academyID = req.user._id
             } else if (req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/teacher/:academyId') {
                 academyID = req.params.academyId
