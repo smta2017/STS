@@ -249,7 +249,12 @@ class Entry {
     }
     static getAllCompetitionEntries = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const allCompetitonSubscripetition = await subscriptionModel.find({ competition: req.params.compId }, ['_id', 'competiton']).populate('competition')
+            let  allCompetitonSubscripetition
+            if(req.baseUrl + (req.route.path == '/' ? '' : req.route.path) == '/sts/entry/completeresult/:compId'&&[process.env.refree1, process.env.refree2, process.env.refree3].includes(req.user.role.toString())){
+                allCompetitonSubscripetition = await subscriptionModel.find({ competition: req.params.compId , paid :true}, ['_id', 'competiton']).populate('competition')
+            }{
+                allCompetitonSubscripetition = await subscriptionModel.find({ competition: req.params.compId }, ['_id', 'competiton']).populate('competition')
+            }
             if (allCompetitonSubscripetition.length <= 0) {
                 const e = new Error('there is no acaedmy joins this competition')
                 e.name = 'Error'
@@ -270,7 +275,6 @@ class Entry {
                     await req.user.populate('role')
                     projection = [allCompetitonSubscripetition[0].competition.type + req.user.role.role, allCompetitonSubscripetition[0].competition.type + 'Subscription', 'name','classCode','category','style']
                     filter[allCompetitonSubscripetition[0].competition.type + req.user.role.role] = { $exists: false }
-                    filter.paid = true
                 } else {
                     projection = [allCompetitonSubscripetition[0].competition.type + 'TotalDegree', allCompetitonSubscripetition[0].competition.type + 'Subscription', 'passedQualifiers', 'name','classCode','category','style']
                     filter[allCompetitonSubscripetition[0].competition.type + 'Refree1'] = { $exists: true }
