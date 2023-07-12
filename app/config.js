@@ -4,8 +4,10 @@ const path = require('path')
 const fs=require('fs')
 const cors = require('cors')
 const app = express()
+const hbs=require('hbs')
 const countrylist=require('country-codes-list')//.customList
-
+app.set("view engine","hbs")
+app.set("views",path.join(__dirname,'../views'))
 app.use(cors())
 app.use(express.json({ limit: '200mb' }))
 app.use(express.urlencoded({ extended: true, limit: '200mb' }))

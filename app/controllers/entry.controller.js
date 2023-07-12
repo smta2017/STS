@@ -28,15 +28,21 @@ class Entry {
                 }
                 else {
                     try {
-                        const competitionType = (await Helper.isThisIdExistInThisModel(req.body.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
+                        const sub=await Helper.isThisIdExistInThisModel(req.body.qualifierSubscription, ['competition','paid'], subscriptionModel, 'subscription', 'competition')
+                        const competitionType = sub.competition.type
                         if (competitionType == 'final') {
                             if (req.user.role.toString() == process.env.academy) {
                                 const e = new Error('you can not add new entry that did not take apart in the qualifier')
                                 e.name = 'Error'
                                 throw e
                             } else {
-                                req.body.finalSubscripyion = req.body.qualifierSubscription
+                                req.body.finalSubscription = req.body.qualifierSubscription
                             }
+                        }
+                        if((sub.paid||sub.competition.stopSubscription)&&req.user.role.toString() == process.env.academy){
+                            const e = new Error('you can not add new entry now,contact us for any help')
+                            e.name = 'Error'
+                            throw e
                         }
                         await req.user.isThisSubscriptionBelongToMe(req.body.qualifierSubscription)
                         if (req.file) {
@@ -78,8 +84,8 @@ class Entry {
     }
     static addCompetitorToEntry = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories', 'finalSubscription'], entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' })
-            if (entry.finalSubscription && entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
+            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories', 'finalSubscription'], entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' },{ path: 'qualifierSubscription', populate: 'competition' })
+            if (((entry.finalSubscription && entry.finalSubscription.competition.type == 'final' )||entry.qualifierSubscription.paid||entry.qualifierSubscription.competition.stopSubscription)&& req.user.role.toString() == process.env.academy) {
                 const e = new Error('you can not edit in the competitor list of this entry ,please contect us for any questions')
                 e.name = 'Error'
                 throw e
@@ -93,8 +99,8 @@ class Entry {
     }
     static removeCompetitorFromEntry = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories', 'finalSubscription'], entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' })
-            if (entry.finalSubscription && entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
+            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, ['competitors', 'qualifierSubscription', 'competitorsCategories', 'finalSubscription'], entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' },{ path: 'qualifierSubscription', populate: 'competition' })
+            if (((entry.finalSubscription && entry.finalSubscription.competition.type == 'final' )||entry.qualifierSubscription.paid||entry.qualifierSubscription.competition.stopSubscription)&& req.user.role.toString() == process.env.academy) {
                 const e = new Error('you can not delete any competitior from this show now ,please contact us for any questions')
                 e.name = 'Error'
                 throw e
@@ -110,7 +116,7 @@ class Entry {
             if (true) {
                 return entry.save()
             }
-        }, 'you added competitor successfully')
+        }, 'you delted competitor successfully')
     }
     static allentries = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
@@ -163,8 +169,8 @@ class Entry {
     }
     static delete = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' })
-            if (entry.finalSubscription && entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
+            const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' },{ path: 'qualifierSubscription', populate: 'competition' })
+            if (((entry.finalSubscription && entry.finalSubscription.competition.type == 'final' )||entry.qualifierSubscription.paid||entry.qualifierSubscription.competition.stopSubscription)&& req.user.role.toString() == process.env.academy) {
                 const e = new Error('you can not delete this entry right now ,please contact us for any questions')
                 e.name = 'Error'
                 throw e
@@ -182,7 +188,7 @@ class Entry {
             if (true) {
                 return result
             }
-        }, "you edit your entry name and music successfully")
+        }, "you deleted entry  successfully")
     }
     static edit = async(req, res) => {
         try {
@@ -205,8 +211,8 @@ class Entry {
                 else {
                     try {
                         let oldMusic
-                        const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' })
-                        if (entry.finalSubscription && entry.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
+                        const entry = await Helper.isThisIdExistInThisModel(req.params.entryId, null, entryModel, 'entry', { path: 'finalSubscription', populate: 'competition' },{ path: 'qualifierSubscription', populate: 'competition' })
+                        if (((entry.finalSubscription && entry.finalSubscription.competition.type == 'final' )||entry.qualifierSubscription.paid||entry.qualifierSubscription.competition.stopSubscription)&& req.user.role.toString() == process.env.academy) {
                             const e = new Error('you can not edit in the entry data now ,please contact us for any questions')
                             e.name = 'Error'
                             throw e
@@ -304,7 +310,7 @@ class Entry {
             }
 
             if (true) { return entry.save() }
-        }, 'you data added successfully')
+        }, 'your data added successfully')
     }
     static getFullStatments = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {

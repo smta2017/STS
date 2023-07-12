@@ -33,7 +33,7 @@ function getCompetitorsData() {
         competitorsContainer.innerHTML = "";
         competitorsData.forEach(competitor=> {
           const element = document.createElement('tr');
-          const age = calculateAge(`${competitor.dateOfBirth}`)
+          // const age = calculateAge(`${competitor.dateOfBirth}`)
           const date = `${competitor.dateOfBirth}`.split("T")[0];
           element.innerHTML = `
               <td>${competitor.firstName}</td>
@@ -41,7 +41,6 @@ function getCompetitorsData() {
               <td>${competitor.qualifierSubscription.academy.academyDetails.schoolName}</td>
               <td>${competitor.category}</td>
               <td>${date}</td>
-              <td>${age}</td>
               <td>${competitor.gender}</td>
               <td>${competitor.email}</td>
               <td>${competitor.mobileNumber}</td>

@@ -8,15 +8,21 @@ const Helper = require('../helper')
 class Competitor {
     static addCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const competitionType = (await Helper.isThisIdExistInThisModel(req.body.qualifierSubscription, ['competition'], subscriptionModel, 'subscription', 'competition')).competition.type
+            const sub = await Helper.isThisIdExistInThisModel(req.body.qualifierSubscription, ['competition', 'paid'], subscriptionModel, 'subscription', 'competition')
+            const competitionType = sub.competition.type
             if (competitionType == 'final') {
                 if (req.user.role.toString() == process.env.academy) {
                     const e = new Error('you can not add new entry that did not take apart in the qualifier')
                     e.name = 'Error'
                     throw e
                 } else {
-                    req.body.finalSubscripyion = req.body.qualifierSubscription
+                    req.body.finalSubscription = req.body.qualifierSubscription
                 }
+            }
+            if ((sub.paid || sub.competition.stopSubscription) && req.user.role.toString() == process.env.academy) {
+                const e = new Error('you can not add new entry now,contact us for any help')
+                e.name = 'Error'
+                throw e
             }
             await req.user.isThisSubscriptionBelongToMe(req.body.qualifierSubscription)
             if (!req.body.countryCallingCode) {
@@ -30,8 +36,8 @@ class Competitor {
     }
     static removeCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' })
-            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
+            const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' },{ path: 'qualifierSubscription', populate: 'competition' })
+            if (((competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final') || competitor.qualifierSubscription.paid || competitor.qualifierSubscription.competition.stopSubscription) && req.user.role.toString() == process.env.academy) {
                 const e = new Error('you can not delete this competitor right now ,please contact us for any questions')
                 e.name = 'Error'
                 throw e
@@ -40,7 +46,7 @@ class Competitor {
             const result = await competitorModel.findByIdAndDelete(req.params.competitorId)
             // const result= await Helper.isThisIdExistInThisModel(req.params.competitorId,null,competitorModel,'competitor')
             const entries = await entryModel.find({ qualifierSubscription: result.qualifierSubscription, competitors: req.params.competitorId })
-            await Promise.all(entries.map(entry => {
+            await Promise.all(entries.map(competitor => {
                 const i = entry.competitors.findIndex(competitor => competitor == req.params.competitorId)
                 entry.competitors.splice(i, 1)
                 entry.save()
@@ -71,9 +77,9 @@ class Competitor {
     }
     static editCompetitor = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
-            const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' })
-            if (competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final' && req.user.role.toString() == process.env.academy) {
-                const e = new Error('you can not delete this competitor right now ,please contact us for any questions')
+            const competitor = await Helper.isThisIdExistInThisModel(req.params.competitorId, null, competitorModel, 'competitor', { path: 'finalSubscription', populate: 'competition' },{ path: 'qualifierSubscription', populate: 'competition' })
+            if (((competitor.finalSubscription && competitor.finalSubscription.competition.type == 'final') || competitor.qualifierSubscription.paid || competitor.qualifierSubscription.competition.stopSubscription) && req.user.role.toString() == process.env.academy) {
+                const e = new Error('you can edit this competitor data right now ,please contact us for any questions')
                 e.name = 'Error'
                 throw e
             }
@@ -88,7 +94,7 @@ class Competitor {
                         throw e
                     }
                 }
-                if (!['gender', 'category', 'mobileNumber'].includes(field) && req.body[field]) { competitor[field] = req.body[field] }
+                if (!['gender', 'category', 'mobileNumber','dateOfBirth'].includes(field) && req.body[field]) { competitor[field] = req.body[field] }
             }
             if (true) { return competitor.save() }
         }, 'competitor was edited successfully')
@@ -104,7 +110,7 @@ class Competitor {
             const subscriptionArray = allCompetitonSubscripetition.map(sub => sub._id)
             const filter = {}
             filter[allCompetitonSubscripetition[0].competition.type + 'Subscription'] = { $in: subscriptionArray }
-            if (true) { return competitorModel.find(filter).populate({path:'qualifierSubscription',select:['academy'],populate:{path:'academy',select:['academyDetails'],populate:{path:'academyDetails',select:['schoolName']}}}) }
+            if (true) { return competitorModel.find(filter).populate({ path: 'qualifierSubscription', select: ['academy'], populate: { path: 'academy', select: ['academyDetails'], populate: { path: 'academyDetails', select: ['schoolName'] } } }) }
         }, 'there are all this competition entries')
     }
     // static updateFieldNameInAllDocs=(req,res)=>{

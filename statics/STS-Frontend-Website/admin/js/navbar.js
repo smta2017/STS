@@ -74,7 +74,7 @@ function profileModified(e) {
     document.getElementById("gif").style.display = "block";
     fetch(`${domainName}/sts/user`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json", Authorization: token },
+      headers: { "Content-Type": "application/json", 'Authorization': token },
       body: JSON.stringify(formEditProfile),
     })
       .then((response) => response.json())

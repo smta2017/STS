@@ -35,6 +35,18 @@ function getSponsersTitles() {
 getSponsersTitles();
 
 
+// Add event listeners for hover and click
+document.getElementById("sponsorDropDown").addEventListener("mouseenter", function () {
+    this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "true");
+    this.querySelector(".dropdown-menu").classList.add("show");
+});
+  
+document.getElementById("sponsorDropDown").addEventListener("mouseleave", function () {
+    this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+    this.querySelector(".dropdown-menu").classList.remove("show");
+});
+
+
 function showSponsersDetails(id) {
     if (id) {
         const sponsersD = sponsersTitle.find(Sponserss => { return Sponserss._id == id });

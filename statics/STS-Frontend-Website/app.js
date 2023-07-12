@@ -38,6 +38,7 @@ const renderProductsA = Handlebars.compile(document.getElementById("productsA-te
 const renderMessagesA = Handlebars.compile(document.getElementById("messagesA-template").innerHTML);
 const renderAdventisersA = Handlebars.compile(document.getElementById("adventisersA-template").innerHTML);
 
+
 ///////////////////////////////////////
 
 const renderSidebar = Handlebars.compile(document.getElementById("sidebar1-template").innerHTML);
@@ -46,6 +47,7 @@ const renderSchool = Handlebars.compile(document.getElementById("school-template
 const renderCompatatorsA = Handlebars.compile(document.getElementById("compatatorsA-template").innerHTML);
 const renderEntersA = Handlebars.compile(document.getElementById("entersA-template").innerHTML);
 const renderPaymentA = Handlebars.compile(document.getElementById("paymentA-template").innerHTML);
+const renderErrorLogs = Handlebars.compile(document.getElementById("errorLogsA-template").innerHTML);
 
 ///////////////////////////////////////
 
@@ -272,26 +274,11 @@ function handleNavigationAfter() {
 
 function handleNavigationAdmin1() {
   const hash = window.location.hash;
-
-  // if
-  // (hash === "#showCompetitionDetails") {
-  //   handleNavigationAdmin2();
-  // } else if (hash === "#schoolDetails") {
-  //   handleNavigationAdmin3();
-  // } else
-  // {
   switch (hash) {
-    // case "#logoback":
-    //   renderContent(renderNavbar(),"body");
-    //   load_js('admin/js/navbar.js');
-    //   break;
     case "#competition":
       renderContent(renderCompetitionsA(), "content");
       load_js("admin/js/navbar/competitions.js");
       break;
-    // case "#school":
-    //   // handleNavigationAdmin2();
-    //   break;
     case "#news":
       if (document.querySelector('#content').innerHTML == '') {
         renderContent(renderNewsA(), "content");
@@ -323,21 +310,14 @@ function handleNavigationAdmin1() {
       }
       break;
     case "#addAdmin":
-      // renderContent(renderFullStatement(),"content");
-      // load_js('js/fullStatement.js');
       break;
     case "#editProfile":
-      // renderContent(renderSummaryStatement(),"content");
-      // load_js('js/summaryStatement.js');
       break;
-    // case "#showCompetitionDetails":
-    //     handleNavigationAdmin2();
-    //     break;
-    // case "#schoolDetails":
-    //     handleNavigationAdmin3();
-    //     break;
+    case "#errorLogs":
+      renderContent(renderErrorLogs(),"content");
+      load_js('admin/js/navbar/errorLogs.js');
+        break;
     default:
-
 
       if (["#school", "#compatatorsA", "#entersA", "#paymentA"].includes(window.location.hash)) {
         handleNavigationAdmin2()
@@ -347,7 +327,6 @@ function handleNavigationAdmin1() {
         renderContent(renderCompetitionsA(), "content");
         load_js("admin/js/navbar/competitions.js");
       }
-      // load_js('admin/js/navbar.js');
       break;
 
   }
@@ -359,14 +338,6 @@ function handleNavigationAdmin2() {
   renderContent(renderSidebar(), "content");
   load_js("admin/js/sidebar1.js");
   switch (hash) {
-    // case "#logoback":
-    // renderContent(renderNavbar(),"body");
-    // load_js('admin/js/navbar.js');
-    // break;
-    // case "#competition":
-    //   renderContent(renderCompetitionsA(), "content");
-    //   load_js("admin/js/navbar/competitions.js");
-    //   break;
     case "#compatatorsAS":
       renderContent(renderSidebar2(), "content");
       load_js("admin/js/sidebar1.js");
@@ -447,7 +418,6 @@ function handleNavigationRuler() {
     case "#showEntries":
       renderContent(renderEntriesR(), "content");
       load_js('admin/js/rulers/entriesR.js');
-      // load_js("admin/js/rulers/compitetionsR.js");
       break;
     default:
       renderContent(renderCompetitionsR(), "content");

@@ -52,17 +52,17 @@ function previewAudio(event) {
 
 function previewVideo(event) {
   const input = event.target;
-  const videoPreview = document.getElementById("videoPreview");
+  const audioPreview = document.getElementById("audioPreview");
   if (input.files && input.files[0]) {
       const reader = new FileReader();
       reader.onload = function (e) {
-        videoPreview.src = e.target.result;
-        videoPreview.style.display = "block";
+        audioPreview.src = e.target.result;
+        audioPreview.style.display = "block";
       };
       reader.readAsDataURL(input.files[0]);
   } else {
-      videoPreview.src = "";
-      videoPreview.style.display = "none";
+    audioPreview.src = "";
+    audioPreview.style.display = "none";
   }
 }
 
@@ -251,12 +251,12 @@ if (getCookie('stopSubscription') == "false" && getCookie('type') == "qualifier"
             </div>
         <div class="col-11 row">
           <div class="col-12 col-md-6">
-            ${getCookie('isOtherCountry') == "true" ? `<label for="uVideo">Upload Video:</label><input type="file" accept="video/mp4,video/mpeg,video/webm" id="uVideo" name="uVideo" aria-label="uVideo" class="form-control" onchange="previewVideo(event)"></input>` : `<label for="uMusic">Upload Music:</label><input type="file" accept="audio/mpeg,audio/webm" id="uMusic" name="uMusic" aria-label="uMusic" class="form-control" onchange="previewAudio(event)">`}
+            ${getCookie('isOtherCountry') == "true" ? `<label for="uMusic">Upload Video:</label><input type="file" accept="video/mp4,video/mpeg,video/webm" id="uMusic" name="uMusic" aria-label="uMusic" class="form-control" onchange="previewVideo(event)"></input>` : `<label for="uMusic">Upload Music:</label><input type="file" accept="audio/mpeg,audio/webm" id="uMusic" name="uMusic" aria-label="uMusic" class="form-control" onchange="previewAudio(event)">`}
           </div>
           <div class="col-12 col-md-6 mt-2">
-            ${getCookie('isOtherCountry') == "true" ? `<video id="videoPreview" controls><source src="" id="video" /></video>` : `<audio id="audioPreview" controls><source src="" id="audio" /></audio>`}
+            ${getCookie('isOtherCountry') == "true" ? `<video id="audioPreview" controls><source src="" id="audio" /></video>` : `<audio id="audioPreview" controls><source src="" id="audio" /></audio>`}
           </div>
-          <small class="text-dark text-center">you can only upload these extentions for audio .mpeg, .webm</small>
+          <small class="text-dark text-center">you can only upload these extentions for audio .mp3, .weba</small>
         </div>
         <div class="row mx-auto my-3">
           <input type="reset" value="Clear to Add New Data" class="btn btn-danger col-6" onclick="clearData()">
@@ -531,7 +531,8 @@ function changeEntry(e) {
   e.preventDefault(); // Prevent the default form submission
 
   var entriesId = document.getElementById('entriesId').value;
-
+  var otherCountry = getCookie("isOtherCountry");
+  console.log(otherCountry)
   // Get the form values
   const audioData = document.querySelector('#uMusic').files[0]
   const formData = new FormData();
@@ -546,7 +547,7 @@ function changeEntry(e) {
     document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry/${entriesId}`, {
       method: 'PUT',
-      headers: {'Authorization': token},
+      headers: {'Authorization': token , 'otherCountry': otherCountry},
       body: formData
     })
       .then(response => response.json())
@@ -580,7 +581,7 @@ function changeEntry(e) {
     document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry`, {
       method: 'POST',
-      headers: {'Authorization': token},
+      headers: {'Authorization': token , 'otherCountry': otherCountry},
       body: formData
     })
     .then(response => response.json())

@@ -38,6 +38,7 @@ document.getElementById("LogOut").addEventListener('click', function (e){
             deleteCookie("isOtherCountry");
             deleteCookie("paid");
             deleteCookie("role");
+            deleteCookie("expirationDate");
 
             window.location.hash = ""; // redirect to home page or login page
             window.location.reload();

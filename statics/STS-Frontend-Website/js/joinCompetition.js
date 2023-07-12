@@ -156,7 +156,11 @@ function joinCompetitions(e) {
         .then(data => {
             competitionJoin = data.data;
             console.log("joined successfully");
-            setCookie("subscriptionId", competitionJoin._id);
+            // setCookie("subscriptionId", competitionJoin._id);
+            const sub_date=new Date()
+    sub_date.setTime(sub_date.getTime() + (60*60*1000))
+    const expires=getCookie('expirationDate')?getCookie('expirationDate'):"expires=" +sub_date.toUTCString()
+    document.cookie = "subscriptionId=" + competitionJoin._id+ ";"+ expires ;
             setCookie("competition", competitionJoin.competition._id);
             setCookie("type", competitionJoin.competition.type);
             setCookie("stopSubscription", competitionJoin.competition.stopSubscription);
@@ -181,7 +185,10 @@ function joinCompetitions(e) {
 
 function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished,paid) {
     setCookie("competition", competitionID);
-    setCookie("subscriptionId", subscriptionID);
+    const sub_date=new Date()
+    sub_date.setTime(sub_date.getTime() + (60*60*1000))
+    const expires=getCookie('expirationDate')?getCookie('expirationDate'):"expires=" +sub_date.toUTCString()
+    document.cookie = "subscriptionId=" + subscriptionID+ ";"+ expires ;
     setCookie("type", type);
     setCookie("stopSubscription", stopSubscription);
     setCookie("showSchedule", showSchedule);

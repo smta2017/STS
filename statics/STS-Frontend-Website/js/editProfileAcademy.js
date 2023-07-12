@@ -29,7 +29,7 @@ function profileModified(e) {
   
     var selectOption = document.querySelector(`option[value='${country}']`);
     var CountryCode = selectOption.textContent.split(' ').pop().match(/\d+/g).join('');
-  
+  debugger
     const formEditProfile = {
         academy: {
             schoolLocation: {
@@ -52,7 +52,7 @@ function profileModified(e) {
         oldPassword: document.getElementById("editOldPasswordForUser").value ? document.getElementById("editOldPasswordForUser").value : undefined,
     };
     // console.log(document.getElementById("editMobileNumbeForAcademy").value);
-    // console.log(formEditProfile); 
+    console.log(formEditProfile);
     // console.log(JSON.stringify(formEditProfile)); 
     try {
       document.getElementById("gif").style.display ="block"
@@ -72,7 +72,7 @@ function profileModified(e) {
             setCookie('firstName', document.getElementById("editFirstNameForAcademy").value); 
             setCookie('lastName', document.getElementById("editLastNameForAcademy").value); 
             
-              document.getElementById("callingCodeForAcademy").value = ""; 
+              // document.getElementById("callingCodeForAcademy").value = ""; 
               document.getElementById("editMobileNumbeForAcademy").value = ""; 
               document.getElementById("editEmailForAcademy").value = ""; 
               document.getElementById("editOldPasswordForUser").value = ""; 

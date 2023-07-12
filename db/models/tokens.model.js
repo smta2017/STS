@@ -13,7 +13,7 @@ const tokenSchema = mongoose.Schema({
     },
     date: {
         type: Date,
-        expires: 18000
+        expires: 3600
     }
 })
 tokenSchema.statics.createToken = async function (data, lifeTime) {
@@ -22,7 +22,7 @@ tokenSchema.statics.createToken = async function (data, lifeTime) {
         token = jsonWebToken.sign(data, process.env.tokenPass)
         await tokenModel({ owner: data.id, token }).save()
     } else {
-        token = jsonWebToken.sign(data, process.env.tokenPass, { expiresIn: '5h' })
+        token = jsonWebToken.sign(data, process.env.tokenPass, { expiresIn: '1h' })
         await tokenModel({ owner: data.id, token, date: new Date() }).save()
     }
     //    if(true) {

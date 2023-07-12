@@ -131,13 +131,13 @@ function getCompetitorsData(colorCode){
       competitorsContainer.innerHTML = "";
       competitorsData.forEach(competitor=> {
         const element = document.createElement('tr');
-        const age = calculateAge(`${competitor.dateOfBirth}`)
+        // // <td>${age}</td>
+        // const age = calculateAge(`${competitor.dateOfBirth}`)
         const date = `${competitor.dateOfBirth}`.split("T")[0];
         element.innerHTML = `
             <td>${competitor.firstName}</td>
             <td>${competitor.lastName}</td>
             <td>${date}</td>
-            <td>${age}</td>
             <td>${competitor.gender}</td>
             <td>${competitor.email}</td>
             <td>${competitor.mobileNumber}</td>

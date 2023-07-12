@@ -112,8 +112,35 @@ function ForgotPassword(event) {
     var email = document.getElementById('loginEmail').value;  // get the email value
     var emailReg = /[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)/;    /// email validation regex
     if (emailReg.test(email)) {  // if email is valid
-        window.open("forgetpassword.html", "_blank");
-    } else {  // if email is not valid
+        // window.open("forgetpassword.html", "_blank");
+        fromApiBody = {
+            email: document.getElementById("loginEmail").value,
+        }
+
+        document.getElementById("gif").style.display = "block"
+        fetch(`${domainName}/sts/user/forgetpassword`, {
+            method: 'POST',
+            body: JSON.stringify(fromApiBody),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {  
+            if (data.apiStatus == true) {
+                console.log(data);
+                document.getElementById('loginEmail').value = '';
+            }
+            document.getElementById("gif").style.display = "none";
+            responseAlert(data);
+        })
+            .catch(error => {
+                console.log(error);
+                document.getElementById("gif").style.display = "none";
+                responseAlert(error);
+            });
+    }
+    else {  // if email is not valid
         alert("Please enter a valid email address.");  // show alert
     }
 }

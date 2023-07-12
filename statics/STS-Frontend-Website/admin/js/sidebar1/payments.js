@@ -37,6 +37,8 @@ function getPaymentData() {
             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
         </svg> ${paymentsData.academyOwnerMail}`;
 
+      document.getElementById("paidWay").innerHTML = 'Payments';
+
       if(paymentsData.needToHaveALook == true){
         var span = document.createElement('span');
         span.className = "position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle";
@@ -49,7 +51,8 @@ function getPaymentData() {
       row2.cells[1].innerText = paymentsData.memberShipFeesDetails.total;
       row3.cells[1].innerText = paymentsData.totalEntriesFees;
       row4.cells[1].innerText = paymentsData.totalFees;
-
+      
+      row5.cells[1].innerText = '';
       let totalCredit = paymentsData.totalCredit;
       let keys = Object.keys(totalCredit);
       for (let i = 0; i < keys.length; i++) {
@@ -61,17 +64,25 @@ function getPaymentData() {
       }
 
       row6.cells[1].innerText = paymentsData.remaining;
-      // var element = document.querySelector(".btn-outline-success");
+      var toggleButton = document.querySelector('#toggle-button');
       if(paymentsData.paid == true){
         row7.cells[1].innerText = "Paid";
+        row7.cells[1].classList.remove("bg-danger");
         row7.cells[1].classList.add("bg-success");
-        // element.classList.remove("btn-outline-success");
-        // element.classList.add("btn-success");
-       }else{
+        toggleButton.textContent = 'Not Paid';
+        toggleButton.classList.remove("btn-success");
+        toggleButton.classList.add("btn-danger");
+        toggleButton.value="false";
+    
+      }else{
         row7.cells[1].innerText = "Not Paid";
+        row7.cells[1].classList.remove("bg-success");
         row7.cells[1].classList.add("bg-danger");
-        // element.classList.remove("btn-success");
-        // element.classList.add("btn-outline-success");
+
+        toggleButton.textContent = 'Paid';
+        toggleButton.classList.remove("btn-danger");
+        toggleButton.classList.add("btn-success");
+        toggleButton.value="true";
       }
 
       document.getElementById("gif").style.display = "none";
@@ -423,7 +434,7 @@ function showImagePreview(imageUrl) {
   // Append the modal container to the body
   document.body.appendChild(modal);
 }
-getPaymentLogs();
+// getPaymentLogs();
 
 function showPaymentsLogsToAccept_NotAccept(event) {
     event.preventDefault();
@@ -457,6 +468,7 @@ function showPaymentsLogsToAccept_NotAccept(event) {
           if (data.apiStatus == true) {
               console.log("Data saved successfully");
               getPaymentLogs();
+              getPaymentData();
           }else {
             console.log('Error:', data.status);
           }
@@ -483,12 +495,6 @@ function paid_NotPaid(event) {
   var id = getCookie("subscriptionId");
 
   document.getElementById("gif").style.display = "block";
-  // const togglePaidElement = document.getElementById("togglePaid");
-
-  // if (togglePaidElement) {
-  //   togglePaidElement.style.display = "none";
-  // }
-
   fetch( `${domainName}/sts/subscription/payments/${id}`  , {
     method: "PUT",
     headers: {"Content-Type": "application/json" ,'Authorization': token },
@@ -499,10 +505,7 @@ function paid_NotPaid(event) {
         if (data.apiStatus == true) {
           console.log("Data saved successfully");
           getPaymentData();
-          window.location.reload();
-        // var element = document.querySelector(".btn-outline-success");
-        // element.classList.remove("btn-outline-success");
-        // element.classList.add("btn-success");
+          // window.location.reload();
         }else {
           console.log('Error:', data.status);
         }

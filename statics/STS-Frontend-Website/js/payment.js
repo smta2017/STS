@@ -48,6 +48,7 @@ function getPaymentData() {
       row3.cells[1].innerText = paymentsData.totalEntriesFees;
       row4.cells[1].innerText = paymentsData.totalFees;
 
+      row5.cells[1].innerText = '';
       let totalCredit = paymentsData.totalCredit;
       let keys = Object.keys(totalCredit);
       for (let i = 0; i < keys.length; i++) {
@@ -60,13 +61,43 @@ function getPaymentData() {
 
       row6.cells[1].innerText = paymentsData.remaining;
 
+      var PaidByBankOrPaypal = document.getElementById('PaidByBankOrPaypal');
+        PaidByBankOrPaypal.innerHTML = '';
       if(paymentsData.paid == true){
         row7.cells[1].innerText = "Paid";
         row7.cells[1].classList.add("bg-success");
       }else{
         row7.cells[1].innerText = "Not Paid";
         row7.cells[1].classList.add("bg-danger");
+        var div = document.createElement('div');
+        div.className = "btn_group row";
+        div.innerHTML = 
+        ` <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-bank" data-bs-toggle="modal" data-bs-target="#Bank">
+            Paid Bank
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
+              <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z"/>
+            </svg>
+          </a>
+          <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-paypal" data-bs-toggle="modal" data-bs-target="#PayPal" onclick="creatDropIn(event)">
+            Paid PayPal
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paypal" viewBox="0 0 16 16">
+              <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
+            </svg>
+          </a>`;
+        var PaidByBankOrPaypal = document.getElementById('PaidByBankOrPaypal');
+        PaidByBankOrPaypal.appendChild(div);
       }
+
+      document.getElementById("paidLogs").innerHTML = 'Payments Logs';
+
+      if(paymentsData.needToHaveALook == true){
+        var span = document.createElement('span');
+        span.className = "position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle";
+        span.innerHTML = `<span class="visually-hidden">New alerts</span>`;
+        var btn = document.getElementById("paidLogs")
+        btn.appendChild(span);
+      }
+
       document.querySelector('#amount').value = paymentsData.remaining;
       document.querySelector('#payment-form').action+='/'+getCookie('subscriptionId')
       // console.log(document.querySelector('#payment-form').action)
@@ -378,11 +409,12 @@ function getPaymentLogs() {
        });
 
    var tableResponsive = document.getElementById("table-responsive");
+   tableResponsive.innerHTML = '';
    // Append the table to the document body
    tableResponsive.appendChild(table); 
 }
 
-getPaymentLogs();
+// getPaymentLogs();
 
 function showImagePreview(imageUrl) {
   // Create a new image element

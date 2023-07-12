@@ -22,7 +22,8 @@ function getSchoolsData() {
         .then(data => {
             schoolsData = data.data;
             schoolsContainer.innerHTML = "";
-            schoolsData.forEach(competitor=> {
+            data.data.forEach(competitor=> {
+              console.log(data.data)
                 const element = document.createElement('tr');
                 const paidStatus = document.createElement('td');
                 if(competitor.paid == true){

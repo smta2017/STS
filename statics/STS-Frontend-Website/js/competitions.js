@@ -40,7 +40,11 @@ function getAllJoinedCompetition() {
 
 function goToHome(competitionID,subscriptionID,type,stopSubscription,showSchedule,showResults,finished,paid) {
     setCookie("competition", competitionID);
-    setCookie("subscriptionId", subscriptionID);
+    // setCookie("subscriptionId", subscriptionID);
+    const sub_date=new Date()
+    sub_date.setTime(sub_date.getTime() + (60*60*1000))
+    const expires=getCookie('expirationDate')?getCookie('expirationDate'):"expires=" +sub_date.toUTCString()
+    document.cookie = "subscriptionId=" + subscriptionID+ ";"+ expires ;
     setCookie("type", type);
     setCookie("stopSubscription", stopSubscription);
     setCookie("showSchedule", showSchedule);

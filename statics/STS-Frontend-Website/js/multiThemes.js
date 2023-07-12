@@ -255,7 +255,7 @@ if (getCookie('showSchedule') == "true"){
   const schadualNav = document.getElementById("schadualNav");
     const elementDiv = document.createElement('div');
     elementDiv.innerHTML = `
-      <button class="nav-link dropdown-toggle mx-auto" role="button" data-bs-toggle="dropdown"
+      <button class="nav-link dropdown-toggle mx-auto" role="button"
         aria-expanded="false" style="background-color:transparent ; border:none">
         Schadual
       </button>
@@ -268,58 +268,75 @@ if (getCookie('showSchedule') == "true"){
 }
 
 if (getCookie('showResults') == "true"){
+  // <li><a class="dropdown-item" href="#fullResults" id="fullResults">Full Results</a></li>
   const resultsNav = document.getElementById("resultsNav");
     const elementDiv = document.createElement('div');
     elementDiv.innerHTML = `
-      <button class="nav-link dropdown-toggle mx-auto" role="button" data-bs-toggle="dropdown"
+      <button class="nav-link dropdown-toggle mx-auto" role="button"
         aria-expanded="false" style="background-color:transparent ; border:none">
         Results
       </button>
       <ul class="dropdown-menu text-center">
-        <li><a class="dropdown-item" href="#fullResults" id="fullResults">Full Results</a></li>
         <li><a class="dropdown-item" href="#academyResults" id="academyResults">My Results</a></li>
       </ul>
     `;
     resultsNav.appendChild(elementDiv);
 }
 
-// if (getCookie('country') == "otherCountry"){
-//   const videoInEntry = document.getElementById("videoInEntry");
-//   const div = document.createElement('div');
-//   div.innerHTML = `  
-//   <div class="container col-11 m-3 mx-auto" style="box-shadow: 0 3px 10px black;">
-//     <h1 class="text-dark">Add Entry</h1>
-//     <form id="form" class=" mx-auto row g-3" onsubmit="changeEntry(event);" enctype="multipart/form-data">
-//       <input type="hidden" name="" id="entriesId">
-//       <div class="col-12">
-//         <label for="entryname">Entry Name:</label>
-//         <input type="text" id="entryname" name="entryname" class="form-control" required>
-//       </div>
-//       <div class="col-11 row">
-//         <div class="col-12 col-md-6">
-//           <label for="uMusic">Upload Music:</label>
-//           <input type="file" accept="audio/mpeg,audio/webm" id="uMusic" name="uMusic" aria-label="uMusic" class="form-control">
-//         </div>
-//         <div class="col-12 col-md-6 mt-2">
-//           <audio id="audioPlayer" controls>
-//             <source src="" id="audio" />
-//           </audio>
-//         </div>
-//         <div class="col-12 col-md-6">
-//           <label for="uVideo">Upload Video:</label>
-//           <input type="file" accept="video/mpeg,video/webm" id="uVideo" name="uVideo" aria-label="uVideo" class="form-control">
-//         </div>
-//         <div class="col-12 col-md-6 mt-2">
-//           <video id="videoPlayer" controls>
-//             <source src="" id="video" />
-//           </video>
-//         </div>
-//         <small class="text-dark text-center">you can only upload these extentions for audio .mpeg, .webm</small>
-//       </div>
-//       <div class="row mx-auto my-3"><input class="btn btn-dark" type="submit" value="Submit"></div>
-//     </form>
-//   </div>`
-//   videoInEntry.appendChild(elementDiv);
-// }
+// Add event listeners for hover and click
+document.getElementById("joinedCompetitionDropDown").addEventListener("mouseenter", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "true");
+  this.querySelector(".dropdown-menu").classList.add("show");
+});
+
+document.getElementById("joinedCompetitionDropDown").addEventListener("mouseleave", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+  this.querySelector(".dropdown-menu").classList.remove("show");
+});
 
 
+// Add event listeners for hover and click
+document.getElementById("statementDropDown").addEventListener("mouseenter", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "true");
+  this.querySelector(".dropdown-menu").classList.add("show");
+});
+
+document.getElementById("statementDropDown").addEventListener("mouseleave", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+  this.querySelector(".dropdown-menu").classList.remove("show");
+});
+
+
+// Add event listeners for hover and click
+document.getElementById("schadualNav").addEventListener("mouseenter", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "true");
+  this.querySelector(".dropdown-menu").classList.add("show");
+});
+
+document.getElementById("schadualNav").addEventListener("mouseleave", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+  this.querySelector(".dropdown-menu").classList.remove("show");
+});
+
+
+// Add event listeners for hover and click
+document.getElementById("resultsNav").addEventListener("mouseenter", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "true");
+  this.querySelector(".dropdown-menu").classList.add("show");
+});
+
+document.getElementById("resultsNav").addEventListener("mouseleave", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+  this.querySelector(".dropdown-menu").classList.remove("show");
+});
+
+// Add event listeners for hover and click
+document.getElementById("accountDown").addEventListener("mouseenter", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "true");
+  this.querySelector(".dropdown-menu").classList.add("show");
+});
+
+document.getElementById("accountDown").addEventListener("mouseleave", function () {
+  this.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+  this.querySelector(".dropdown-menu").classList.remove("show");
+});

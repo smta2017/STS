@@ -33,8 +33,11 @@ var year = getCookie("year");
 
 
 var entriesData;
-function showEntriesData(entryDegreeID) {
+function showEntriesData() {
+  console.log(entryDegreeID);
     var entriesContainer = document.getElementById("table-body-entriesR");
+    console.log(entriesContainer);
+
     document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry/completeresult/${entryDegreeID}`, {
         method: 'GET',
@@ -42,16 +45,19 @@ function showEntriesData(entryDegreeID) {
     })
         .then(response => response.json())
         .then(data => {
+          console.log(data.data);
             entriesData = data.data;
-            
             entriesContainer.innerHTML = "";
             data.data.forEach(entry => {
+              console.log("hiiiii");
+              console.log(data.data);
+              console.log(entry);
                 document.getElementById("namecompatator").innerHTML = `Entry List for ${type} - ${year}`
                 const element = document.createElement('tr');
                 element.id = entry._id
+                 //<td>${entry.qualifierSubscription.academy.academyDetails.schoolName}</td>
                 element.innerHTML = `
                     <td id="entryNameSearch">${entry.name}</td>
-                    <td>${entry.qualifierSubscription.academy.academyDetails.schoolName}</td>
                     <td>
                         <form class="text-center" id="form_${entry._id}" onsubmit="addDegreeForEntry(event)">
                             <div class="btn_group row">
@@ -73,7 +79,7 @@ function showEntriesData(entryDegreeID) {
         document.getElementById("gif").style.display ="none"
 }
 
-showEntriesData(entryDegreeID);
+showEntriesData();
 
 function addDegreeForEntry(e) {
     e.preventDefault(); // Prevent the default form submission

@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="special_talent_stars"/>
+    <meta name="keywords" content="sts, sts competition, special talent stars, singing competition, music competition, dance competition, sts egypt, sts germany, sts america"/>
+    <meta name="author" content="George Ayman, Merna Mamdouh, Mina Onsy, Malak Romany"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>STS Website</title>
 
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/WhatsApp_Image_2023-05-14_at_14.34.50-removebg-preview.png"/>
 
-    <!--Fonts-->
-    <!-- <link rel="stylesheet" href="https://sts-5s7p.onrender.com/STS-Frontend-Website/fontawesome.css" /> -->
-   
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/fontawesome.css"/> -->
-    
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap"> -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap"> -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700"> -->
-
-    <!-- Bootstrap CSS CDN -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
-    <!-- Scrollbar Custom CSS -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/icon-css/3.5.0/css/flag-icon.min.css" /> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" /> -->
-  
     <!--Bootstrap-->
     <link href="https://sts-5s7p.onrender.com/STS-Frontend-Website/bootstrap.min.css" rel="stylesheet" />
 
@@ -54,21 +39,20 @@
                   aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse px-4 text-center mt-1" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse text-center mt-1" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                       <a class="nav-link active px-2 px-md-3" aria-current="page" href="#sliderNews">Home</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link px-2 px-md-3" href="#info" id="about">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <button class="nav-link px-2 px-md-3 dropdown-toggle mx-auto" style="background-color:transparent;border:none" id="sponsorsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    </li>                  
+                    <li class="nav-item dropdown" id="sponsorDropDown">
+                      <button class="nav-link px-2 px-md-3 dropdown-toggle mx-auto" style="background-color:transparent;border:none" id="sponsorsDropdown" role="button" aria-expanded="false">
                         Sponsors
                       </button>
-                      <ul class="dropdown-menu" aria-labelledby="sponsorsDropdown">
-
-                      </ul>
+                      <ul class="dropdown-menu" aria-labelledby="sponsorsDropdown" id="sponsorMenu">
+                      </ul> 
                     </li>
                     <li class="nav-item">
                       <a class="nav-link px-2 px-md-3" href="#shop" id="shop">Shop</a>
@@ -121,8 +105,10 @@
                                     </svg>
                                 </div>
                                 <div class="contact-info">
-                                    <h5>95 711 9 5353</h5>
+                                  <a href="https://wa.me/18004719150" target="_blank" class="text-light">
+                                    <h5>+1 (800) 471-9150</h5>
                                     <p>Send Us on WhatsApp</p>
+                                  </a>
                                 </div>
                             </div>
                         </div>
@@ -203,13 +189,12 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                  <li class="nav-item dropdown">
-                    <button class="nav-link active dropdown-toggle mx-auto " role="button" data-bs-toggle="dropdown"
+                  <li class="nav-item dropdown" id="joinedCompetitionDropDown">
+                    <button class="nav-link active dropdown-toggle mx-auto " role="button"
                       aria-expanded="false" style="background-color:transparent ; border:none">
                       Competitions
                     </button>
                     <ul class="dropdown-menu text-center" id="joinedCompetitionName">
-
                     </ul>
                   </li>
                   <li class="nav-item">
@@ -221,8 +206,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#teachers" id="teachers" id="teachers">Teachers</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle mx-auto" role="button" data-bs-toggle="dropdown"
+                  <li class="nav-item dropdown" id="statementDropDown">
+                    <button class="nav-link dropdown-toggle mx-auto" role="button"
                       aria-expanded="false" style="background-color:transparent ; border:none">
                       Statement
                     </button>
@@ -249,8 +234,8 @@
                   <a class="btn btn-light rounded-circle ml-2 socialMediaI" href="https://www.instagram.com/special_talent_stars/"
                   target="_blank"><i class="fa-brands fa-instagram"></i></a> -->
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                    <li class="nav-item dropdown">
-                      <button class="nav-link dropdown-toggle mx-auto" role="button" data-bs-toggle="dropdown"
+                    <li class="nav-item dropdown" id="accountDown">
+                      <button class="nav-link dropdown-toggle mx-auto" role="button" 
                         aria-expanded="false" style="background-color:transparent;border:none">
                         Account
                       </button><!-- editProfileAcademy-->
@@ -365,8 +350,10 @@
                                     </svg>
                                 </div>
                                 <div class="contact-info">
-                                    <h5>95 711 9 5353</h5>
+                                  <a href="https://wa.me/18004719150" target="_blank" class="text-light">
+                                    <h5>+1 (800) 471-9150</h5>
                                     <p>Send Us on WhatsApp</p>
+                                  </a>
                                 </div>
                             </div>
                         </div>
@@ -818,117 +805,145 @@
                     </div>
                 </div>
             </div>
+            
+           <!--Team-->
+           <article class="team" id="team">
+            <div class="h1 text-center text-light fs-1 mb-3 pt-5">Our Developer</div>
+            <div class="team_box row">
+                <div class="profile col-12 col-md-6 col-lg-3">
+                    <img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/IMG_20221105_0206181.jpg" alt="chef1">
+                    <div class="info">
+                        <h2 class="name">George Ayman</h2>
+                        <p class="bio">Team Leader & Full Stack Developer</p>
+                        <div class="team_icon">
+                          <ul class="row me-3">
+                            <li class="col-6"><a href="https://www.linkedin.com/in/george-ayman-824921168" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://github.com/george-abadier" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="mailto:gorgeabadier@gmail.com" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
+                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://wa.me/1202865148" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                              </svg>
+                            </a></li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- <div class="h1 text-center text-light fs-1 mt-3">Our Developer</div>
-            <div class="container upper">
-              <div class="row">
-                <div class="col-12 col-md-4">
-                  <div class="profile-card">
-                    <div class="profile-img">
-                      <img src="https://i.postimg.cc/VNs6dtw4/profile2.jpg" alt="Team Image"/>
+                <div class="profile col-12 col-md-6 col-lg-3">
+                    <img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/1688928579571.jpg" alt="chef2">
+                    <div class="info">
+                        <h2 class="name">Merna Mamdouh</h2>
+                        <p class="bio">Leader Frontend Developer</p>
+                        <div class="team_icon">
+                          <ul class="row me-3">
+                            <li class="col-6"><a href="https://www.linkedin.com/in/merna-mamdouh-mounir-9480861a1/" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://github.com/mernamamdouh2" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="mailto:mernamamdouh2@gmail.com" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
+                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://wa.me/1288851799" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                              </svg>
+                            </a></li>
+                          </ul>
+                        </div>
                     </div>
-                    <div class="profile-content">
-                      <h2 class="title">George Ayman
-                        <span>Leader & Backend Developer</span>
-                      </h2>
-                      <ul class="social-link">
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
-                            <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
-                            <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                          </svg>
-                        </a></li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
-                <div class="col-12 col-md-4">
-                  <div class="profile-card">
-                    <div class="profile-img">
-                      <img src="https://i.postimg.cc/XYkqj8Rp/profile3.jpg" alt="Team Image"/>
+
+                <div class="profile col-12 col-md-6 col-lg-3">
+                    <img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/MELO23681.jpg" alt="chef3">
+                    <div class="info">
+                        <h2 class="name">Mina Onsy</h2>
+                        <p class="bio">Frontend Developer</p>
+                        <div class="team_icon">
+                          <ul class="row me-3">
+                            <li class="col-6"><a href="https://www.linkedin.com/in/mina-onsy-37a619278/" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://github.com/MinaOnsy24" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="mailto:onsymina676@gmail.com" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
+                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://wa.me/1282426768" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                              </svg>
+                            </a></li>
+                          </ul>
+                        </div>
                     </div>
-                    <div class="profile-content">
-                      <h2 class="title">Merna Mamdouh
-                        <span>Frontend Developer</span>
-                      </h2>
-                      <ul class="social-link">
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
-                            <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
-                            <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                          </svg>
-                        </a></li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
-                <div class="col-12 col-md-4">
-                  <div class="profile-card">
-                    <div class="profile-img">
-                      <img src="https://i.postimg.cc/g0M0R0kp/profile1.jpg" alt="Team Image"/>
+
+                <div class="profile col-12 col-md-6 col-lg-3">
+                    <img src="https://sts-5s7p.onrender.com/STS-Frontend-Website/images/MELO23661.jpg" alt="chef4">
+                    <div class="info">
+                        <h2 class="name">Malak Romany</h2>
+                        <p class="bio">Frontend Assistant for the Production Version</p>
+                        <div class="team_icon">
+                          <ul class="row me-3">
+                            <li class="col-6"><a href="https://www.linkedin.com/in/malak-romany-125219169/" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://github.com/malakromany" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="mailto:malak.romany.dev@gmail.com" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
+                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
+                              </svg>
+                            </a></li>
+                            <li class="col-6"><a href="https://wa.me/1224012762" target="_blank">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                              </svg>
+                            </a></li>
+                          </ul>
+                        </div>
                     </div>
-                    <div class="profile-content">
-                      <h2 class="title">Mina Onsy
-                        <span>Frontend Developer</span>
-                      </h2>
-                      <ul class="social-link">
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16" >
-                            <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
-                            <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                          </svg>
-                        </a></li>
-                        <li><a href="#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                          </svg>
-                        </a></li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div> -->
+            </div>
+        </article> 
+        <!--Team-->
           </div>
         </section>
       </script>
@@ -1362,7 +1377,6 @@
                       <div class="col-12 col-md-4">
                           <h4 class="title" id="compatatorsName">List of all Compatators</h4>
                       </div>
-                      <!-- <div class="col-12 col-md-8"> -->
                       <div class="btn_group text-center col-12 col-md-4">
                         <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf" oninput="handleSearch()">
                         <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf" onclick="generatePDF()">
@@ -1374,10 +1388,8 @@
                       </div>
                       <div class="btn_group text-md-end col-12 col-md-4">
                         <div class="addComp">
-
                         </div>
                       </div> 
-                      <!-- </div> -->
                     </div>
                   </div>
                   <div class="panel-body table-responsive" id="compatators-table">
@@ -1387,7 +1399,7 @@
                           <th>FirstName</th>
                           <th>LastName</th>
                           <th>DateOfBirth</th>
-                          <th>Age</th>
+                          <!-- <th>Age</th> -->
                           <th>Gender</th>
                           <th>Email</th>
                           <th>Mobile</th>
@@ -1485,12 +1497,6 @@
                     </div>
                     <div class="col-12">
                       <label for="category" id="labelCategory">Category:</label>
-                      <!-- <select class="form-select w-25" id="category" required>
-                        <option value="-1" disabled>Choose Category</option>
-                        <option value="dancer">Dancer</option>
-                        <option value="musician">Musician</option>
-                        <option value="singer">Singer</option>
-                      </select>  -->
                       <div class="valid-feedback">
                         Looks good!
                       </div>
@@ -1622,9 +1628,6 @@
                       <div class="input-group">
                         <select class="form-select w-25" name="callingCodeU" id="callingCodeU" class="form-control" required>
                           <option value="-1" disabled>Choose your country Code</option>
-                          <!-- <option value="+20" name="+20">+20</option>
-                          <option value="+54" name="+54">+54</option>
-                          <option value="+90" name="+90">+90</option> -->
                         </select>
                         <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumberU" id="mobileNumberU" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
                       </div>
@@ -1847,7 +1850,7 @@
                 </div>
 
                 <div class="col-12 text-center mb-1">
-                    <button type="button" id="paidLogs" class="btn btn-light position-relative" data-bs-toggle="modal" data-bs-target="#Payments">
+                    <button type="button" id="paidLogs" class="btn btn-light position-relative" data-bs-toggle="modal" data-bs-target="#Payments" onclick="getPaymentLogs()">
                       Payments Logs
                     </button>
                 </div>
@@ -1902,21 +1905,7 @@
                     </thead>
                   </table>
                 </div>
-                <div class="">
-                  <div class="btn_group row  ">
-                    <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-bank" data-bs-toggle="modal" data-bs-target="#Bank">
-                      Paid Bank
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
-                        <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z"/>
-                      </svg>
-                    </a>
-                    <a href="#" class="btn btn-light col-5 py-3 mx-auto mb-3" id="paid-paypal" data-bs-toggle="modal" data-bs-target="#PayPal" onclick="creatDropIn(event)">
-                      Paid PayPal
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paypal" viewBox="0 0 16 16">
-                        <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
-                      </svg>
-                    </a>
-                  </div>
+                <div id="PaidByBankOrPaypal">
                 </div>
 
                 <div class="modal fade" id="Bank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -1935,16 +1924,15 @@
                             <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgForbankReceipt"
                               name="uploadImgForbankReceipt" accept="image/jpeg,image/png,image/gif,image/webp,image/apng"
                               onchange="previewImage(event)" required>
-                            <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp,
-                              .apng</small>
+                            <small class="text-dark text-center">you can only upload these extentions for image .jpg, .jpeg, .png, .gif, .webp, .apng</small>
                           </div>
                           <img id="imgPreview" src="" alt="Image Preview"
                             style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
                   
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
+                            <button type="button" class="btn btn-danger"
                                 data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                            <button type="submit" class="btn btn-dark" data-bs-dismiss="modal"
                                 aria-label="Close">Submit</button>
                           </div>
                         </form>
@@ -2101,13 +2089,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#adventiser" id="adventiser">Adventiser</a>
                     </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link" href="#errorLogs" id="errorLogs">Error logs</a>
+                    </li> -->
                   </ul>
                   <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         My Profile
                     </button>
                     <ul class="dropdown-menu">
-                       <!-- <li><a class="dropdown-item" href="#addingPosition" id="addingPosition" style="cursor: pointer;">Add Position</a></li>
+                      <!-- <li><a class="dropdown-item" href="#addingPosition" id="addingPosition" style="cursor: pointer;">Add Position</a></li>
                       <li><a class="dropdown-item" href="#addingEmployee" id="addingEmployee" style="cursor: pointer;">Add Employee</a></li> -->
                       <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editProfile" style="cursor: pointer;" onclick="editProfile();">Edit Profile</a></li>
                       <li>
@@ -2250,153 +2241,125 @@
 
       <!-- addingPositionAdmin in Home  -->
       <script id="addingPositionA-template" type="text/template">
-        <!-- Modal Add Position-->
-          <!-- <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                  <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Add Position</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body"> -->
-                <h1 class="fs-2 text-dark fw-bold text-center">Add Position</h1>
-                <form action="" class="col-11 col-md-9 col-lg-7 border border-warning p-4 my-3 rounded-3 needs-validation mx-auto" novalidate id="addPositionForm" onsubmit=changePosition(event)>
-                  <input type="hidden" name="" id="rolesId">
-                  <div class="form-group d-flex flex-column mb-3">
-                    <label for="positionAdding" class="form-label mb-1 fs-4 fw-bold">Add Position</label>
-                    <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="addPosition" id="positionAdding"
-                      placeholder="Add Position" pattern="[A-Za-z]{2,}" title="at least Three letter" required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                      At least three letters required.
-                    </div>
-                  </div>
-                  <div class="mb-3 form-group d-flex flex-column">
-                    <label for="rules" class="form-label mb-1 fs-4 fw-bold">Choose Tabs</label>
-                    <select class="form-select border border-warning" id="rules" required multiple></select>
-                    <small class="text-dark mt-2">To select multiple rules, press <kbd>Ctrl</kbd> and <kbd>left-button</kbd> on the mouse.</small>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                      Please select at least one rule.
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-center row">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <input type="reset" value="Clear to Add New Data" class="btn btn-danger col-6" onclick="clearData()">
-                    <button type="submit" id="addToEdit" class="btn btn-dark col-4">Add</button>
-                </div>
-                </form>
-
-
-                <section class="shop" id="shop" style="font-family: 'Fugaz One', cursive;">
-                  <div class="container-fluid bg-trasparent py-5 p-3" style="position: relative;">
-                    <div class="h1 text-center pb-3 fs-1 my-3">All Roles</div>
-                      <div class="row g-3" id="GetAllRoles">
-                      </div>
-                  </div>
-                </section>
-              <!-- </div>
+        <h1 class="fs-2 text-dark fw-bold text-center">Add Position</h1>
+        <form action="" class="col-11 col-md-9 col-lg-7 border border-warning p-4 my-3 rounded-3 needs-validation mx-auto" novalidate id="addPositionForm" onsubmit=changePosition(event)>
+          <input type="hidden" name="" id="rolesId">
+          <div class="form-group d-flex flex-column mb-3">
+            <label for="positionAdding" class="form-label mb-1 fs-4 fw-bold">Add Position</label>
+            <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5" name="addPosition" id="positionAdding"
+              placeholder="Add Position" pattern="[A-Za-z]{2,}" title="at least Three letter" required>
+            <div class="valid-feedback">
+              Looks good!
             </div>
-          </div> -->
+            <div class="invalid-feedback">
+              At least three letters required.
+            </div>
+          </div>
+          <div class="mb-3 form-group d-flex flex-column">
+            <label for="rules" class="form-label mb-1 fs-4 fw-bold">Choose Tabs</label>
+            <select class="form-select border border-warning" id="rules" required multiple></select>
+            <small class="text-dark mt-2">To select multiple rules, press <kbd>Ctrl</kbd> and <kbd>left-button</kbd> on the mouse.</small>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please select at least one rule.
+            </div>
+          </div>
+          <div class="d-flex justify-content-center row">
+            <input type="reset" value="Clear to Add New Data" class="btn btn-danger col-6" onclick="clearData()">
+            <button type="submit" id="addToEdit" class="btn btn-dark col-4">Add</button>
+          </div>
+        </form>
+
+
+        <section class="shop" id="shop" style="font-family: 'Fugaz One', cursive;">
+          <div class="container-fluid bg-trasparent py-5 p-3" style="position: relative;">
+            <div class="h1 text-center pb-3 fs-1 my-3">All Roles</div>
+              <div class="row g-3" id="GetAllRoles">
+              </div>
+          </div>
+        </section>
     <!-- Modal Add Position-->
       </script>
 
       <!-- addingEmployeeAdmin in Home  -->
       <script id="addingEmployeeA-template" type="text/template">
-        <!-- Modal add employee-->
-        <!-- <div class="modal fade" id="addEmployee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Add Employee</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="fs-2 text-dark fw-bold text-center">Add Employee</h1>
+          <form action="" class="col-11 col-md-9 col-lg-7 border border-warning p-4 my-3 rounded-3 needs-validation mx-auto" novalidate onsubmit="addEmployee(event)">
+              <div class="form-group d-flex flex-column mb-3 ">
+                  <label for="firstNameForEmployee" class=" form-label form-label mb-1 fs-4 fw-bold  ">First
+                      Name</label>
+                  <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5"
+                      name="firstNameForEmployee" id="firstNameForEmployee" placeholder="First Name"
+                      pattern="[A-Za-z]{3,}" title="at least Three letter" required>
+                  <div class="valid-feedback">
+                      Looks good!
                   </div>
-                  <div class="modal-body"> -->
-                    <h1 class="fs-2 text-dark fw-bold text-center">Add Employee</h1>
-                      <form action="" class="col-11 col-md-9 col-lg-7 border border-warning p-4 my-3 rounded-3 needs-validation mx-auto" novalidate onsubmit="addEmployee(event)">
-                          <div class="form-group d-flex flex-column mb-3 ">
-                              <label for="firstNameForEmployee" class=" form-label form-label mb-1 fs-4 fw-bold  ">First
-                                  Name</label>
-                              <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5"
-                                  name="firstNameForEmployee" id="firstNameForEmployee" placeholder="First Name"
-                                  pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-                              <div class="valid-feedback">
-                                  Looks good!
-                              </div>
-                              <div class="invalid-feedback">
-                                  at least Three letter
-                              </div>
-                          </div>
-                          <div class="form-group d-flex flex-column mb-3 ">
-                              <label for="lastNameForEmployee" class="form-label mb-1 fs-4 fw-bold  ">Last Name</label>
-                              <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5"
-                                  name="lastNameForEmployee" id="lastNameForEmployee" placeholder="Last Name"
-                                  pattern="[A-Za-z]{3,}" title="at least Three letter" required>
-                              <div class="valid-feedback">
-                                  Looks good!
-                              </div>
-                              <div class="invalid-feedback">
-                                  at least Three letter
-                              </div>
-                          </div>
-                          <div class="mb-3 form-group d-flex flex-column">
-                              <label for="mobileNumbeForEmployee" class="form-label mb-1 fs-4 fw-bold  ">Mobile
-                                  Number</label>
-                              <div class="input-group">
-                                  <select class="form-select w-25 border border-warning" id="callingCodeForEmployee"
-                                      required>
-                                      <option value="-1" disabled>Choose your country</option>
-                                  </select>
-                                  <input type="tel" class="form-control rounded-3 border border-warning p-2 fs-5 w-75"
-                                      aria-label="Text input with dropdown button" name="mobileNumbeForEmployee"
-                                      id="mobileNumbeForEmployee" placeholder="Mobile Number" pattern="[0-9]{10,}"
-                                      title="It must consist of at least 10 digits" required>
-                              </div>
-                              <div class="valid-feedback">
-                                  Looks good!
-                              </div>
-                              <div class="invalid-feedback">
-                                  It must consist of at least 11 digits
-                              </div>
-                          </div>
-                          <div class="form-group d-flex flex-column mb-3">
-                              <label for="EmailForEmployee" class="form-label mb-1 fs-4 fw-bold  ">E-mail Address</label>
-                              <input type="email" class="form-control rounded-3 border border-warning p-2 fs-5"
-                                  name="EmailForEmployee" id="EmailForEmployee" placeholder="Your Email Address"
-                                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)"
-                                  title="It must be like this EXP@EXP.EXP" required>
-                              <div class="valid-feedback">
-                                  Looks good!
-                              </div>
-                              <div class="invalid-feedback">
-                                  It must be like this EXP@EXP.EXP
-                              </div>
-                          </div>
-                          <div class="mb-3 form-group d-flex flex-column">
-                            <label for="position" class="form-label mb-1 fs-4 fw-bold">Position</label>
-                            <select class="form-select border border-warning" id="position" required ></select>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                            <div class="invalid-feedback">
-                                Please select a position
-                            </div>
-                          </div>
-                          <div class="d-flex justify-content-center row">
-                              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                              <input type="reset" value="Clear to Add New Data" class="btn btn-danger col-6" onclick="clearData()">
-                              <button type="submit" class="btn btn-dark col-4">Add Employee</button>
-                          </div>
-                      </form>
-                  <!-- </div>
+                  <div class="invalid-feedback">
+                      at least Three letter
+                  </div>
               </div>
-          </div>
-        </div> -->
-        <!-- Modal add employee-->
+              <div class="form-group d-flex flex-column mb-3 ">
+                  <label for="lastNameForEmployee" class="form-label mb-1 fs-4 fw-bold  ">Last Name</label>
+                  <input type="text" class="form-control rounded-3 border border-warning p-2 fs-5"
+                      name="lastNameForEmployee" id="lastNameForEmployee" placeholder="Last Name"
+                      pattern="[A-Za-z]{3,}" title="at least Three letter" required>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                      at least Three letter
+                  </div>
+              </div>
+              <div class="mb-3 form-group d-flex flex-column">
+                  <label for="mobileNumbeForEmployee" class="form-label mb-1 fs-4 fw-bold  ">Mobile
+                      Number</label>
+                  <div class="input-group">
+                      <select class="form-select w-25 border border-warning" id="callingCodeForEmployee"
+                          required>
+                          <option value="-1" disabled>Choose your country</option>
+                      </select>
+                      <input type="tel" class="form-control rounded-3 border border-warning p-2 fs-5 w-75"
+                          aria-label="Text input with dropdown button" name="mobileNumbeForEmployee"
+                          id="mobileNumbeForEmployee" placeholder="Mobile Number" pattern="[0-9]{10,}"
+                          title="It must consist of at least 10 digits" required>
+                  </div>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                      It must consist of at least 11 digits
+                  </div>
+              </div>
+              <div class="form-group d-flex flex-column mb-3">
+                  <label for="EmailForEmployee" class="form-label mb-1 fs-4 fw-bold  ">E-mail Address</label>
+                  <input type="email" class="form-control rounded-3 border border-warning p-2 fs-5"
+                      name="EmailForEmployee" id="EmailForEmployee" placeholder="Your Email Address"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.(com|net|org|edu|gov)"
+                      title="It must be like this EXP@EXP.EXP" required>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                      It must be like this EXP@EXP.EXP
+                  </div>
+              </div>
+              <div class="mb-3 form-group d-flex flex-column">
+                <label for="position" class="form-label mb-1 fs-4 fw-bold">Position</label>
+                <select class="form-select border border-warning" id="position" required ></select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a position
+                </div>
+              </div>
+              <div class="d-flex justify-content-center row">
+                <input type="reset" value="Clear to Add New Data" class="btn btn-danger col-6" onclick="clearData()">
+                <button type="submit" class="btn btn-dark col-4">Add Employee</button>
+              </div>
+          </form>
       </script>
 
       <!-- competitionsAdmin in Home  -->
@@ -2477,7 +2440,7 @@
                 <div class=" d-flex flex-column mb-3 ">
                   <label for="displayTime" class=" form-label form-label mb-1 fs-4 fw-bold">Display time for show</label>
                   <input type="date" class="form-control rounded-3 border border-warning p-2 fs-5" name="displayTime"
-                    id="displayTime" pattern="[A-Za-z]{4,}" title="Last day to sign up in the competition" required>
+                    id="displayTime" required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
@@ -2490,7 +2453,7 @@
                   <label for="firsDay" class=" form-label form-label mb-1 fs-4 fw-bold">First day to sign up in the
                     competition</label>
                   <input type="date" class="form-control rounded-3 border border-warning p-2 fs-5" name="firsDay" id="firsDay"
-                    pattern="[A-Za-z]{4,}" title="first day to sign up in the competition" required>
+                   required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
@@ -2503,7 +2466,7 @@
                   <label for="lastDay" class=" form-label form-label mb-1 fs-4 fw-bold">Last day to sign up in the
                     competition</label>
                   <input type="date" class="form-control rounded-3 border border-warning p-2 fs-5" name="lastDay" id="lastDay"
-                    pattern="[A-Za-z]{4,}" title="Last day to sign up in the competition" required>
+                    required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
@@ -2593,7 +2556,7 @@
               <label for="uploadImgForNews" class=" form-label form-label mb-1 fs-4 fw-bold">Upload Img</label>
               <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgForNews" name="uploadImgForNews"
                 accept="image/jpeg,image/png,image/gif,image/webp,image/apng" onchange="previewImage(event)">
-              <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp, .apng</small>
+              <small class="text-dark text-center">you can only upload these extentions for image .jpg, .jpeg, .png, .gif, .webp, .apng</small>
           </div>
           <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
           <div class="d-flex justify-content-center row">
@@ -2669,7 +2632,7 @@
             <label for="uploadImgSponser" class=" form-label form-label mb-1 fs-4 fw-bold">Upload Img</label>
             <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgSponser" name="uploadImgSponser"
               accept="image/jpeg,image/png,image/gif,image/webp,image/apng" onchange="previewImage(event)">
-            <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp, .apng</small>
+            <small class="text-dark text-center">you can only upload these extentions for image .jpg, .jpeg, .png, .gif, .webp, .apng</small>
           </div>
           <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
           <div class="d-flex justify-content-center">
@@ -3053,7 +3016,7 @@
               <label for="uploadImgProduct" class=" form-label form-label mb-1 fs-4 fw-bold">Upload Img</label>
               <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgProduct" name="uploadImgProduct"
                 accept="image/jpeg,image/png,image/gif,image/webp,image/apng" onchange="previewImage(event)">
-              <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp, .apng</small>
+              <small class="text-dark text-center">you can only upload these extentions for image .jpg, .jpeg, .png, .gif, .webp, .apng</small>
             </div>
             <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
               
@@ -3163,7 +3126,7 @@
               <label for="uploadImgForAdventiser" class=" form-label form-label mb-1 fs-4 fw-bold">Upload Img</label>
               <input type="file" class="form-control rounded-3 border border-warning p-2 fs-5" id="uploadImgForAdventiser" name="uploadImgForAdventiser"
                 accept="image/jpeg,image/png,image/gif,image/webp,image/apng" onchange="previewImage(event)">
-              <small class="text-dark text-center">you can only upload these extentions for image .jpeg, .png, .gif, .webp, .apng</small>
+              <small class="text-dark text-center">you can only upload these extentions for image .jpg, .jpeg, .png, .gif, .webp, .apng</small>
           </div>
           <img id="imgPreview" src="" alt="Image Preview" style="display: none; width: 100%; max-height: 300px; object-fit: cover;">
           <div class="d-flex justify-content-center">
@@ -3195,6 +3158,59 @@
         </section>
       </script>
 
+      <!-- errorLogsAdmin in Home  -->
+      <script id="errorLogsA-template" type="text/template">
+        <section id="errorLogsA">
+          <div class="container mx-auto">
+              <div class="row">
+                <div class="col-12">
+                  <div class="panel my-4">
+                    <div class="panel-heading">
+                      <div class="row">
+                        <div class="col-12 col-md-5">
+                            <h4 class="title" id="errorLogs">Error Logs</h4>
+                        </div>
+                        <div class="col-12 col-md-5">
+                          <button type="button" id="DeleteAllSelected" class="btn btn-light position-relative" data-bs-toggle="modal" data-bs-target="#Payments" onclick="getPaymentLogs()">
+                            Delete All Selected
+                          </button>
+                        </div>
+                        <div class="form-check form-switch col-12 col-md-2">
+                          <label class="form-check-label text-light fs-5" for="flexSwitchCheckDefault">switch to user only</label>
+                          <input class="form-check-input " type="checkbox" id="flexSwitchCheckDefault" onclick="checkboxToFilter()">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel-body table-responsive">
+                      <table class="table" id="table-errorLogs">
+                        <thead>
+                          <tr>
+                            <th scope="col">
+                              <label class="control control--checkbox">
+                                <input type="checkbox" class="js-check-all"/>
+                                <div class="control__indicator"></div>
+                              </label>
+                            </th>
+                            <th scope="col">id</th>
+                            <th scope="col">FullName</th>
+                            <th scope="col">ErrorMessage</th>
+                            <th scope="col">Route</th>
+                            <th scope="col">Method</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+
+                        <tbody id="table-body-errorLogs">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+      </script>
+      
       <!-- /////////////////////////////////////////////////////////////////// -->
 
       <!-- Sidebar1 (Home2) -->
@@ -3213,7 +3229,7 @@
           </svg>
         </button>
         <br>
-        <div class="row">
+        <div class="d-flex">
           <div class="position-relative w-25 parintsidebar">
             <!-- <div class="sidebar-header">
                     <h3>Spicial Talent Stars</h3>
@@ -3340,7 +3356,7 @@
                                   <th>SchoolName</th>
                                   <th>CategoryName</th>
                                   <th>DateOfBirth</th>
-                                  <th>Age</th>
+                                  <!-- <th>Age</th> -->
                                   <th>Gender</th>
                                   <th>Email</th>
                                   <th>Mobile</th>
@@ -3383,7 +3399,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 ">
                       <div class="receipt-right">
-                        <button type="button" id="paidWay" class="btn btn-dark position-relative" data-bs-toggle="modal" data-bs-target="#Payments">
+                        <button type="button" id="paidWay" class="btn btn-dark position-relative" data-bs-toggle="modal" data-bs-target="#Payments" onclick="getPaymentLogs()">
                           Payments
                         </button>
                       </div>
@@ -3441,12 +3457,11 @@
                     </thead>
                   </table>
                 </div>
-
-                <div class="togglePaid text-center mb-2">
-                  <input type="radio" class="btn-check" name="options-outlined" value="true" id="success-outlined" autocomplete="off" onclick="paid_NotPaid(event)">
-                  <label class="btn btn-outline-success" for="success-outlined">Paid</label>
-                </div>
                 
+                <div class="text-center mb-2">
+                  <button id="toggle-button" class="btn" onclick="paid_NotPaid(event)"></button>
+                </div> 
+
                 <div class="text-center">
                   <h5 style="color: rgb(140, 140, 140);">Thank you for your business!</h5>
                 </div>
@@ -3466,7 +3481,7 @@
           </svg>
         </button>
         <br>
-        <div class="row">
+        <div class="d-flex">
           <div class="position-relative w-25 parintsidebar">
             <ul class=" sidebar list-unstyled rounded-3 components mb-5 p-3">
               <li class="my-3">
@@ -3547,7 +3562,7 @@
                           <th>FirstName</th>
                           <th>LastName</th>
                           <th>DateOfBirth</th>
-                          <th>Age</th>
+                          <!-- <th>Age</th> -->
                           <th>Gender</th>
                           <th>Email</th>
                           <th>Mobile</th>
@@ -3634,9 +3649,6 @@
                       <div class="input-group">
                         <select class="form-select w-25" name="callingCode" id="callingCode" class="form-control" required>
                           <option value="-1" disabled>Choose your country Code</option>
-                          <!-- <option value="+20" name="+20">+20</option>
-                          <option value="+54" name="+54">+54</option>
-                          <option value="+90" name="+90">+90</option> -->
                         </select>
                         <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
                       </div>
@@ -3781,9 +3793,6 @@
                     <div class="input-group">
                       <select class="form-select w-25" name="callingCodeA" id="callingCodeA" class="form-control" required>
                         <option value="-1" disabled>Choose your country Code</option>
-                        <!-- <option value="+20" name="+20">+20</option>
-                        <option value="+54" name="+54">+54</option>
-                        <option value="+90" name="+90">+90</option> -->
                       </select>
                       <input type="tel" class="form-control rounded-3 p-2 fs-5 w-75" aria-label="Text input with dropdown button" name="mobileNumberA" id="mobileNumberA" placeholder="Mobile Number" pattern="[0-9]{10,}" title="It must consist of at least 10 digits" required>
                     </div>
@@ -3917,7 +3926,7 @@
               </div>
               <div class="col-12 col-lg-6 mt-2" id="isOtherCountryPreview">
               </div>
-              <small class="text-dark text-center">you can only upload these extentions for audio .mpeg, .webm</small>
+              <small class="text-dark text-center">you can only upload these extentions for audio .mp3, .weba</small>
             </div>  
             <div class="row mx-auto my-3">
               <input type="reset" value="Clear to Add New Data" class="btn btn-danger col-6" onclick="clearData()">
@@ -3931,124 +3940,6 @@
         </div>
 
         <div id="results_container-school"></div>
-
-            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">Add Degree</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form id="show-degreeEntry-form" class="row g-3" onsubmit="submitForm(); return false;">
-                      <div class="col-12 col-md-4">
-                        <label for="degreeRuler1">Degree Ruler 1:</label>
-                        <input type="number" class="form-control" id="degreeRuler1" placeholder="Degree Ruler 1" min="1" max="30">
-                      </div>
-                      <div class="col-12 col-md-4">
-                        <label for="degreeRuler2">Degree Ruler 2:</label>
-                        <input type="number" class="form-control" id="degreeRuler2" placeholder="Degree Ruler 2" min="1" max="30">
-                      </div>
-                      <div class="col-12 col-md-4">
-                        <label for="degreeRuler3">Degree Ruler 3:</label>
-                        <input type="number" class="form-control" id="degreeRuler3" placeholder="Degree Ruler 3" min="1" max="30">
-                      </div>
-                      <div class="col-12">
-                        <label for="degreeRuler">Degree Ruler:</label>
-                        <input type="number" class="form-control" id="degreeRuler" placeholder="Degree Ruler" min="1" max="10">
-                      </div>
-                      <div class="row mx-auto my-3">
-                        <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                        <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-             Modal
-            <div class="modal fade" id="exampleModal----" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">Add Compatators</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form id="edit-Compatators-form" class="row g-3" onsubmit="submitForm(); return false;">
-                      <div class="col-12">
-                        <label for="category">Category:</label>
-                        <select  id="category"  name="category" value="category" class="form-select form-control" aria-label="category" required>
-                          <option value="A" hidden>Category</option>
-                          <option value="Dancer" name="Dance">Dancer</option>
-                          <option value="Singer" name="Singer">Singer</option>
-                          <option value="Musician" name="Musician">Musician</option>
-                        </select>
-                      </div>
-                      <div class="col-12">
-                        <label for="CompatatorsNames">Select Compatators Names for one Entry:</label>
-                        <div id="popup" style="display: none;">
-                           form controls will go here
-                        </div>
-                        <div id="name_list"></div>  checkboxes for names will be added here
-                      </div>
-                      <div class="col-12">
-                        <label for="uMusic">Upload Music:</label>
-                        <input type="file" accept="audio/*" id="uMusic" name="uMusic" value="uMusic" aria-label="uMusic" class="form-control">
-                      </div>
-                      <div class="row  mx-auto my-3">
-                        <button type="submit" id="submit" data-bs-dismiss="modal" class="btn btn-dark col-6">Add</button>
-                        <button type="button" class="close-popup btn btn-dark col-6" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section id="entersA" class="pb-5">
-            <div class="container">
-              <h1 id="entriesName" class="text-center text-dark">Entries1</h1>
-              <div class="row">
-                <div class="panel my-4">
-                  <div class="panel-heading">
-                    <div class="row">
-                      <div class="col-12 col-lg-6">
-                        <h4 class="title" id="nameEntry">Entries Name - School Name</h4>
-                      </div>
-                      <div class="col-12 col-lg-4 text-center">
-                        <div class="btn_group">
-                          <input type="text" class="form-control" id="search" placeholder="Search" spellcheck="false" data-ms-editor="true" fdprocessedid="3x5nnf">
-                          <button class="btn btn-default" title="Pdf" fdprocessedid="vmxwvs" id="generate-pdf"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
-  <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
-  <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
-</svg></button>
-                        </div>
-                      </div>
-                      <div class="col-12 col-lg-2 text-end">
-                        <div class="btn_group">
-                          <button class="btn btn-light" id="add-row" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Degree</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="panel-body table-responsive">
-                    <table class="table" id="table-entries">
-                      <thead>
-                        <tr>
-                          <th>Compatator Name</th>
-                          <th>Category Name</th>
-                        </tr>
-                      </thead>
-
-                      <tbody id="table-body-entries">
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section> -->
       </script>
 
       <!-- /////////////////////////////////////////////////////////////////// -->
@@ -4122,7 +4013,7 @@
                         <thead>
                           <tr>
                             <th>Entry Name</th>
-                            <th>Academy Name</th>
+                            <!-- <th>Academy Name</th> -->
                             <th>Set Degree</th>
                           </tr>
                         </thead>
@@ -4139,41 +4030,6 @@
       </script>
 
       <!--=================================================Body===================================================-->
-
-      <!-- jQuery CDN - Slim version (=without AJAX) -->
-      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script> -->
-      <!-- Popper.JS -->
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> -->
-      <!-- Bootstrap JS -->
-      <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-      crossorigin="anonymous"></script> -->
-      <!-- jQuery Custom Scroller CDN -->
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script> -->
-      <!--jsPDF Download-->
-      <!-- <script src="./jspdf.min.js"></script> -->
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-      integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-
-      <!-- <script src="jsPDF-AutoTable-master/dist/jspdf.plugin.autotable.min.js"></script>
-      <script src="jsPDF-master/dist/jspdf.umd.min.js"></script> -->
-      <!-- jsPDF CDN -->
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script> -->
-
-      <!-- autoTable CDN -->
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.17/jspdf.plugin.autotable.min.js"></script> -->
-
-      <!-- Include the pdfmake library -->
-      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
-      -->
-
-      <!--Single Page-->
-      <!-- <script src="handlebars.js-master/bin/handlebars.js"></script> -->
-      
     </div>
     
     <!-- Bootstrap JS -->
@@ -4181,8 +4037,6 @@
 
     <!--Single Page-->
     <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/handlebars.min.js"></script>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script> -->
 
     <!--JS file-->
     <script src="https://sts-5s7p.onrender.com/STS-Frontend-Website/app.js"></script>

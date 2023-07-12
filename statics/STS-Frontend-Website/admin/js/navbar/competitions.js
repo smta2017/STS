@@ -59,9 +59,9 @@ document.getElementById("selectType").onchange = function() {
     } else {
         labelCountry.style.display = "block";
         countriesSelect.style.display = "block";
-        getAllCountries();
     }
 };
+getAllCountries();
 
 var competitionsData;
 
@@ -103,13 +103,13 @@ function getCompetitionsData() {
                 <h3 class="text-center pt-3 bg-dark">${competitions.type}-${competitions.year}</h3>
                 <div class="content row">
                     <div class="col-6">
+                        ${competitions.type !== "final" ? `<h6 class="card-title fw-bold text-light">Country</h6><p class="ms-2">${competitions.country.countryName}</p>` : ''}
                         <h6 class="card-title fw-bold text-light">Admission</h6>
                         <p class="ms-2">${startSubscription} to ${endSubscription}</p>
                         <h6 class="card-title fw-bold text-light">Location Display your Show</h6>
                         <p class="ms-2">${competitions.stage}</p>
                         <h6 class="card-title fw-bold text-light">Date Display your Show</h6>
                         <p class="ms-2">${date}</p>
-
 
                         <div class="btn_group ms-3 mb-3 col-12">
                         <button class="btn btn-success me-3" id="add-row"
@@ -162,16 +162,10 @@ function getCompetitionsData() {
                     </div>
                 </div>
                 `;   
-                competitionsContainer.appendChild(element);
-
-                // document.querySelector(`#stopSubscription_${competitions._id}`).checked ;
+                competitionsContainer.appendChild(element);                
                 if(competitions.stopSubscription){
                     document.querySelector(`#stopSubscription_${competitions._id}`).setAttribute("checked",true);
                 }
-                // else{
-                //     document.querySelector(`#stopSubscription_${competitions._id}`).setAttribute("checked",false);
-                //     console.log(`not ok-${competitions.type} - ${competitions.year}`)
-                // }
                 if(competitions.showSchedule){
                     document.querySelector(`#showSchedule_${competitions._id}`).setAttribute("checked","true");
                 }
@@ -184,8 +178,6 @@ function getCompetitionsData() {
                 if(competitions.finished){
                     document.querySelector(`#finished_${competitions._id}`).setAttribute("checked","true");
                 }
-
-                
             });
             document.getElementById("gif").style.display = "none";
         })
@@ -193,7 +185,7 @@ function getCompetitionsData() {
             console.log(error);
             document.getElementById("gif").style.display = "none";
           }); 
-        }
+}
 
 getCompetitionsData();
 
@@ -238,7 +230,7 @@ function opentoregisteration(e) {
     } catch (error) {
       console.log(error);
     }
-  }
+}
   
 
 function editCompetitions(id) {
@@ -250,9 +242,9 @@ function editCompetitions(id) {
     document.getElementById("selectType").value = myCompetitions.type;
     document.getElementById("countries").value = myCompetitions.country;
     document.getElementById("displayLocation").value = myCompetitions.stage;
-    document.getElementById("displayTime").value = myCompetitions.date;
-    document.getElementById("firsDay").value = myCompetitions.startSubscription;
-    document.getElementById("lastDay").value = myCompetitions.endSubscription;
+    document.getElementById("displayTime").value = myCompetitions.date.split("T")[0];
+    document.getElementById("firsDay").value = myCompetitions.startSubscription.split("T")[0];
+    document.getElementById("lastDay").value = myCompetitions.endSubscription.split("T")[0];
     document.querySelector('#imgPreview').src = myCompetitions.poster
     document.querySelector('#imgPreview').style.display = 'block'
 }

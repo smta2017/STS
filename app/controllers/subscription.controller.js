@@ -5,6 +5,7 @@ const Helper = require('../helper')
 const entryModel = require('../../db/models/entry.model')
 const countryModel = require('../../db/models/country.model')
 const competitorModel = require('../../db/models/competitor.model')
+const tokenModel = require('../../db/models/tokens.model')
 class Supscription {
     static addSubscription = (req, res) => {
         Helper.handlingMyFunction(req, res, async (req) => {
@@ -111,8 +112,9 @@ class Supscription {
         }, 'here all your payment')
     }
     static changePaymentStatus=(req,res)=>{
-        Helper.handlingMyFunction(req,res,(req)=>{
-            return subscriptionModel.findByIdAndUpdate(req.params.subscriptionId,{paid:req.body.paid})
+        Helper.handlingMyFunction(req,res,async(req)=>{
+           const subscription= await subscriptionModel.findByIdAndUpdate(req.params.subscriptionId,{paid:req.body.paid})
+           await tokenModel.deleteMany({owner:subscription.academy})
         },'this school has been approved as paid')
     }
 }

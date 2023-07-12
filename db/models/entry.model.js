@@ -318,7 +318,8 @@ EntrySchema.pre('save', async function () {
         await Promise.all(
             this.competitors.map(async (competitor) => {
                 const compor = await Helper.isThisIdExistInThisModel(competitor, ['qualifierSubscription', 'category','rank'], competitorModel, 'competitor')
-                if (compor.qualifierSubscription.toString() != this.qualifierSubscription.toString()) {
+                if (compor.qualifierSubscription.toString() != this.qualifierSubscription._id.toString()) {
+                    console.log(compor.qualifierSubscription.toString(),this.qualifierSubscription_id.toString())
                     const e = new Error('this competitor is not our to add him in our entry')
                     e.name = 'CastError'
                     throw e

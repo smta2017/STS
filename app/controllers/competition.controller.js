@@ -121,7 +121,7 @@ class Competition {
     }
     static getAll = (req, res) => {
         Helper.handlingMyFunction(req, res, async(req) => {
-            const comps=await competitionModel.find()
+            const comps=await competitionModel.find().populate({path:'country',select:['countryName']})
             const result=comps.map(comp=>{
                 const returedcomp=comp.toObject()
                 returedcomp.otherCountry=comp.otherCountry

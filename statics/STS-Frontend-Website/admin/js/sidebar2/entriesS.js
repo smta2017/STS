@@ -316,7 +316,7 @@ function getEntriesData() {
                       </div>
                       <div class="col-12 col-md-6"> 
                         <label for="showDate_${entry._id}">Show Date:</label> 
-                        <input type="datetime-local" class="form-control" id="showDate_${entry._id}" placeholder="Show Date">
+                        <input type="datetime-local" class="form-control" id="showDate_${entry._id}">
                       </div> 
                       <div class="row mx-auto my-3">
                         <input type="reset" value="Clear to Add New Data" class="btn btn-danger px-4 py-1 fs-5" onclick="clearData1()">
@@ -452,8 +452,6 @@ function changeEntry(e) {
     })
       .then(response => response.json())
       .then(response => {
-        console.log(response)
-        console.log(formData)
         if (response.apiStatus == true) {
           console.log("your entry updated sucssefully")
           document.getElementById('entriesId').value = '';
@@ -480,7 +478,7 @@ function changeEntry(e) {
     document.getElementById("gif").style.display ="block"
     fetch(`${domainName}/sts/entry`, {
       method: 'POST',
-      headers: {'Authorization': token},
+      headers: {'Authorization': token , 'otherCountry': otherCountry},
       body: formData
     }).then(response => response.json())
       .then(response => {
@@ -820,6 +818,7 @@ function showDgreeForRefree(id) {
   })
     .then(response => response.json())
     .then((data) => {
+      console.log(data.data.qualifierShowDate)
       document.getElementById(`degreeRuler1_${id}`).value = data.data.qualifierRefree1
       document.getElementById(`degreeRuler2_${id}`).value = data.data.qualifierRefree2
       document.getElementById(`degreeRuler3_${id}`).value = data.data.qualifierRefree3

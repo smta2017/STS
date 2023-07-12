@@ -70,7 +70,7 @@ const UserSchema = mongoose.Schema({
     date: {
         type: Date,
         default: new Date(),
-        expires: 600
+        expires: 3600
     }
 })
 UserSchema.pre('save', function () {
